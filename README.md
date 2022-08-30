@@ -2,7 +2,7 @@
 
 Superset
 - API version: v1
-  - Build date: 2020-11-06T17:35:31.186+01:00[Europe/Vienna]
+  - Build date: 2022-08-29T11:55:36.089+02:00[Europe/Berlin]
 
 Superset
 
@@ -40,7 +40,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>at.mic.superset</groupId>
   <artifactId>superset-swagger-client</artifactId>
-  <version>1.1.0</version>
+  <version>1.2.0</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -50,7 +50,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "at.mic.superset:superset-swagger-client:1.1.0"
+compile "at.mic.superset:superset-swagger-client:1.2.0"
 ```
 
 ### Others
@@ -63,7 +63,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/superset-swagger-client-1.1.0.jar`
+* `target/superset-swagger-client-1.2.0.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
@@ -74,24 +74,24 @@ Please follow the [installation](#installation) instruction and execute the foll
 import at.mic.superset.swagger.*;
 import at.mic.superset.swagger.auth.*;
 import at.mic.superset.swagger.client.model.*;
-import at.mic.superset.swagger.client.ChartsApi;
+import at.mic.superset.swagger.client.AdvancedDataTypeApi;
 
 import java.io.File;
 import java.util.*;
 
-public class ChartsApiExample {
+public class AdvancedDataTypeApiExample {
 
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
 
 
-        ChartsApi apiInstance = new ChartsApi();
-        ChartDataQueryContextSchema body = new ChartDataQueryContextSchema(); // ChartDataQueryContextSchema | A query context consists of a datasource from which to fetch data and one or many query objects.
+        AdvancedDataTypeApi apiInstance = new AdvancedDataTypeApi();
+        AdvancedDataTypeConvertSchema q = new AdvancedDataTypeConvertSchema(); // AdvancedDataTypeConvertSchema | 
         try {
-            ChartDataResponseSchema result = apiInstance.chartDataPost(body);
+            AdvancedDataTypeSchema result = apiInstance.apiV1AdvancedDataTypeConvertGet(q);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling ChartsApi#chartDataPost");
+            System.err.println("Exception when calling AdvancedDataTypeApi#apiV1AdvancedDataTypeConvertGet");
             e.printStackTrace();
         }
     }
@@ -99,303 +99,23 @@ public class ChartsApiExample {
 import at.mic.superset.swagger.*;
 import at.mic.superset.swagger.auth.*;
 import at.mic.superset.swagger.client.model.*;
-import at.mic.superset.swagger.client.ChartsApi;
+import at.mic.superset.swagger.client.AdvancedDataTypeApi;
 
 import java.io.File;
 import java.util.*;
 
-public class ChartsApiExample {
+public class AdvancedDataTypeApiExample {
 
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
 
 
-        ChartsApi apiInstance = new ChartsApi();
+        AdvancedDataTypeApi apiInstance = new AdvancedDataTypeApi();
         try {
-            InlineResponse2002 result = apiInstance.chartDatasourcesGet();
+            InlineResponse200 result = apiInstance.apiV1AdvancedDataTypeTypesGet();
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling ChartsApi#chartDatasourcesGet");
-            e.printStackTrace();
-        }
-    }
-}
-import at.mic.superset.swagger.*;
-import at.mic.superset.swagger.auth.*;
-import at.mic.superset.swagger.client.model.*;
-import at.mic.superset.swagger.client.ChartsApi;
-
-import java.io.File;
-import java.util.*;
-
-public class ChartsApiExample {
-
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-
-        ChartsApi apiInstance = new ChartsApi();
-        List<Integer> q = Arrays.asList(56); // List<Integer> | 
-        try {
-            InlineResponse400 result = apiInstance.chartDelete(q);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling ChartsApi#chartDelete");
-            e.printStackTrace();
-        }
-    }
-}
-import at.mic.superset.swagger.*;
-import at.mic.superset.swagger.auth.*;
-import at.mic.superset.swagger.client.model.*;
-import at.mic.superset.swagger.client.ChartsApi;
-
-import java.io.File;
-import java.util.*;
-
-public class ChartsApiExample {
-
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-
-        ChartsApi apiInstance = new ChartsApi();
-        GetListSchema q = new GetListSchema(); // GetListSchema | 
-        try {
-            InlineResponse200 result = apiInstance.chartGet(q);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling ChartsApi#chartGet");
-            e.printStackTrace();
-        }
-    }
-}
-import at.mic.superset.swagger.*;
-import at.mic.superset.swagger.auth.*;
-import at.mic.superset.swagger.client.model.*;
-import at.mic.superset.swagger.client.ChartsApi;
-
-import java.io.File;
-import java.util.*;
-
-public class ChartsApiExample {
-
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-
-        ChartsApi apiInstance = new ChartsApi();
-        GetInfoSchema q = new GetInfoSchema(); // GetInfoSchema | 
-        try {
-            InlineResponse2001 result = apiInstance.chartInfoGet(q);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling ChartsApi#chartInfoGet");
-            e.printStackTrace();
-        }
-    }
-}
-import at.mic.superset.swagger.*;
-import at.mic.superset.swagger.auth.*;
-import at.mic.superset.swagger.client.model.*;
-import at.mic.superset.swagger.client.ChartsApi;
-
-import java.io.File;
-import java.util.*;
-
-public class ChartsApiExample {
-
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-
-        ChartsApi apiInstance = new ChartsApi();
-        Integer pk = 56; // Integer | 
-        String sha = "sha_example"; // String | 
-        try {
-            InlineResponse2006 result = apiInstance.chartPkCacheScreenshotGet(pk, sha);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling ChartsApi#chartPkCacheScreenshotGet");
-            e.printStackTrace();
-        }
-    }
-}
-import at.mic.superset.swagger.*;
-import at.mic.superset.swagger.auth.*;
-import at.mic.superset.swagger.client.model.*;
-import at.mic.superset.swagger.client.ChartsApi;
-
-import java.io.File;
-import java.util.*;
-
-public class ChartsApiExample {
-
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-
-        ChartsApi apiInstance = new ChartsApi();
-        Integer pk = 56; // Integer | 
-        try {
-            InlineResponse400 result = apiInstance.chartPkDelete(pk);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling ChartsApi#chartPkDelete");
-            e.printStackTrace();
-        }
-    }
-}
-import at.mic.superset.swagger.*;
-import at.mic.superset.swagger.auth.*;
-import at.mic.superset.swagger.client.model.*;
-import at.mic.superset.swagger.client.ChartsApi;
-
-import java.io.File;
-import java.util.*;
-
-public class ChartsApiExample {
-
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-
-        ChartsApi apiInstance = new ChartsApi();
-        Integer pk = 56; // Integer | 
-        GetItemSchema q = new GetItemSchema(); // GetItemSchema | 
-        try {
-            InlineResponse2004 result = apiInstance.chartPkGet(pk, q);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling ChartsApi#chartPkGet");
-            e.printStackTrace();
-        }
-    }
-}
-import at.mic.superset.swagger.*;
-import at.mic.superset.swagger.auth.*;
-import at.mic.superset.swagger.client.model.*;
-import at.mic.superset.swagger.client.ChartsApi;
-
-import java.io.File;
-import java.util.*;
-
-public class ChartsApiExample {
-
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-
-        ChartsApi apiInstance = new ChartsApi();
-        ChartRestApiPut body = new ChartRestApiPut(); // ChartRestApiPut | Chart schema
-        Integer pk = 56; // Integer | 
-        try {
-            InlineResponse2005 result = apiInstance.chartPkPut(body, pk);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling ChartsApi#chartPkPut");
-            e.printStackTrace();
-        }
-    }
-}
-import at.mic.superset.swagger.*;
-import at.mic.superset.swagger.auth.*;
-import at.mic.superset.swagger.client.model.*;
-import at.mic.superset.swagger.client.ChartsApi;
-
-import java.io.File;
-import java.util.*;
-
-public class ChartsApiExample {
-
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-
-        ChartsApi apiInstance = new ChartsApi();
-        Integer pk = 56; // Integer | 
-        String digest = "digest_example"; // String | 
-        try {
-            File result = apiInstance.chartPkScreenshotDigestGet(pk, digest);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling ChartsApi#chartPkScreenshotDigestGet");
-            e.printStackTrace();
-        }
-    }
-}
-import at.mic.superset.swagger.*;
-import at.mic.superset.swagger.auth.*;
-import at.mic.superset.swagger.client.model.*;
-import at.mic.superset.swagger.client.ChartsApi;
-
-import java.io.File;
-import java.util.*;
-
-public class ChartsApiExample {
-
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-
-        ChartsApi apiInstance = new ChartsApi();
-        Integer pk = 56; // Integer | 
-        String digest = "digest_example"; // String | 
-        try {
-            apiInstance.chartPkThumbnailDigestGet(pk, digest);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling ChartsApi#chartPkThumbnailDigestGet");
-            e.printStackTrace();
-        }
-    }
-}
-import at.mic.superset.swagger.*;
-import at.mic.superset.swagger.auth.*;
-import at.mic.superset.swagger.client.model.*;
-import at.mic.superset.swagger.client.ChartsApi;
-
-import java.io.File;
-import java.util.*;
-
-public class ChartsApiExample {
-
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-
-        ChartsApi apiInstance = new ChartsApi();
-        ChartRestApiPost body = new ChartRestApiPost(); // ChartRestApiPost | Chart schema
-        try {
-            InlineResponse201 result = apiInstance.chartPost(body);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling ChartsApi#chartPost");
-            e.printStackTrace();
-        }
-    }
-}
-import at.mic.superset.swagger.*;
-import at.mic.superset.swagger.auth.*;
-import at.mic.superset.swagger.client.model.*;
-import at.mic.superset.swagger.client.ChartsApi;
-
-import java.io.File;
-import java.util.*;
-
-public class ChartsApiExample {
-
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-
-        ChartsApi apiInstance = new ChartsApi();
-        String columnName = "columnName_example"; // String | 
-        Object q = null; // Object | 
-        try {
-            InlineResponse2003 result = apiInstance.chartRelatedColumnNameGet(columnName, q);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling ChartsApi#chartRelatedColumnNameGet");
+            System.err.println("Exception when calling AdvancedDataTypeApi#apiV1AdvancedDataTypeTypesGet");
             e.printStackTrace();
         }
     }
@@ -404,64 +124,202 @@ public class ChartsApiExample {
 
 ## Documentation for API Endpoints
 
-All URIs are relative to */api/v1*
+All URIs are relative to *http://localhost:8088/*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*ChartsApi* | [**chartDataPost**](docs/ChartsApi.md#chartDataPost) | **POST** /chart/data | 
-*ChartsApi* | [**chartDatasourcesGet**](docs/ChartsApi.md#chartDatasourcesGet) | **GET** /chart/datasources | 
-*ChartsApi* | [**chartDelete**](docs/ChartsApi.md#chartDelete) | **DELETE** /chart/ | 
-*ChartsApi* | [**chartGet**](docs/ChartsApi.md#chartGet) | **GET** /chart/ | 
-*ChartsApi* | [**chartInfoGet**](docs/ChartsApi.md#chartInfoGet) | **GET** /chart/_info | 
-*ChartsApi* | [**chartPkCacheScreenshotGet**](docs/ChartsApi.md#chartPkCacheScreenshotGet) | **GET** /chart/{pk}/cache_screenshot/ | 
-*ChartsApi* | [**chartPkDelete**](docs/ChartsApi.md#chartPkDelete) | **DELETE** /chart/{pk} | 
-*ChartsApi* | [**chartPkGet**](docs/ChartsApi.md#chartPkGet) | **GET** /chart/{pk} | 
-*ChartsApi* | [**chartPkPut**](docs/ChartsApi.md#chartPkPut) | **PUT** /chart/{pk} | 
-*ChartsApi* | [**chartPkScreenshotDigestGet**](docs/ChartsApi.md#chartPkScreenshotDigestGet) | **GET** /chart/{pk}/screenshot/{digest}/ | 
-*ChartsApi* | [**chartPkThumbnailDigestGet**](docs/ChartsApi.md#chartPkThumbnailDigestGet) | **GET** /chart/{pk}/thumbnail/{digest}/ | 
-*ChartsApi* | [**chartPost**](docs/ChartsApi.md#chartPost) | **POST** /chart/ | 
-*ChartsApi* | [**chartRelatedColumnNameGet**](docs/ChartsApi.md#chartRelatedColumnNameGet) | **GET** /chart/related/{column_name} | 
-*DashboardsApi* | [**dashboardDelete**](docs/DashboardsApi.md#dashboardDelete) | **DELETE** /dashboard/ | 
-*DashboardsApi* | [**dashboardExportGet**](docs/DashboardsApi.md#dashboardExportGet) | **GET** /dashboard/export/ | 
-*DashboardsApi* | [**dashboardGet**](docs/DashboardsApi.md#dashboardGet) | **GET** /dashboard/ | 
-*DashboardsApi* | [**dashboardInfoGet**](docs/DashboardsApi.md#dashboardInfoGet) | **GET** /dashboard/_info | 
-*DashboardsApi* | [**dashboardPkDelete**](docs/DashboardsApi.md#dashboardPkDelete) | **DELETE** /dashboard/{pk} | 
-*DashboardsApi* | [**dashboardPkGet**](docs/DashboardsApi.md#dashboardPkGet) | **GET** /dashboard/{pk} | 
-*DashboardsApi* | [**dashboardPkPut**](docs/DashboardsApi.md#dashboardPkPut) | **PUT** /dashboard/{pk} | 
-*DashboardsApi* | [**dashboardPkThumbnailDigestGet**](docs/DashboardsApi.md#dashboardPkThumbnailDigestGet) | **GET** /dashboard/{pk}/thumbnail/{digest}/ | 
-*DashboardsApi* | [**dashboardPost**](docs/DashboardsApi.md#dashboardPost) | **POST** /dashboard/ | 
-*DashboardsApi* | [**dashboardRelatedColumnNameGet**](docs/DashboardsApi.md#dashboardRelatedColumnNameGet) | **GET** /dashboard/related/{column_name} | 
-*DatabaseApi* | [**databaseGet**](docs/DatabaseApi.md#databaseGet) | **GET** /database/ | 
-*DatabaseApi* | [**databasePkSelectStarTableNameGet**](docs/DatabaseApi.md#databasePkSelectStarTableNameGet) | **GET** /database/{pk}/select_star/{table_name}/ | 
-*DatabaseApi* | [**databasePkSelectStarTableNameSchemaNameGet**](docs/DatabaseApi.md#databasePkSelectStarTableNameSchemaNameGet) | **GET** /database/{pk}/select_star/{table_name}/{schema_name}/ | 
-*DatabaseApi* | [**databasePkTableTableNameSchemaNameGet**](docs/DatabaseApi.md#databasePkTableTableNameSchemaNameGet) | **GET** /database/{pk}/table/{table_name}/{schema_name}/ | 
-*DatasetsApi* | [**datasetExportGet**](docs/DatasetsApi.md#datasetExportGet) | **GET** /dataset/export/ | 
-*DatasetsApi* | [**datasetGet**](docs/DatasetsApi.md#datasetGet) | **GET** /dataset/ | 
-*DatasetsApi* | [**datasetInfoGet**](docs/DatasetsApi.md#datasetInfoGet) | **GET** /dataset/_info | 
-*DatasetsApi* | [**datasetPkDelete**](docs/DatasetsApi.md#datasetPkDelete) | **DELETE** /dataset/{pk} | 
-*DatasetsApi* | [**datasetPkGet**](docs/DatasetsApi.md#datasetPkGet) | **GET** /dataset/{pk} | 
-*DatasetsApi* | [**datasetPkPut**](docs/DatasetsApi.md#datasetPkPut) | **PUT** /dataset/{pk} | 
-*DatasetsApi* | [**datasetPkRefreshPut**](docs/DatasetsApi.md#datasetPkRefreshPut) | **PUT** /dataset/{pk}/refresh | 
-*DatasetsApi* | [**datasetPkRelatedObjectsGet**](docs/DatasetsApi.md#datasetPkRelatedObjectsGet) | **GET** /dataset/{pk}/related_objects | 
-*DatasetsApi* | [**datasetPost**](docs/DatasetsApi.md#datasetPost) | **POST** /dataset/ | 
-*DatasetsApi* | [**datasetRelatedColumnNameGet**](docs/DatasetsApi.md#datasetRelatedColumnNameGet) | **GET** /dataset/related/{column_name} | 
-*LogRestApiApi* | [**logGet**](docs/LogRestApiApi.md#logGet) | **GET** /log/ | 
-*LogRestApiApi* | [**logPkGet**](docs/LogRestApiApi.md#logPkGet) | **GET** /log/{pk} | 
-*LogRestApiApi* | [**logPost**](docs/LogRestApiApi.md#logPost) | **POST** /log/ | 
-*MenuApi* | [**menuGet**](docs/MenuApi.md#menuGet) | **GET** /menu/ | 
-*OpenApiApi* | [**openapiVersionOpenapiGet**](docs/OpenApiApi.md#openapiVersionOpenapiGet) | **GET** /openapi/{version}/_openapi | 
-*QueriesApi* | [**queryGet**](docs/QueriesApi.md#queryGet) | **GET** /query/ | 
-*QueriesApi* | [**queryPkGet**](docs/QueriesApi.md#queryPkGet) | **GET** /query/{pk} | 
-*SecurityApi* | [**securityLoginPost**](docs/SecurityApi.md#securityLoginPost) | **POST** /security/login | 
-*SecurityApi* | [**securityRefreshPost**](docs/SecurityApi.md#securityRefreshPost) | **POST** /security/refresh | 
+*AdvancedDataTypeApi* | [**apiV1AdvancedDataTypeConvertGet**](docs/AdvancedDataTypeApi.md#apiV1AdvancedDataTypeConvertGet) | **GET** /api/v1/advanced_data_type/convert | Returns a AdvancedDataTypeResponse object populated with the passed in args.
+*AdvancedDataTypeApi* | [**apiV1AdvancedDataTypeTypesGet**](docs/AdvancedDataTypeApi.md#apiV1AdvancedDataTypeTypesGet) | **GET** /api/v1/advanced_data_type/types | 
+*AnnotationLayersApi* | [**apiV1AnnotationLayerDelete**](docs/AnnotationLayersApi.md#apiV1AnnotationLayerDelete) | **DELETE** /api/v1/annotation_layer/ | 
+*AnnotationLayersApi* | [**apiV1AnnotationLayerGet**](docs/AnnotationLayersApi.md#apiV1AnnotationLayerGet) | **GET** /api/v1/annotation_layer/ | 
+*AnnotationLayersApi* | [**apiV1AnnotationLayerInfoGet**](docs/AnnotationLayersApi.md#apiV1AnnotationLayerInfoGet) | **GET** /api/v1/annotation_layer/_info | 
+*AnnotationLayersApi* | [**apiV1AnnotationLayerPkAnnotationAnnotationIdDelete**](docs/AnnotationLayersApi.md#apiV1AnnotationLayerPkAnnotationAnnotationIdDelete) | **DELETE** /api/v1/annotation_layer/{pk}/annotation/{annotation_id} | 
+*AnnotationLayersApi* | [**apiV1AnnotationLayerPkAnnotationAnnotationIdGet**](docs/AnnotationLayersApi.md#apiV1AnnotationLayerPkAnnotationAnnotationIdGet) | **GET** /api/v1/annotation_layer/{pk}/annotation/{annotation_id} | 
+*AnnotationLayersApi* | [**apiV1AnnotationLayerPkAnnotationAnnotationIdPut**](docs/AnnotationLayersApi.md#apiV1AnnotationLayerPkAnnotationAnnotationIdPut) | **PUT** /api/v1/annotation_layer/{pk}/annotation/{annotation_id} | 
+*AnnotationLayersApi* | [**apiV1AnnotationLayerPkAnnotationDelete**](docs/AnnotationLayersApi.md#apiV1AnnotationLayerPkAnnotationDelete) | **DELETE** /api/v1/annotation_layer/{pk}/annotation/ | 
+*AnnotationLayersApi* | [**apiV1AnnotationLayerPkAnnotationGet**](docs/AnnotationLayersApi.md#apiV1AnnotationLayerPkAnnotationGet) | **GET** /api/v1/annotation_layer/{pk}/annotation/ | 
+*AnnotationLayersApi* | [**apiV1AnnotationLayerPkAnnotationPost**](docs/AnnotationLayersApi.md#apiV1AnnotationLayerPkAnnotationPost) | **POST** /api/v1/annotation_layer/{pk}/annotation/ | 
+*AnnotationLayersApi* | [**apiV1AnnotationLayerPkDelete**](docs/AnnotationLayersApi.md#apiV1AnnotationLayerPkDelete) | **DELETE** /api/v1/annotation_layer/{pk} | 
+*AnnotationLayersApi* | [**apiV1AnnotationLayerPkGet**](docs/AnnotationLayersApi.md#apiV1AnnotationLayerPkGet) | **GET** /api/v1/annotation_layer/{pk} | 
+*AnnotationLayersApi* | [**apiV1AnnotationLayerPkPut**](docs/AnnotationLayersApi.md#apiV1AnnotationLayerPkPut) | **PUT** /api/v1/annotation_layer/{pk} | 
+*AnnotationLayersApi* | [**apiV1AnnotationLayerPost**](docs/AnnotationLayersApi.md#apiV1AnnotationLayerPost) | **POST** /api/v1/annotation_layer/ | 
+*AnnotationLayersApi* | [**apiV1AnnotationLayerRelatedColumnNameGet**](docs/AnnotationLayersApi.md#apiV1AnnotationLayerRelatedColumnNameGet) | **GET** /api/v1/annotation_layer/related/{column_name} | 
+*AsyncEventsRestApiApi* | [**apiV1AsyncEventGet**](docs/AsyncEventsRestApiApi.md#apiV1AsyncEventGet) | **GET** /api/v1/async_event/ | 
+*CacheRestApiApi* | [**apiV1CachekeyInvalidatePost**](docs/CacheRestApiApi.md#apiV1CachekeyInvalidatePost) | **POST** /api/v1/cachekey/invalidate | 
+*ChartsApi* | [**apiV1ChartDataCacheKeyGet**](docs/ChartsApi.md#apiV1ChartDataCacheKeyGet) | **GET** /api/v1/chart/data/{cache_key} | 
+*ChartsApi* | [**apiV1ChartDataPost**](docs/ChartsApi.md#apiV1ChartDataPost) | **POST** /api/v1/chart/data | 
+*ChartsApi* | [**apiV1ChartDelete**](docs/ChartsApi.md#apiV1ChartDelete) | **DELETE** /api/v1/chart/ | 
+*ChartsApi* | [**apiV1ChartExportGet**](docs/ChartsApi.md#apiV1ChartExportGet) | **GET** /api/v1/chart/export/ | 
+*ChartsApi* | [**apiV1ChartFavoriteStatusGet**](docs/ChartsApi.md#apiV1ChartFavoriteStatusGet) | **GET** /api/v1/chart/favorite_status/ | 
+*ChartsApi* | [**apiV1ChartGet**](docs/ChartsApi.md#apiV1ChartGet) | **GET** /api/v1/chart/ | 
+*ChartsApi* | [**apiV1ChartImportPost**](docs/ChartsApi.md#apiV1ChartImportPost) | **POST** /api/v1/chart/import/ | 
+*ChartsApi* | [**apiV1ChartInfoGet**](docs/ChartsApi.md#apiV1ChartInfoGet) | **GET** /api/v1/chart/_info | 
+*ChartsApi* | [**apiV1ChartPkCacheScreenshotGet**](docs/ChartsApi.md#apiV1ChartPkCacheScreenshotGet) | **GET** /api/v1/chart/{pk}/cache_screenshot/ | 
+*ChartsApi* | [**apiV1ChartPkDataGet**](docs/ChartsApi.md#apiV1ChartPkDataGet) | **GET** /api/v1/chart/{pk}/data/ | 
+*ChartsApi* | [**apiV1ChartPkDelete**](docs/ChartsApi.md#apiV1ChartPkDelete) | **DELETE** /api/v1/chart/{pk} | 
+*ChartsApi* | [**apiV1ChartPkGet**](docs/ChartsApi.md#apiV1ChartPkGet) | **GET** /api/v1/chart/{pk} | 
+*ChartsApi* | [**apiV1ChartPkPut**](docs/ChartsApi.md#apiV1ChartPkPut) | **PUT** /api/v1/chart/{pk} | 
+*ChartsApi* | [**apiV1ChartPkScreenshotDigestGet**](docs/ChartsApi.md#apiV1ChartPkScreenshotDigestGet) | **GET** /api/v1/chart/{pk}/screenshot/{digest}/ | 
+*ChartsApi* | [**apiV1ChartPkThumbnailDigestGet**](docs/ChartsApi.md#apiV1ChartPkThumbnailDigestGet) | **GET** /api/v1/chart/{pk}/thumbnail/{digest}/ | 
+*ChartsApi* | [**apiV1ChartPost**](docs/ChartsApi.md#apiV1ChartPost) | **POST** /api/v1/chart/ | 
+*ChartsApi* | [**apiV1ChartRelatedColumnNameGet**](docs/ChartsApi.md#apiV1ChartRelatedColumnNameGet) | **GET** /api/v1/chart/related/{column_name} | 
+*CssTemplatesApi* | [**apiV1CssTemplateDelete**](docs/CssTemplatesApi.md#apiV1CssTemplateDelete) | **DELETE** /api/v1/css_template/ | 
+*CssTemplatesApi* | [**apiV1CssTemplateGet**](docs/CssTemplatesApi.md#apiV1CssTemplateGet) | **GET** /api/v1/css_template/ | 
+*CssTemplatesApi* | [**apiV1CssTemplateInfoGet**](docs/CssTemplatesApi.md#apiV1CssTemplateInfoGet) | **GET** /api/v1/css_template/_info | 
+*CssTemplatesApi* | [**apiV1CssTemplatePkDelete**](docs/CssTemplatesApi.md#apiV1CssTemplatePkDelete) | **DELETE** /api/v1/css_template/{pk} | 
+*CssTemplatesApi* | [**apiV1CssTemplatePkGet**](docs/CssTemplatesApi.md#apiV1CssTemplatePkGet) | **GET** /api/v1/css_template/{pk} | 
+*CssTemplatesApi* | [**apiV1CssTemplatePkPut**](docs/CssTemplatesApi.md#apiV1CssTemplatePkPut) | **PUT** /api/v1/css_template/{pk} | 
+*CssTemplatesApi* | [**apiV1CssTemplatePost**](docs/CssTemplatesApi.md#apiV1CssTemplatePost) | **POST** /api/v1/css_template/ | 
+*CssTemplatesApi* | [**apiV1CssTemplateRelatedColumnNameGet**](docs/CssTemplatesApi.md#apiV1CssTemplateRelatedColumnNameGet) | **GET** /api/v1/css_template/related/{column_name} | 
+*CurrentUserApi* | [**apiV1MeGet**](docs/CurrentUserApi.md#apiV1MeGet) | **GET** /api/v1/me/ | 
+*CurrentUserApi* | [**apiV1MeRolesGet**](docs/CurrentUserApi.md#apiV1MeRolesGet) | **GET** /api/v1/me/roles/ | 
+*DashboardFilterStateApi* | [**apiV1DashboardPkFilterStateKeyDelete**](docs/DashboardFilterStateApi.md#apiV1DashboardPkFilterStateKeyDelete) | **DELETE** /api/v1/dashboard/{pk}/filter_state/{key} | 
+*DashboardFilterStateApi* | [**apiV1DashboardPkFilterStateKeyGet**](docs/DashboardFilterStateApi.md#apiV1DashboardPkFilterStateKeyGet) | **GET** /api/v1/dashboard/{pk}/filter_state/{key} | 
+*DashboardFilterStateApi* | [**apiV1DashboardPkFilterStateKeyPut**](docs/DashboardFilterStateApi.md#apiV1DashboardPkFilterStateKeyPut) | **PUT** /api/v1/dashboard/{pk}/filter_state/{key} | 
+*DashboardFilterStateApi* | [**apiV1DashboardPkFilterStatePost**](docs/DashboardFilterStateApi.md#apiV1DashboardPkFilterStatePost) | **POST** /api/v1/dashboard/{pk}/filter_state | 
+*DashboardPermanentLinkApi* | [**apiV1DashboardPermalinkKeyGet**](docs/DashboardPermanentLinkApi.md#apiV1DashboardPermalinkKeyGet) | **GET** /api/v1/dashboard/permalink/{key} | 
+*DashboardPermanentLinkApi* | [**apiV1DashboardPkPermalinkPost**](docs/DashboardPermanentLinkApi.md#apiV1DashboardPkPermalinkPost) | **POST** /api/v1/dashboard/{pk}/permalink | 
+*DashboardsApi* | [**apiV1DashboardDelete**](docs/DashboardsApi.md#apiV1DashboardDelete) | **DELETE** /api/v1/dashboard/ | 
+*DashboardsApi* | [**apiV1DashboardExportGet**](docs/DashboardsApi.md#apiV1DashboardExportGet) | **GET** /api/v1/dashboard/export/ | 
+*DashboardsApi* | [**apiV1DashboardFavoriteStatusGet**](docs/DashboardsApi.md#apiV1DashboardFavoriteStatusGet) | **GET** /api/v1/dashboard/favorite_status/ | 
+*DashboardsApi* | [**apiV1DashboardGet**](docs/DashboardsApi.md#apiV1DashboardGet) | **GET** /api/v1/dashboard/ | 
+*DashboardsApi* | [**apiV1DashboardIdOrSlugChartsGet**](docs/DashboardsApi.md#apiV1DashboardIdOrSlugChartsGet) | **GET** /api/v1/dashboard/{id_or_slug}/charts | 
+*DashboardsApi* | [**apiV1DashboardIdOrSlugDatasetsGet**](docs/DashboardsApi.md#apiV1DashboardIdOrSlugDatasetsGet) | **GET** /api/v1/dashboard/{id_or_slug}/datasets | 
+*DashboardsApi* | [**apiV1DashboardIdOrSlugEmbeddedDelete**](docs/DashboardsApi.md#apiV1DashboardIdOrSlugEmbeddedDelete) | **DELETE** /api/v1/dashboard/{id_or_slug}/embedded | 
+*DashboardsApi* | [**apiV1DashboardIdOrSlugEmbeddedGet**](docs/DashboardsApi.md#apiV1DashboardIdOrSlugEmbeddedGet) | **GET** /api/v1/dashboard/{id_or_slug}/embedded | 
+*DashboardsApi* | [**apiV1DashboardIdOrSlugEmbeddedPost**](docs/DashboardsApi.md#apiV1DashboardIdOrSlugEmbeddedPost) | **POST** /api/v1/dashboard/{id_or_slug}/embedded | 
+*DashboardsApi* | [**apiV1DashboardIdOrSlugEmbeddedPut**](docs/DashboardsApi.md#apiV1DashboardIdOrSlugEmbeddedPut) | **PUT** /api/v1/dashboard/{id_or_slug}/embedded | 
+*DashboardsApi* | [**apiV1DashboardIdOrSlugGet**](docs/DashboardsApi.md#apiV1DashboardIdOrSlugGet) | **GET** /api/v1/dashboard/{id_or_slug} | 
+*DashboardsApi* | [**apiV1DashboardImportPost**](docs/DashboardsApi.md#apiV1DashboardImportPost) | **POST** /api/v1/dashboard/import/ | 
+*DashboardsApi* | [**apiV1DashboardInfoGet**](docs/DashboardsApi.md#apiV1DashboardInfoGet) | **GET** /api/v1/dashboard/_info | 
+*DashboardsApi* | [**apiV1DashboardPkDelete**](docs/DashboardsApi.md#apiV1DashboardPkDelete) | **DELETE** /api/v1/dashboard/{pk} | 
+*DashboardsApi* | [**apiV1DashboardPkPut**](docs/DashboardsApi.md#apiV1DashboardPkPut) | **PUT** /api/v1/dashboard/{pk} | 
+*DashboardsApi* | [**apiV1DashboardPkThumbnailDigestGet**](docs/DashboardsApi.md#apiV1DashboardPkThumbnailDigestGet) | **GET** /api/v1/dashboard/{pk}/thumbnail/{digest}/ | 
+*DashboardsApi* | [**apiV1DashboardPost**](docs/DashboardsApi.md#apiV1DashboardPost) | **POST** /api/v1/dashboard/ | 
+*DashboardsApi* | [**apiV1DashboardRelatedColumnNameGet**](docs/DashboardsApi.md#apiV1DashboardRelatedColumnNameGet) | **GET** /api/v1/dashboard/related/{column_name} | 
+*DatabaseApi* | [**apiV1DatabaseAvailableGet**](docs/DatabaseApi.md#apiV1DatabaseAvailableGet) | **GET** /api/v1/database/available/ | 
+*DatabaseApi* | [**apiV1DatabaseExportGet**](docs/DatabaseApi.md#apiV1DatabaseExportGet) | **GET** /api/v1/database/export/ | 
+*DatabaseApi* | [**apiV1DatabaseGet**](docs/DatabaseApi.md#apiV1DatabaseGet) | **GET** /api/v1/database/ | 
+*DatabaseApi* | [**apiV1DatabaseImportPost**](docs/DatabaseApi.md#apiV1DatabaseImportPost) | **POST** /api/v1/database/import/ | 
+*DatabaseApi* | [**apiV1DatabaseInfoGet**](docs/DatabaseApi.md#apiV1DatabaseInfoGet) | **GET** /api/v1/database/_info | 
+*DatabaseApi* | [**apiV1DatabasePkDelete**](docs/DatabaseApi.md#apiV1DatabasePkDelete) | **DELETE** /api/v1/database/{pk} | 
+*DatabaseApi* | [**apiV1DatabasePkFunctionNamesGet**](docs/DatabaseApi.md#apiV1DatabasePkFunctionNamesGet) | **GET** /api/v1/database/{pk}/function_names/ | 
+*DatabaseApi* | [**apiV1DatabasePkGet**](docs/DatabaseApi.md#apiV1DatabasePkGet) | **GET** /api/v1/database/{pk} | 
+*DatabaseApi* | [**apiV1DatabasePkPut**](docs/DatabaseApi.md#apiV1DatabasePkPut) | **PUT** /api/v1/database/{pk} | 
+*DatabaseApi* | [**apiV1DatabasePkRelatedObjectsGet**](docs/DatabaseApi.md#apiV1DatabasePkRelatedObjectsGet) | **GET** /api/v1/database/{pk}/related_objects/ | 
+*DatabaseApi* | [**apiV1DatabasePkSchemasGet**](docs/DatabaseApi.md#apiV1DatabasePkSchemasGet) | **GET** /api/v1/database/{pk}/schemas/ | 
+*DatabaseApi* | [**apiV1DatabasePkSelectStarTableNameGet**](docs/DatabaseApi.md#apiV1DatabasePkSelectStarTableNameGet) | **GET** /api/v1/database/{pk}/select_star/{table_name}/ | 
+*DatabaseApi* | [**apiV1DatabasePkSelectStarTableNameSchemaNameGet**](docs/DatabaseApi.md#apiV1DatabasePkSelectStarTableNameSchemaNameGet) | **GET** /api/v1/database/{pk}/select_star/{table_name}/{schema_name}/ | 
+*DatabaseApi* | [**apiV1DatabasePkTableExtraTableNameSchemaNameGet**](docs/DatabaseApi.md#apiV1DatabasePkTableExtraTableNameSchemaNameGet) | **GET** /api/v1/database/{pk}/table_extra/{table_name}/{schema_name}/ | Get table extra metadata
+*DatabaseApi* | [**apiV1DatabasePkTableTableNameSchemaNameGet**](docs/DatabaseApi.md#apiV1DatabasePkTableTableNameSchemaNameGet) | **GET** /api/v1/database/{pk}/table/{table_name}/{schema_name}/ | 
+*DatabaseApi* | [**apiV1DatabasePkValidateSqlPost**](docs/DatabaseApi.md#apiV1DatabasePkValidateSqlPost) | **POST** /api/v1/database/{pk}/validate_sql | Validates that arbitrary sql is acceptable for the given database
+*DatabaseApi* | [**apiV1DatabasePost**](docs/DatabaseApi.md#apiV1DatabasePost) | **POST** /api/v1/database/ | 
+*DatabaseApi* | [**apiV1DatabaseTestConnectionPost**](docs/DatabaseApi.md#apiV1DatabaseTestConnectionPost) | **POST** /api/v1/database/test_connection | 
+*DatabaseApi* | [**apiV1DatabaseValidateParametersPost**](docs/DatabaseApi.md#apiV1DatabaseValidateParametersPost) | **POST** /api/v1/database/validate_parameters | 
+*DatasetsApi* | [**apiV1DatasetDelete**](docs/DatasetsApi.md#apiV1DatasetDelete) | **DELETE** /api/v1/dataset/ | 
+*DatasetsApi* | [**apiV1DatasetDistinctColumnNameGet**](docs/DatasetsApi.md#apiV1DatasetDistinctColumnNameGet) | **GET** /api/v1/dataset/distinct/{column_name} | 
+*DatasetsApi* | [**apiV1DatasetExportGet**](docs/DatasetsApi.md#apiV1DatasetExportGet) | **GET** /api/v1/dataset/export/ | 
+*DatasetsApi* | [**apiV1DatasetGet**](docs/DatasetsApi.md#apiV1DatasetGet) | **GET** /api/v1/dataset/ | 
+*DatasetsApi* | [**apiV1DatasetImportPost**](docs/DatasetsApi.md#apiV1DatasetImportPost) | **POST** /api/v1/dataset/import/ | 
+*DatasetsApi* | [**apiV1DatasetInfoGet**](docs/DatasetsApi.md#apiV1DatasetInfoGet) | **GET** /api/v1/dataset/_info | 
+*DatasetsApi* | [**apiV1DatasetPkColumnColumnIdDelete**](docs/DatasetsApi.md#apiV1DatasetPkColumnColumnIdDelete) | **DELETE** /api/v1/dataset/{pk}/column/{column_id} | 
+*DatasetsApi* | [**apiV1DatasetPkDelete**](docs/DatasetsApi.md#apiV1DatasetPkDelete) | **DELETE** /api/v1/dataset/{pk} | 
+*DatasetsApi* | [**apiV1DatasetPkGet**](docs/DatasetsApi.md#apiV1DatasetPkGet) | **GET** /api/v1/dataset/{pk} | 
+*DatasetsApi* | [**apiV1DatasetPkMetricMetricIdDelete**](docs/DatasetsApi.md#apiV1DatasetPkMetricMetricIdDelete) | **DELETE** /api/v1/dataset/{pk}/metric/{metric_id} | 
+*DatasetsApi* | [**apiV1DatasetPkPut**](docs/DatasetsApi.md#apiV1DatasetPkPut) | **PUT** /api/v1/dataset/{pk} | 
+*DatasetsApi* | [**apiV1DatasetPkRefreshPut**](docs/DatasetsApi.md#apiV1DatasetPkRefreshPut) | **PUT** /api/v1/dataset/{pk}/refresh | 
+*DatasetsApi* | [**apiV1DatasetPkRelatedObjectsGet**](docs/DatasetsApi.md#apiV1DatasetPkRelatedObjectsGet) | **GET** /api/v1/dataset/{pk}/related_objects | 
+*DatasetsApi* | [**apiV1DatasetPkSamplesGet**](docs/DatasetsApi.md#apiV1DatasetPkSamplesGet) | **GET** /api/v1/dataset/{pk}/samples | 
+*DatasetsApi* | [**apiV1DatasetPost**](docs/DatasetsApi.md#apiV1DatasetPost) | **POST** /api/v1/dataset/ | 
+*DatasetsApi* | [**apiV1DatasetRelatedColumnNameGet**](docs/DatasetsApi.md#apiV1DatasetRelatedColumnNameGet) | **GET** /api/v1/dataset/related/{column_name} | 
+*EmbeddedDashboardApi* | [**apiV1EmbeddedDashboardUuidGet**](docs/EmbeddedDashboardApi.md#apiV1EmbeddedDashboardUuidGet) | **GET** /api/v1/embedded_dashboard/{uuid} | 
+*ExploreFormDataApi* | [**apiV1ExploreFormDataKeyDelete**](docs/ExploreFormDataApi.md#apiV1ExploreFormDataKeyDelete) | **DELETE** /api/v1/explore/form_data/{key} | 
+*ExploreFormDataApi* | [**apiV1ExploreFormDataKeyGet**](docs/ExploreFormDataApi.md#apiV1ExploreFormDataKeyGet) | **GET** /api/v1/explore/form_data/{key} | 
+*ExploreFormDataApi* | [**apiV1ExploreFormDataKeyPut**](docs/ExploreFormDataApi.md#apiV1ExploreFormDataKeyPut) | **PUT** /api/v1/explore/form_data/{key} | 
+*ExploreFormDataApi* | [**apiV1ExploreFormDataPost**](docs/ExploreFormDataApi.md#apiV1ExploreFormDataPost) | **POST** /api/v1/explore/form_data | 
+*ExplorePermanentLinkApi* | [**apiV1ExplorePermalinkKeyGet**](docs/ExplorePermanentLinkApi.md#apiV1ExplorePermalinkKeyGet) | **GET** /api/v1/explore/permalink/{key} | 
+*ExplorePermanentLinkApi* | [**apiV1ExplorePermalinkPost**](docs/ExplorePermanentLinkApi.md#apiV1ExplorePermalinkPost) | **POST** /api/v1/explore/permalink | 
+*FilterSetRestApiApi* | [**apiV1DashboardDashboardIdFiltersetsGet**](docs/FilterSetRestApiApi.md#apiV1DashboardDashboardIdFiltersetsGet) | **GET** /api/v1/dashboard/{dashboard_id}/filtersets | 
+*FilterSetRestApiApi* | [**apiV1DashboardDashboardIdFiltersetsPkDelete**](docs/FilterSetRestApiApi.md#apiV1DashboardDashboardIdFiltersetsPkDelete) | **DELETE** /api/v1/dashboard/{dashboard_id}/filtersets/{pk} | 
+*FilterSetRestApiApi* | [**apiV1DashboardDashboardIdFiltersetsPkPut**](docs/FilterSetRestApiApi.md#apiV1DashboardDashboardIdFiltersetsPkPut) | **PUT** /api/v1/dashboard/{dashboard_id}/filtersets/{pk} | 
+*FilterSetRestApiApi* | [**apiV1DashboardDashboardIdFiltersetsPost**](docs/FilterSetRestApiApi.md#apiV1DashboardDashboardIdFiltersetsPost) | **POST** /api/v1/dashboard/{dashboard_id}/filtersets | 
+*ImportexportApi* | [**apiV1AssetsExportGet**](docs/ImportexportApi.md#apiV1AssetsExportGet) | **GET** /api/v1/assets/export/ | 
+*ImportexportApi* | [**apiV1AssetsImportPost**](docs/ImportexportApi.md#apiV1AssetsImportPost) | **POST** /api/v1/assets/import/ | 
+*LogRestApiApi* | [**apiV1LogGet**](docs/LogRestApiApi.md#apiV1LogGet) | **GET** /api/v1/log/ | 
+*LogRestApiApi* | [**apiV1LogPkGet**](docs/LogRestApiApi.md#apiV1LogPkGet) | **GET** /api/v1/log/{pk} | 
+*LogRestApiApi* | [**apiV1LogPost**](docs/LogRestApiApi.md#apiV1LogPost) | **POST** /api/v1/log/ | 
+*MenuApi* | [**apiV1MenuGet**](docs/MenuApi.md#apiV1MenuGet) | **GET** /api/v1/menu/ | 
+*OpenApiApi* | [**apiVersionOpenapiGet**](docs/OpenApiApi.md#apiVersionOpenapiGet) | **GET** /api/{version}/_openapi | 
+*QueriesApi* | [**apiV1QueryDistinctColumnNameGet**](docs/QueriesApi.md#apiV1QueryDistinctColumnNameGet) | **GET** /api/v1/query/distinct/{column_name} | 
+*QueriesApi* | [**apiV1QueryGet**](docs/QueriesApi.md#apiV1QueryGet) | **GET** /api/v1/query/ | 
+*QueriesApi* | [**apiV1QueryPkGet**](docs/QueriesApi.md#apiV1QueryPkGet) | **GET** /api/v1/query/{pk} | 
+*QueriesApi* | [**apiV1QueryRelatedColumnNameGet**](docs/QueriesApi.md#apiV1QueryRelatedColumnNameGet) | **GET** /api/v1/query/related/{column_name} | 
+*QueriesApi* | [**apiV1SavedQueryDelete**](docs/QueriesApi.md#apiV1SavedQueryDelete) | **DELETE** /api/v1/saved_query/ | 
+*QueriesApi* | [**apiV1SavedQueryDistinctColumnNameGet**](docs/QueriesApi.md#apiV1SavedQueryDistinctColumnNameGet) | **GET** /api/v1/saved_query/distinct/{column_name} | 
+*QueriesApi* | [**apiV1SavedQueryExportGet**](docs/QueriesApi.md#apiV1SavedQueryExportGet) | **GET** /api/v1/saved_query/export/ | 
+*QueriesApi* | [**apiV1SavedQueryGet**](docs/QueriesApi.md#apiV1SavedQueryGet) | **GET** /api/v1/saved_query/ | 
+*QueriesApi* | [**apiV1SavedQueryImportPost**](docs/QueriesApi.md#apiV1SavedQueryImportPost) | **POST** /api/v1/saved_query/import/ | 
+*QueriesApi* | [**apiV1SavedQueryInfoGet**](docs/QueriesApi.md#apiV1SavedQueryInfoGet) | **GET** /api/v1/saved_query/_info | 
+*QueriesApi* | [**apiV1SavedQueryPkDelete**](docs/QueriesApi.md#apiV1SavedQueryPkDelete) | **DELETE** /api/v1/saved_query/{pk} | 
+*QueriesApi* | [**apiV1SavedQueryPkGet**](docs/QueriesApi.md#apiV1SavedQueryPkGet) | **GET** /api/v1/saved_query/{pk} | 
+*QueriesApi* | [**apiV1SavedQueryPkPut**](docs/QueriesApi.md#apiV1SavedQueryPkPut) | **PUT** /api/v1/saved_query/{pk} | 
+*QueriesApi* | [**apiV1SavedQueryPost**](docs/QueriesApi.md#apiV1SavedQueryPost) | **POST** /api/v1/saved_query/ | 
+*QueriesApi* | [**apiV1SavedQueryRelatedColumnNameGet**](docs/QueriesApi.md#apiV1SavedQueryRelatedColumnNameGet) | **GET** /api/v1/saved_query/related/{column_name} | 
+*ReportSchedulesApi* | [**apiV1ReportDelete**](docs/ReportSchedulesApi.md#apiV1ReportDelete) | **DELETE** /api/v1/report/ | 
+*ReportSchedulesApi* | [**apiV1ReportGet**](docs/ReportSchedulesApi.md#apiV1ReportGet) | **GET** /api/v1/report/ | 
+*ReportSchedulesApi* | [**apiV1ReportInfoGet**](docs/ReportSchedulesApi.md#apiV1ReportInfoGet) | **GET** /api/v1/report/_info | 
+*ReportSchedulesApi* | [**apiV1ReportPkDelete**](docs/ReportSchedulesApi.md#apiV1ReportPkDelete) | **DELETE** /api/v1/report/{pk} | 
+*ReportSchedulesApi* | [**apiV1ReportPkGet**](docs/ReportSchedulesApi.md#apiV1ReportPkGet) | **GET** /api/v1/report/{pk} | 
+*ReportSchedulesApi* | [**apiV1ReportPkLogGet**](docs/ReportSchedulesApi.md#apiV1ReportPkLogGet) | **GET** /api/v1/report/{pk}/log/ | 
+*ReportSchedulesApi* | [**apiV1ReportPkLogLogIdGet**](docs/ReportSchedulesApi.md#apiV1ReportPkLogLogIdGet) | **GET** /api/v1/report/{pk}/log/{log_id} | 
+*ReportSchedulesApi* | [**apiV1ReportPkPut**](docs/ReportSchedulesApi.md#apiV1ReportPkPut) | **PUT** /api/v1/report/{pk} | 
+*ReportSchedulesApi* | [**apiV1ReportPost**](docs/ReportSchedulesApi.md#apiV1ReportPost) | **POST** /api/v1/report/ | 
+*ReportSchedulesApi* | [**apiV1ReportRelatedColumnNameGet**](docs/ReportSchedulesApi.md#apiV1ReportRelatedColumnNameGet) | **GET** /api/v1/report/related/{column_name} | 
+*SecurityApi* | [**apiV1SecurityCsrfTokenGet**](docs/SecurityApi.md#apiV1SecurityCsrfTokenGet) | **GET** /api/v1/security/csrf_token/ | 
+*SecurityApi* | [**apiV1SecurityGuestTokenPost**](docs/SecurityApi.md#apiV1SecurityGuestTokenPost) | **POST** /api/v1/security/guest_token/ | 
+*SecurityApi* | [**apiV1SecurityLoginPost**](docs/SecurityApi.md#apiV1SecurityLoginPost) | **POST** /api/v1/security/login | 
+*SecurityApi* | [**apiV1SecurityRefreshPost**](docs/SecurityApi.md#apiV1SecurityRefreshPost) | **POST** /api/v1/security/refresh | 
 
 ## Documentation for Models
 
+ - [AdvancedDataTypeConvertSchema](docs/AdvancedDataTypeConvertSchema.md)
+ - [AdvancedDataTypeSchema](docs/AdvancedDataTypeSchema.md)
+ - [AllOfChartDataQueryObjectDatasource](docs/AllOfChartDataQueryObjectDatasource.md)
+ - [AllOfChartDataQueryObjectExtras](docs/AllOfChartDataQueryObjectExtras.md)
  - [AllOfChartDataQueryObjectPostProcessingItems](docs/AllOfChartDataQueryObjectPostProcessingItems.md)
+ - [AllOfTableMetadataResponseSchemaPrimaryKey](docs/AllOfTableMetadataResponseSchemaPrimaryKey.md)
+ - [AnnotationLayer](docs/AnnotationLayer.md)
+ - [AnnotationLayerRestApiGet](docs/AnnotationLayerRestApiGet.md)
+ - [AnnotationLayerRestApiGetList](docs/AnnotationLayerRestApiGetList.md)
+ - [AnnotationLayerRestApiGetListUser](docs/AnnotationLayerRestApiGetListUser.md)
+ - [AnnotationLayerRestApiGetListUser1](docs/AnnotationLayerRestApiGetListUser1.md)
+ - [AnnotationLayerRestApiPost](docs/AnnotationLayerRestApiPost.md)
+ - [AnnotationLayerRestApiPut](docs/AnnotationLayerRestApiPut.md)
+ - [AnnotationRestApiGet](docs/AnnotationRestApiGet.md)
+ - [AnnotationRestApiGetAnnotationLayer](docs/AnnotationRestApiGetAnnotationLayer.md)
+ - [AnnotationRestApiGetList](docs/AnnotationRestApiGetList.md)
+ - [AnnotationRestApiGetListUser](docs/AnnotationRestApiGetListUser.md)
+ - [AnnotationRestApiGetListUser1](docs/AnnotationRestApiGetListUser1.md)
+ - [AnnotationRestApiPost](docs/AnnotationRestApiPost.md)
+ - [AnnotationRestApiPut](docs/AnnotationRestApiPut.md)
  - [AnyOfgetListSchemaFiltersValue](docs/AnyOfgetListSchemaFiltersValue.md)
  - [Body](docs/Body.md)
+ - [Body1](docs/Body1.md)
+ - [Body2](docs/Body2.md)
+ - [Body3](docs/Body3.md)
+ - [Body4](docs/Body4.md)
+ - [Body5](docs/Body5.md)
+ - [Body6](docs/Body6.md)
+ - [CacheInvalidationRequestSchema](docs/CacheInvalidationRequestSchema.md)
+ - [CacheRestApiGet](docs/CacheRestApiGet.md)
+ - [CacheRestApiGetList](docs/CacheRestApiGetList.md)
+ - [CacheRestApiPost](docs/CacheRestApiPost.md)
+ - [CacheRestApiPut](docs/CacheRestApiPut.md)
+ - [ChartCacheScreenshotResponseSchema](docs/ChartCacheScreenshotResponseSchema.md)
  - [ChartDataAdhocMetricSchema](docs/ChartDataAdhocMetricSchema.md)
  - [ChartDataAggregateOptionsSchema](docs/ChartDataAggregateOptionsSchema.md)
+ - [ChartDataAsyncResponseSchema](docs/ChartDataAsyncResponseSchema.md)
+ - [ChartDataBoxplotOptionsSchema](docs/ChartDataBoxplotOptionsSchema.md)
  - [ChartDataColumn](docs/ChartDataColumn.md)
  - [ChartDataContributionOptionsSchema](docs/ChartDataContributionOptionsSchema.md)
  - [ChartDataDatasource](docs/ChartDataDatasource.md)
@@ -472,26 +330,84 @@ Class | Method | HTTP request | Description
  - [ChartDataGeohashEncodeOptionsSchema](docs/ChartDataGeohashEncodeOptionsSchema.md)
  - [ChartDataPivotOptionsSchema](docs/ChartDataPivotOptionsSchema.md)
  - [ChartDataPostProcessingOperation](docs/ChartDataPostProcessingOperation.md)
+ - [ChartDataProphetOptionsSchema](docs/ChartDataProphetOptionsSchema.md)
  - [ChartDataQueryContextSchema](docs/ChartDataQueryContextSchema.md)
  - [ChartDataQueryObject](docs/ChartDataQueryObject.md)
  - [ChartDataResponseResult](docs/ChartDataResponseResult.md)
  - [ChartDataResponseSchema](docs/ChartDataResponseSchema.md)
+ - [ChartDataRestApiGet](docs/ChartDataRestApiGet.md)
+ - [ChartDataRestApiGetDashboard](docs/ChartDataRestApiGetDashboard.md)
+ - [ChartDataRestApiGetList](docs/ChartDataRestApiGetList.md)
+ - [ChartDataRestApiGetListSqlaTable](docs/ChartDataRestApiGetListSqlaTable.md)
+ - [ChartDataRestApiGetListUser](docs/ChartDataRestApiGetListUser.md)
+ - [ChartDataRestApiGetListUser1](docs/ChartDataRestApiGetListUser1.md)
+ - [ChartDataRestApiGetListUser2](docs/ChartDataRestApiGetListUser2.md)
+ - [ChartDataRestApiGetListUser3](docs/ChartDataRestApiGetListUser3.md)
+ - [ChartDataRestApiGetUser](docs/ChartDataRestApiGetUser.md)
+ - [ChartDataRestApiPost](docs/ChartDataRestApiPost.md)
+ - [ChartDataRestApiPut](docs/ChartDataRestApiPut.md)
  - [ChartDataRollingOptionsSchema](docs/ChartDataRollingOptionsSchema.md)
  - [ChartDataSelectOptionsSchema](docs/ChartDataSelectOptionsSchema.md)
  - [ChartDataSortOptionsSchema](docs/ChartDataSortOptionsSchema.md)
+ - [ChartEntityResponseSchema](docs/ChartEntityResponseSchema.md)
+ - [ChartFavStarResponseResult](docs/ChartFavStarResponseResult.md)
+ - [ChartGetDatasourceObjectDataResponse](docs/ChartGetDatasourceObjectDataResponse.md)
+ - [ChartGetDatasourceObjectResponse](docs/ChartGetDatasourceObjectResponse.md)
+ - [ChartGetDatasourceResponseSchema](docs/ChartGetDatasourceResponseSchema.md)
  - [ChartRestApiGet](docs/ChartRestApiGet.md)
+ - [ChartRestApiGetDashboard](docs/ChartRestApiGetDashboard.md)
  - [ChartRestApiGetList](docs/ChartRestApiGetList.md)
+ - [ChartRestApiGetListSqlaTable](docs/ChartRestApiGetListSqlaTable.md)
+ - [ChartRestApiGetListUser](docs/ChartRestApiGetListUser.md)
+ - [ChartRestApiGetListUser1](docs/ChartRestApiGetListUser1.md)
+ - [ChartRestApiGetListUser2](docs/ChartRestApiGetListUser2.md)
+ - [ChartRestApiGetListUser3](docs/ChartRestApiGetListUser3.md)
+ - [ChartRestApiGetUser](docs/ChartRestApiGetUser.md)
  - [ChartRestApiPost](docs/ChartRestApiPost.md)
  - [ChartRestApiPut](docs/ChartRestApiPut.md)
+ - [CssTemplateRestApiGet](docs/CssTemplateRestApiGet.md)
+ - [CssTemplateRestApiGetList](docs/CssTemplateRestApiGetList.md)
+ - [CssTemplateRestApiGetListUser](docs/CssTemplateRestApiGetListUser.md)
+ - [CssTemplateRestApiGetListUser1](docs/CssTemplateRestApiGetListUser1.md)
+ - [CssTemplateRestApiGetUser](docs/CssTemplateRestApiGetUser.md)
+ - [CssTemplateRestApiPost](docs/CssTemplateRestApiPost.md)
+ - [CssTemplateRestApiPut](docs/CssTemplateRestApiPut.md)
+ - [DashboardDatasetSchema](docs/DashboardDatasetSchema.md)
+ - [DashboardGetResponseSchema](docs/DashboardGetResponseSchema.md)
+ - [DashboardPermalinkPostSchema](docs/DashboardPermalinkPostSchema.md)
  - [DashboardRestApiGet](docs/DashboardRestApiGet.md)
  - [DashboardRestApiGetList](docs/DashboardRestApiGetList.md)
+ - [DashboardRestApiGetListRole](docs/DashboardRestApiGetListRole.md)
+ - [DashboardRestApiGetListUser](docs/DashboardRestApiGetListUser.md)
+ - [DashboardRestApiGetListUser1](docs/DashboardRestApiGetListUser1.md)
+ - [DashboardRestApiGetListUser2](docs/DashboardRestApiGetListUser2.md)
  - [DashboardRestApiPost](docs/DashboardRestApiPost.md)
  - [DashboardRestApiPut](docs/DashboardRestApiPut.md)
+ - [Database](docs/Database.md)
+ - [Database1](docs/Database1.md)
+ - [DatabaseFunctionNamesResponse](docs/DatabaseFunctionNamesResponse.md)
+ - [DatabaseRelatedChart](docs/DatabaseRelatedChart.md)
+ - [DatabaseRelatedCharts](docs/DatabaseRelatedCharts.md)
+ - [DatabaseRelatedDashboard](docs/DatabaseRelatedDashboard.md)
+ - [DatabaseRelatedDashboards](docs/DatabaseRelatedDashboards.md)
+ - [DatabaseRelatedObjectsResponse](docs/DatabaseRelatedObjectsResponse.md)
  - [DatabaseRestApiGet](docs/DatabaseRestApiGet.md)
  - [DatabaseRestApiGetList](docs/DatabaseRestApiGetList.md)
+ - [DatabaseRestApiGetListUser](docs/DatabaseRestApiGetListUser.md)
  - [DatabaseRestApiPost](docs/DatabaseRestApiPost.md)
  - [DatabaseRestApiPut](docs/DatabaseRestApiPut.md)
+ - [DatabaseSchemasQuerySchema](docs/DatabaseSchemasQuerySchema.md)
+ - [DatabaseTestConnectionSchema](docs/DatabaseTestConnectionSchema.md)
+ - [DatabaseValidateParametersSchema](docs/DatabaseValidateParametersSchema.md)
  - [DatasetColumnsPut](docs/DatasetColumnsPut.md)
+ - [DatasetColumnsRestApiGet](docs/DatasetColumnsRestApiGet.md)
+ - [DatasetColumnsRestApiGetList](docs/DatasetColumnsRestApiGetList.md)
+ - [DatasetColumnsRestApiPost](docs/DatasetColumnsRestApiPost.md)
+ - [DatasetColumnsRestApiPut](docs/DatasetColumnsRestApiPut.md)
+ - [DatasetMetricRestApiGet](docs/DatasetMetricRestApiGet.md)
+ - [DatasetMetricRestApiGetList](docs/DatasetMetricRestApiGetList.md)
+ - [DatasetMetricRestApiPost](docs/DatasetMetricRestApiPost.md)
+ - [DatasetMetricRestApiPut](docs/DatasetMetricRestApiPut.md)
  - [DatasetMetricsPut](docs/DatasetMetricsPut.md)
  - [DatasetRelatedChart](docs/DatasetRelatedChart.md)
  - [DatasetRelatedCharts](docs/DatasetRelatedCharts.md)
@@ -499,80 +415,179 @@ Class | Method | HTTP request | Description
  - [DatasetRelatedDashboards](docs/DatasetRelatedDashboards.md)
  - [DatasetRelatedObjectsResponse](docs/DatasetRelatedObjectsResponse.md)
  - [DatasetRestApiGet](docs/DatasetRestApiGet.md)
+ - [DatasetRestApiGetDatabase](docs/DatasetRestApiGetDatabase.md)
  - [DatasetRestApiGetList](docs/DatasetRestApiGetList.md)
+ - [DatasetRestApiGetListDatabase](docs/DatasetRestApiGetListDatabase.md)
+ - [DatasetRestApiGetListUser](docs/DatasetRestApiGetListUser.md)
+ - [DatasetRestApiGetListUser1](docs/DatasetRestApiGetListUser1.md)
+ - [DatasetRestApiGetSqlMetric](docs/DatasetRestApiGetSqlMetric.md)
+ - [DatasetRestApiGetTableColumn](docs/DatasetRestApiGetTableColumn.md)
+ - [DatasetRestApiGetUser](docs/DatasetRestApiGetUser.md)
  - [DatasetRestApiPost](docs/DatasetRestApiPost.md)
  - [DatasetRestApiPut](docs/DatasetRestApiPut.md)
+ - [Datasource](docs/Datasource.md)
+ - [DistincResponseSchema](docs/DistincResponseSchema.md)
+ - [DistinctResultResponse](docs/DistinctResultResponse.md)
+ - [EmbeddedDashboardConfig](docs/EmbeddedDashboardConfig.md)
+ - [EmbeddedDashboardResponseSchema](docs/EmbeddedDashboardResponseSchema.md)
+ - [EmbeddedDashboardRestApiGet](docs/EmbeddedDashboardRestApiGet.md)
+ - [EmbeddedDashboardRestApiGetList](docs/EmbeddedDashboardRestApiGetList.md)
+ - [EmbeddedDashboardRestApiPost](docs/EmbeddedDashboardRestApiPost.md)
+ - [EmbeddedDashboardRestApiPut](docs/EmbeddedDashboardRestApiPut.md)
+ - [ExplorePermalinkPostSchema](docs/ExplorePermalinkPostSchema.md)
+ - [FilterSetRestApiGet](docs/FilterSetRestApiGet.md)
+ - [FilterSetRestApiGetList](docs/FilterSetRestApiGetList.md)
+ - [FilterSetRestApiPost](docs/FilterSetRestApiPost.md)
+ - [FilterSetRestApiPut](docs/FilterSetRestApiPut.md)
+ - [FormDataPostSchema](docs/FormDataPostSchema.md)
+ - [FormDataPutSchema](docs/FormDataPutSchema.md)
+ - [GetDeleteIdsSchema](docs/GetDeleteIdsSchema.md)
+ - [GetExportIdsSchema](docs/GetExportIdsSchema.md)
+ - [GetFavStarIdsSchema](docs/GetFavStarIdsSchema.md)
  - [GetInfoSchema](docs/GetInfoSchema.md)
  - [GetInfoSchemaAddColumns](docs/GetInfoSchemaAddColumns.md)
  - [GetItemSchema](docs/GetItemSchema.md)
  - [GetListSchema](docs/GetListSchema.md)
  - [GetListSchemaFilters](docs/GetListSchemaFilters.md)
+ - [GetRelatedSchema](docs/GetRelatedSchema.md)
+ - [GuestTokenCreate](docs/GuestTokenCreate.md)
  - [InlineResponse200](docs/InlineResponse200.md)
  - [InlineResponse2001](docs/InlineResponse2001.md)
  - [InlineResponse20010](docs/InlineResponse20010.md)
  - [InlineResponse20011](docs/InlineResponse20011.md)
  - [InlineResponse20012](docs/InlineResponse20012.md)
- - [InlineResponse20012Columns](docs/InlineResponse20012Columns.md)
- - [InlineResponse20012ForeignKeys](docs/InlineResponse20012ForeignKeys.md)
- - [InlineResponse20012PrimaryKey](docs/InlineResponse20012PrimaryKey.md)
  - [InlineResponse20013](docs/InlineResponse20013.md)
  - [InlineResponse20014](docs/InlineResponse20014.md)
  - [InlineResponse20015](docs/InlineResponse20015.md)
  - [InlineResponse20016](docs/InlineResponse20016.md)
  - [InlineResponse20017](docs/InlineResponse20017.md)
  - [InlineResponse20018](docs/InlineResponse20018.md)
- - [InlineResponse20018Result](docs/InlineResponse20018Result.md)
  - [InlineResponse20019](docs/InlineResponse20019.md)
- - [InlineResponse2001Filters](docs/InlineResponse2001Filters.md)
- - [InlineResponse2001FiltersColumnName](docs/InlineResponse2001FiltersColumnName.md)
+ - [InlineResponse2001DescriptionColumns](docs/InlineResponse2001DescriptionColumns.md)
+ - [InlineResponse2001LabelColumns](docs/InlineResponse2001LabelColumns.md)
  - [InlineResponse2002](docs/InlineResponse2002.md)
  - [InlineResponse20020](docs/InlineResponse20020.md)
  - [InlineResponse20021](docs/InlineResponse20021.md)
  - [InlineResponse20022](docs/InlineResponse20022.md)
- - [InlineResponse2002Result](docs/InlineResponse2002Result.md)
- - [InlineResponse2002ResultValue](docs/InlineResponse2002ResultValue.md)
+ - [InlineResponse20023](docs/InlineResponse20023.md)
+ - [InlineResponse20024](docs/InlineResponse20024.md)
+ - [InlineResponse20025](docs/InlineResponse20025.md)
+ - [InlineResponse20026](docs/InlineResponse20026.md)
+ - [InlineResponse20027](docs/InlineResponse20027.md)
+ - [InlineResponse20028](docs/InlineResponse20028.md)
+ - [InlineResponse20029](docs/InlineResponse20029.md)
+ - [InlineResponse2002Filters](docs/InlineResponse2002Filters.md)
+ - [InlineResponse2002FiltersColumnName](docs/InlineResponse2002FiltersColumnName.md)
  - [InlineResponse2003](docs/InlineResponse2003.md)
- - [InlineResponse2003Result](docs/InlineResponse2003Result.md)
+ - [InlineResponse20030](docs/InlineResponse20030.md)
+ - [InlineResponse20031](docs/InlineResponse20031.md)
+ - [InlineResponse20032](docs/InlineResponse20032.md)
+ - [InlineResponse20033](docs/InlineResponse20033.md)
+ - [InlineResponse20034](docs/InlineResponse20034.md)
+ - [InlineResponse20035](docs/InlineResponse20035.md)
+ - [InlineResponse20036](docs/InlineResponse20036.md)
+ - [InlineResponse20037](docs/InlineResponse20037.md)
+ - [InlineResponse20038](docs/InlineResponse20038.md)
+ - [InlineResponse20039](docs/InlineResponse20039.md)
+ - [InlineResponse20039Result](docs/InlineResponse20039Result.md)
  - [InlineResponse2004](docs/InlineResponse2004.md)
+ - [InlineResponse20040](docs/InlineResponse20040.md)
+ - [InlineResponse20041](docs/InlineResponse20041.md)
+ - [InlineResponse20042](docs/InlineResponse20042.md)
+ - [InlineResponse20043](docs/InlineResponse20043.md)
+ - [InlineResponse20044](docs/InlineResponse20044.md)
+ - [InlineResponse20045](docs/InlineResponse20045.md)
+ - [InlineResponse20046](docs/InlineResponse20046.md)
+ - [InlineResponse20047](docs/InlineResponse20047.md)
+ - [InlineResponse20048](docs/InlineResponse20048.md)
+ - [InlineResponse20049](docs/InlineResponse20049.md)
  - [InlineResponse2005](docs/InlineResponse2005.md)
+ - [InlineResponse20050](docs/InlineResponse20050.md)
+ - [InlineResponse20051](docs/InlineResponse20051.md)
+ - [InlineResponse20052](docs/InlineResponse20052.md)
+ - [InlineResponse20053](docs/InlineResponse20053.md)
  - [InlineResponse2006](docs/InlineResponse2006.md)
  - [InlineResponse2007](docs/InlineResponse2007.md)
  - [InlineResponse2008](docs/InlineResponse2008.md)
+ - [InlineResponse2008Result](docs/InlineResponse2008Result.md)
  - [InlineResponse2009](docs/InlineResponse2009.md)
- - [InlineResponse200DescriptionColumns](docs/InlineResponse200DescriptionColumns.md)
- - [InlineResponse200LabelColumns](docs/InlineResponse200LabelColumns.md)
  - [InlineResponse201](docs/InlineResponse201.md)
  - [InlineResponse2011](docs/InlineResponse2011.md)
+ - [InlineResponse20110](docs/InlineResponse20110.md)
+ - [InlineResponse20111](docs/InlineResponse20111.md)
+ - [InlineResponse20112](docs/InlineResponse20112.md)
+ - [InlineResponse20113](docs/InlineResponse20113.md)
+ - [InlineResponse20114](docs/InlineResponse20114.md)
  - [InlineResponse2012](docs/InlineResponse2012.md)
  - [InlineResponse2013](docs/InlineResponse2013.md)
+ - [InlineResponse2014](docs/InlineResponse2014.md)
+ - [InlineResponse2015](docs/InlineResponse2015.md)
+ - [InlineResponse2016](docs/InlineResponse2016.md)
+ - [InlineResponse2017](docs/InlineResponse2017.md)
+ - [InlineResponse2018](docs/InlineResponse2018.md)
+ - [InlineResponse2019](docs/InlineResponse2019.md)
  - [InlineResponse400](docs/InlineResponse400.md)
  - [LogRestApiGet](docs/LogRestApiGet.md)
  - [LogRestApiGetList](docs/LogRestApiGetList.md)
+ - [LogRestApiGetListUser](docs/LogRestApiGetListUser.md)
+ - [LogRestApiGetUser](docs/LogRestApiGetUser.md)
  - [LogRestApiPost](docs/LogRestApiPost.md)
  - [LogRestApiPut](docs/LogRestApiPut.md)
- - [Meta](docs/Meta.md)
- - [Meta1](docs/Meta1.md)
- - [Meta10](docs/Meta10.md)
- - [Meta11](docs/Meta11.md)
- - [Meta12](docs/Meta12.md)
- - [Meta13](docs/Meta13.md)
- - [Meta14](docs/Meta14.md)
- - [Meta15](docs/Meta15.md)
- - [Meta16](docs/Meta16.md)
- - [Meta17](docs/Meta17.md)
- - [Meta18](docs/Meta18.md)
- - [Meta2](docs/Meta2.md)
- - [Meta3](docs/Meta3.md)
- - [Meta4](docs/Meta4.md)
- - [Meta5](docs/Meta5.md)
- - [Meta6](docs/Meta6.md)
- - [Meta7](docs/Meta7.md)
- - [Meta8](docs/Meta8.md)
- - [Meta9](docs/Meta9.md)
  - [QueryRestApiGet](docs/QueryRestApiGet.md)
+ - [QueryRestApiGetDatabase](docs/QueryRestApiGetDatabase.md)
  - [QueryRestApiGetList](docs/QueryRestApiGetList.md)
  - [QueryRestApiPost](docs/QueryRestApiPost.md)
  - [QueryRestApiPut](docs/QueryRestApiPut.md)
+ - [RelatedResponseSchema](docs/RelatedResponseSchema.md)
+ - [RelatedResultResponse](docs/RelatedResultResponse.md)
+ - [ReportExecutionLogRestApiGet](docs/ReportExecutionLogRestApiGet.md)
+ - [ReportExecutionLogRestApiGetList](docs/ReportExecutionLogRestApiGetList.md)
+ - [ReportExecutionLogRestApiPost](docs/ReportExecutionLogRestApiPost.md)
+ - [ReportExecutionLogRestApiPut](docs/ReportExecutionLogRestApiPut.md)
+ - [ReportRecipient](docs/ReportRecipient.md)
+ - [ReportRecipientConfigJSON](docs/ReportRecipientConfigJSON.md)
+ - [ReportScheduleRestApiGet](docs/ReportScheduleRestApiGet.md)
+ - [ReportScheduleRestApiGetDashboard](docs/ReportScheduleRestApiGetDashboard.md)
+ - [ReportScheduleRestApiGetDatabase](docs/ReportScheduleRestApiGetDatabase.md)
+ - [ReportScheduleRestApiGetList](docs/ReportScheduleRestApiGetList.md)
+ - [ReportScheduleRestApiGetListReportRecipients](docs/ReportScheduleRestApiGetListReportRecipients.md)
+ - [ReportScheduleRestApiGetListUser](docs/ReportScheduleRestApiGetListUser.md)
+ - [ReportScheduleRestApiGetListUser1](docs/ReportScheduleRestApiGetListUser1.md)
+ - [ReportScheduleRestApiGetListUser2](docs/ReportScheduleRestApiGetListUser2.md)
+ - [ReportScheduleRestApiGetReportRecipients](docs/ReportScheduleRestApiGetReportRecipients.md)
+ - [ReportScheduleRestApiGetSlice](docs/ReportScheduleRestApiGetSlice.md)
+ - [ReportScheduleRestApiGetUser](docs/ReportScheduleRestApiGetUser.md)
+ - [ReportScheduleRestApiPost](docs/ReportScheduleRestApiPost.md)
+ - [ReportScheduleRestApiPut](docs/ReportScheduleRestApiPut.md)
+ - [Resource](docs/Resource.md)
+ - [RlsRule](docs/RlsRule.md)
+ - [Roles](docs/Roles.md)
+ - [SavedQueryRestApiGet](docs/SavedQueryRestApiGet.md)
+ - [SavedQueryRestApiGetDatabase](docs/SavedQueryRestApiGetDatabase.md)
+ - [SavedQueryRestApiGetList](docs/SavedQueryRestApiGetList.md)
+ - [SavedQueryRestApiGetListDatabase](docs/SavedQueryRestApiGetListDatabase.md)
+ - [SavedQueryRestApiGetListUser](docs/SavedQueryRestApiGetListUser.md)
+ - [SavedQueryRestApiGetUser](docs/SavedQueryRestApiGetUser.md)
+ - [SavedQueryRestApiPost](docs/SavedQueryRestApiPost.md)
+ - [SavedQueryRestApiPut](docs/SavedQueryRestApiPut.md)
+ - [SchemasResponseSchema](docs/SchemasResponseSchema.md)
+ - [ScreenshotQuerySchema](docs/ScreenshotQuerySchema.md)
+ - [SelectStarResponseSchema](docs/SelectStarResponseSchema.md)
+ - [TableExtraMetadataResponseSchema](docs/TableExtraMetadataResponseSchema.md)
+ - [TableMetadataColumnsResponse](docs/TableMetadataColumnsResponse.md)
+ - [TableMetadataForeignKeysIndexesResponse](docs/TableMetadataForeignKeysIndexesResponse.md)
+ - [TableMetadataOptionsResponse](docs/TableMetadataOptionsResponse.md)
+ - [TableMetadataPrimaryKeyResponse](docs/TableMetadataPrimaryKeyResponse.md)
+ - [TableMetadataResponseSchema](docs/TableMetadataResponseSchema.md)
+ - [TemporaryCachePostSchema](docs/TemporaryCachePostSchema.md)
+ - [TemporaryCachePutSchema](docs/TemporaryCachePutSchema.md)
+ - [ThumbnailQuerySchema](docs/ThumbnailQuerySchema.md)
+ - [User](docs/User.md)
+ - [User1](docs/User1.md)
+ - [UserResponseSchema](docs/UserResponseSchema.md)
+ - [ValidateSQLRequest](docs/ValidateSQLRequest.md)
+ - [ValidateSQLResponse](docs/ValidateSQLResponse.md)
+ - [ValidatorConfigJSON](docs/ValidatorConfigJSON.md)
 
 ## Documentation for Authorization
 

@@ -3,7 +3,11 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**columns** | [**List&lt;InlineResponse20012Columns&gt;**](InlineResponse20012Columns.md) | Table columns info |  [optional]
-**foreignKeys** | [**List&lt;InlineResponse20012ForeignKeys&gt;**](InlineResponse20012ForeignKeys.md) | Table list of foreign keys |  [optional]
-**indexes** | [**List&lt;InlineResponse20012ForeignKeys&gt;**](InlineResponse20012ForeignKeys.md) | Table list of indexes |  [optional]
-**primaryKey** | [**InlineResponse20012PrimaryKey**](InlineResponse20012PrimaryKey.md) |  |  [optional]
+**count** | [**BigDecimal**](BigDecimal.md) | The total record count on the backend |  [optional]
+**descriptionColumns** | [**InlineResponse2001DescriptionColumns**](InlineResponse2001DescriptionColumns.md) |  |  [optional]
+**ids** | **List&lt;String&gt;** | A list of item ids, useful when you don&#x27;t know the column id |  [optional]
+**labelColumns** | [**InlineResponse2001LabelColumns**](InlineResponse2001LabelColumns.md) |  |  [optional]
+**listColumns** | **List&lt;String&gt;** | A list of columns |  [optional]
+**listTitle** | **String** | A title to render. Will be translated by babel |  [optional]
+**orderColumns** | **List&lt;String&gt;** | A list of allowed columns to sort |  [optional]
+**result** | [**List&lt;CssTemplateRestApiGetList&gt;**](CssTemplateRestApiGetList.md) | The result from the get list query |  [optional]

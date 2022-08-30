@@ -14,8 +14,10 @@ package at.mic.superset.swagger.client.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import at.mic.superset.swagger.client.model.Meta4;
-import at.mic.superset.swagger.client.model.Meta5;
+import at.mic.superset.swagger.client.model.DashboardRestApiGetListRole;
+import at.mic.superset.swagger.client.model.DashboardRestApiGetListUser;
+import at.mic.superset.swagger.client.model.DashboardRestApiGetListUser1;
+import at.mic.superset.swagger.client.model.DashboardRestApiGetListUser2;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -27,10 +29,16 @@ import java.io.IOException;
  * DashboardRestApiGetList
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-11-06T17:36:10.263+01:00[Europe/Vienna]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2022-08-29T14:48:42.974+02:00[Europe/Berlin]")
 public class DashboardRestApiGetList {
+  @SerializedName("certification_details")
+  private String certificationDetails = null;
+
+  @SerializedName("certified_by")
+  private String certifiedBy = null;
+
   @SerializedName("changed_by")
-  private Meta5 changedBy = null;
+  private DashboardRestApiGetListUser1 changedBy = null;
 
   @SerializedName("changed_by_name")
   private Object changedByName = null;
@@ -44,6 +52,12 @@ public class DashboardRestApiGetList {
   @SerializedName("changed_on_utc")
   private Object changedOnUtc = null;
 
+  @SerializedName("created_by")
+  private DashboardRestApiGetListUser createdBy = null;
+
+  @SerializedName("created_on_delta_humanized")
+  private Object createdOnDeltaHumanized = null;
+
   @SerializedName("css")
   private String css = null;
 
@@ -53,11 +67,14 @@ public class DashboardRestApiGetList {
   @SerializedName("id")
   private Integer id = null;
 
+  @SerializedName("is_managed_externally")
+  private Boolean isManagedExternally = null;
+
   @SerializedName("json_metadata")
   private String jsonMetadata = null;
 
   @SerializedName("owners")
-  private Meta4 owners = null;
+  private DashboardRestApiGetListUser2 owners = null;
 
   @SerializedName("position_json")
   private String positionJson = null;
@@ -65,8 +82,14 @@ public class DashboardRestApiGetList {
   @SerializedName("published")
   private Boolean published = null;
 
+  @SerializedName("roles")
+  private DashboardRestApiGetListRole roles = null;
+
   @SerializedName("slug")
   private String slug = null;
+
+  @SerializedName("status")
+  private Object status = null;
 
   @SerializedName("thumbnail_url")
   private Object thumbnailUrl = null;
@@ -74,7 +97,43 @@ public class DashboardRestApiGetList {
   @SerializedName("url")
   private Object url = null;
 
-  public DashboardRestApiGetList changedBy(Meta5 changedBy) {
+  public DashboardRestApiGetList certificationDetails(String certificationDetails) {
+    this.certificationDetails = certificationDetails;
+    return this;
+  }
+
+   /**
+   * Get certificationDetails
+   * @return certificationDetails
+  **/
+  @Schema(description = "")
+  public String getCertificationDetails() {
+    return certificationDetails;
+  }
+
+  public void setCertificationDetails(String certificationDetails) {
+    this.certificationDetails = certificationDetails;
+  }
+
+  public DashboardRestApiGetList certifiedBy(String certifiedBy) {
+    this.certifiedBy = certifiedBy;
+    return this;
+  }
+
+   /**
+   * Get certifiedBy
+   * @return certifiedBy
+  **/
+  @Schema(description = "")
+  public String getCertifiedBy() {
+    return certifiedBy;
+  }
+
+  public void setCertifiedBy(String certifiedBy) {
+    this.certifiedBy = certifiedBy;
+  }
+
+  public DashboardRestApiGetList changedBy(DashboardRestApiGetListUser1 changedBy) {
     this.changedBy = changedBy;
     return this;
   }
@@ -84,11 +143,11 @@ public class DashboardRestApiGetList {
    * @return changedBy
   **/
   @Schema(description = "")
-  public Meta5 getChangedBy() {
+  public DashboardRestApiGetListUser1 getChangedBy() {
     return changedBy;
   }
 
-  public void setChangedBy(Meta5 changedBy) {
+  public void setChangedBy(DashboardRestApiGetListUser1 changedBy) {
     this.changedBy = changedBy;
   }
 
@@ -126,6 +185,33 @@ public class DashboardRestApiGetList {
   @Schema(description = "")
   public Object getChangedOnUtc() {
     return changedOnUtc;
+  }
+
+  public DashboardRestApiGetList createdBy(DashboardRestApiGetListUser createdBy) {
+    this.createdBy = createdBy;
+    return this;
+  }
+
+   /**
+   * Get createdBy
+   * @return createdBy
+  **/
+  @Schema(description = "")
+  public DashboardRestApiGetListUser getCreatedBy() {
+    return createdBy;
+  }
+
+  public void setCreatedBy(DashboardRestApiGetListUser createdBy) {
+    this.createdBy = createdBy;
+  }
+
+   /**
+   * Get createdOnDeltaHumanized
+   * @return createdOnDeltaHumanized
+  **/
+  @Schema(description = "")
+  public Object getCreatedOnDeltaHumanized() {
+    return createdOnDeltaHumanized;
   }
 
   public DashboardRestApiGetList css(String css) {
@@ -182,6 +268,24 @@ public class DashboardRestApiGetList {
     this.id = id;
   }
 
+  public DashboardRestApiGetList isManagedExternally(Boolean isManagedExternally) {
+    this.isManagedExternally = isManagedExternally;
+    return this;
+  }
+
+   /**
+   * Get isManagedExternally
+   * @return isManagedExternally
+  **/
+  @Schema(description = "")
+  public Boolean isIsManagedExternally() {
+    return isManagedExternally;
+  }
+
+  public void setIsManagedExternally(Boolean isManagedExternally) {
+    this.isManagedExternally = isManagedExternally;
+  }
+
   public DashboardRestApiGetList jsonMetadata(String jsonMetadata) {
     this.jsonMetadata = jsonMetadata;
     return this;
@@ -200,7 +304,7 @@ public class DashboardRestApiGetList {
     this.jsonMetadata = jsonMetadata;
   }
 
-  public DashboardRestApiGetList owners(Meta4 owners) {
+  public DashboardRestApiGetList owners(DashboardRestApiGetListUser2 owners) {
     this.owners = owners;
     return this;
   }
@@ -210,11 +314,11 @@ public class DashboardRestApiGetList {
    * @return owners
   **/
   @Schema(description = "")
-  public Meta4 getOwners() {
+  public DashboardRestApiGetListUser2 getOwners() {
     return owners;
   }
 
-  public void setOwners(Meta4 owners) {
+  public void setOwners(DashboardRestApiGetListUser2 owners) {
     this.owners = owners;
   }
 
@@ -254,6 +358,24 @@ public class DashboardRestApiGetList {
     this.published = published;
   }
 
+  public DashboardRestApiGetList roles(DashboardRestApiGetListRole roles) {
+    this.roles = roles;
+    return this;
+  }
+
+   /**
+   * Get roles
+   * @return roles
+  **/
+  @Schema(description = "")
+  public DashboardRestApiGetListRole getRoles() {
+    return roles;
+  }
+
+  public void setRoles(DashboardRestApiGetListRole roles) {
+    this.roles = roles;
+  }
+
   public DashboardRestApiGetList slug(String slug) {
     this.slug = slug;
     return this;
@@ -270,6 +392,15 @@ public class DashboardRestApiGetList {
 
   public void setSlug(String slug) {
     this.slug = slug;
+  }
+
+   /**
+   * Get status
+   * @return status
+  **/
+  @Schema(description = "")
+  public Object getStatus() {
+    return status;
   }
 
    /**
@@ -292,7 +423,7 @@ public class DashboardRestApiGetList {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -300,26 +431,33 @@ public class DashboardRestApiGetList {
       return false;
     }
     DashboardRestApiGetList dashboardRestApiGetList = (DashboardRestApiGetList) o;
-    return Objects.equals(this.changedBy, dashboardRestApiGetList.changedBy) &&
+    return Objects.equals(this.certificationDetails, dashboardRestApiGetList.certificationDetails) &&
+        Objects.equals(this.certifiedBy, dashboardRestApiGetList.certifiedBy) &&
+        Objects.equals(this.changedBy, dashboardRestApiGetList.changedBy) &&
         Objects.equals(this.changedByName, dashboardRestApiGetList.changedByName) &&
         Objects.equals(this.changedByUrl, dashboardRestApiGetList.changedByUrl) &&
         Objects.equals(this.changedOnDeltaHumanized, dashboardRestApiGetList.changedOnDeltaHumanized) &&
         Objects.equals(this.changedOnUtc, dashboardRestApiGetList.changedOnUtc) &&
+        Objects.equals(this.createdBy, dashboardRestApiGetList.createdBy) &&
+        Objects.equals(this.createdOnDeltaHumanized, dashboardRestApiGetList.createdOnDeltaHumanized) &&
         Objects.equals(this.css, dashboardRestApiGetList.css) &&
         Objects.equals(this.dashboardTitle, dashboardRestApiGetList.dashboardTitle) &&
         Objects.equals(this.id, dashboardRestApiGetList.id) &&
+        Objects.equals(this.isManagedExternally, dashboardRestApiGetList.isManagedExternally) &&
         Objects.equals(this.jsonMetadata, dashboardRestApiGetList.jsonMetadata) &&
         Objects.equals(this.owners, dashboardRestApiGetList.owners) &&
         Objects.equals(this.positionJson, dashboardRestApiGetList.positionJson) &&
         Objects.equals(this.published, dashboardRestApiGetList.published) &&
+        Objects.equals(this.roles, dashboardRestApiGetList.roles) &&
         Objects.equals(this.slug, dashboardRestApiGetList.slug) &&
+        Objects.equals(this.status, dashboardRestApiGetList.status) &&
         Objects.equals(this.thumbnailUrl, dashboardRestApiGetList.thumbnailUrl) &&
         Objects.equals(this.url, dashboardRestApiGetList.url);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(changedBy, changedByName, changedByUrl, changedOnDeltaHumanized, changedOnUtc, css, dashboardTitle, id, jsonMetadata, owners, positionJson, published, slug, thumbnailUrl, url);
+    return Objects.hash(certificationDetails, certifiedBy, changedBy, changedByName, changedByUrl, changedOnDeltaHumanized, changedOnUtc, createdBy, createdOnDeltaHumanized, css, dashboardTitle, id, isManagedExternally, jsonMetadata, owners, positionJson, published, roles, slug, status, thumbnailUrl, url);
   }
 
 
@@ -328,19 +466,26 @@ public class DashboardRestApiGetList {
     StringBuilder sb = new StringBuilder();
     sb.append("class DashboardRestApiGetList {\n");
     
+    sb.append("    certificationDetails: ").append(toIndentedString(certificationDetails)).append("\n");
+    sb.append("    certifiedBy: ").append(toIndentedString(certifiedBy)).append("\n");
     sb.append("    changedBy: ").append(toIndentedString(changedBy)).append("\n");
     sb.append("    changedByName: ").append(toIndentedString(changedByName)).append("\n");
     sb.append("    changedByUrl: ").append(toIndentedString(changedByUrl)).append("\n");
     sb.append("    changedOnDeltaHumanized: ").append(toIndentedString(changedOnDeltaHumanized)).append("\n");
     sb.append("    changedOnUtc: ").append(toIndentedString(changedOnUtc)).append("\n");
+    sb.append("    createdBy: ").append(toIndentedString(createdBy)).append("\n");
+    sb.append("    createdOnDeltaHumanized: ").append(toIndentedString(createdOnDeltaHumanized)).append("\n");
     sb.append("    css: ").append(toIndentedString(css)).append("\n");
     sb.append("    dashboardTitle: ").append(toIndentedString(dashboardTitle)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    isManagedExternally: ").append(toIndentedString(isManagedExternally)).append("\n");
     sb.append("    jsonMetadata: ").append(toIndentedString(jsonMetadata)).append("\n");
     sb.append("    owners: ").append(toIndentedString(owners)).append("\n");
     sb.append("    positionJson: ").append(toIndentedString(positionJson)).append("\n");
     sb.append("    published: ").append(toIndentedString(published)).append("\n");
+    sb.append("    roles: ").append(toIndentedString(roles)).append("\n");
     sb.append("    slug: ").append(toIndentedString(slug)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    thumbnailUrl: ").append(toIndentedString(thumbnailUrl)).append("\n");
     sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("}");
@@ -351,7 +496,7 @@ public class DashboardRestApiGetList {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

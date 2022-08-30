@@ -14,7 +14,7 @@ package at.mic.superset.swagger.client.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import at.mic.superset.swagger.client.model.InlineResponse20018Result;
+import at.mic.superset.swagger.client.model.FilterSetRestApiPut;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -22,46 +22,58 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.math.BigDecimal;
 /**
  * InlineResponse20018
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-11-06T17:36:10.263+01:00[Europe/Vienna]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2022-08-29T14:48:42.974+02:00[Europe/Berlin]")
 public class InlineResponse20018 {
+  @SerializedName("id")
+  private BigDecimal id = null;
+
   @SerializedName("result")
-  private List<InlineResponse20018Result> result = null;
+  private FilterSetRestApiPut result = null;
 
-  public InlineResponse20018 result(List<InlineResponse20018Result> result) {
-    this.result = result;
-    return this;
-  }
-
-  public InlineResponse20018 addResultItem(InlineResponse20018Result resultItem) {
-    if (this.result == null) {
-      this.result = new ArrayList<InlineResponse20018Result>();
-    }
-    this.result.add(resultItem);
+  public InlineResponse20018 id(BigDecimal id) {
+    this.id = id;
     return this;
   }
 
    /**
-   * Menu items in a forest like data structure
+   * Get id
+   * @return id
+  **/
+  @Schema(description = "")
+  public BigDecimal getId() {
+    return id;
+  }
+
+  public void setId(BigDecimal id) {
+    this.id = id;
+  }
+
+  public InlineResponse20018 result(FilterSetRestApiPut result) {
+    this.result = result;
+    return this;
+  }
+
+   /**
+   * Get result
    * @return result
   **/
-  @Schema(description = "Menu items in a forest like data structure")
-  public List<InlineResponse20018Result> getResult() {
+  @Schema(description = "")
+  public FilterSetRestApiPut getResult() {
     return result;
   }
 
-  public void setResult(List<InlineResponse20018Result> result) {
+  public void setResult(FilterSetRestApiPut result) {
     this.result = result;
   }
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -69,12 +81,13 @@ public class InlineResponse20018 {
       return false;
     }
     InlineResponse20018 inlineResponse20018 = (InlineResponse20018) o;
-    return Objects.equals(this.result, inlineResponse20018.result);
+    return Objects.equals(this.id, inlineResponse20018.id) &&
+        Objects.equals(this.result, inlineResponse20018.result);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(result);
+    return Objects.hash(id, result);
   }
 
 
@@ -83,6 +96,7 @@ public class InlineResponse20018 {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse20018 {\n");
     
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    result: ").append(toIndentedString(result)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -92,7 +106,7 @@ public class InlineResponse20018 {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

@@ -21,15 +21,15 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 /**
  * DatabaseRestApiPut
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-11-06T17:36:10.263+01:00[Europe/Vienna]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2022-08-29T14:48:42.974+02:00[Europe/Berlin]")
 public class DatabaseRestApiPut {
-  @SerializedName("allow_csv_upload")
-  private Boolean allowCsvUpload = null;
-
   @SerializedName("allow_ctas")
   private Boolean allowCtas = null;
 
@@ -38,6 +38,9 @@ public class DatabaseRestApiPut {
 
   @SerializedName("allow_dml")
   private Boolean allowDml = null;
+
+  @SerializedName("allow_file_upload")
+  private Boolean allowFileUpload = null;
 
   @SerializedName("allow_multi_schema_metadata_fetch")
   private Boolean allowMultiSchemaMetadataFetch = null;
@@ -48,14 +51,23 @@ public class DatabaseRestApiPut {
   @SerializedName("cache_timeout")
   private Integer cacheTimeout = null;
 
+  @SerializedName("configuration_method")
+  private Object configurationMethod = null;
+
   @SerializedName("database_name")
   private String databaseName = null;
 
   @SerializedName("encrypted_extra")
   private String encryptedExtra = null;
 
+  @SerializedName("engine")
+  private String engine = null;
+
   @SerializedName("expose_in_sqllab")
   private Boolean exposeInSqllab = null;
+
+  @SerializedName("external_url")
+  private String externalUrl = null;
 
   @SerializedName("extra")
   private String extra = null;
@@ -66,29 +78,17 @@ public class DatabaseRestApiPut {
   @SerializedName("impersonate_user")
   private Boolean impersonateUser = null;
 
+  @SerializedName("is_managed_externally")
+  private Boolean isManagedExternally = null;
+
+  @SerializedName("parameters")
+  private Map<String, Object> parameters = null;
+
   @SerializedName("server_cert")
   private String serverCert = null;
 
   @SerializedName("sqlalchemy_uri")
   private String sqlalchemyUri = null;
-
-  public DatabaseRestApiPut allowCsvUpload(Boolean allowCsvUpload) {
-    this.allowCsvUpload = allowCsvUpload;
-    return this;
-  }
-
-   /**
-   * Get allowCsvUpload
-   * @return allowCsvUpload
-  **/
-  @Schema(description = "")
-  public Boolean isAllowCsvUpload() {
-    return allowCsvUpload;
-  }
-
-  public void setAllowCsvUpload(Boolean allowCsvUpload) {
-    this.allowCsvUpload = allowCsvUpload;
-  }
 
   public DatabaseRestApiPut allowCtas(Boolean allowCtas) {
     this.allowCtas = allowCtas;
@@ -96,10 +96,10 @@ public class DatabaseRestApiPut {
   }
 
    /**
-   * Get allowCtas
+   * Allow CREATE TABLE AS option in SQL Lab
    * @return allowCtas
   **/
-  @Schema(description = "")
+  @Schema(description = "Allow CREATE TABLE AS option in SQL Lab")
   public Boolean isAllowCtas() {
     return allowCtas;
   }
@@ -114,10 +114,10 @@ public class DatabaseRestApiPut {
   }
 
    /**
-   * Get allowCvas
+   * Allow CREATE VIEW AS option in SQL Lab
    * @return allowCvas
   **/
-  @Schema(description = "")
+  @Schema(description = "Allow CREATE VIEW AS option in SQL Lab")
   public Boolean isAllowCvas() {
     return allowCvas;
   }
@@ -132,10 +132,10 @@ public class DatabaseRestApiPut {
   }
 
    /**
-   * Get allowDml
+   * Allow users to run non-SELECT statements (UPDATE, DELETE, CREATE, ...) in SQL Lab
    * @return allowDml
   **/
-  @Schema(description = "")
+  @Schema(description = "Allow users to run non-SELECT statements (UPDATE, DELETE, CREATE, ...) in SQL Lab")
   public Boolean isAllowDml() {
     return allowDml;
   }
@@ -144,16 +144,34 @@ public class DatabaseRestApiPut {
     this.allowDml = allowDml;
   }
 
+  public DatabaseRestApiPut allowFileUpload(Boolean allowFileUpload) {
+    this.allowFileUpload = allowFileUpload;
+    return this;
+  }
+
+   /**
+   * Allow to upload CSV file data into this databaseIf selected, please set the schemas allowed for csv upload in Extra.
+   * @return allowFileUpload
+  **/
+  @Schema(description = "Allow to upload CSV file data into this databaseIf selected, please set the schemas allowed for csv upload in Extra.")
+  public Boolean isAllowFileUpload() {
+    return allowFileUpload;
+  }
+
+  public void setAllowFileUpload(Boolean allowFileUpload) {
+    this.allowFileUpload = allowFileUpload;
+  }
+
   public DatabaseRestApiPut allowMultiSchemaMetadataFetch(Boolean allowMultiSchemaMetadataFetch) {
     this.allowMultiSchemaMetadataFetch = allowMultiSchemaMetadataFetch;
     return this;
   }
 
    /**
-   * Get allowMultiSchemaMetadataFetch
+   * Allow SQL Lab to fetch a list of all tables and all views across all database schemas. For large data warehouse with thousands of tables, this can be expensive and put strain on the system.
    * @return allowMultiSchemaMetadataFetch
   **/
-  @Schema(description = "")
+  @Schema(description = "Allow SQL Lab to fetch a list of all tables and all views across all database schemas. For large data warehouse with thousands of tables, this can be expensive and put strain on the system.")
   public Boolean isAllowMultiSchemaMetadataFetch() {
     return allowMultiSchemaMetadataFetch;
   }
@@ -168,10 +186,10 @@ public class DatabaseRestApiPut {
   }
 
    /**
-   * Get allowRunAsync
+   * Operate the database in asynchronous mode, meaning  that the queries are executed on remote workers as opposed to on the web server itself. This assumes that you have a Celery worker setup as well as a results backend. Refer to the installation docs for more information.
    * @return allowRunAsync
   **/
-  @Schema(description = "")
+  @Schema(description = "Operate the database in asynchronous mode, meaning  that the queries are executed on remote workers as opposed to on the web server itself. This assumes that you have a Celery worker setup as well as a results backend. Refer to the installation docs for more information.")
   public Boolean isAllowRunAsync() {
     return allowRunAsync;
   }
@@ -186,10 +204,10 @@ public class DatabaseRestApiPut {
   }
 
    /**
-   * Get cacheTimeout
+   * Duration (in seconds) of the caching timeout for charts of this database. A timeout of 0 indicates that the cache never expires. Note this defaults to the global timeout if undefined.
    * @return cacheTimeout
   **/
-  @Schema(description = "")
+  @Schema(description = "Duration (in seconds) of the caching timeout for charts of this database. A timeout of 0 indicates that the cache never expires. Note this defaults to the global timeout if undefined.")
   public Integer getCacheTimeout() {
     return cacheTimeout;
   }
@@ -198,16 +216,34 @@ public class DatabaseRestApiPut {
     this.cacheTimeout = cacheTimeout;
   }
 
+  public DatabaseRestApiPut configurationMethod(Object configurationMethod) {
+    this.configurationMethod = configurationMethod;
+    return this;
+  }
+
+   /**
+   * Configuration_method is used on the frontend to inform the backend whether to explode parameters or to provide only a sqlalchemy_uri.
+   * @return configurationMethod
+  **/
+  @Schema(description = "Configuration_method is used on the frontend to inform the backend whether to explode parameters or to provide only a sqlalchemy_uri.")
+  public Object getConfigurationMethod() {
+    return configurationMethod;
+  }
+
+  public void setConfigurationMethod(Object configurationMethod) {
+    this.configurationMethod = configurationMethod;
+  }
+
   public DatabaseRestApiPut databaseName(String databaseName) {
     this.databaseName = databaseName;
     return this;
   }
 
    /**
-   * Get databaseName
+   * A database name to identify this connection.
    * @return databaseName
   **/
-  @Schema(required = true, description = "")
+  @Schema(description = "A database name to identify this connection.")
   public String getDatabaseName() {
     return databaseName;
   }
@@ -222,10 +258,10 @@ public class DatabaseRestApiPut {
   }
 
    /**
-   * Get encryptedExtra
+   * &lt;p&gt;JSON string containing additional connection configuration.&lt;br&gt;This is used to provide connection information for systems like Hive, Presto, and BigQuery, which do not conform to the username:password syntax normally used by SQLAlchemy.&lt;/p&gt;
    * @return encryptedExtra
   **/
-  @Schema(description = "")
+  @Schema(description = "<p>JSON string containing additional connection configuration.<br>This is used to provide connection information for systems like Hive, Presto, and BigQuery, which do not conform to the username:password syntax normally used by SQLAlchemy.</p>")
   public String getEncryptedExtra() {
     return encryptedExtra;
   }
@@ -234,16 +270,34 @@ public class DatabaseRestApiPut {
     this.encryptedExtra = encryptedExtra;
   }
 
+  public DatabaseRestApiPut engine(String engine) {
+    this.engine = engine;
+    return this;
+  }
+
+   /**
+   * SQLAlchemy engine to use
+   * @return engine
+  **/
+  @Schema(description = "SQLAlchemy engine to use")
+  public String getEngine() {
+    return engine;
+  }
+
+  public void setEngine(String engine) {
+    this.engine = engine;
+  }
+
   public DatabaseRestApiPut exposeInSqllab(Boolean exposeInSqllab) {
     this.exposeInSqllab = exposeInSqllab;
     return this;
   }
 
    /**
-   * Get exposeInSqllab
+   * Expose this database to SQLLab
    * @return exposeInSqllab
   **/
-  @Schema(description = "")
+  @Schema(description = "Expose this database to SQLLab")
   public Boolean isExposeInSqllab() {
     return exposeInSqllab;
   }
@@ -252,16 +306,34 @@ public class DatabaseRestApiPut {
     this.exposeInSqllab = exposeInSqllab;
   }
 
+  public DatabaseRestApiPut externalUrl(String externalUrl) {
+    this.externalUrl = externalUrl;
+    return this;
+  }
+
+   /**
+   * Get externalUrl
+   * @return externalUrl
+  **/
+  @Schema(description = "")
+  public String getExternalUrl() {
+    return externalUrl;
+  }
+
+  public void setExternalUrl(String externalUrl) {
+    this.externalUrl = externalUrl;
+  }
+
   public DatabaseRestApiPut extra(String extra) {
     this.extra = extra;
     return this;
   }
 
    /**
-   * Get extra
+   * &lt;p&gt;JSON string containing extra configuration elements.&lt;br&gt;1. The &lt;code&gt;engine_params&lt;/code&gt; object gets unpacked into the &lt;a href&#x3D;\&quot;https://docs.sqlalchemy.org/en/latest/core/engines.html#sqlalchemy.create_engine\&quot;&gt;sqlalchemy.create_engine&lt;/a&gt; call, while the &lt;code&gt;metadata_params&lt;/code&gt; gets unpacked into the &lt;a href&#x3D;\&quot;https://docs.sqlalchemy.org/en/rel_1_0/core/metadata.html#sqlalchemy.schema.MetaData\&quot;&gt;sqlalchemy.MetaData&lt;/a&gt; call.&lt;br&gt;2. The &lt;code&gt;metadata_cache_timeout&lt;/code&gt; is a cache timeout setting in seconds for metadata fetch of this database. Specify it as &lt;strong&gt;\&quot;metadata_cache_timeout\&quot;: {\&quot;schema_cache_timeout\&quot;: 600, \&quot;table_cache_timeout\&quot;: 600}&lt;/strong&gt;. If unset, cache will not be enabled for the functionality. A timeout of 0 indicates that the cache never expires.&lt;br&gt;3. The &lt;code&gt;schemas_allowed_for_file_upload&lt;/code&gt; is a comma separated list of schemas that CSVs are allowed to upload to. Specify it as &lt;strong&gt;\&quot;schemas_allowed_for_file_upload\&quot;: [\&quot;public\&quot;, \&quot;csv_upload\&quot;]&lt;/strong&gt;. If database flavor does not support schema or any schema is allowed to be accessed, just leave the list empty&lt;br&gt;4. The &lt;code&gt;version&lt;/code&gt; field is a string specifying the this db&#x27;s version. This should be used with Presto DBs so that the syntax is correct&lt;br&gt;5. The &lt;code&gt;allows_virtual_table_explore&lt;/code&gt; field is a boolean specifying whether or not the Explore button in SQL Lab results is shown.&lt;br&gt;6. The &lt;code&gt;disable_data_preview&lt;/code&gt; field is a boolean specifying whether or not data preview queries will be run when fetching table metadata in SQL Lab.&lt;/p&gt;
    * @return extra
   **/
-  @Schema(description = "")
+  @Schema(description = "<p>JSON string containing extra configuration elements.<br>1. The <code>engine_params</code> object gets unpacked into the <a href=\"https://docs.sqlalchemy.org/en/latest/core/engines.html#sqlalchemy.create_engine\">sqlalchemy.create_engine</a> call, while the <code>metadata_params</code> gets unpacked into the <a href=\"https://docs.sqlalchemy.org/en/rel_1_0/core/metadata.html#sqlalchemy.schema.MetaData\">sqlalchemy.MetaData</a> call.<br>2. The <code>metadata_cache_timeout</code> is a cache timeout setting in seconds for metadata fetch of this database. Specify it as <strong>\"metadata_cache_timeout\": {\"schema_cache_timeout\": 600, \"table_cache_timeout\": 600}</strong>. If unset, cache will not be enabled for the functionality. A timeout of 0 indicates that the cache never expires.<br>3. The <code>schemas_allowed_for_file_upload</code> is a comma separated list of schemas that CSVs are allowed to upload to. Specify it as <strong>\"schemas_allowed_for_file_upload\": [\"public\", \"csv_upload\"]</strong>. If database flavor does not support schema or any schema is allowed to be accessed, just leave the list empty<br>4. The <code>version</code> field is a string specifying the this db's version. This should be used with Presto DBs so that the syntax is correct<br>5. The <code>allows_virtual_table_explore</code> field is a boolean specifying whether or not the Explore button in SQL Lab results is shown.<br>6. The <code>disable_data_preview</code> field is a boolean specifying whether or not data preview queries will be run when fetching table metadata in SQL Lab.</p>")
   public String getExtra() {
     return extra;
   }
@@ -276,10 +348,10 @@ public class DatabaseRestApiPut {
   }
 
    /**
-   * Get forceCtasSchema
+   * When allowing CREATE TABLE AS option in SQL Lab, this option forces the table to be created in this schema
    * @return forceCtasSchema
   **/
-  @Schema(description = "")
+  @Schema(description = "When allowing CREATE TABLE AS option in SQL Lab, this option forces the table to be created in this schema")
   public String getForceCtasSchema() {
     return forceCtasSchema;
   }
@@ -294,10 +366,10 @@ public class DatabaseRestApiPut {
   }
 
    /**
-   * Get impersonateUser
+   * If Presto, all the queries in SQL Lab are going to be executed as the currently logged on user who must have permission to run them.&lt;br/&gt;If Hive and hive.server2.enable.doAs is enabled, will run the queries as service account, but impersonate the currently logged on user via hive.server2.proxy.user property.
    * @return impersonateUser
   **/
-  @Schema(description = "")
+  @Schema(description = "If Presto, all the queries in SQL Lab are going to be executed as the currently logged on user who must have permission to run them.<br/>If Hive and hive.server2.enable.doAs is enabled, will run the queries as service account, but impersonate the currently logged on user via hive.server2.proxy.user property.")
   public Boolean isImpersonateUser() {
     return impersonateUser;
   }
@@ -306,16 +378,60 @@ public class DatabaseRestApiPut {
     this.impersonateUser = impersonateUser;
   }
 
+  public DatabaseRestApiPut isManagedExternally(Boolean isManagedExternally) {
+    this.isManagedExternally = isManagedExternally;
+    return this;
+  }
+
+   /**
+   * Get isManagedExternally
+   * @return isManagedExternally
+  **/
+  @Schema(description = "")
+  public Boolean isIsManagedExternally() {
+    return isManagedExternally;
+  }
+
+  public void setIsManagedExternally(Boolean isManagedExternally) {
+    this.isManagedExternally = isManagedExternally;
+  }
+
+  public DatabaseRestApiPut parameters(Map<String, Object> parameters) {
+    this.parameters = parameters;
+    return this;
+  }
+
+  public DatabaseRestApiPut putParametersItem(String key, Object parametersItem) {
+    if (this.parameters == null) {
+      this.parameters = new HashMap<String, Object>();
+    }
+    this.parameters.put(key, parametersItem);
+    return this;
+  }
+
+   /**
+   * DB-specific parameters for configuration
+   * @return parameters
+  **/
+  @Schema(description = "DB-specific parameters for configuration")
+  public Map<String, Object> getParameters() {
+    return parameters;
+  }
+
+  public void setParameters(Map<String, Object> parameters) {
+    this.parameters = parameters;
+  }
+
   public DatabaseRestApiPut serverCert(String serverCert) {
     this.serverCert = serverCert;
     return this;
   }
 
    /**
-   * Get serverCert
+   * &lt;p&gt;Optional CA_BUNDLE contents to validate HTTPS requests. Only available on certain database engines.&lt;/p&gt;
    * @return serverCert
   **/
-  @Schema(description = "")
+  @Schema(description = "<p>Optional CA_BUNDLE contents to validate HTTPS requests. Only available on certain database engines.</p>")
   public String getServerCert() {
     return serverCert;
   }
@@ -330,10 +446,10 @@ public class DatabaseRestApiPut {
   }
 
    /**
-   * Get sqlalchemyUri
+   * &lt;p&gt;Refer to the &lt;a href&#x3D;\&quot;https://docs.sqlalchemy.org/en/rel_1_2/core/engines.html#database-urls\&quot;&gt;SqlAlchemy docs&lt;/a&gt; for more information on how to structure your URI.&lt;/p&gt;
    * @return sqlalchemyUri
   **/
-  @Schema(required = true, description = "")
+  @Schema(description = "<p>Refer to the <a href=\"https://docs.sqlalchemy.org/en/rel_1_2/core/engines.html#database-urls\">SqlAlchemy docs</a> for more information on how to structure your URI.</p>")
   public String getSqlalchemyUri() {
     return sqlalchemyUri;
   }
@@ -344,7 +460,7 @@ public class DatabaseRestApiPut {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -352,26 +468,31 @@ public class DatabaseRestApiPut {
       return false;
     }
     DatabaseRestApiPut databaseRestApiPut = (DatabaseRestApiPut) o;
-    return Objects.equals(this.allowCsvUpload, databaseRestApiPut.allowCsvUpload) &&
-        Objects.equals(this.allowCtas, databaseRestApiPut.allowCtas) &&
+    return Objects.equals(this.allowCtas, databaseRestApiPut.allowCtas) &&
         Objects.equals(this.allowCvas, databaseRestApiPut.allowCvas) &&
         Objects.equals(this.allowDml, databaseRestApiPut.allowDml) &&
+        Objects.equals(this.allowFileUpload, databaseRestApiPut.allowFileUpload) &&
         Objects.equals(this.allowMultiSchemaMetadataFetch, databaseRestApiPut.allowMultiSchemaMetadataFetch) &&
         Objects.equals(this.allowRunAsync, databaseRestApiPut.allowRunAsync) &&
         Objects.equals(this.cacheTimeout, databaseRestApiPut.cacheTimeout) &&
+        Objects.equals(this.configurationMethod, databaseRestApiPut.configurationMethod) &&
         Objects.equals(this.databaseName, databaseRestApiPut.databaseName) &&
         Objects.equals(this.encryptedExtra, databaseRestApiPut.encryptedExtra) &&
+        Objects.equals(this.engine, databaseRestApiPut.engine) &&
         Objects.equals(this.exposeInSqllab, databaseRestApiPut.exposeInSqllab) &&
+        Objects.equals(this.externalUrl, databaseRestApiPut.externalUrl) &&
         Objects.equals(this.extra, databaseRestApiPut.extra) &&
         Objects.equals(this.forceCtasSchema, databaseRestApiPut.forceCtasSchema) &&
         Objects.equals(this.impersonateUser, databaseRestApiPut.impersonateUser) &&
+        Objects.equals(this.isManagedExternally, databaseRestApiPut.isManagedExternally) &&
+        Objects.equals(this.parameters, databaseRestApiPut.parameters) &&
         Objects.equals(this.serverCert, databaseRestApiPut.serverCert) &&
         Objects.equals(this.sqlalchemyUri, databaseRestApiPut.sqlalchemyUri);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(allowCsvUpload, allowCtas, allowCvas, allowDml, allowMultiSchemaMetadataFetch, allowRunAsync, cacheTimeout, databaseName, encryptedExtra, exposeInSqllab, extra, forceCtasSchema, impersonateUser, serverCert, sqlalchemyUri);
+    return Objects.hash(allowCtas, allowCvas, allowDml, allowFileUpload, allowMultiSchemaMetadataFetch, allowRunAsync, cacheTimeout, configurationMethod, databaseName, encryptedExtra, engine, exposeInSqllab, externalUrl, extra, forceCtasSchema, impersonateUser, isManagedExternally, parameters, serverCert, sqlalchemyUri);
   }
 
 
@@ -380,19 +501,24 @@ public class DatabaseRestApiPut {
     StringBuilder sb = new StringBuilder();
     sb.append("class DatabaseRestApiPut {\n");
     
-    sb.append("    allowCsvUpload: ").append(toIndentedString(allowCsvUpload)).append("\n");
     sb.append("    allowCtas: ").append(toIndentedString(allowCtas)).append("\n");
     sb.append("    allowCvas: ").append(toIndentedString(allowCvas)).append("\n");
     sb.append("    allowDml: ").append(toIndentedString(allowDml)).append("\n");
+    sb.append("    allowFileUpload: ").append(toIndentedString(allowFileUpload)).append("\n");
     sb.append("    allowMultiSchemaMetadataFetch: ").append(toIndentedString(allowMultiSchemaMetadataFetch)).append("\n");
     sb.append("    allowRunAsync: ").append(toIndentedString(allowRunAsync)).append("\n");
     sb.append("    cacheTimeout: ").append(toIndentedString(cacheTimeout)).append("\n");
+    sb.append("    configurationMethod: ").append(toIndentedString(configurationMethod)).append("\n");
     sb.append("    databaseName: ").append(toIndentedString(databaseName)).append("\n");
     sb.append("    encryptedExtra: ").append(toIndentedString(encryptedExtra)).append("\n");
+    sb.append("    engine: ").append(toIndentedString(engine)).append("\n");
     sb.append("    exposeInSqllab: ").append(toIndentedString(exposeInSqllab)).append("\n");
+    sb.append("    externalUrl: ").append(toIndentedString(externalUrl)).append("\n");
     sb.append("    extra: ").append(toIndentedString(extra)).append("\n");
     sb.append("    forceCtasSchema: ").append(toIndentedString(forceCtasSchema)).append("\n");
     sb.append("    impersonateUser: ").append(toIndentedString(impersonateUser)).append("\n");
+    sb.append("    isManagedExternally: ").append(toIndentedString(isManagedExternally)).append("\n");
+    sb.append("    parameters: ").append(toIndentedString(parameters)).append("\n");
     sb.append("    serverCert: ").append(toIndentedString(serverCert)).append("\n");
     sb.append("    sqlalchemyUri: ").append(toIndentedString(sqlalchemyUri)).append("\n");
     sb.append("}");
@@ -403,7 +529,7 @@ public class DatabaseRestApiPut {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

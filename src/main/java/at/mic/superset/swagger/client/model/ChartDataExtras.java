@@ -28,7 +28,7 @@ import java.util.List;
  * ChartDataExtras
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-11-06T17:36:10.263+01:00[Europe/Vienna]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2022-08-29T14:48:42.974+02:00[Europe/Berlin]")
 public class ChartDataExtras {
   @SerializedName("druid_time_origin")
   private String druidTimeOrigin = null;
@@ -60,9 +60,9 @@ public class ChartDataExtras {
     public String toString() {
       return String.valueOf(value);
     }
-    public static RelativeEndEnum fromValue(String text) {
+    public static RelativeEndEnum fromValue(String input) {
       for (RelativeEndEnum b : RelativeEndEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
+        if (b.value.equals(input)) {
           return b;
         }
       }
@@ -71,13 +71,13 @@ public class ChartDataExtras {
     public static class Adapter extends TypeAdapter<RelativeEndEnum> {
       @Override
       public void write(final JsonWriter jsonWriter, final RelativeEndEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
+        jsonWriter.value(String.valueOf(enumeration.getValue()));
       }
 
       @Override
       public RelativeEndEnum read(final JsonReader jsonReader) throws IOException {
-        String value = jsonReader.nextString();
-        return RelativeEndEnum.fromValue(String.valueOf(value));
+        Object value = jsonReader.nextString();
+        return RelativeEndEnum.fromValue((String)(value));
       }
     }
   }  @SerializedName("relative_end")
@@ -104,9 +104,9 @@ public class ChartDataExtras {
     public String toString() {
       return String.valueOf(value);
     }
-    public static RelativeStartEnum fromValue(String text) {
+    public static RelativeStartEnum fromValue(String input) {
       for (RelativeStartEnum b : RelativeStartEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
+        if (b.value.equals(input)) {
           return b;
         }
       }
@@ -115,13 +115,13 @@ public class ChartDataExtras {
     public static class Adapter extends TypeAdapter<RelativeStartEnum> {
       @Override
       public void write(final JsonWriter jsonWriter, final RelativeStartEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
+        jsonWriter.value(String.valueOf(enumeration.getValue()));
       }
 
       @Override
       public RelativeStartEnum read(final JsonReader jsonReader) throws IOException {
-        String value = jsonReader.nextString();
-        return RelativeStartEnum.fromValue(String.valueOf(value));
+        Object value = jsonReader.nextString();
+        return RelativeStartEnum.fromValue((String)(value));
       }
     }
   }  @SerializedName("relative_start")
@@ -133,16 +133,19 @@ public class ChartDataExtras {
   @JsonAdapter(TimeGrainSqlaEnum.Adapter.class)
   public enum TimeGrainSqlaEnum {
     PT1S("PT1S"),
+    PT5S("PT5S"),
+    PT30S("PT30S"),
     PT1M("PT1M"),
     PT5M("PT5M"),
     PT10M("PT10M"),
     PT15M("PT15M"),
-    PT0_5H("PT0.5H"),
+    PT30M("PT30M"),
     PT1H("PT1H"),
+    PT6H("PT6H"),
     P1D("P1D"),
     P1W("P1W"),
     P1M("P1M"),
-    P0_25Y("P0.25Y"),
+    P3M("P3M"),
     P1Y("P1Y"),
     _1969_12_28T00_00_00Z_P1W("1969-12-28T00:00:00Z/P1W"),
     _1969_12_29T00_00_00Z_P1W("1969-12-29T00:00:00Z/P1W"),
@@ -162,9 +165,9 @@ public class ChartDataExtras {
     public String toString() {
       return String.valueOf(value);
     }
-    public static TimeGrainSqlaEnum fromValue(String text) {
+    public static TimeGrainSqlaEnum fromValue(String input) {
       for (TimeGrainSqlaEnum b : TimeGrainSqlaEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
+        if (b.value.equals(input)) {
           return b;
         }
       }
@@ -173,62 +176,17 @@ public class ChartDataExtras {
     public static class Adapter extends TypeAdapter<TimeGrainSqlaEnum> {
       @Override
       public void write(final JsonWriter jsonWriter, final TimeGrainSqlaEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
+        jsonWriter.value(String.valueOf(enumeration.getValue()));
       }
 
       @Override
       public TimeGrainSqlaEnum read(final JsonReader jsonReader) throws IOException {
-        String value = jsonReader.nextString();
-        return TimeGrainSqlaEnum.fromValue(String.valueOf(value));
+        Object value = jsonReader.nextString();
+        return TimeGrainSqlaEnum.fromValue((String)(value));
       }
     }
   }  @SerializedName("time_grain_sqla")
   private TimeGrainSqlaEnum timeGrainSqla = null;
-
-  /**
-   * A list with two values, stating if start/end should be inclusive/exclusive.
-   */
-  @JsonAdapter(TimeRangeEndpointsEnum.Adapter.class)
-  public enum TimeRangeEndpointsEnum {
-    UNKNOWN("unknown"),
-    INCLUSIVE("inclusive"),
-    EXCLUSIVE("exclusive");
-
-    private String value;
-
-    TimeRangeEndpointsEnum(String value) {
-      this.value = value;
-    }
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-    public static TimeRangeEndpointsEnum fromValue(String text) {
-      for (TimeRangeEndpointsEnum b : TimeRangeEndpointsEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-    public static class Adapter extends TypeAdapter<TimeRangeEndpointsEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final TimeRangeEndpointsEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public TimeRangeEndpointsEnum read(final JsonReader jsonReader) throws IOException {
-        String value = jsonReader.nextString();
-        return TimeRangeEndpointsEnum.fromValue(String.valueOf(value));
-      }
-    }
-  }  @SerializedName("time_range_endpoints")
-  private List<TimeRangeEndpointsEnum> timeRangeEndpoints = null;
 
   @SerializedName("where")
   private String where = null;
@@ -349,32 +307,6 @@ public class ChartDataExtras {
     this.timeGrainSqla = timeGrainSqla;
   }
 
-  public ChartDataExtras timeRangeEndpoints(List<TimeRangeEndpointsEnum> timeRangeEndpoints) {
-    this.timeRangeEndpoints = timeRangeEndpoints;
-    return this;
-  }
-
-  public ChartDataExtras addTimeRangeEndpointsItem(TimeRangeEndpointsEnum timeRangeEndpointsItem) {
-    if (this.timeRangeEndpoints == null) {
-      this.timeRangeEndpoints = new ArrayList<TimeRangeEndpointsEnum>();
-    }
-    this.timeRangeEndpoints.add(timeRangeEndpointsItem);
-    return this;
-  }
-
-   /**
-   * Get timeRangeEndpoints
-   * @return timeRangeEndpoints
-  **/
-  @Schema(description = "")
-  public List<TimeRangeEndpointsEnum> getTimeRangeEndpoints() {
-    return timeRangeEndpoints;
-  }
-
-  public void setTimeRangeEndpoints(List<TimeRangeEndpointsEnum> timeRangeEndpoints) {
-    this.timeRangeEndpoints = timeRangeEndpoints;
-  }
-
   public ChartDataExtras where(String where) {
     this.where = where;
     return this;
@@ -395,7 +327,7 @@ public class ChartDataExtras {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -409,13 +341,12 @@ public class ChartDataExtras {
         Objects.equals(this.relativeEnd, chartDataExtras.relativeEnd) &&
         Objects.equals(this.relativeStart, chartDataExtras.relativeStart) &&
         Objects.equals(this.timeGrainSqla, chartDataExtras.timeGrainSqla) &&
-        Objects.equals(this.timeRangeEndpoints, chartDataExtras.timeRangeEndpoints) &&
         Objects.equals(this.where, chartDataExtras.where);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(druidTimeOrigin, having, havingDruid, relativeEnd, relativeStart, timeGrainSqla, timeRangeEndpoints, where);
+    return Objects.hash(druidTimeOrigin, having, havingDruid, relativeEnd, relativeStart, timeGrainSqla, where);
   }
 
 
@@ -430,7 +361,6 @@ public class ChartDataExtras {
     sb.append("    relativeEnd: ").append(toIndentedString(relativeEnd)).append("\n");
     sb.append("    relativeStart: ").append(toIndentedString(relativeStart)).append("\n");
     sb.append("    timeGrainSqla: ").append(toIndentedString(timeGrainSqla)).append("\n");
-    sb.append("    timeRangeEndpoints: ").append(toIndentedString(timeRangeEndpoints)).append("\n");
     sb.append("    where: ").append(toIndentedString(where)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -440,7 +370,7 @@ public class ChartDataExtras {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

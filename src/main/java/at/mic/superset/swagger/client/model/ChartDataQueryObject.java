@@ -14,7 +14,7 @@ package at.mic.superset.swagger.client.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import at.mic.superset.swagger.client.model.ChartDataExtras;
+import at.mic.superset.swagger.client.model.AnnotationLayer;
 import at.mic.superset.swagger.client.model.ChartDataFilter;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -24,18 +24,35 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 /**
  * ChartDataQueryObject
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-11-06T17:36:10.263+01:00[Europe/Vienna]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2022-08-29T14:48:42.974+02:00[Europe/Berlin]")
 public class ChartDataQueryObject {
+  @SerializedName("annotation_layers")
+  private List<AnnotationLayer> annotationLayers = null;
+
+  @SerializedName("applied_time_extras")
+  private Object appliedTimeExtras = null;
+
+  @SerializedName("apply_fetch_values_predicate")
+  private Boolean applyFetchValuesPredicate = null;
+
   @SerializedName("columns")
-  private List<String> columns = null;
+  private List<Object> columns = null;
+
+  @SerializedName("datasource")
+  private AllOfChartDataQueryObjectDatasource datasource = null;
+
+  @SerializedName("druid_time_origin")
+  private String druidTimeOrigin = null;
 
   @SerializedName("extras")
-  private ChartDataExtras extras = null;
+  private AllOfChartDataQueryObjectExtras extras = null;
 
   @SerializedName("filters")
   private List<ChartDataFilter> filters = null;
@@ -47,13 +64,16 @@ public class ChartDataQueryObject {
   private String granularitySqla = null;
 
   @SerializedName("groupby")
-  private List<String> groupby = null;
+  private List<Object> groupby = null;
 
   @SerializedName("having")
   private String having = null;
 
   @SerializedName("having_filters")
   private List<ChartDataFilter> havingFilters = null;
+
+  @SerializedName("is_rowcount")
+  private Boolean isRowcount = null;
 
   @SerializedName("is_timeseries")
   private Boolean isTimeseries = null;
@@ -65,16 +85,31 @@ public class ChartDataQueryObject {
   private Boolean orderDesc = null;
 
   @SerializedName("orderby")
-  private List<List<Object>> orderby = null;
+  private List<Object> orderby = null;
 
   @SerializedName("post_processing")
   private List<AllOfChartDataQueryObjectPostProcessingItems> postProcessing = null;
+
+  @SerializedName("result_type")
+  private Object resultType = null;
 
   @SerializedName("row_limit")
   private Integer rowLimit = null;
 
   @SerializedName("row_offset")
   private Integer rowOffset = null;
+
+  @SerializedName("series_columns")
+  private List<Object> seriesColumns = null;
+
+  @SerializedName("series_limit")
+  private Integer seriesLimit = null;
+
+  @SerializedName("series_limit_metric")
+  private Object seriesLimitMetric = null;
+
+  @SerializedName("time_offsets")
+  private List<String> timeOffsets = null;
 
   @SerializedName("time_range")
   private String timeRange = null;
@@ -88,50 +123,151 @@ public class ChartDataQueryObject {
   @SerializedName("timeseries_limit_metric")
   private Object timeseriesLimitMetric = null;
 
+  @SerializedName("url_params")
+  private Map<String, String> urlParams = null;
+
   @SerializedName("where")
   private String where = null;
 
-  public ChartDataQueryObject columns(List<String> columns) {
+  public ChartDataQueryObject annotationLayers(List<AnnotationLayer> annotationLayers) {
+    this.annotationLayers = annotationLayers;
+    return this;
+  }
+
+  public ChartDataQueryObject addAnnotationLayersItem(AnnotationLayer annotationLayersItem) {
+    if (this.annotationLayers == null) {
+      this.annotationLayers = new ArrayList<AnnotationLayer>();
+    }
+    this.annotationLayers.add(annotationLayersItem);
+    return this;
+  }
+
+   /**
+   * Annotation layers to apply to chart
+   * @return annotationLayers
+  **/
+  @Schema(description = "Annotation layers to apply to chart")
+  public List<AnnotationLayer> getAnnotationLayers() {
+    return annotationLayers;
+  }
+
+  public void setAnnotationLayers(List<AnnotationLayer> annotationLayers) {
+    this.annotationLayers = annotationLayers;
+  }
+
+  public ChartDataQueryObject appliedTimeExtras(Object appliedTimeExtras) {
+    this.appliedTimeExtras = appliedTimeExtras;
+    return this;
+  }
+
+   /**
+   * A mapping of temporal extras that have been applied to the query
+   * @return appliedTimeExtras
+  **/
+  @Schema(example = "{\"__time_range\":\"1 year ago : now\"}", description = "A mapping of temporal extras that have been applied to the query")
+  public Object getAppliedTimeExtras() {
+    return appliedTimeExtras;
+  }
+
+  public void setAppliedTimeExtras(Object appliedTimeExtras) {
+    this.appliedTimeExtras = appliedTimeExtras;
+  }
+
+  public ChartDataQueryObject applyFetchValuesPredicate(Boolean applyFetchValuesPredicate) {
+    this.applyFetchValuesPredicate = applyFetchValuesPredicate;
+    return this;
+  }
+
+   /**
+   * Add fetch values predicate (where clause) to query if defined in datasource
+   * @return applyFetchValuesPredicate
+  **/
+  @Schema(description = "Add fetch values predicate (where clause) to query if defined in datasource")
+  public Boolean isApplyFetchValuesPredicate() {
+    return applyFetchValuesPredicate;
+  }
+
+  public void setApplyFetchValuesPredicate(Boolean applyFetchValuesPredicate) {
+    this.applyFetchValuesPredicate = applyFetchValuesPredicate;
+  }
+
+  public ChartDataQueryObject columns(List<Object> columns) {
     this.columns = columns;
     return this;
   }
 
-  public ChartDataQueryObject addColumnsItem(String columnsItem) {
+  public ChartDataQueryObject addColumnsItem(Object columnsItem) {
     if (this.columns == null) {
-      this.columns = new ArrayList<String>();
+      this.columns = new ArrayList<Object>();
     }
     this.columns.add(columnsItem);
     return this;
   }
 
    /**
-   * Get columns
+   * Columns which to select in the query.
    * @return columns
   **/
-  @Schema(description = "")
-  public List<String> getColumns() {
+  @Schema(description = "Columns which to select in the query.")
+  public List<Object> getColumns() {
     return columns;
   }
 
-  public void setColumns(List<String> columns) {
+  public void setColumns(List<Object> columns) {
     this.columns = columns;
   }
 
-  public ChartDataQueryObject extras(ChartDataExtras extras) {
+  public ChartDataQueryObject datasource(AllOfChartDataQueryObjectDatasource datasource) {
+    this.datasource = datasource;
+    return this;
+  }
+
+   /**
+   * Get datasource
+   * @return datasource
+  **/
+  @Schema(description = "")
+  public AllOfChartDataQueryObjectDatasource getDatasource() {
+    return datasource;
+  }
+
+  public void setDatasource(AllOfChartDataQueryObjectDatasource datasource) {
+    this.datasource = datasource;
+  }
+
+  public ChartDataQueryObject druidTimeOrigin(String druidTimeOrigin) {
+    this.druidTimeOrigin = druidTimeOrigin;
+    return this;
+  }
+
+   /**
+   * Starting point for time grain counting on legacy Druid datasources. Used to change e.g. Monday/Sunday first-day-of-week. This field is deprecated and should be passed to &#x60;extras&#x60; as &#x60;druid_time_origin&#x60;.
+   * @return druidTimeOrigin
+  **/
+  @Schema(description = "Starting point for time grain counting on legacy Druid datasources. Used to change e.g. Monday/Sunday first-day-of-week. This field is deprecated and should be passed to `extras` as `druid_time_origin`.")
+  public String getDruidTimeOrigin() {
+    return druidTimeOrigin;
+  }
+
+  public void setDruidTimeOrigin(String druidTimeOrigin) {
+    this.druidTimeOrigin = druidTimeOrigin;
+  }
+
+  public ChartDataQueryObject extras(AllOfChartDataQueryObjectExtras extras) {
     this.extras = extras;
     return this;
   }
 
    /**
-   * Get extras
+   * Extra parameters to add to the query.
    * @return extras
   **/
-  @Schema(description = "")
-  public ChartDataExtras getExtras() {
+  @Schema(description = "Extra parameters to add to the query.")
+  public AllOfChartDataQueryObjectExtras getExtras() {
     return extras;
   }
 
-  public void setExtras(ChartDataExtras extras) {
+  public void setExtras(AllOfChartDataQueryObjectExtras extras) {
     this.extras = extras;
   }
 
@@ -197,29 +333,29 @@ public class ChartDataQueryObject {
     this.granularitySqla = granularitySqla;
   }
 
-  public ChartDataQueryObject groupby(List<String> groupby) {
+  public ChartDataQueryObject groupby(List<Object> groupby) {
     this.groupby = groupby;
     return this;
   }
 
-  public ChartDataQueryObject addGroupbyItem(String groupbyItem) {
+  public ChartDataQueryObject addGroupbyItem(Object groupbyItem) {
     if (this.groupby == null) {
-      this.groupby = new ArrayList<String>();
+      this.groupby = new ArrayList<Object>();
     }
     this.groupby.add(groupbyItem);
     return this;
   }
 
    /**
-   * Get groupby
+   * Columns by which to group the query. This field is deprecated, use &#x60;columns&#x60; instead.
    * @return groupby
   **/
-  @Schema(description = "")
-  public List<String> getGroupby() {
+  @Schema(description = "Columns by which to group the query. This field is deprecated, use `columns` instead.")
+  public List<Object> getGroupby() {
     return groupby;
   }
 
-  public void setGroupby(List<String> groupby) {
+  public void setGroupby(List<Object> groupby) {
     this.groupby = groupby;
   }
 
@@ -265,6 +401,24 @@ public class ChartDataQueryObject {
 
   public void setHavingFilters(List<ChartDataFilter> havingFilters) {
     this.havingFilters = havingFilters;
+  }
+
+  public ChartDataQueryObject isRowcount(Boolean isRowcount) {
+    this.isRowcount = isRowcount;
+    return this;
+  }
+
+   /**
+   * Should the rowcount of the actual query be returned
+   * @return isRowcount
+  **/
+  @Schema(description = "Should the rowcount of the actual query be returned")
+  public Boolean isIsRowcount() {
+    return isRowcount;
+  }
+
+  public void setIsRowcount(Boolean isRowcount) {
+    this.isRowcount = isRowcount;
   }
 
   public ChartDataQueryObject isTimeseries(Boolean isTimeseries) {
@@ -329,29 +483,29 @@ public class ChartDataQueryObject {
     this.orderDesc = orderDesc;
   }
 
-  public ChartDataQueryObject orderby(List<List<Object>> orderby) {
+  public ChartDataQueryObject orderby(List<Object> orderby) {
     this.orderby = orderby;
     return this;
   }
 
-  public ChartDataQueryObject addOrderbyItem(List<Object> orderbyItem) {
+  public ChartDataQueryObject addOrderbyItem(Object orderbyItem) {
     if (this.orderby == null) {
-      this.orderby = new ArrayList<List<Object>>();
+      this.orderby = new ArrayList<Object>();
     }
     this.orderby.add(orderbyItem);
     return this;
   }
 
    /**
-   * Expects a list of lists where the first element is the column name which to sort by, and the second element is a boolean 
+   * Expects a list of lists where the first element is the column name which to sort by, and the second element is a boolean.
    * @return orderby
   **/
-  @Schema(example = "[[\"my_col_1\",false],[\"my_col_2\",true]]", description = "Expects a list of lists where the first element is the column name which to sort by, and the second element is a boolean ")
-  public List<List<Object>> getOrderby() {
+  @Schema(example = "[[\"my_col_1\",false],[\"my_col_2\",true]]", description = "Expects a list of lists where the first element is the column name which to sort by, and the second element is a boolean.")
+  public List<Object> getOrderby() {
     return orderby;
   }
 
-  public void setOrderby(List<List<Object>> orderby) {
+  public void setOrderby(List<Object> orderby) {
     this.orderby = orderby;
   }
 
@@ -381,17 +535,35 @@ public class ChartDataQueryObject {
     this.postProcessing = postProcessing;
   }
 
+  public ChartDataQueryObject resultType(Object resultType) {
+    this.resultType = resultType;
+    return this;
+  }
+
+   /**
+   * Get resultType
+   * @return resultType
+  **/
+  @Schema(description = "")
+  public Object getResultType() {
+    return resultType;
+  }
+
+  public void setResultType(Object resultType) {
+    this.resultType = resultType;
+  }
+
   public ChartDataQueryObject rowLimit(Integer rowLimit) {
     this.rowLimit = rowLimit;
     return this;
   }
 
    /**
-   * Maximum row count. Default: &#x60;config[\&quot;ROW_LIMIT\&quot;]&#x60;
-   * minimum: 1
+   * Maximum row count (0&#x3D;disabled). Default: &#x60;config[\&quot;ROW_LIMIT\&quot;]&#x60;
+   * minimum: 0
    * @return rowLimit
   **/
-  @Schema(description = "Maximum row count. Default: `config[\"ROW_LIMIT\"]`")
+  @Schema(description = "Maximum row count (0=disabled). Default: `config[\"ROW_LIMIT\"]`")
   public Integer getRowLimit() {
     return rowLimit;
   }
@@ -417,6 +589,94 @@ public class ChartDataQueryObject {
 
   public void setRowOffset(Integer rowOffset) {
     this.rowOffset = rowOffset;
+  }
+
+  public ChartDataQueryObject seriesColumns(List<Object> seriesColumns) {
+    this.seriesColumns = seriesColumns;
+    return this;
+  }
+
+  public ChartDataQueryObject addSeriesColumnsItem(Object seriesColumnsItem) {
+    if (this.seriesColumns == null) {
+      this.seriesColumns = new ArrayList<Object>();
+    }
+    this.seriesColumns.add(seriesColumnsItem);
+    return this;
+  }
+
+   /**
+   * Columns to use when limiting series count. All columns must be present in the &#x60;columns&#x60; property. Requires &#x60;series_limit&#x60; and &#x60;series_limit_metric&#x60; to be set.
+   * @return seriesColumns
+  **/
+  @Schema(description = "Columns to use when limiting series count. All columns must be present in the `columns` property. Requires `series_limit` and `series_limit_metric` to be set.")
+  public List<Object> getSeriesColumns() {
+    return seriesColumns;
+  }
+
+  public void setSeriesColumns(List<Object> seriesColumns) {
+    this.seriesColumns = seriesColumns;
+  }
+
+  public ChartDataQueryObject seriesLimit(Integer seriesLimit) {
+    this.seriesLimit = seriesLimit;
+    return this;
+  }
+
+   /**
+   * Maximum number of series. Requires &#x60;series&#x60; and &#x60;series_limit_metric&#x60; to be set.
+   * @return seriesLimit
+  **/
+  @Schema(description = "Maximum number of series. Requires `series` and `series_limit_metric` to be set.")
+  public Integer getSeriesLimit() {
+    return seriesLimit;
+  }
+
+  public void setSeriesLimit(Integer seriesLimit) {
+    this.seriesLimit = seriesLimit;
+  }
+
+  public ChartDataQueryObject seriesLimitMetric(Object seriesLimitMetric) {
+    this.seriesLimitMetric = seriesLimitMetric;
+    return this;
+  }
+
+   /**
+   * Metric used to limit timeseries queries by. Requires &#x60;series&#x60; and &#x60;series_limit&#x60; to be set.
+   * @return seriesLimitMetric
+  **/
+  @Schema(description = "Metric used to limit timeseries queries by. Requires `series` and `series_limit` to be set.")
+  public Object getSeriesLimitMetric() {
+    return seriesLimitMetric;
+  }
+
+  public void setSeriesLimitMetric(Object seriesLimitMetric) {
+    this.seriesLimitMetric = seriesLimitMetric;
+  }
+
+  public ChartDataQueryObject timeOffsets(List<String> timeOffsets) {
+    this.timeOffsets = timeOffsets;
+    return this;
+  }
+
+  public ChartDataQueryObject addTimeOffsetsItem(String timeOffsetsItem) {
+    if (this.timeOffsets == null) {
+      this.timeOffsets = new ArrayList<String>();
+    }
+    this.timeOffsets.add(timeOffsetsItem);
+    return this;
+  }
+
+   /**
+   * Get timeOffsets
+   * @return timeOffsets
+  **/
+  @Schema(description = "")
+  public List<String> getTimeOffsets() {
+    return timeOffsets;
+  }
+
+  public void setTimeOffsets(List<String> timeOffsets) {
+    this.timeOffsets = timeOffsets;
   }
 
   public ChartDataQueryObject timeRange(String timeRange) {
@@ -461,10 +721,10 @@ public class ChartDataQueryObject {
   }
 
    /**
-   * Maximum row count for timeseries queries. Default: &#x60;0&#x60;
+   * Maximum row count for timeseries queries. This field is deprecated, use &#x60;series_limit&#x60; instead.Default: &#x60;0&#x60;
    * @return timeseriesLimit
   **/
-  @Schema(description = "Maximum row count for timeseries queries. Default: `0`")
+  @Schema(description = "Maximum row count for timeseries queries. This field is deprecated, use `series_limit` instead.Default: `0`")
   public Integer getTimeseriesLimit() {
     return timeseriesLimit;
   }
@@ -479,16 +739,42 @@ public class ChartDataQueryObject {
   }
 
    /**
-   * Metric used to limit timeseries queries by.
+   * Metric used to limit timeseries queries by. This field is deprecated, use &#x60;series_limit_metric&#x60; instead.
    * @return timeseriesLimitMetric
   **/
-  @Schema(description = "Metric used to limit timeseries queries by.")
+  @Schema(description = "Metric used to limit timeseries queries by. This field is deprecated, use `series_limit_metric` instead.")
   public Object getTimeseriesLimitMetric() {
     return timeseriesLimitMetric;
   }
 
   public void setTimeseriesLimitMetric(Object timeseriesLimitMetric) {
     this.timeseriesLimitMetric = timeseriesLimitMetric;
+  }
+
+  public ChartDataQueryObject urlParams(Map<String, String> urlParams) {
+    this.urlParams = urlParams;
+    return this;
+  }
+
+  public ChartDataQueryObject putUrlParamsItem(String key, String urlParamsItem) {
+    if (this.urlParams == null) {
+      this.urlParams = new HashMap<String, String>();
+    }
+    this.urlParams.put(key, urlParamsItem);
+    return this;
+  }
+
+   /**
+   * Optional query parameters passed to a dashboard or Explore view
+   * @return urlParams
+  **/
+  @Schema(description = "Optional query parameters passed to a dashboard or Explore view")
+  public Map<String, String> getUrlParams() {
+    return urlParams;
+  }
+
+  public void setUrlParams(Map<String, String> urlParams) {
+    this.urlParams = urlParams;
   }
 
   public ChartDataQueryObject where(String where) {
@@ -511,7 +797,7 @@ public class ChartDataQueryObject {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -519,7 +805,12 @@ public class ChartDataQueryObject {
       return false;
     }
     ChartDataQueryObject chartDataQueryObject = (ChartDataQueryObject) o;
-    return Objects.equals(this.columns, chartDataQueryObject.columns) &&
+    return Objects.equals(this.annotationLayers, chartDataQueryObject.annotationLayers) &&
+        Objects.equals(this.appliedTimeExtras, chartDataQueryObject.appliedTimeExtras) &&
+        Objects.equals(this.applyFetchValuesPredicate, chartDataQueryObject.applyFetchValuesPredicate) &&
+        Objects.equals(this.columns, chartDataQueryObject.columns) &&
+        Objects.equals(this.datasource, chartDataQueryObject.datasource) &&
+        Objects.equals(this.druidTimeOrigin, chartDataQueryObject.druidTimeOrigin) &&
         Objects.equals(this.extras, chartDataQueryObject.extras) &&
         Objects.equals(this.filters, chartDataQueryObject.filters) &&
         Objects.equals(this.granularity, chartDataQueryObject.granularity) &&
@@ -527,23 +818,30 @@ public class ChartDataQueryObject {
         Objects.equals(this.groupby, chartDataQueryObject.groupby) &&
         Objects.equals(this.having, chartDataQueryObject.having) &&
         Objects.equals(this.havingFilters, chartDataQueryObject.havingFilters) &&
+        Objects.equals(this.isRowcount, chartDataQueryObject.isRowcount) &&
         Objects.equals(this.isTimeseries, chartDataQueryObject.isTimeseries) &&
         Objects.equals(this.metrics, chartDataQueryObject.metrics) &&
         Objects.equals(this.orderDesc, chartDataQueryObject.orderDesc) &&
         Objects.equals(this.orderby, chartDataQueryObject.orderby) &&
         Objects.equals(this.postProcessing, chartDataQueryObject.postProcessing) &&
+        Objects.equals(this.resultType, chartDataQueryObject.resultType) &&
         Objects.equals(this.rowLimit, chartDataQueryObject.rowLimit) &&
         Objects.equals(this.rowOffset, chartDataQueryObject.rowOffset) &&
+        Objects.equals(this.seriesColumns, chartDataQueryObject.seriesColumns) &&
+        Objects.equals(this.seriesLimit, chartDataQueryObject.seriesLimit) &&
+        Objects.equals(this.seriesLimitMetric, chartDataQueryObject.seriesLimitMetric) &&
+        Objects.equals(this.timeOffsets, chartDataQueryObject.timeOffsets) &&
         Objects.equals(this.timeRange, chartDataQueryObject.timeRange) &&
         Objects.equals(this.timeShift, chartDataQueryObject.timeShift) &&
         Objects.equals(this.timeseriesLimit, chartDataQueryObject.timeseriesLimit) &&
         Objects.equals(this.timeseriesLimitMetric, chartDataQueryObject.timeseriesLimitMetric) &&
+        Objects.equals(this.urlParams, chartDataQueryObject.urlParams) &&
         Objects.equals(this.where, chartDataQueryObject.where);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(columns, extras, filters, granularity, granularitySqla, groupby, having, havingFilters, isTimeseries, metrics, orderDesc, orderby, postProcessing, rowLimit, rowOffset, timeRange, timeShift, timeseriesLimit, timeseriesLimitMetric, where);
+    return Objects.hash(annotationLayers, appliedTimeExtras, applyFetchValuesPredicate, columns, datasource, druidTimeOrigin, extras, filters, granularity, granularitySqla, groupby, having, havingFilters, isRowcount, isTimeseries, metrics, orderDesc, orderby, postProcessing, resultType, rowLimit, rowOffset, seriesColumns, seriesLimit, seriesLimitMetric, timeOffsets, timeRange, timeShift, timeseriesLimit, timeseriesLimitMetric, urlParams, where);
   }
 
 
@@ -552,7 +850,12 @@ public class ChartDataQueryObject {
     StringBuilder sb = new StringBuilder();
     sb.append("class ChartDataQueryObject {\n");
     
+    sb.append("    annotationLayers: ").append(toIndentedString(annotationLayers)).append("\n");
+    sb.append("    appliedTimeExtras: ").append(toIndentedString(appliedTimeExtras)).append("\n");
+    sb.append("    applyFetchValuesPredicate: ").append(toIndentedString(applyFetchValuesPredicate)).append("\n");
     sb.append("    columns: ").append(toIndentedString(columns)).append("\n");
+    sb.append("    datasource: ").append(toIndentedString(datasource)).append("\n");
+    sb.append("    druidTimeOrigin: ").append(toIndentedString(druidTimeOrigin)).append("\n");
     sb.append("    extras: ").append(toIndentedString(extras)).append("\n");
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
     sb.append("    granularity: ").append(toIndentedString(granularity)).append("\n");
@@ -560,17 +863,24 @@ public class ChartDataQueryObject {
     sb.append("    groupby: ").append(toIndentedString(groupby)).append("\n");
     sb.append("    having: ").append(toIndentedString(having)).append("\n");
     sb.append("    havingFilters: ").append(toIndentedString(havingFilters)).append("\n");
+    sb.append("    isRowcount: ").append(toIndentedString(isRowcount)).append("\n");
     sb.append("    isTimeseries: ").append(toIndentedString(isTimeseries)).append("\n");
     sb.append("    metrics: ").append(toIndentedString(metrics)).append("\n");
     sb.append("    orderDesc: ").append(toIndentedString(orderDesc)).append("\n");
     sb.append("    orderby: ").append(toIndentedString(orderby)).append("\n");
     sb.append("    postProcessing: ").append(toIndentedString(postProcessing)).append("\n");
+    sb.append("    resultType: ").append(toIndentedString(resultType)).append("\n");
     sb.append("    rowLimit: ").append(toIndentedString(rowLimit)).append("\n");
     sb.append("    rowOffset: ").append(toIndentedString(rowOffset)).append("\n");
+    sb.append("    seriesColumns: ").append(toIndentedString(seriesColumns)).append("\n");
+    sb.append("    seriesLimit: ").append(toIndentedString(seriesLimit)).append("\n");
+    sb.append("    seriesLimitMetric: ").append(toIndentedString(seriesLimitMetric)).append("\n");
+    sb.append("    timeOffsets: ").append(toIndentedString(timeOffsets)).append("\n");
     sb.append("    timeRange: ").append(toIndentedString(timeRange)).append("\n");
     sb.append("    timeShift: ").append(toIndentedString(timeShift)).append("\n");
     sb.append("    timeseriesLimit: ").append(toIndentedString(timeseriesLimit)).append("\n");
     sb.append("    timeseriesLimitMetric: ").append(toIndentedString(timeseriesLimitMetric)).append("\n");
+    sb.append("    urlParams: ").append(toIndentedString(urlParams)).append("\n");
     sb.append("    where: ").append(toIndentedString(where)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -580,7 +890,7 @@ public class ChartDataQueryObject {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

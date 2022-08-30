@@ -14,6 +14,7 @@ package at.mic.superset.swagger.client.model;
 
 import java.util.Objects;
 import java.util.Arrays;
+import at.mic.superset.swagger.client.model.EmbeddedDashboardResponseSchema;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -25,32 +26,32 @@ import java.io.IOException;
  * InlineResponse20022
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-11-06T17:36:10.263+01:00[Europe/Vienna]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2022-08-29T14:48:42.974+02:00[Europe/Berlin]")
 public class InlineResponse20022 {
-  @SerializedName("access_token")
-  private String accessToken = null;
+  @SerializedName("result")
+  private EmbeddedDashboardResponseSchema result = null;
 
-  public InlineResponse20022 accessToken(String accessToken) {
-    this.accessToken = accessToken;
+  public InlineResponse20022 result(EmbeddedDashboardResponseSchema result) {
+    this.result = result;
     return this;
   }
 
    /**
-   * A new refreshed access token
-   * @return accessToken
+   * Get result
+   * @return result
   **/
-  @Schema(description = "A new refreshed access token")
-  public String getAccessToken() {
-    return accessToken;
+  @Schema(description = "")
+  public EmbeddedDashboardResponseSchema getResult() {
+    return result;
   }
 
-  public void setAccessToken(String accessToken) {
-    this.accessToken = accessToken;
+  public void setResult(EmbeddedDashboardResponseSchema result) {
+    this.result = result;
   }
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -58,12 +59,12 @@ public class InlineResponse20022 {
       return false;
     }
     InlineResponse20022 inlineResponse20022 = (InlineResponse20022) o;
-    return Objects.equals(this.accessToken, inlineResponse20022.accessToken);
+    return Objects.equals(this.result, inlineResponse20022.result);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(accessToken);
+    return Objects.hash(result);
   }
 
 
@@ -72,7 +73,7 @@ public class InlineResponse20022 {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse20022 {\n");
     
-    sb.append("    accessToken: ").append(toIndentedString(accessToken)).append("\n");
+    sb.append("    result: ").append(toIndentedString(result)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -81,7 +82,7 @@ public class InlineResponse20022 {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

@@ -14,8 +14,8 @@ package at.mic.superset.swagger.client.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import at.mic.superset.swagger.client.model.Meta2;
-import at.mic.superset.swagger.client.model.Meta3;
+import at.mic.superset.swagger.client.model.ChartRestApiGetDashboard;
+import at.mic.superset.swagger.client.model.ChartRestApiGetUser;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -27,22 +27,34 @@ import java.io.IOException;
  * ChartRestApiGet
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-11-06T17:36:10.263+01:00[Europe/Vienna]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2022-08-29T14:48:42.974+02:00[Europe/Berlin]")
 public class ChartRestApiGet {
   @SerializedName("cache_timeout")
   private Integer cacheTimeout = null;
 
+  @SerializedName("certification_details")
+  private String certificationDetails = null;
+
+  @SerializedName("certified_by")
+  private String certifiedBy = null;
+
   @SerializedName("dashboards")
-  private Meta3 dashboards = null;
+  private ChartRestApiGetDashboard dashboards = null;
 
   @SerializedName("description")
   private String description = null;
 
+  @SerializedName("is_managed_externally")
+  private Boolean isManagedExternally = null;
+
   @SerializedName("owners")
-  private Meta2 owners = null;
+  private ChartRestApiGetUser owners = null;
 
   @SerializedName("params")
   private String params = null;
+
+  @SerializedName("query_context")
+  private String queryContext = null;
 
   @SerializedName("slice_name")
   private String sliceName = null;
@@ -68,7 +80,43 @@ public class ChartRestApiGet {
     this.cacheTimeout = cacheTimeout;
   }
 
-  public ChartRestApiGet dashboards(Meta3 dashboards) {
+  public ChartRestApiGet certificationDetails(String certificationDetails) {
+    this.certificationDetails = certificationDetails;
+    return this;
+  }
+
+   /**
+   * Get certificationDetails
+   * @return certificationDetails
+  **/
+  @Schema(description = "")
+  public String getCertificationDetails() {
+    return certificationDetails;
+  }
+
+  public void setCertificationDetails(String certificationDetails) {
+    this.certificationDetails = certificationDetails;
+  }
+
+  public ChartRestApiGet certifiedBy(String certifiedBy) {
+    this.certifiedBy = certifiedBy;
+    return this;
+  }
+
+   /**
+   * Get certifiedBy
+   * @return certifiedBy
+  **/
+  @Schema(description = "")
+  public String getCertifiedBy() {
+    return certifiedBy;
+  }
+
+  public void setCertifiedBy(String certifiedBy) {
+    this.certifiedBy = certifiedBy;
+  }
+
+  public ChartRestApiGet dashboards(ChartRestApiGetDashboard dashboards) {
     this.dashboards = dashboards;
     return this;
   }
@@ -78,11 +126,11 @@ public class ChartRestApiGet {
    * @return dashboards
   **/
   @Schema(description = "")
-  public Meta3 getDashboards() {
+  public ChartRestApiGetDashboard getDashboards() {
     return dashboards;
   }
 
-  public void setDashboards(Meta3 dashboards) {
+  public void setDashboards(ChartRestApiGetDashboard dashboards) {
     this.dashboards = dashboards;
   }
 
@@ -104,7 +152,25 @@ public class ChartRestApiGet {
     this.description = description;
   }
 
-  public ChartRestApiGet owners(Meta2 owners) {
+  public ChartRestApiGet isManagedExternally(Boolean isManagedExternally) {
+    this.isManagedExternally = isManagedExternally;
+    return this;
+  }
+
+   /**
+   * Get isManagedExternally
+   * @return isManagedExternally
+  **/
+  @Schema(description = "")
+  public Boolean isIsManagedExternally() {
+    return isManagedExternally;
+  }
+
+  public void setIsManagedExternally(Boolean isManagedExternally) {
+    this.isManagedExternally = isManagedExternally;
+  }
+
+  public ChartRestApiGet owners(ChartRestApiGetUser owners) {
     this.owners = owners;
     return this;
   }
@@ -114,11 +180,11 @@ public class ChartRestApiGet {
    * @return owners
   **/
   @Schema(description = "")
-  public Meta2 getOwners() {
+  public ChartRestApiGetUser getOwners() {
     return owners;
   }
 
-  public void setOwners(Meta2 owners) {
+  public void setOwners(ChartRestApiGetUser owners) {
     this.owners = owners;
   }
 
@@ -138,6 +204,24 @@ public class ChartRestApiGet {
 
   public void setParams(String params) {
     this.params = params;
+  }
+
+  public ChartRestApiGet queryContext(String queryContext) {
+    this.queryContext = queryContext;
+    return this;
+  }
+
+   /**
+   * Get queryContext
+   * @return queryContext
+  **/
+  @Schema(description = "")
+  public String getQueryContext() {
+    return queryContext;
+  }
+
+  public void setQueryContext(String queryContext) {
+    this.queryContext = queryContext;
   }
 
   public ChartRestApiGet sliceName(String sliceName) {
@@ -178,7 +262,7 @@ public class ChartRestApiGet {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -187,17 +271,21 @@ public class ChartRestApiGet {
     }
     ChartRestApiGet chartRestApiGet = (ChartRestApiGet) o;
     return Objects.equals(this.cacheTimeout, chartRestApiGet.cacheTimeout) &&
+        Objects.equals(this.certificationDetails, chartRestApiGet.certificationDetails) &&
+        Objects.equals(this.certifiedBy, chartRestApiGet.certifiedBy) &&
         Objects.equals(this.dashboards, chartRestApiGet.dashboards) &&
         Objects.equals(this.description, chartRestApiGet.description) &&
+        Objects.equals(this.isManagedExternally, chartRestApiGet.isManagedExternally) &&
         Objects.equals(this.owners, chartRestApiGet.owners) &&
         Objects.equals(this.params, chartRestApiGet.params) &&
+        Objects.equals(this.queryContext, chartRestApiGet.queryContext) &&
         Objects.equals(this.sliceName, chartRestApiGet.sliceName) &&
         Objects.equals(this.vizType, chartRestApiGet.vizType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(cacheTimeout, dashboards, description, owners, params, sliceName, vizType);
+    return Objects.hash(cacheTimeout, certificationDetails, certifiedBy, dashboards, description, isManagedExternally, owners, params, queryContext, sliceName, vizType);
   }
 
 
@@ -207,10 +295,14 @@ public class ChartRestApiGet {
     sb.append("class ChartRestApiGet {\n");
     
     sb.append("    cacheTimeout: ").append(toIndentedString(cacheTimeout)).append("\n");
+    sb.append("    certificationDetails: ").append(toIndentedString(certificationDetails)).append("\n");
+    sb.append("    certifiedBy: ").append(toIndentedString(certifiedBy)).append("\n");
     sb.append("    dashboards: ").append(toIndentedString(dashboards)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    isManagedExternally: ").append(toIndentedString(isManagedExternally)).append("\n");
     sb.append("    owners: ").append(toIndentedString(owners)).append("\n");
     sb.append("    params: ").append(toIndentedString(params)).append("\n");
+    sb.append("    queryContext: ").append(toIndentedString(queryContext)).append("\n");
     sb.append("    sliceName: ").append(toIndentedString(sliceName)).append("\n");
     sb.append("    vizType: ").append(toIndentedString(vizType)).append("\n");
     sb.append("}");
@@ -221,7 +313,7 @@ public class ChartRestApiGet {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

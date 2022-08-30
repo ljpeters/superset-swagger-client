@@ -14,8 +14,9 @@ package at.mic.superset.swagger.client.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import at.mic.superset.swagger.client.model.Meta8;
-import at.mic.superset.swagger.client.model.Meta9;
+import at.mic.superset.swagger.client.model.DatasetRestApiGetListDatabase;
+import at.mic.superset.swagger.client.model.DatasetRestApiGetListUser;
+import at.mic.superset.swagger.client.model.DatasetRestApiGetListUser1;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -23,18 +24,14 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
-import org.threeten.bp.OffsetDateTime;
 /**
  * DatasetRestApiGetList
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-11-06T17:36:10.263+01:00[Europe/Vienna]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2022-08-29T14:48:42.974+02:00[Europe/Berlin]")
 public class DatasetRestApiGetList {
   @SerializedName("changed_by")
-  private Meta9 changedBy = null;
-
-  @SerializedName("changed_by_fk")
-  private Integer changedByFk = null;
+  private DatasetRestApiGetListUser1 changedBy = null;
 
   @SerializedName("changed_by_name")
   private Object changedByName = null;
@@ -42,20 +39,29 @@ public class DatasetRestApiGetList {
   @SerializedName("changed_by_url")
   private Object changedByUrl = null;
 
-  @SerializedName("changed_on")
-  private OffsetDateTime changedOn = null;
+  @SerializedName("changed_on_delta_humanized")
+  private Object changedOnDeltaHumanized = null;
 
-  @SerializedName("database_id")
-  private Integer databaseId = null;
+  @SerializedName("changed_on_utc")
+  private Object changedOnUtc = null;
 
-  @SerializedName("database_name")
-  private Object databaseName = null;
+  @SerializedName("database")
+  private DatasetRestApiGetListDatabase database = null;
+
+  @SerializedName("datasource_type")
+  private Object datasourceType = null;
 
   @SerializedName("default_endpoint")
   private String defaultEndpoint = null;
 
+  @SerializedName("description")
+  private String description = null;
+
   @SerializedName("explore_url")
   private Object exploreUrl = null;
+
+  @SerializedName("extra")
+  private String extra = null;
 
   @SerializedName("id")
   private Integer id = null;
@@ -64,7 +70,7 @@ public class DatasetRestApiGetList {
   private Object kind = null;
 
   @SerializedName("owners")
-  private Meta8 owners = null;
+  private DatasetRestApiGetListUser owners = null;
 
   @SerializedName("schema")
   private String schema = null;
@@ -75,7 +81,7 @@ public class DatasetRestApiGetList {
   @SerializedName("table_name")
   private String tableName = null;
 
-  public DatasetRestApiGetList changedBy(Meta9 changedBy) {
+  public DatasetRestApiGetList changedBy(DatasetRestApiGetListUser1 changedBy) {
     this.changedBy = changedBy;
     return this;
   }
@@ -85,30 +91,12 @@ public class DatasetRestApiGetList {
    * @return changedBy
   **/
   @Schema(description = "")
-  public Meta9 getChangedBy() {
+  public DatasetRestApiGetListUser1 getChangedBy() {
     return changedBy;
   }
 
-  public void setChangedBy(Meta9 changedBy) {
+  public void setChangedBy(DatasetRestApiGetListUser1 changedBy) {
     this.changedBy = changedBy;
-  }
-
-  public DatasetRestApiGetList changedByFk(Integer changedByFk) {
-    this.changedByFk = changedByFk;
-    return this;
-  }
-
-   /**
-   * Get changedByFk
-   * @return changedByFk
-  **/
-  @Schema(description = "")
-  public Integer getChangedByFk() {
-    return changedByFk;
-  }
-
-  public void setChangedByFk(Integer changedByFk) {
-    this.changedByFk = changedByFk;
   }
 
    /**
@@ -129,49 +117,49 @@ public class DatasetRestApiGetList {
     return changedByUrl;
   }
 
-  public DatasetRestApiGetList changedOn(OffsetDateTime changedOn) {
-    this.changedOn = changedOn;
-    return this;
-  }
-
    /**
-   * Get changedOn
-   * @return changedOn
+   * Get changedOnDeltaHumanized
+   * @return changedOnDeltaHumanized
   **/
   @Schema(description = "")
-  public OffsetDateTime getChangedOn() {
-    return changedOn;
+  public Object getChangedOnDeltaHumanized() {
+    return changedOnDeltaHumanized;
   }
 
-  public void setChangedOn(OffsetDateTime changedOn) {
-    this.changedOn = changedOn;
+   /**
+   * Get changedOnUtc
+   * @return changedOnUtc
+  **/
+  @Schema(description = "")
+  public Object getChangedOnUtc() {
+    return changedOnUtc;
   }
 
-  public DatasetRestApiGetList databaseId(Integer databaseId) {
-    this.databaseId = databaseId;
+  public DatasetRestApiGetList database(DatasetRestApiGetListDatabase database) {
+    this.database = database;
     return this;
   }
 
    /**
-   * Get databaseId
-   * @return databaseId
+   * Get database
+   * @return database
   **/
   @Schema(required = true, description = "")
-  public Integer getDatabaseId() {
-    return databaseId;
+  public DatasetRestApiGetListDatabase getDatabase() {
+    return database;
   }
 
-  public void setDatabaseId(Integer databaseId) {
-    this.databaseId = databaseId;
+  public void setDatabase(DatasetRestApiGetListDatabase database) {
+    this.database = database;
   }
 
    /**
-   * Get databaseName
-   * @return databaseName
+   * Get datasourceType
+   * @return datasourceType
   **/
   @Schema(description = "")
-  public Object getDatabaseName() {
-    return databaseName;
+  public Object getDatasourceType() {
+    return datasourceType;
   }
 
   public DatasetRestApiGetList defaultEndpoint(String defaultEndpoint) {
@@ -192,6 +180,24 @@ public class DatasetRestApiGetList {
     this.defaultEndpoint = defaultEndpoint;
   }
 
+  public DatasetRestApiGetList description(String description) {
+    this.description = description;
+    return this;
+  }
+
+   /**
+   * Get description
+   * @return description
+  **/
+  @Schema(description = "")
+  public String getDescription() {
+    return description;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
    /**
    * Get exploreUrl
    * @return exploreUrl
@@ -199,6 +205,24 @@ public class DatasetRestApiGetList {
   @Schema(description = "")
   public Object getExploreUrl() {
     return exploreUrl;
+  }
+
+  public DatasetRestApiGetList extra(String extra) {
+    this.extra = extra;
+    return this;
+  }
+
+   /**
+   * Get extra
+   * @return extra
+  **/
+  @Schema(description = "")
+  public String getExtra() {
+    return extra;
+  }
+
+  public void setExtra(String extra) {
+    this.extra = extra;
   }
 
   public DatasetRestApiGetList id(Integer id) {
@@ -228,7 +252,7 @@ public class DatasetRestApiGetList {
     return kind;
   }
 
-  public DatasetRestApiGetList owners(Meta8 owners) {
+  public DatasetRestApiGetList owners(DatasetRestApiGetListUser owners) {
     this.owners = owners;
     return this;
   }
@@ -238,11 +262,11 @@ public class DatasetRestApiGetList {
    * @return owners
   **/
   @Schema(description = "")
-  public Meta8 getOwners() {
+  public DatasetRestApiGetListUser getOwners() {
     return owners;
   }
 
-  public void setOwners(Meta8 owners) {
+  public void setOwners(DatasetRestApiGetListUser owners) {
     this.owners = owners;
   }
 
@@ -302,7 +326,7 @@ public class DatasetRestApiGetList {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -311,14 +335,16 @@ public class DatasetRestApiGetList {
     }
     DatasetRestApiGetList datasetRestApiGetList = (DatasetRestApiGetList) o;
     return Objects.equals(this.changedBy, datasetRestApiGetList.changedBy) &&
-        Objects.equals(this.changedByFk, datasetRestApiGetList.changedByFk) &&
         Objects.equals(this.changedByName, datasetRestApiGetList.changedByName) &&
         Objects.equals(this.changedByUrl, datasetRestApiGetList.changedByUrl) &&
-        Objects.equals(this.changedOn, datasetRestApiGetList.changedOn) &&
-        Objects.equals(this.databaseId, datasetRestApiGetList.databaseId) &&
-        Objects.equals(this.databaseName, datasetRestApiGetList.databaseName) &&
+        Objects.equals(this.changedOnDeltaHumanized, datasetRestApiGetList.changedOnDeltaHumanized) &&
+        Objects.equals(this.changedOnUtc, datasetRestApiGetList.changedOnUtc) &&
+        Objects.equals(this.database, datasetRestApiGetList.database) &&
+        Objects.equals(this.datasourceType, datasetRestApiGetList.datasourceType) &&
         Objects.equals(this.defaultEndpoint, datasetRestApiGetList.defaultEndpoint) &&
+        Objects.equals(this.description, datasetRestApiGetList.description) &&
         Objects.equals(this.exploreUrl, datasetRestApiGetList.exploreUrl) &&
+        Objects.equals(this.extra, datasetRestApiGetList.extra) &&
         Objects.equals(this.id, datasetRestApiGetList.id) &&
         Objects.equals(this.kind, datasetRestApiGetList.kind) &&
         Objects.equals(this.owners, datasetRestApiGetList.owners) &&
@@ -329,7 +355,7 @@ public class DatasetRestApiGetList {
 
   @Override
   public int hashCode() {
-    return Objects.hash(changedBy, changedByFk, changedByName, changedByUrl, changedOn, databaseId, databaseName, defaultEndpoint, exploreUrl, id, kind, owners, schema, sql, tableName);
+    return Objects.hash(changedBy, changedByName, changedByUrl, changedOnDeltaHumanized, changedOnUtc, database, datasourceType, defaultEndpoint, description, exploreUrl, extra, id, kind, owners, schema, sql, tableName);
   }
 
 
@@ -339,14 +365,16 @@ public class DatasetRestApiGetList {
     sb.append("class DatasetRestApiGetList {\n");
     
     sb.append("    changedBy: ").append(toIndentedString(changedBy)).append("\n");
-    sb.append("    changedByFk: ").append(toIndentedString(changedByFk)).append("\n");
     sb.append("    changedByName: ").append(toIndentedString(changedByName)).append("\n");
     sb.append("    changedByUrl: ").append(toIndentedString(changedByUrl)).append("\n");
-    sb.append("    changedOn: ").append(toIndentedString(changedOn)).append("\n");
-    sb.append("    databaseId: ").append(toIndentedString(databaseId)).append("\n");
-    sb.append("    databaseName: ").append(toIndentedString(databaseName)).append("\n");
+    sb.append("    changedOnDeltaHumanized: ").append(toIndentedString(changedOnDeltaHumanized)).append("\n");
+    sb.append("    changedOnUtc: ").append(toIndentedString(changedOnUtc)).append("\n");
+    sb.append("    database: ").append(toIndentedString(database)).append("\n");
+    sb.append("    datasourceType: ").append(toIndentedString(datasourceType)).append("\n");
     sb.append("    defaultEndpoint: ").append(toIndentedString(defaultEndpoint)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    exploreUrl: ").append(toIndentedString(exploreUrl)).append("\n");
+    sb.append("    extra: ").append(toIndentedString(extra)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    kind: ").append(toIndentedString(kind)).append("\n");
     sb.append("    owners: ").append(toIndentedString(owners)).append("\n");
@@ -361,7 +389,7 @@ public class DatasetRestApiGetList {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

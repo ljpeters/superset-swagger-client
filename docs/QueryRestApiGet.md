@@ -5,11 +5,12 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **changedOn** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
 **clientId** | **String** |  | 
-**database** | [**Meta16**](Meta16.md) |  | 
+**database** | [**QueryRestApiGetDatabase**](QueryRestApiGetDatabase.md) |  | 
 **endResultBackendTime** | [**BigDecimal**](BigDecimal.md) |  |  [optional]
 **endTime** | [**BigDecimal**](BigDecimal.md) |  |  [optional]
 **errorMessage** | **String** |  |  [optional]
 **executedSql** | **String** |  |  [optional]
+**id** | **Integer** |  |  [optional]
 **limit** | **Integer** |  |  [optional]
 **progress** | **Integer** |  |  [optional]
 **resultsKey** | **String** |  |  [optional]

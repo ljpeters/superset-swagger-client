@@ -14,6 +14,7 @@ package at.mic.superset.swagger.client.model;
 
 import java.util.Objects;
 import java.util.Arrays;
+import at.mic.superset.swagger.client.model.AnnotationRestApiGet;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -25,74 +26,53 @@ import java.io.IOException;
  * InlineResponse2006
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-11-06T17:36:10.263+01:00[Europe/Vienna]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2022-08-29T14:48:42.974+02:00[Europe/Berlin]")
 public class InlineResponse2006 {
-  @SerializedName("cache_key")
-  private String cacheKey = null;
+  @SerializedName("id")
+  private String id = null;
 
-  @SerializedName("chart_url")
-  private String chartUrl = null;
+  @SerializedName("result")
+  private AnnotationRestApiGet result = null;
 
-  @SerializedName("image_url")
-  private String imageUrl = null;
-
-  public InlineResponse2006 cacheKey(String cacheKey) {
-    this.cacheKey = cacheKey;
+  public InlineResponse2006 id(String id) {
+    this.id = id;
     return this;
   }
 
    /**
-   * Get cacheKey
-   * @return cacheKey
+   * The item id
+   * @return id
   **/
-  @Schema(description = "")
-  public String getCacheKey() {
-    return cacheKey;
+  @Schema(description = "The item id")
+  public String getId() {
+    return id;
   }
 
-  public void setCacheKey(String cacheKey) {
-    this.cacheKey = cacheKey;
+  public void setId(String id) {
+    this.id = id;
   }
 
-  public InlineResponse2006 chartUrl(String chartUrl) {
-    this.chartUrl = chartUrl;
+  public InlineResponse2006 result(AnnotationRestApiGet result) {
+    this.result = result;
     return this;
   }
 
    /**
-   * Get chartUrl
-   * @return chartUrl
+   * Get result
+   * @return result
   **/
   @Schema(description = "")
-  public String getChartUrl() {
-    return chartUrl;
+  public AnnotationRestApiGet getResult() {
+    return result;
   }
 
-  public void setChartUrl(String chartUrl) {
-    this.chartUrl = chartUrl;
-  }
-
-  public InlineResponse2006 imageUrl(String imageUrl) {
-    this.imageUrl = imageUrl;
-    return this;
-  }
-
-   /**
-   * Get imageUrl
-   * @return imageUrl
-  **/
-  @Schema(description = "")
-  public String getImageUrl() {
-    return imageUrl;
-  }
-
-  public void setImageUrl(String imageUrl) {
-    this.imageUrl = imageUrl;
+  public void setResult(AnnotationRestApiGet result) {
+    this.result = result;
   }
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -100,14 +80,13 @@ public class InlineResponse2006 {
       return false;
     }
     InlineResponse2006 inlineResponse2006 = (InlineResponse2006) o;
-    return Objects.equals(this.cacheKey, inlineResponse2006.cacheKey) &&
-        Objects.equals(this.chartUrl, inlineResponse2006.chartUrl) &&
-        Objects.equals(this.imageUrl, inlineResponse2006.imageUrl);
+    return Objects.equals(this.id, inlineResponse2006.id) &&
+        Objects.equals(this.result, inlineResponse2006.result);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(cacheKey, chartUrl, imageUrl);
+    return Objects.hash(id, result);
   }
 
 
@@ -116,9 +95,8 @@ public class InlineResponse2006 {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse2006 {\n");
     
-    sb.append("    cacheKey: ").append(toIndentedString(cacheKey)).append("\n");
-    sb.append("    chartUrl: ").append(toIndentedString(chartUrl)).append("\n");
-    sb.append("    imageUrl: ").append(toIndentedString(imageUrl)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    result: ").append(toIndentedString(result)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -127,7 +105,7 @@ public class InlineResponse2006 {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

@@ -26,7 +26,7 @@ import java.io.IOException;
  * ChartDataAdhocMetricSchema
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-11-06T17:36:10.263+01:00[Europe/Vienna]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2022-08-29T14:48:42.974+02:00[Europe/Berlin]")
 public class ChartDataAdhocMetricSchema {
   /**
    * Aggregation operator. Only required for simple expression types.
@@ -53,9 +53,9 @@ public class ChartDataAdhocMetricSchema {
     public String toString() {
       return String.valueOf(value);
     }
-    public static AggregateEnum fromValue(String text) {
+    public static AggregateEnum fromValue(String input) {
       for (AggregateEnum b : AggregateEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
+        if (b.value.equals(input)) {
           return b;
         }
       }
@@ -64,13 +64,13 @@ public class ChartDataAdhocMetricSchema {
     public static class Adapter extends TypeAdapter<AggregateEnum> {
       @Override
       public void write(final JsonWriter jsonWriter, final AggregateEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
+        jsonWriter.value(String.valueOf(enumeration.getValue()));
       }
 
       @Override
       public AggregateEnum read(final JsonReader jsonReader) throws IOException {
-        String value = jsonReader.nextString();
-        return AggregateEnum.fromValue(String.valueOf(value));
+        Object value = jsonReader.nextString();
+        return AggregateEnum.fromValue((String)(value));
       }
     }
   }  @SerializedName("aggregate")
@@ -100,9 +100,9 @@ public class ChartDataAdhocMetricSchema {
     public String toString() {
       return String.valueOf(value);
     }
-    public static ExpressionTypeEnum fromValue(String text) {
+    public static ExpressionTypeEnum fromValue(String input) {
       for (ExpressionTypeEnum b : ExpressionTypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
+        if (b.value.equals(input)) {
           return b;
         }
       }
@@ -111,13 +111,13 @@ public class ChartDataAdhocMetricSchema {
     public static class Adapter extends TypeAdapter<ExpressionTypeEnum> {
       @Override
       public void write(final JsonWriter jsonWriter, final ExpressionTypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
+        jsonWriter.value(String.valueOf(enumeration.getValue()));
       }
 
       @Override
       public ExpressionTypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value = jsonReader.nextString();
-        return ExpressionTypeEnum.fromValue(String.valueOf(value));
+        Object value = jsonReader.nextString();
+        return ExpressionTypeEnum.fromValue((String)(value));
       }
     }
   }  @SerializedName("expressionType")
@@ -125,6 +125,9 @@ public class ChartDataAdhocMetricSchema {
 
   @SerializedName("hasCustomLabel")
   private Boolean hasCustomLabel = null;
+
+  @SerializedName("isExtra")
+  private Boolean isExtra = null;
 
   @SerializedName("label")
   private String label = null;
@@ -134,6 +137,9 @@ public class ChartDataAdhocMetricSchema {
 
   @SerializedName("sqlExpression")
   private String sqlExpression = null;
+
+  @SerializedName("timeGrain")
+  private String timeGrain = null;
 
   public ChartDataAdhocMetricSchema aggregate(AggregateEnum aggregate) {
     this.aggregate = aggregate;
@@ -207,6 +213,24 @@ public class ChartDataAdhocMetricSchema {
     this.hasCustomLabel = hasCustomLabel;
   }
 
+  public ChartDataAdhocMetricSchema isExtra(Boolean isExtra) {
+    this.isExtra = isExtra;
+    return this;
+  }
+
+   /**
+   * Indicates if the filter has been added by a filter component as opposed to being a part of the original query.
+   * @return isExtra
+  **/
+  @Schema(description = "Indicates if the filter has been added by a filter component as opposed to being a part of the original query.")
+  public Boolean isIsExtra() {
+    return isExtra;
+  }
+
+  public void setIsExtra(Boolean isExtra) {
+    this.isExtra = isExtra;
+  }
+
   public ChartDataAdhocMetricSchema label(String label) {
     this.label = label;
     return this;
@@ -261,9 +285,27 @@ public class ChartDataAdhocMetricSchema {
     this.sqlExpression = sqlExpression;
   }
 
+  public ChartDataAdhocMetricSchema timeGrain(String timeGrain) {
+    this.timeGrain = timeGrain;
+    return this;
+  }
+
+   /**
+   * Optional time grain for temporal filters
+   * @return timeGrain
+  **/
+  @Schema(example = "PT1M", description = "Optional time grain for temporal filters")
+  public String getTimeGrain() {
+    return timeGrain;
+  }
+
+  public void setTimeGrain(String timeGrain) {
+    this.timeGrain = timeGrain;
+  }
+
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -275,14 +317,16 @@ public class ChartDataAdhocMetricSchema {
         Objects.equals(this.column, chartDataAdhocMetricSchema.column) &&
         Objects.equals(this.expressionType, chartDataAdhocMetricSchema.expressionType) &&
         Objects.equals(this.hasCustomLabel, chartDataAdhocMetricSchema.hasCustomLabel) &&
+        Objects.equals(this.isExtra, chartDataAdhocMetricSchema.isExtra) &&
         Objects.equals(this.label, chartDataAdhocMetricSchema.label) &&
         Objects.equals(this.optionName, chartDataAdhocMetricSchema.optionName) &&
-        Objects.equals(this.sqlExpression, chartDataAdhocMetricSchema.sqlExpression);
+        Objects.equals(this.sqlExpression, chartDataAdhocMetricSchema.sqlExpression) &&
+        Objects.equals(this.timeGrain, chartDataAdhocMetricSchema.timeGrain);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(aggregate, column, expressionType, hasCustomLabel, label, optionName, sqlExpression);
+    return Objects.hash(aggregate, column, expressionType, hasCustomLabel, isExtra, label, optionName, sqlExpression, timeGrain);
   }
 
 
@@ -295,9 +339,11 @@ public class ChartDataAdhocMetricSchema {
     sb.append("    column: ").append(toIndentedString(column)).append("\n");
     sb.append("    expressionType: ").append(toIndentedString(expressionType)).append("\n");
     sb.append("    hasCustomLabel: ").append(toIndentedString(hasCustomLabel)).append("\n");
+    sb.append("    isExtra: ").append(toIndentedString(isExtra)).append("\n");
     sb.append("    label: ").append(toIndentedString(label)).append("\n");
     sb.append("    optionName: ").append(toIndentedString(optionName)).append("\n");
     sb.append("    sqlExpression: ").append(toIndentedString(sqlExpression)).append("\n");
+    sb.append("    timeGrain: ").append(toIndentedString(timeGrain)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -306,7 +352,7 @@ public class ChartDataAdhocMetricSchema {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

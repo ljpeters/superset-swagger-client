@@ -21,11 +21,12 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
+import java.util.UUID;
 /**
  * DatasetMetricsPut
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-11-06T17:36:10.263+01:00[Europe/Vienna]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2022-08-29T14:48:42.974+02:00[Europe/Berlin]")
 public class DatasetMetricsPut {
   @SerializedName("d3format")
   private String d3format = null;
@@ -36,6 +37,9 @@ public class DatasetMetricsPut {
   @SerializedName("expression")
   private String expression = null;
 
+  @SerializedName("extra")
+  private String extra = null;
+
   @SerializedName("id")
   private Integer id = null;
 
@@ -44,6 +48,12 @@ public class DatasetMetricsPut {
 
   @SerializedName("metric_type")
   private String metricType = null;
+
+  @SerializedName("uuid")
+  private UUID uuid = null;
+
+  @SerializedName("verbose_name")
+  private String verboseName = null;
 
   @SerializedName("warning_text")
   private String warningText = null;
@@ -102,6 +112,24 @@ public class DatasetMetricsPut {
     this.expression = expression;
   }
 
+  public DatasetMetricsPut extra(String extra) {
+    this.extra = extra;
+    return this;
+  }
+
+   /**
+   * Get extra
+   * @return extra
+  **/
+  @Schema(description = "")
+  public String getExtra() {
+    return extra;
+  }
+
+  public void setExtra(String extra) {
+    this.extra = extra;
+  }
+
   public DatasetMetricsPut id(Integer id) {
     this.id = id;
     return this;
@@ -156,6 +184,42 @@ public class DatasetMetricsPut {
     this.metricType = metricType;
   }
 
+  public DatasetMetricsPut uuid(UUID uuid) {
+    this.uuid = uuid;
+    return this;
+  }
+
+   /**
+   * Get uuid
+   * @return uuid
+  **/
+  @Schema(description = "")
+  public UUID getUuid() {
+    return uuid;
+  }
+
+  public void setUuid(UUID uuid) {
+    this.uuid = uuid;
+  }
+
+  public DatasetMetricsPut verboseName(String verboseName) {
+    this.verboseName = verboseName;
+    return this;
+  }
+
+   /**
+   * Get verboseName
+   * @return verboseName
+  **/
+  @Schema(description = "")
+  public String getVerboseName() {
+    return verboseName;
+  }
+
+  public void setVerboseName(String verboseName) {
+    this.verboseName = verboseName;
+  }
+
   public DatasetMetricsPut warningText(String warningText) {
     this.warningText = warningText;
     return this;
@@ -176,7 +240,7 @@ public class DatasetMetricsPut {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -187,15 +251,18 @@ public class DatasetMetricsPut {
     return Objects.equals(this.d3format, datasetMetricsPut.d3format) &&
         Objects.equals(this.description, datasetMetricsPut.description) &&
         Objects.equals(this.expression, datasetMetricsPut.expression) &&
+        Objects.equals(this.extra, datasetMetricsPut.extra) &&
         Objects.equals(this.id, datasetMetricsPut.id) &&
         Objects.equals(this.metricName, datasetMetricsPut.metricName) &&
         Objects.equals(this.metricType, datasetMetricsPut.metricType) &&
+        Objects.equals(this.uuid, datasetMetricsPut.uuid) &&
+        Objects.equals(this.verboseName, datasetMetricsPut.verboseName) &&
         Objects.equals(this.warningText, datasetMetricsPut.warningText);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(d3format, description, expression, id, metricName, metricType, warningText);
+    return Objects.hash(d3format, description, expression, extra, id, metricName, metricType, uuid, verboseName, warningText);
   }
 
 
@@ -207,9 +274,12 @@ public class DatasetMetricsPut {
     sb.append("    d3format: ").append(toIndentedString(d3format)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    expression: ").append(toIndentedString(expression)).append("\n");
+    sb.append("    extra: ").append(toIndentedString(extra)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    metricName: ").append(toIndentedString(metricName)).append("\n");
     sb.append("    metricType: ").append(toIndentedString(metricType)).append("\n");
+    sb.append("    uuid: ").append(toIndentedString(uuid)).append("\n");
+    sb.append("    verboseName: ").append(toIndentedString(verboseName)).append("\n");
     sb.append("    warningText: ").append(toIndentedString(warningText)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -219,7 +289,7 @@ public class DatasetMetricsPut {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

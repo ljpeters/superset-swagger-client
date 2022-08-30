@@ -26,23 +26,28 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import at.mic.superset.swagger.client.model.ChartCacheScreenshotResponseSchema;
+import at.mic.superset.swagger.client.model.ChartDataAsyncResponseSchema;
 import at.mic.superset.swagger.client.model.ChartDataQueryContextSchema;
 import at.mic.superset.swagger.client.model.ChartDataResponseSchema;
 import at.mic.superset.swagger.client.model.ChartRestApiPost;
 import at.mic.superset.swagger.client.model.ChartRestApiPut;
 import java.io.File;
+import at.mic.superset.swagger.client.model.GetDeleteIdsSchema;
+import at.mic.superset.swagger.client.model.GetExportIdsSchema;
+import at.mic.superset.swagger.client.model.GetFavStarIdsSchema;
 import at.mic.superset.swagger.client.model.GetInfoSchema;
 import at.mic.superset.swagger.client.model.GetItemSchema;
 import at.mic.superset.swagger.client.model.GetListSchema;
-import at.mic.superset.swagger.client.model.InlineResponse200;
-import at.mic.superset.swagger.client.model.InlineResponse2001;
+import at.mic.superset.swagger.client.model.GetRelatedSchema;
+import at.mic.superset.swagger.client.model.InlineResponse20010;
+import at.mic.superset.swagger.client.model.InlineResponse20011;
 import at.mic.superset.swagger.client.model.InlineResponse2002;
-import at.mic.superset.swagger.client.model.InlineResponse2003;
-import at.mic.superset.swagger.client.model.InlineResponse2004;
-import at.mic.superset.swagger.client.model.InlineResponse2005;
-import at.mic.superset.swagger.client.model.InlineResponse2006;
-import at.mic.superset.swagger.client.model.InlineResponse201;
+import at.mic.superset.swagger.client.model.InlineResponse2009;
+import at.mic.superset.swagger.client.model.InlineResponse2012;
 import at.mic.superset.swagger.client.model.InlineResponse400;
+import at.mic.superset.swagger.client.model.RelatedResponseSchema;
+import at.mic.superset.swagger.client.model.ScreenshotQuerySchema;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -70,18 +75,143 @@ public class ChartsApi {
     }
 
     /**
-     * Build call for chartDataPost
+     * Build call for apiV1ChartDataCacheKeyGet
+     * @param cacheKey  (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call apiV1ChartDataCacheKeyGetCall(String cacheKey, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/api/v1/chart/data/{cache_key}"
+            .replaceAll("\\{" + "cache_key" + "\\}", apiClient.escapeString(cacheKey.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "jwt" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call apiV1ChartDataCacheKeyGetValidateBeforeCall(String cacheKey, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'cacheKey' is set
+        if (cacheKey == null) {
+            throw new ApiException("Missing the required parameter 'cacheKey' when calling apiV1ChartDataCacheKeyGet(Async)");
+        }
+        
+        com.squareup.okhttp.Call call = apiV1ChartDataCacheKeyGetCall(cacheKey, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * 
+     * Takes a query context cache key and returns payload data response for the given query.
+     * @param cacheKey  (required)
+     * @return ChartDataResponseSchema
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ChartDataResponseSchema apiV1ChartDataCacheKeyGet(String cacheKey) throws ApiException {
+        ApiResponse<ChartDataResponseSchema> resp = apiV1ChartDataCacheKeyGetWithHttpInfo(cacheKey);
+        return resp.getData();
+    }
+
+    /**
+     * 
+     * Takes a query context cache key and returns payload data response for the given query.
+     * @param cacheKey  (required)
+     * @return ApiResponse&lt;ChartDataResponseSchema&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ChartDataResponseSchema> apiV1ChartDataCacheKeyGetWithHttpInfo(String cacheKey) throws ApiException {
+        com.squareup.okhttp.Call call = apiV1ChartDataCacheKeyGetValidateBeforeCall(cacheKey, null, null);
+        Type localVarReturnType = new TypeToken<ChartDataResponseSchema>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Takes a query context cache key and returns payload data response for the given query.
+     * @param cacheKey  (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call apiV1ChartDataCacheKeyGetAsync(String cacheKey, final ApiCallback<ChartDataResponseSchema> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = apiV1ChartDataCacheKeyGetValidateBeforeCall(cacheKey, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ChartDataResponseSchema>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for apiV1ChartDataPost
      * @param body A query context consists of a datasource from which to fetch data and one or many query objects. (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call chartDataPostCall(ChartDataQueryContextSchema body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call apiV1ChartDataPostCall(ChartDataQueryContextSchema body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = body;
         
         // create path and map variables
-        String localVarPath = "/chart/data";
+        String localVarPath = "/api/v1/chart/data";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -119,13 +249,13 @@ public class ChartsApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call chartDataPostValidateBeforeCall(ChartDataQueryContextSchema body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call apiV1ChartDataPostValidateBeforeCall(ChartDataQueryContextSchema body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'body' is set
         if (body == null) {
-            throw new ApiException("Missing the required parameter 'body' when calling chartDataPost(Async)");
+            throw new ApiException("Missing the required parameter 'body' when calling apiV1ChartDataPost(Async)");
         }
         
-        com.squareup.okhttp.Call call = chartDataPostCall(body, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = apiV1ChartDataPostCall(body, progressListener, progressRequestListener);
         return call;
 
         
@@ -141,8 +271,8 @@ public class ChartsApi {
      * @return ChartDataResponseSchema
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ChartDataResponseSchema chartDataPost(ChartDataQueryContextSchema body) throws ApiException {
-        ApiResponse<ChartDataResponseSchema> resp = chartDataPostWithHttpInfo(body);
+    public ChartDataResponseSchema apiV1ChartDataPost(ChartDataQueryContextSchema body) throws ApiException {
+        ApiResponse<ChartDataResponseSchema> resp = apiV1ChartDataPostWithHttpInfo(body);
         return resp.getData();
     }
 
@@ -153,8 +283,8 @@ public class ChartsApi {
      * @return ApiResponse&lt;ChartDataResponseSchema&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ChartDataResponseSchema> chartDataPostWithHttpInfo(ChartDataQueryContextSchema body) throws ApiException {
-        com.squareup.okhttp.Call call = chartDataPostValidateBeforeCall(body, null, null);
+    public ApiResponse<ChartDataResponseSchema> apiV1ChartDataPostWithHttpInfo(ChartDataQueryContextSchema body) throws ApiException {
+        com.squareup.okhttp.Call call = apiV1ChartDataPostValidateBeforeCall(body, null, null);
         Type localVarReturnType = new TypeToken<ChartDataResponseSchema>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -167,7 +297,7 @@ public class ChartsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call chartDataPostAsync(ChartDataQueryContextSchema body, final ApiCallback<ChartDataResponseSchema> callback) throws ApiException {
+    public com.squareup.okhttp.Call apiV1ChartDataPostAsync(ChartDataQueryContextSchema body, final ApiCallback<ChartDataResponseSchema> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -188,26 +318,273 @@ public class ChartsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = chartDataPostValidateBeforeCall(body, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = apiV1ChartDataPostValidateBeforeCall(body, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ChartDataResponseSchema>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
-     * Build call for chartDatasourcesGet
+     * Build call for apiV1ChartDelete
+     * @param q  (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call chartDatasourcesGetCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call apiV1ChartDeleteCall(GetDeleteIdsSchema q, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
-        String localVarPath = "/chart/datasources";
+        String localVarPath = "/api/v1/chart/";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (q != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("q", q));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "jwt" };
+        return apiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call apiV1ChartDeleteValidateBeforeCall(GetDeleteIdsSchema q, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        com.squareup.okhttp.Call call = apiV1ChartDeleteCall(q, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * 
+     * Deletes multiple Charts in a bulk operation.
+     * @param q  (optional)
+     * @return InlineResponse400
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public InlineResponse400 apiV1ChartDelete(GetDeleteIdsSchema q) throws ApiException {
+        ApiResponse<InlineResponse400> resp = apiV1ChartDeleteWithHttpInfo(q);
+        return resp.getData();
+    }
+
+    /**
+     * 
+     * Deletes multiple Charts in a bulk operation.
+     * @param q  (optional)
+     * @return ApiResponse&lt;InlineResponse400&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<InlineResponse400> apiV1ChartDeleteWithHttpInfo(GetDeleteIdsSchema q) throws ApiException {
+        com.squareup.okhttp.Call call = apiV1ChartDeleteValidateBeforeCall(q, null, null);
+        Type localVarReturnType = new TypeToken<InlineResponse400>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Deletes multiple Charts in a bulk operation.
+     * @param q  (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call apiV1ChartDeleteAsync(GetDeleteIdsSchema q, final ApiCallback<InlineResponse400> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = apiV1ChartDeleteValidateBeforeCall(q, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<InlineResponse400>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for apiV1ChartExportGet
+     * @param q  (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call apiV1ChartExportGetCall(GetExportIdsSchema q, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/api/v1/chart/export/";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (q != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("q", q));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/zip", "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "jwt" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call apiV1ChartExportGetValidateBeforeCall(GetExportIdsSchema q, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        com.squareup.okhttp.Call call = apiV1ChartExportGetCall(q, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * 
+     * Exports multiple charts and downloads them as YAML files
+     * @param q  (optional)
+     * @return File
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public File apiV1ChartExportGet(GetExportIdsSchema q) throws ApiException {
+        ApiResponse<File> resp = apiV1ChartExportGetWithHttpInfo(q);
+        return resp.getData();
+    }
+
+    /**
+     * 
+     * Exports multiple charts and downloads them as YAML files
+     * @param q  (optional)
+     * @return ApiResponse&lt;File&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<File> apiV1ChartExportGetWithHttpInfo(GetExportIdsSchema q) throws ApiException {
+        com.squareup.okhttp.Call call = apiV1ChartExportGetValidateBeforeCall(q, null, null);
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Exports multiple charts and downloads them as YAML files
+     * @param q  (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call apiV1ChartExportGetAsync(GetExportIdsSchema q, final ApiCallback<File> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = apiV1ChartExportGetValidateBeforeCall(q, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for apiV1ChartFavoriteStatusGet
+     * @param q  (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call apiV1ChartFavoriteStatusGetCall(GetFavStarIdsSchema q, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/api/v1/chart/favorite_status/";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (q != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("q", q));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -242,9 +619,9 @@ public class ChartsApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call chartDatasourcesGetValidateBeforeCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call apiV1ChartFavoriteStatusGetValidateBeforeCall(GetFavStarIdsSchema q, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
-        com.squareup.okhttp.Call call = chartDatasourcesGetCall(progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = apiV1ChartFavoriteStatusGetCall(q, progressListener, progressRequestListener);
         return call;
 
         
@@ -255,35 +632,428 @@ public class ChartsApi {
 
     /**
      * 
-     * Get available datasources.
+     * Check favorited dashboards for current user
+     * @param q  (optional)
+     * @return GetFavStarIdsSchema
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public GetFavStarIdsSchema apiV1ChartFavoriteStatusGet(GetFavStarIdsSchema q) throws ApiException {
+        ApiResponse<GetFavStarIdsSchema> resp = apiV1ChartFavoriteStatusGetWithHttpInfo(q);
+        return resp.getData();
+    }
+
+    /**
+     * 
+     * Check favorited dashboards for current user
+     * @param q  (optional)
+     * @return ApiResponse&lt;GetFavStarIdsSchema&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<GetFavStarIdsSchema> apiV1ChartFavoriteStatusGetWithHttpInfo(GetFavStarIdsSchema q) throws ApiException {
+        com.squareup.okhttp.Call call = apiV1ChartFavoriteStatusGetValidateBeforeCall(q, null, null);
+        Type localVarReturnType = new TypeToken<GetFavStarIdsSchema>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Check favorited dashboards for current user
+     * @param q  (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call apiV1ChartFavoriteStatusGetAsync(GetFavStarIdsSchema q, final ApiCallback<GetFavStarIdsSchema> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = apiV1ChartFavoriteStatusGetValidateBeforeCall(q, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<GetFavStarIdsSchema>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for apiV1ChartGet
+     * @param q  (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call apiV1ChartGetCall(GetListSchema q, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/api/v1/chart/";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (q != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("q", q));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "jwt" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call apiV1ChartGetValidateBeforeCall(GetListSchema q, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        com.squareup.okhttp.Call call = apiV1ChartGetCall(q, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * 
+     * Get a list of charts, use Rison or JSON query parameters for filtering, sorting, pagination and  for selecting specific columns and metadata.
+     * @param q  (optional)
+     * @return InlineResponse2009
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public InlineResponse2009 apiV1ChartGet(GetListSchema q) throws ApiException {
+        ApiResponse<InlineResponse2009> resp = apiV1ChartGetWithHttpInfo(q);
+        return resp.getData();
+    }
+
+    /**
+     * 
+     * Get a list of charts, use Rison or JSON query parameters for filtering, sorting, pagination and  for selecting specific columns and metadata.
+     * @param q  (optional)
+     * @return ApiResponse&lt;InlineResponse2009&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<InlineResponse2009> apiV1ChartGetWithHttpInfo(GetListSchema q) throws ApiException {
+        com.squareup.okhttp.Call call = apiV1ChartGetValidateBeforeCall(q, null, null);
+        Type localVarReturnType = new TypeToken<InlineResponse2009>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Get a list of charts, use Rison or JSON query parameters for filtering, sorting, pagination and  for selecting specific columns and metadata.
+     * @param q  (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call apiV1ChartGetAsync(GetListSchema q, final ApiCallback<InlineResponse2009> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = apiV1ChartGetValidateBeforeCall(q, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<InlineResponse2009>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for apiV1ChartImportPost
+     * @param formData  (required)
+     * @param overwrite  (required)
+     * @param passwords  (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call apiV1ChartImportPostCall(File formData, Boolean overwrite, String passwords, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/api/v1/chart/import/";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        if (formData != null)
+        localVarFormParams.put("formData", formData);
+        if (overwrite != null)
+        localVarFormParams.put("overwrite", overwrite);
+        if (passwords != null)
+        localVarFormParams.put("passwords", passwords);
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "multipart/form-data"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "jwt" };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call apiV1ChartImportPostValidateBeforeCall(File formData, Boolean overwrite, String passwords, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'formData' is set
+        if (formData == null) {
+            throw new ApiException("Missing the required parameter 'formData' when calling apiV1ChartImportPost(Async)");
+        }
+        // verify the required parameter 'overwrite' is set
+        if (overwrite == null) {
+            throw new ApiException("Missing the required parameter 'overwrite' when calling apiV1ChartImportPost(Async)");
+        }
+        // verify the required parameter 'passwords' is set
+        if (passwords == null) {
+            throw new ApiException("Missing the required parameter 'passwords' when calling apiV1ChartImportPost(Async)");
+        }
+        
+        com.squareup.okhttp.Call call = apiV1ChartImportPostCall(formData, overwrite, passwords, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * 
+     * 
+     * @param formData  (required)
+     * @param overwrite  (required)
+     * @param passwords  (required)
+     * @return InlineResponse400
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public InlineResponse400 apiV1ChartImportPost(File formData, Boolean overwrite, String passwords) throws ApiException {
+        ApiResponse<InlineResponse400> resp = apiV1ChartImportPostWithHttpInfo(formData, overwrite, passwords);
+        return resp.getData();
+    }
+
+    /**
+     * 
+     * 
+     * @param formData  (required)
+     * @param overwrite  (required)
+     * @param passwords  (required)
+     * @return ApiResponse&lt;InlineResponse400&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<InlineResponse400> apiV1ChartImportPostWithHttpInfo(File formData, Boolean overwrite, String passwords) throws ApiException {
+        com.squareup.okhttp.Call call = apiV1ChartImportPostValidateBeforeCall(formData, overwrite, passwords, null, null);
+        Type localVarReturnType = new TypeToken<InlineResponse400>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * 
+     * @param formData  (required)
+     * @param overwrite  (required)
+     * @param passwords  (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call apiV1ChartImportPostAsync(File formData, Boolean overwrite, String passwords, final ApiCallback<InlineResponse400> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = apiV1ChartImportPostValidateBeforeCall(formData, overwrite, passwords, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<InlineResponse400>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for apiV1ChartInfoGet
+     * @param q  (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call apiV1ChartInfoGetCall(GetInfoSchema q, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/api/v1/chart/_info";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (q != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("q", q));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "jwt" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call apiV1ChartInfoGetValidateBeforeCall(GetInfoSchema q, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        com.squareup.okhttp.Call call = apiV1ChartInfoGetCall(q, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * 
+     * Several metadata information about chart API endpoints.
+     * @param q  (optional)
      * @return InlineResponse2002
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse2002 chartDatasourcesGet() throws ApiException {
-        ApiResponse<InlineResponse2002> resp = chartDatasourcesGetWithHttpInfo();
+    public InlineResponse2002 apiV1ChartInfoGet(GetInfoSchema q) throws ApiException {
+        ApiResponse<InlineResponse2002> resp = apiV1ChartInfoGetWithHttpInfo(q);
         return resp.getData();
     }
 
     /**
      * 
-     * Get available datasources.
+     * Several metadata information about chart API endpoints.
+     * @param q  (optional)
      * @return ApiResponse&lt;InlineResponse2002&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse2002> chartDatasourcesGetWithHttpInfo() throws ApiException {
-        com.squareup.okhttp.Call call = chartDatasourcesGetValidateBeforeCall(null, null);
+    public ApiResponse<InlineResponse2002> apiV1ChartInfoGetWithHttpInfo(GetInfoSchema q) throws ApiException {
+        com.squareup.okhttp.Call call = apiV1ChartInfoGetValidateBeforeCall(q, null, null);
         Type localVarReturnType = new TypeToken<InlineResponse2002>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
     /**
      *  (asynchronously)
-     * Get available datasources.
+     * Several metadata information about chart API endpoints.
+     * @param q  (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call chartDatasourcesGetAsync(final ApiCallback<InlineResponse2002> callback) throws ApiException {
+    public com.squareup.okhttp.Call apiV1ChartInfoGetAsync(GetInfoSchema q, final ApiCallback<InlineResponse2002> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -304,638 +1074,13 @@ public class ChartsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = chartDatasourcesGetValidateBeforeCall(progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = apiV1ChartInfoGetValidateBeforeCall(q, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<InlineResponse2002>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
-     * Build call for chartDelete
-     * @param q  (optional)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public com.squareup.okhttp.Call chartDeleteCall(List<Integer> q, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        Object localVarPostBody = null;
-        
-        // create path and map variables
-        String localVarPath = "/chart/";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        if (q != null)
-        localVarCollectionQueryParams.addAll(apiClient.parameterToPairs("multi", "q", q));
-
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
-
-        final String[] localVarContentTypes = {
-            
-        };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
-
-        if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                    .build();
-                }
-            });
-        }
-
-        String[] localVarAuthNames = new String[] { "jwt" };
-        return apiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
-    }
-    
-    @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call chartDeleteValidateBeforeCall(List<Integer> q, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
-        com.squareup.okhttp.Call call = chartDeleteCall(q, progressListener, progressRequestListener);
-        return call;
-
-        
-        
-        
-        
-    }
-
-    /**
-     * 
-     * Deletes multiple Charts in a bulk operation.
-     * @param q  (optional)
-     * @return InlineResponse400
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public InlineResponse400 chartDelete(List<Integer> q) throws ApiException {
-        ApiResponse<InlineResponse400> resp = chartDeleteWithHttpInfo(q);
-        return resp.getData();
-    }
-
-    /**
-     * 
-     * Deletes multiple Charts in a bulk operation.
-     * @param q  (optional)
-     * @return ApiResponse&lt;InlineResponse400&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<InlineResponse400> chartDeleteWithHttpInfo(List<Integer> q) throws ApiException {
-        com.squareup.okhttp.Call call = chartDeleteValidateBeforeCall(q, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse400>(){}.getType();
-        return apiClient.execute(call, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * Deletes multiple Charts in a bulk operation.
-     * @param q  (optional)
-     * @param callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public com.squareup.okhttp.Call chartDeleteAsync(List<Integer> q, final ApiCallback<InlineResponse400> callback) throws ApiException {
-
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
-        com.squareup.okhttp.Call call = chartDeleteValidateBeforeCall(q, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse400>(){}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
-    }
-    /**
-     * Build call for chartGet
-     * @param q  (optional)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public com.squareup.okhttp.Call chartGetCall(GetListSchema q, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        Object localVarPostBody = null;
-        
-        // create path and map variables
-        String localVarPath = "/chart/";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        if (q != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("q", q));
-
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
-
-        final String[] localVarContentTypes = {
-            
-        };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
-
-        if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                    .build();
-                }
-            });
-        }
-
-        String[] localVarAuthNames = new String[] { "jwt" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
-    }
-    
-    @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call chartGetValidateBeforeCall(GetListSchema q, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
-        com.squareup.okhttp.Call call = chartGetCall(q, progressListener, progressRequestListener);
-        return call;
-
-        
-        
-        
-        
-    }
-
-    /**
-     * 
-     * Get a list of charts, use Rison or JSON query parameters for filtering, sorting, pagination and  for selecting specific columns and metadata.
-     * @param q  (optional)
-     * @return InlineResponse200
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public InlineResponse200 chartGet(GetListSchema q) throws ApiException {
-        ApiResponse<InlineResponse200> resp = chartGetWithHttpInfo(q);
-        return resp.getData();
-    }
-
-    /**
-     * 
-     * Get a list of charts, use Rison or JSON query parameters for filtering, sorting, pagination and  for selecting specific columns and metadata.
-     * @param q  (optional)
-     * @return ApiResponse&lt;InlineResponse200&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<InlineResponse200> chartGetWithHttpInfo(GetListSchema q) throws ApiException {
-        com.squareup.okhttp.Call call = chartGetValidateBeforeCall(q, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse200>(){}.getType();
-        return apiClient.execute(call, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * Get a list of charts, use Rison or JSON query parameters for filtering, sorting, pagination and  for selecting specific columns and metadata.
-     * @param q  (optional)
-     * @param callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public com.squareup.okhttp.Call chartGetAsync(GetListSchema q, final ApiCallback<InlineResponse200> callback) throws ApiException {
-
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
-        com.squareup.okhttp.Call call = chartGetValidateBeforeCall(q, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse200>(){}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
-    }
-    /**
-     * Build call for chartInfoGet
-     * @param q  (optional)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public com.squareup.okhttp.Call chartInfoGetCall(GetInfoSchema q, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        Object localVarPostBody = null;
-        
-        // create path and map variables
-        String localVarPath = "/chart/_info";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        if (q != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("q", q));
-
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
-
-        final String[] localVarContentTypes = {
-            
-        };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
-
-        if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                    .build();
-                }
-            });
-        }
-
-        String[] localVarAuthNames = new String[] { "jwt" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
-    }
-    
-    @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call chartInfoGetValidateBeforeCall(GetInfoSchema q, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
-        com.squareup.okhttp.Call call = chartInfoGetCall(q, progressListener, progressRequestListener);
-        return call;
-
-        
-        
-        
-        
-    }
-
-    /**
-     * 
-     * Several metadata information about chart API endpoints.
-     * @param q  (optional)
-     * @return InlineResponse2001
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public InlineResponse2001 chartInfoGet(GetInfoSchema q) throws ApiException {
-        ApiResponse<InlineResponse2001> resp = chartInfoGetWithHttpInfo(q);
-        return resp.getData();
-    }
-
-    /**
-     * 
-     * Several metadata information about chart API endpoints.
-     * @param q  (optional)
-     * @return ApiResponse&lt;InlineResponse2001&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<InlineResponse2001> chartInfoGetWithHttpInfo(GetInfoSchema q) throws ApiException {
-        com.squareup.okhttp.Call call = chartInfoGetValidateBeforeCall(q, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse2001>(){}.getType();
-        return apiClient.execute(call, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * Several metadata information about chart API endpoints.
-     * @param q  (optional)
-     * @param callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public com.squareup.okhttp.Call chartInfoGetAsync(GetInfoSchema q, final ApiCallback<InlineResponse2001> callback) throws ApiException {
-
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
-        com.squareup.okhttp.Call call = chartInfoGetValidateBeforeCall(q, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse2001>(){}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
-    }
-    /**
-     * Build call for chartPkCacheScreenshotGet
-     * @param pk  (required)
-     * @param sha  (required)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public com.squareup.okhttp.Call chartPkCacheScreenshotGetCall(Integer pk, String sha, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        Object localVarPostBody = null;
-        
-        // create path and map variables
-        String localVarPath = "/chart/{pk}/cache_screenshot/"
-            .replaceAll("\\{" + "pk" + "\\}", apiClient.escapeString(pk.toString()))
-            .replaceAll("\\{" + "sha" + "\\}", apiClient.escapeString(sha.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
-
-        final String[] localVarContentTypes = {
-            
-        };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
-
-        if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                    .build();
-                }
-            });
-        }
-
-        String[] localVarAuthNames = new String[] { "jwt" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
-    }
-    
-    @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call chartPkCacheScreenshotGetValidateBeforeCall(Integer pk, String sha, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        // verify the required parameter 'pk' is set
-        if (pk == null) {
-            throw new ApiException("Missing the required parameter 'pk' when calling chartPkCacheScreenshotGet(Async)");
-        }
-        // verify the required parameter 'sha' is set
-        if (sha == null) {
-            throw new ApiException("Missing the required parameter 'sha' when calling chartPkCacheScreenshotGet(Async)");
-        }
-        
-        com.squareup.okhttp.Call call = chartPkCacheScreenshotGetCall(pk, sha, progressListener, progressRequestListener);
-        return call;
-
-        
-        
-        
-        
-    }
-
-    /**
-     * 
-     * Compute or get already computed screenshot from cache.
-     * @param pk  (required)
-     * @param sha  (required)
-     * @return InlineResponse2006
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public InlineResponse2006 chartPkCacheScreenshotGet(Integer pk, String sha) throws ApiException {
-        ApiResponse<InlineResponse2006> resp = chartPkCacheScreenshotGetWithHttpInfo(pk, sha);
-        return resp.getData();
-    }
-
-    /**
-     * 
-     * Compute or get already computed screenshot from cache.
-     * @param pk  (required)
-     * @param sha  (required)
-     * @return ApiResponse&lt;InlineResponse2006&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<InlineResponse2006> chartPkCacheScreenshotGetWithHttpInfo(Integer pk, String sha) throws ApiException {
-        com.squareup.okhttp.Call call = chartPkCacheScreenshotGetValidateBeforeCall(pk, sha, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse2006>(){}.getType();
-        return apiClient.execute(call, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * Compute or get already computed screenshot from cache.
-     * @param pk  (required)
-     * @param sha  (required)
-     * @param callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public com.squareup.okhttp.Call chartPkCacheScreenshotGetAsync(Integer pk, String sha, final ApiCallback<InlineResponse2006> callback) throws ApiException {
-
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
-        com.squareup.okhttp.Call call = chartPkCacheScreenshotGetValidateBeforeCall(pk, sha, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse2006>(){}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
-    }
-    /**
-     * Build call for chartPkDelete
-     * @param pk  (required)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public com.squareup.okhttp.Call chartPkDeleteCall(Integer pk, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        Object localVarPostBody = null;
-        
-        // create path and map variables
-        String localVarPath = "/chart/{pk}"
-            .replaceAll("\\{" + "pk" + "\\}", apiClient.escapeString(pk.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
-
-        final String[] localVarContentTypes = {
-            
-        };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
-
-        if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                    .build();
-                }
-            });
-        }
-
-        String[] localVarAuthNames = new String[] { "jwt" };
-        return apiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
-    }
-    
-    @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call chartPkDeleteValidateBeforeCall(Integer pk, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        // verify the required parameter 'pk' is set
-        if (pk == null) {
-            throw new ApiException("Missing the required parameter 'pk' when calling chartPkDelete(Async)");
-        }
-        
-        com.squareup.okhttp.Call call = chartPkDeleteCall(pk, progressListener, progressRequestListener);
-        return call;
-
-        
-        
-        
-        
-    }
-
-    /**
-     * 
-     * Deletes a Chart.
-     * @param pk  (required)
-     * @return InlineResponse400
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public InlineResponse400 chartPkDelete(Integer pk) throws ApiException {
-        ApiResponse<InlineResponse400> resp = chartPkDeleteWithHttpInfo(pk);
-        return resp.getData();
-    }
-
-    /**
-     * 
-     * Deletes a Chart.
-     * @param pk  (required)
-     * @return ApiResponse&lt;InlineResponse400&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<InlineResponse400> chartPkDeleteWithHttpInfo(Integer pk) throws ApiException {
-        com.squareup.okhttp.Call call = chartPkDeleteValidateBeforeCall(pk, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse400>(){}.getType();
-        return apiClient.execute(call, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * Deletes a Chart.
-     * @param pk  (required)
-     * @param callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public com.squareup.okhttp.Call chartPkDeleteAsync(Integer pk, final ApiCallback<InlineResponse400> callback) throws ApiException {
-
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
-        com.squareup.okhttp.Call call = chartPkDeleteValidateBeforeCall(pk, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse400>(){}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
-    }
-    /**
-     * Build call for chartPkGet
+     * Build call for apiV1ChartPkCacheScreenshotGet
      * @param pk  (required)
      * @param q  (optional)
      * @param progressListener Progress listener
@@ -943,11 +1088,11 @@ public class ChartsApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call chartPkGetCall(Integer pk, GetItemSchema q, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call apiV1ChartPkCacheScreenshotGetCall(Integer pk, ScreenshotQuerySchema q, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
-        String localVarPath = "/chart/{pk}"
+        String localVarPath = "/api/v1/chart/{pk}/cache_screenshot/"
             .replaceAll("\\{" + "pk" + "\\}", apiClient.escapeString(pk.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -988,13 +1133,13 @@ public class ChartsApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call chartPkGetValidateBeforeCall(Integer pk, GetItemSchema q, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call apiV1ChartPkCacheScreenshotGetValidateBeforeCall(Integer pk, ScreenshotQuerySchema q, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'pk' is set
         if (pk == null) {
-            throw new ApiException("Missing the required parameter 'pk' when calling chartPkGet(Async)");
+            throw new ApiException("Missing the required parameter 'pk' when calling apiV1ChartPkCacheScreenshotGet(Async)");
         }
         
-        com.squareup.okhttp.Call call = chartPkGetCall(pk, q, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = apiV1ChartPkCacheScreenshotGetCall(pk, q, progressListener, progressRequestListener);
         return call;
 
         
@@ -1005,41 +1150,41 @@ public class ChartsApi {
 
     /**
      * 
-     * Get a chart detail information.
+     * Compute and cache a screenshot.
      * @param pk  (required)
      * @param q  (optional)
-     * @return InlineResponse2004
+     * @return ChartCacheScreenshotResponseSchema
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse2004 chartPkGet(Integer pk, GetItemSchema q) throws ApiException {
-        ApiResponse<InlineResponse2004> resp = chartPkGetWithHttpInfo(pk, q);
+    public ChartCacheScreenshotResponseSchema apiV1ChartPkCacheScreenshotGet(Integer pk, ScreenshotQuerySchema q) throws ApiException {
+        ApiResponse<ChartCacheScreenshotResponseSchema> resp = apiV1ChartPkCacheScreenshotGetWithHttpInfo(pk, q);
         return resp.getData();
     }
 
     /**
      * 
-     * Get a chart detail information.
+     * Compute and cache a screenshot.
      * @param pk  (required)
      * @param q  (optional)
-     * @return ApiResponse&lt;InlineResponse2004&gt;
+     * @return ApiResponse&lt;ChartCacheScreenshotResponseSchema&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse2004> chartPkGetWithHttpInfo(Integer pk, GetItemSchema q) throws ApiException {
-        com.squareup.okhttp.Call call = chartPkGetValidateBeforeCall(pk, q, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse2004>(){}.getType();
+    public ApiResponse<ChartCacheScreenshotResponseSchema> apiV1ChartPkCacheScreenshotGetWithHttpInfo(Integer pk, ScreenshotQuerySchema q) throws ApiException {
+        com.squareup.okhttp.Call call = apiV1ChartPkCacheScreenshotGetValidateBeforeCall(pk, q, null, null);
+        Type localVarReturnType = new TypeToken<ChartCacheScreenshotResponseSchema>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
     /**
      *  (asynchronously)
-     * Get a chart detail information.
+     * Compute and cache a screenshot.
      * @param pk  (required)
      * @param q  (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call chartPkGetAsync(Integer pk, GetItemSchema q, final ApiCallback<InlineResponse2004> callback) throws ApiException {
+    public com.squareup.okhttp.Call apiV1ChartPkCacheScreenshotGetAsync(Integer pk, ScreenshotQuerySchema q, final ApiCallback<ChartCacheScreenshotResponseSchema> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1060,13 +1205,406 @@ public class ChartsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = chartPkGetValidateBeforeCall(pk, q, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse2004>(){}.getType();
+        com.squareup.okhttp.Call call = apiV1ChartPkCacheScreenshotGetValidateBeforeCall(pk, q, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ChartCacheScreenshotResponseSchema>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
-     * Build call for chartPkPut
+     * Build call for apiV1ChartPkDataGet
+     * @param pk The chart ID (required)
+     * @param format The format in which the data should be returned (optional)
+     * @param type The type in which the data should be returned (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call apiV1ChartPkDataGetCall(Integer pk, String format, String type, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/api/v1/chart/{pk}/data/"
+            .replaceAll("\\{" + "pk" + "\\}", apiClient.escapeString(pk.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (format != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("format", format));
+        if (type != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("type", type));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "jwt" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call apiV1ChartPkDataGetValidateBeforeCall(Integer pk, String format, String type, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'pk' is set
+        if (pk == null) {
+            throw new ApiException("Missing the required parameter 'pk' when calling apiV1ChartPkDataGet(Async)");
+        }
+        
+        com.squareup.okhttp.Call call = apiV1ChartPkDataGetCall(pk, format, type, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * 
+     * Takes a chart ID and uses the query context stored when the chart was saved to return payload data response.
+     * @param pk The chart ID (required)
+     * @param format The format in which the data should be returned (optional)
+     * @param type The type in which the data should be returned (optional)
+     * @return ChartDataResponseSchema
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ChartDataResponseSchema apiV1ChartPkDataGet(Integer pk, String format, String type) throws ApiException {
+        ApiResponse<ChartDataResponseSchema> resp = apiV1ChartPkDataGetWithHttpInfo(pk, format, type);
+        return resp.getData();
+    }
+
+    /**
+     * 
+     * Takes a chart ID and uses the query context stored when the chart was saved to return payload data response.
+     * @param pk The chart ID (required)
+     * @param format The format in which the data should be returned (optional)
+     * @param type The type in which the data should be returned (optional)
+     * @return ApiResponse&lt;ChartDataResponseSchema&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ChartDataResponseSchema> apiV1ChartPkDataGetWithHttpInfo(Integer pk, String format, String type) throws ApiException {
+        com.squareup.okhttp.Call call = apiV1ChartPkDataGetValidateBeforeCall(pk, format, type, null, null);
+        Type localVarReturnType = new TypeToken<ChartDataResponseSchema>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Takes a chart ID and uses the query context stored when the chart was saved to return payload data response.
+     * @param pk The chart ID (required)
+     * @param format The format in which the data should be returned (optional)
+     * @param type The type in which the data should be returned (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call apiV1ChartPkDataGetAsync(Integer pk, String format, String type, final ApiCallback<ChartDataResponseSchema> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = apiV1ChartPkDataGetValidateBeforeCall(pk, format, type, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ChartDataResponseSchema>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for apiV1ChartPkDelete
+     * @param pk  (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call apiV1ChartPkDeleteCall(Integer pk, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/api/v1/chart/{pk}"
+            .replaceAll("\\{" + "pk" + "\\}", apiClient.escapeString(pk.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "jwt" };
+        return apiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call apiV1ChartPkDeleteValidateBeforeCall(Integer pk, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'pk' is set
+        if (pk == null) {
+            throw new ApiException("Missing the required parameter 'pk' when calling apiV1ChartPkDelete(Async)");
+        }
+        
+        com.squareup.okhttp.Call call = apiV1ChartPkDeleteCall(pk, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * 
+     * Deletes a Chart.
+     * @param pk  (required)
+     * @return InlineResponse400
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public InlineResponse400 apiV1ChartPkDelete(Integer pk) throws ApiException {
+        ApiResponse<InlineResponse400> resp = apiV1ChartPkDeleteWithHttpInfo(pk);
+        return resp.getData();
+    }
+
+    /**
+     * 
+     * Deletes a Chart.
+     * @param pk  (required)
+     * @return ApiResponse&lt;InlineResponse400&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<InlineResponse400> apiV1ChartPkDeleteWithHttpInfo(Integer pk) throws ApiException {
+        com.squareup.okhttp.Call call = apiV1ChartPkDeleteValidateBeforeCall(pk, null, null);
+        Type localVarReturnType = new TypeToken<InlineResponse400>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Deletes a Chart.
+     * @param pk  (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call apiV1ChartPkDeleteAsync(Integer pk, final ApiCallback<InlineResponse400> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = apiV1ChartPkDeleteValidateBeforeCall(pk, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<InlineResponse400>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for apiV1ChartPkGet
+     * @param pk  (required)
+     * @param q  (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call apiV1ChartPkGetCall(Integer pk, GetItemSchema q, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/api/v1/chart/{pk}"
+            .replaceAll("\\{" + "pk" + "\\}", apiClient.escapeString(pk.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (q != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("q", q));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "jwt" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call apiV1ChartPkGetValidateBeforeCall(Integer pk, GetItemSchema q, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'pk' is set
+        if (pk == null) {
+            throw new ApiException("Missing the required parameter 'pk' when calling apiV1ChartPkGet(Async)");
+        }
+        
+        com.squareup.okhttp.Call call = apiV1ChartPkGetCall(pk, q, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * 
+     * Get a chart detail information.
+     * @param pk  (required)
+     * @param q  (optional)
+     * @return InlineResponse20010
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public InlineResponse20010 apiV1ChartPkGet(Integer pk, GetItemSchema q) throws ApiException {
+        ApiResponse<InlineResponse20010> resp = apiV1ChartPkGetWithHttpInfo(pk, q);
+        return resp.getData();
+    }
+
+    /**
+     * 
+     * Get a chart detail information.
+     * @param pk  (required)
+     * @param q  (optional)
+     * @return ApiResponse&lt;InlineResponse20010&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<InlineResponse20010> apiV1ChartPkGetWithHttpInfo(Integer pk, GetItemSchema q) throws ApiException {
+        com.squareup.okhttp.Call call = apiV1ChartPkGetValidateBeforeCall(pk, q, null, null);
+        Type localVarReturnType = new TypeToken<InlineResponse20010>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Get a chart detail information.
+     * @param pk  (required)
+     * @param q  (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call apiV1ChartPkGetAsync(Integer pk, GetItemSchema q, final ApiCallback<InlineResponse20010> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = apiV1ChartPkGetValidateBeforeCall(pk, q, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<InlineResponse20010>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for apiV1ChartPkPut
      * @param body Chart schema (required)
      * @param pk  (required)
      * @param progressListener Progress listener
@@ -1074,11 +1612,11 @@ public class ChartsApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call chartPkPutCall(ChartRestApiPut body, Integer pk, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call apiV1ChartPkPutCall(ChartRestApiPut body, Integer pk, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = body;
         
         // create path and map variables
-        String localVarPath = "/chart/{pk}"
+        String localVarPath = "/api/v1/chart/{pk}"
             .replaceAll("\\{" + "pk" + "\\}", apiClient.escapeString(pk.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -1117,17 +1655,17 @@ public class ChartsApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call chartPkPutValidateBeforeCall(ChartRestApiPut body, Integer pk, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call apiV1ChartPkPutValidateBeforeCall(ChartRestApiPut body, Integer pk, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'body' is set
         if (body == null) {
-            throw new ApiException("Missing the required parameter 'body' when calling chartPkPut(Async)");
+            throw new ApiException("Missing the required parameter 'body' when calling apiV1ChartPkPut(Async)");
         }
         // verify the required parameter 'pk' is set
         if (pk == null) {
-            throw new ApiException("Missing the required parameter 'pk' when calling chartPkPut(Async)");
+            throw new ApiException("Missing the required parameter 'pk' when calling apiV1ChartPkPut(Async)");
         }
         
-        com.squareup.okhttp.Call call = chartPkPutCall(body, pk, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = apiV1ChartPkPutCall(body, pk, progressListener, progressRequestListener);
         return call;
 
         
@@ -1141,11 +1679,11 @@ public class ChartsApi {
      * Changes a Chart.
      * @param body Chart schema (required)
      * @param pk  (required)
-     * @return InlineResponse2005
+     * @return InlineResponse20011
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse2005 chartPkPut(ChartRestApiPut body, Integer pk) throws ApiException {
-        ApiResponse<InlineResponse2005> resp = chartPkPutWithHttpInfo(body, pk);
+    public InlineResponse20011 apiV1ChartPkPut(ChartRestApiPut body, Integer pk) throws ApiException {
+        ApiResponse<InlineResponse20011> resp = apiV1ChartPkPutWithHttpInfo(body, pk);
         return resp.getData();
     }
 
@@ -1154,12 +1692,12 @@ public class ChartsApi {
      * Changes a Chart.
      * @param body Chart schema (required)
      * @param pk  (required)
-     * @return ApiResponse&lt;InlineResponse2005&gt;
+     * @return ApiResponse&lt;InlineResponse20011&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse2005> chartPkPutWithHttpInfo(ChartRestApiPut body, Integer pk) throws ApiException {
-        com.squareup.okhttp.Call call = chartPkPutValidateBeforeCall(body, pk, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse2005>(){}.getType();
+    public ApiResponse<InlineResponse20011> apiV1ChartPkPutWithHttpInfo(ChartRestApiPut body, Integer pk) throws ApiException {
+        com.squareup.okhttp.Call call = apiV1ChartPkPutValidateBeforeCall(body, pk, null, null);
+        Type localVarReturnType = new TypeToken<InlineResponse20011>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -1172,7 +1710,7 @@ public class ChartsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call chartPkPutAsync(ChartRestApiPut body, Integer pk, final ApiCallback<InlineResponse2005> callback) throws ApiException {
+    public com.squareup.okhttp.Call apiV1ChartPkPutAsync(ChartRestApiPut body, Integer pk, final ApiCallback<InlineResponse20011> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1193,13 +1731,13 @@ public class ChartsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = chartPkPutValidateBeforeCall(body, pk, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse2005>(){}.getType();
+        com.squareup.okhttp.Call call = apiV1ChartPkPutValidateBeforeCall(body, pk, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<InlineResponse20011>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
-     * Build call for chartPkScreenshotDigestGet
+     * Build call for apiV1ChartPkScreenshotDigestGet
      * @param pk  (required)
      * @param digest  (required)
      * @param progressListener Progress listener
@@ -1207,11 +1745,11 @@ public class ChartsApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call chartPkScreenshotDigestGetCall(Integer pk, String digest, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call apiV1ChartPkScreenshotDigestGetCall(Integer pk, String digest, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
-        String localVarPath = "/chart/{pk}/screenshot/{digest}/"
+        String localVarPath = "/api/v1/chart/{pk}/screenshot/{digest}/"
             .replaceAll("\\{" + "pk" + "\\}", apiClient.escapeString(pk.toString()))
             .replaceAll("\\{" + "digest" + "\\}", apiClient.escapeString(digest.toString()));
 
@@ -1251,17 +1789,17 @@ public class ChartsApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call chartPkScreenshotDigestGetValidateBeforeCall(Integer pk, String digest, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call apiV1ChartPkScreenshotDigestGetValidateBeforeCall(Integer pk, String digest, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'pk' is set
         if (pk == null) {
-            throw new ApiException("Missing the required parameter 'pk' when calling chartPkScreenshotDigestGet(Async)");
+            throw new ApiException("Missing the required parameter 'pk' when calling apiV1ChartPkScreenshotDigestGet(Async)");
         }
         // verify the required parameter 'digest' is set
         if (digest == null) {
-            throw new ApiException("Missing the required parameter 'digest' when calling chartPkScreenshotDigestGet(Async)");
+            throw new ApiException("Missing the required parameter 'digest' when calling apiV1ChartPkScreenshotDigestGet(Async)");
         }
         
-        com.squareup.okhttp.Call call = chartPkScreenshotDigestGetCall(pk, digest, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = apiV1ChartPkScreenshotDigestGetCall(pk, digest, progressListener, progressRequestListener);
         return call;
 
         
@@ -1278,8 +1816,8 @@ public class ChartsApi {
      * @return File
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public File chartPkScreenshotDigestGet(Integer pk, String digest) throws ApiException {
-        ApiResponse<File> resp = chartPkScreenshotDigestGetWithHttpInfo(pk, digest);
+    public File apiV1ChartPkScreenshotDigestGet(Integer pk, String digest) throws ApiException {
+        ApiResponse<File> resp = apiV1ChartPkScreenshotDigestGetWithHttpInfo(pk, digest);
         return resp.getData();
     }
 
@@ -1291,8 +1829,8 @@ public class ChartsApi {
      * @return ApiResponse&lt;File&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<File> chartPkScreenshotDigestGetWithHttpInfo(Integer pk, String digest) throws ApiException {
-        com.squareup.okhttp.Call call = chartPkScreenshotDigestGetValidateBeforeCall(pk, digest, null, null);
+    public ApiResponse<File> apiV1ChartPkScreenshotDigestGetWithHttpInfo(Integer pk, String digest) throws ApiException {
+        com.squareup.okhttp.Call call = apiV1ChartPkScreenshotDigestGetValidateBeforeCall(pk, digest, null, null);
         Type localVarReturnType = new TypeToken<File>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -1306,7 +1844,7 @@ public class ChartsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call chartPkScreenshotDigestGetAsync(Integer pk, String digest, final ApiCallback<File> callback) throws ApiException {
+    public com.squareup.okhttp.Call apiV1ChartPkScreenshotDigestGetAsync(Integer pk, String digest, final ApiCallback<File> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1327,13 +1865,13 @@ public class ChartsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = chartPkScreenshotDigestGetValidateBeforeCall(pk, digest, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = apiV1ChartPkScreenshotDigestGetValidateBeforeCall(pk, digest, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<File>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
-     * Build call for chartPkThumbnailDigestGet
+     * Build call for apiV1ChartPkThumbnailDigestGet
      * @param pk  (required)
      * @param digest  (required)
      * @param progressListener Progress listener
@@ -1341,11 +1879,11 @@ public class ChartsApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call chartPkThumbnailDigestGetCall(Integer pk, String digest, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call apiV1ChartPkThumbnailDigestGetCall(Integer pk, String digest, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
-        String localVarPath = "/chart/{pk}/thumbnail/{digest}/"
+        String localVarPath = "/api/v1/chart/{pk}/thumbnail/{digest}/"
             .replaceAll("\\{" + "pk" + "\\}", apiClient.escapeString(pk.toString()))
             .replaceAll("\\{" + "digest" + "\\}", apiClient.escapeString(digest.toString()));
 
@@ -1357,7 +1895,7 @@ public class ChartsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "image/_*", "application/json"
         };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
@@ -1385,17 +1923,17 @@ public class ChartsApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call chartPkThumbnailDigestGetValidateBeforeCall(Integer pk, String digest, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call apiV1ChartPkThumbnailDigestGetValidateBeforeCall(Integer pk, String digest, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'pk' is set
         if (pk == null) {
-            throw new ApiException("Missing the required parameter 'pk' when calling chartPkThumbnailDigestGet(Async)");
+            throw new ApiException("Missing the required parameter 'pk' when calling apiV1ChartPkThumbnailDigestGet(Async)");
         }
         // verify the required parameter 'digest' is set
         if (digest == null) {
-            throw new ApiException("Missing the required parameter 'digest' when calling chartPkThumbnailDigestGet(Async)");
+            throw new ApiException("Missing the required parameter 'digest' when calling apiV1ChartPkThumbnailDigestGet(Async)");
         }
         
-        com.squareup.okhttp.Call call = chartPkThumbnailDigestGetCall(pk, digest, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = apiV1ChartPkThumbnailDigestGetCall(pk, digest, progressListener, progressRequestListener);
         return call;
 
         
@@ -1409,10 +1947,12 @@ public class ChartsApi {
      * Compute or get already computed chart thumbnail from cache.
      * @param pk  (required)
      * @param digest  (required)
+     * @return File
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void chartPkThumbnailDigestGet(Integer pk, String digest) throws ApiException {
-        chartPkThumbnailDigestGetWithHttpInfo(pk, digest);
+    public File apiV1ChartPkThumbnailDigestGet(Integer pk, String digest) throws ApiException {
+        ApiResponse<File> resp = apiV1ChartPkThumbnailDigestGetWithHttpInfo(pk, digest);
+        return resp.getData();
     }
 
     /**
@@ -1420,12 +1960,13 @@ public class ChartsApi {
      * Compute or get already computed chart thumbnail from cache.
      * @param pk  (required)
      * @param digest  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;File&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> chartPkThumbnailDigestGetWithHttpInfo(Integer pk, String digest) throws ApiException {
-        com.squareup.okhttp.Call call = chartPkThumbnailDigestGetValidateBeforeCall(pk, digest, null, null);
-        return apiClient.execute(call);
+    public ApiResponse<File> apiV1ChartPkThumbnailDigestGetWithHttpInfo(Integer pk, String digest) throws ApiException {
+        com.squareup.okhttp.Call call = apiV1ChartPkThumbnailDigestGetValidateBeforeCall(pk, digest, null, null);
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1437,7 +1978,7 @@ public class ChartsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call chartPkThumbnailDigestGetAsync(Integer pk, String digest, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call apiV1ChartPkThumbnailDigestGetAsync(Integer pk, String digest, final ApiCallback<File> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1458,23 +1999,24 @@ public class ChartsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = chartPkThumbnailDigestGetValidateBeforeCall(pk, digest, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        com.squareup.okhttp.Call call = apiV1ChartPkThumbnailDigestGetValidateBeforeCall(pk, digest, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
-     * Build call for chartPost
+     * Build call for apiV1ChartPost
      * @param body Chart schema (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call chartPostCall(ChartRestApiPost body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call apiV1ChartPostCall(ChartRestApiPost body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = body;
         
         // create path and map variables
-        String localVarPath = "/chart/";
+        String localVarPath = "/api/v1/chart/";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1512,13 +2054,13 @@ public class ChartsApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call chartPostValidateBeforeCall(ChartRestApiPost body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call apiV1ChartPostValidateBeforeCall(ChartRestApiPost body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'body' is set
         if (body == null) {
-            throw new ApiException("Missing the required parameter 'body' when calling chartPost(Async)");
+            throw new ApiException("Missing the required parameter 'body' when calling apiV1ChartPost(Async)");
         }
         
-        com.squareup.okhttp.Call call = chartPostCall(body, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = apiV1ChartPostCall(body, progressListener, progressRequestListener);
         return call;
 
         
@@ -1531,11 +2073,11 @@ public class ChartsApi {
      * 
      * Create a new Chart.
      * @param body Chart schema (required)
-     * @return InlineResponse201
+     * @return InlineResponse2012
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse201 chartPost(ChartRestApiPost body) throws ApiException {
-        ApiResponse<InlineResponse201> resp = chartPostWithHttpInfo(body);
+    public InlineResponse2012 apiV1ChartPost(ChartRestApiPost body) throws ApiException {
+        ApiResponse<InlineResponse2012> resp = apiV1ChartPostWithHttpInfo(body);
         return resp.getData();
     }
 
@@ -1543,12 +2085,12 @@ public class ChartsApi {
      * 
      * Create a new Chart.
      * @param body Chart schema (required)
-     * @return ApiResponse&lt;InlineResponse201&gt;
+     * @return ApiResponse&lt;InlineResponse2012&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse201> chartPostWithHttpInfo(ChartRestApiPost body) throws ApiException {
-        com.squareup.okhttp.Call call = chartPostValidateBeforeCall(body, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse201>(){}.getType();
+    public ApiResponse<InlineResponse2012> apiV1ChartPostWithHttpInfo(ChartRestApiPost body) throws ApiException {
+        com.squareup.okhttp.Call call = apiV1ChartPostValidateBeforeCall(body, null, null);
+        Type localVarReturnType = new TypeToken<InlineResponse2012>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -1560,7 +2102,7 @@ public class ChartsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call chartPostAsync(ChartRestApiPost body, final ApiCallback<InlineResponse201> callback) throws ApiException {
+    public com.squareup.okhttp.Call apiV1ChartPostAsync(ChartRestApiPost body, final ApiCallback<InlineResponse2012> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1581,13 +2123,13 @@ public class ChartsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = chartPostValidateBeforeCall(body, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse201>(){}.getType();
+        com.squareup.okhttp.Call call = apiV1ChartPostValidateBeforeCall(body, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<InlineResponse2012>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
-     * Build call for chartRelatedColumnNameGet
+     * Build call for apiV1ChartRelatedColumnNameGet
      * @param columnName  (required)
      * @param q  (optional)
      * @param progressListener Progress listener
@@ -1595,11 +2137,11 @@ public class ChartsApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call chartRelatedColumnNameGetCall(String columnName, Object q, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call apiV1ChartRelatedColumnNameGetCall(String columnName, GetRelatedSchema q, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
-        String localVarPath = "/chart/related/{column_name}"
+        String localVarPath = "/api/v1/chart/related/{column_name}"
             .replaceAll("\\{" + "column_name" + "\\}", apiClient.escapeString(columnName.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -1640,13 +2182,13 @@ public class ChartsApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call chartRelatedColumnNameGetValidateBeforeCall(String columnName, Object q, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call apiV1ChartRelatedColumnNameGetValidateBeforeCall(String columnName, GetRelatedSchema q, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'columnName' is set
         if (columnName == null) {
-            throw new ApiException("Missing the required parameter 'columnName' when calling chartRelatedColumnNameGet(Async)");
+            throw new ApiException("Missing the required parameter 'columnName' when calling apiV1ChartRelatedColumnNameGet(Async)");
         }
         
-        com.squareup.okhttp.Call call = chartRelatedColumnNameGetCall(columnName, q, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = apiV1ChartRelatedColumnNameGetCall(columnName, q, progressListener, progressRequestListener);
         return call;
 
         
@@ -1657,41 +2199,41 @@ public class ChartsApi {
 
     /**
      * 
-     * Get a list of all possible owners for a chart.
+     * Get a list of all possible owners for a chart. Use &#x60;owners&#x60; has the &#x60;column_name&#x60; parameter
      * @param columnName  (required)
      * @param q  (optional)
-     * @return InlineResponse2003
+     * @return RelatedResponseSchema
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse2003 chartRelatedColumnNameGet(String columnName, Object q) throws ApiException {
-        ApiResponse<InlineResponse2003> resp = chartRelatedColumnNameGetWithHttpInfo(columnName, q);
+    public RelatedResponseSchema apiV1ChartRelatedColumnNameGet(String columnName, GetRelatedSchema q) throws ApiException {
+        ApiResponse<RelatedResponseSchema> resp = apiV1ChartRelatedColumnNameGetWithHttpInfo(columnName, q);
         return resp.getData();
     }
 
     /**
      * 
-     * Get a list of all possible owners for a chart.
+     * Get a list of all possible owners for a chart. Use &#x60;owners&#x60; has the &#x60;column_name&#x60; parameter
      * @param columnName  (required)
      * @param q  (optional)
-     * @return ApiResponse&lt;InlineResponse2003&gt;
+     * @return ApiResponse&lt;RelatedResponseSchema&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse2003> chartRelatedColumnNameGetWithHttpInfo(String columnName, Object q) throws ApiException {
-        com.squareup.okhttp.Call call = chartRelatedColumnNameGetValidateBeforeCall(columnName, q, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse2003>(){}.getType();
+    public ApiResponse<RelatedResponseSchema> apiV1ChartRelatedColumnNameGetWithHttpInfo(String columnName, GetRelatedSchema q) throws ApiException {
+        com.squareup.okhttp.Call call = apiV1ChartRelatedColumnNameGetValidateBeforeCall(columnName, q, null, null);
+        Type localVarReturnType = new TypeToken<RelatedResponseSchema>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
     /**
      *  (asynchronously)
-     * Get a list of all possible owners for a chart.
+     * Get a list of all possible owners for a chart. Use &#x60;owners&#x60; has the &#x60;column_name&#x60; parameter
      * @param columnName  (required)
      * @param q  (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call chartRelatedColumnNameGetAsync(String columnName, Object q, final ApiCallback<InlineResponse2003> callback) throws ApiException {
+    public com.squareup.okhttp.Call apiV1ChartRelatedColumnNameGetAsync(String columnName, GetRelatedSchema q, final ApiCallback<RelatedResponseSchema> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1712,8 +2254,8 @@ public class ChartsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = chartRelatedColumnNameGetValidateBeforeCall(columnName, q, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse2003>(){}.getType();
+        com.squareup.okhttp.Call call = apiV1ChartRelatedColumnNameGetValidateBeforeCall(columnName, q, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<RelatedResponseSchema>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

@@ -28,7 +28,7 @@ import java.util.List;
  * ChartDataPivotOptionsSchema
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-11-06T17:36:10.263+01:00[Europe/Vienna]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2022-08-29T14:48:42.974+02:00[Europe/Berlin]")
 public class ChartDataPivotOptionsSchema {
   @SerializedName("aggregates")
   private Object aggregates = null;
@@ -101,10 +101,10 @@ public class ChartDataPivotOptionsSchema {
   }
 
    /**
-   * Get columns
+   * Columns to group by on the table columns
    * @return columns
   **/
-  @Schema(description = "")
+  @Schema(description = "Columns to group by on the table columns")
   public List<String> getColumns() {
     return columns;
   }
@@ -187,7 +187,7 @@ public class ChartDataPivotOptionsSchema {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -230,7 +230,7 @@ public class ChartDataPivotOptionsSchema {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

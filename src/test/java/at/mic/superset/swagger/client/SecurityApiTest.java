@@ -13,10 +13,15 @@
 package at.mic.superset.swagger.client;
 
 import at.mic.superset.swagger.ApiException;
-import at.mic.superset.swagger.client.model.Body;
-import at.mic.superset.swagger.client.model.InlineResponse20021;
-import at.mic.superset.swagger.client.model.InlineResponse20022;
+import at.mic.superset.swagger.client.model.Body6;
+import at.mic.superset.swagger.client.model.GuestTokenCreate;
+import at.mic.superset.swagger.client.model.InlineResponse20050;
+import at.mic.superset.swagger.client.model.InlineResponse20051;
+import at.mic.superset.swagger.client.model.InlineResponse20052;
+import at.mic.superset.swagger.client.model.InlineResponse20053;
 import at.mic.superset.swagger.client.model.InlineResponse400;
+import at.mic.superset.swagger.client.model.SecurityLoginBody;
+
 import org.junit.Test;
 import org.junit.Ignore;
 
@@ -36,15 +41,44 @@ public class SecurityApiTest {
     /**
      * 
      *
+     * Fetch the CSRF token
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void apiV1SecurityCsrfTokenGetTest() throws ApiException {
+        InlineResponse20050 response = api.apiV1SecurityCsrfTokenGet();
+
+        // TODO: test validations
+    }
+    /**
+     * 
+     *
+     * Fetches a guest token
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void apiV1SecurityGuestTokenPostTest() throws ApiException {
+        GuestTokenCreate body = null;
+        InlineResponse20051 response = api.apiV1SecurityGuestTokenPost(body);
+
+        // TODO: test validations
+    }
+    /**
+     * 
+     *
      * Authenticate and get a JWT access and refresh token
      *
      * @throws ApiException
      *          if the Api call fails
      */
     @Test
-    public void securityLoginPostTest() throws ApiException {
-        Body body = null;
-        InlineResponse20021 response = api.securityLoginPost(body);
+    public void apiV1SecurityLoginPostTest() throws ApiException {
+        SecurityLoginBody body = null;
+        InlineResponse20052 response = api.apiV1SecurityLoginPost(body);
 
         // TODO: test validations
     }
@@ -57,8 +91,8 @@ public class SecurityApiTest {
      *          if the Api call fails
      */
     @Test
-    public void securityRefreshPostTest() throws ApiException {
-        InlineResponse20022 response = api.securityRefreshPost();
+    public void apiV1SecurityRefreshPostTest() throws ApiException {
+        InlineResponse20053 response = api.apiV1SecurityRefreshPost();
 
         // TODO: test validations
     }

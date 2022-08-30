@@ -30,7 +30,7 @@ import java.util.Map;
  * GetInfoSchema
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-11-06T17:36:10.263+01:00[Europe/Vienna]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2022-08-29T14:48:42.974+02:00[Europe/Berlin]")
 public class GetInfoSchema {
   @SerializedName("add_columns")
   private Map<String, GetInfoSchemaAddColumns> addColumns = null;
@@ -64,9 +64,9 @@ public class GetInfoSchema {
     public String toString() {
       return String.valueOf(value);
     }
-    public static KeysEnum fromValue(String text) {
+    public static KeysEnum fromValue(String input) {
       for (KeysEnum b : KeysEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
+        if (b.value.equals(input)) {
           return b;
         }
       }
@@ -75,13 +75,13 @@ public class GetInfoSchema {
     public static class Adapter extends TypeAdapter<KeysEnum> {
       @Override
       public void write(final JsonWriter jsonWriter, final KeysEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
+        jsonWriter.value(String.valueOf(enumeration.getValue()));
       }
 
       @Override
       public KeysEnum read(final JsonReader jsonReader) throws IOException {
-        String value = jsonReader.nextString();
-        return KeysEnum.fromValue(String.valueOf(value));
+        Object value = jsonReader.nextString();
+        return KeysEnum.fromValue((String)(value));
       }
     }
   }  @SerializedName("keys")
@@ -167,7 +167,7 @@ public class GetInfoSchema {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -202,7 +202,7 @@ public class GetInfoSchema {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

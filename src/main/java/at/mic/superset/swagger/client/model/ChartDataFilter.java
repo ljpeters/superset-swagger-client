@@ -25,28 +25,37 @@ import java.io.IOException;
  * ChartDataFilter
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-11-06T17:36:10.263+01:00[Europe/Vienna]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2022-08-29T14:48:42.974+02:00[Europe/Berlin]")
 public class ChartDataFilter {
   @SerializedName("col")
-  private String col = null;
+  private Object col = null;
+
+  @SerializedName("grain")
+  private String grain = null;
+
+  @SerializedName("isExtra")
+  private Boolean isExtra = null;
 
   /**
    * The comparison operator.
    */
   @JsonAdapter(OpEnum.Adapter.class)
   public enum OpEnum {
-    _("=="),
+    _U("=="),
     NOT_EQUAL("!="),
     GREATER_THAN(">"),
     LESS_THAN("<"),
     GREATER_THAN_OR_EQUAL_TO(">="),
     LESS_THAN_OR_EQUAL_TO("<="),
     LIKE("LIKE"),
+    ILIKE("ILIKE"),
     IS_NULL("IS NULL"),
     IS_NOT_NULL("IS NOT NULL"),
     IN("IN"),
     NOT_IN("NOT IN"),
-    REGEX("REGEX");
+    REGEX("REGEX"),
+    IS_TRUE("IS TRUE"),
+    IS_FALSE("IS FALSE");
 
     private String value;
 
@@ -61,9 +70,9 @@ public class ChartDataFilter {
     public String toString() {
       return String.valueOf(value);
     }
-    public static OpEnum fromValue(String text) {
+    public static OpEnum fromValue(String input) {
       for (OpEnum b : OpEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
+        if (b.value.equals(input)) {
           return b;
         }
       }
@@ -72,13 +81,13 @@ public class ChartDataFilter {
     public static class Adapter extends TypeAdapter<OpEnum> {
       @Override
       public void write(final JsonWriter jsonWriter, final OpEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
+        jsonWriter.value(String.valueOf(enumeration.getValue()));
       }
 
       @Override
       public OpEnum read(final JsonReader jsonReader) throws IOException {
-        String value = jsonReader.nextString();
-        return OpEnum.fromValue(String.valueOf(value));
+        Object value = jsonReader.nextString();
+        return OpEnum.fromValue((String)(value));
       }
     }
   }  @SerializedName("op")
@@ -87,22 +96,58 @@ public class ChartDataFilter {
   @SerializedName("val")
   private Object val = null;
 
-  public ChartDataFilter col(String col) {
+  public ChartDataFilter col(Object col) {
     this.col = col;
     return this;
   }
 
    /**
-   * The column to filter.
+   * The column to filter by. Can be either a string (physical or saved expression) or an object (adhoc column)
    * @return col
   **/
-  @Schema(example = "country", required = true, description = "The column to filter.")
-  public String getCol() {
+  @Schema(example = "country", required = true, description = "The column to filter by. Can be either a string (physical or saved expression) or an object (adhoc column)")
+  public Object getCol() {
     return col;
   }
 
-  public void setCol(String col) {
+  public void setCol(Object col) {
     this.col = col;
+  }
+
+  public ChartDataFilter grain(String grain) {
+    this.grain = grain;
+    return this;
+  }
+
+   /**
+   * Optional time grain for temporal filters
+   * @return grain
+  **/
+  @Schema(example = "PT1M", description = "Optional time grain for temporal filters")
+  public String getGrain() {
+    return grain;
+  }
+
+  public void setGrain(String grain) {
+    this.grain = grain;
+  }
+
+  public ChartDataFilter isExtra(Boolean isExtra) {
+    this.isExtra = isExtra;
+    return this;
+  }
+
+   /**
+   * Indicates if the filter has been added by a filter component as opposed to being a part of the original query.
+   * @return isExtra
+  **/
+  @Schema(description = "Indicates if the filter has been added by a filter component as opposed to being a part of the original query.")
+  public Boolean isIsExtra() {
+    return isExtra;
+  }
+
+  public void setIsExtra(Boolean isExtra) {
+    this.isExtra = isExtra;
   }
 
   public ChartDataFilter op(OpEnum op) {
@@ -143,7 +188,7 @@ public class ChartDataFilter {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -152,13 +197,15 @@ public class ChartDataFilter {
     }
     ChartDataFilter chartDataFilter = (ChartDataFilter) o;
     return Objects.equals(this.col, chartDataFilter.col) &&
+        Objects.equals(this.grain, chartDataFilter.grain) &&
+        Objects.equals(this.isExtra, chartDataFilter.isExtra) &&
         Objects.equals(this.op, chartDataFilter.op) &&
         Objects.equals(this.val, chartDataFilter.val);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(col, op, val);
+    return Objects.hash(col, grain, isExtra, op, val);
   }
 
 
@@ -168,6 +215,8 @@ public class ChartDataFilter {
     sb.append("class ChartDataFilter {\n");
     
     sb.append("    col: ").append(toIndentedString(col)).append("\n");
+    sb.append("    grain: ").append(toIndentedString(grain)).append("\n");
+    sb.append("    isExtra: ").append(toIndentedString(isExtra)).append("\n");
     sb.append("    op: ").append(toIndentedString(op)).append("\n");
     sb.append("    val: ").append(toIndentedString(val)).append("\n");
     sb.append("}");
@@ -178,7 +227,7 @@ public class ChartDataFilter {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

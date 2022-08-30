@@ -15,9 +15,9 @@ package at.mic.superset.swagger.client;
 import at.mic.superset.swagger.ApiException;
 import at.mic.superset.swagger.client.model.GetItemSchema;
 import at.mic.superset.swagger.client.model.GetListSchema;
-import at.mic.superset.swagger.client.model.InlineResponse20016;
-import at.mic.superset.swagger.client.model.InlineResponse20017;
-import at.mic.superset.swagger.client.model.InlineResponse2013;
+import at.mic.superset.swagger.client.model.InlineResponse20036;
+import at.mic.superset.swagger.client.model.InlineResponse20037;
+import at.mic.superset.swagger.client.model.InlineResponse20112;
 import at.mic.superset.swagger.client.model.InlineResponse400;
 import at.mic.superset.swagger.client.model.LogRestApiPost;
 import org.junit.Test;
@@ -45,9 +45,9 @@ public class LogRestApiApiTest {
      *          if the Api call fails
      */
     @Test
-    public void logGetTest() throws ApiException {
+    public void apiV1LogGetTest() throws ApiException {
         GetListSchema q = null;
-        InlineResponse20016 response = api.logGet(q);
+        InlineResponse20036 response = api.apiV1LogGet(q);
 
         // TODO: test validations
     }
@@ -60,10 +60,10 @@ public class LogRestApiApiTest {
      *          if the Api call fails
      */
     @Test
-    public void logPkGetTest() throws ApiException {
+    public void apiV1LogPkGetTest() throws ApiException {
         Integer pk = null;
         GetItemSchema q = null;
-        InlineResponse20017 response = api.logPkGet(pk, q);
+        InlineResponse20037 response = api.apiV1LogPkGet(pk, q);
 
         // TODO: test validations
     }
@@ -76,9 +76,9 @@ public class LogRestApiApiTest {
      *          if the Api call fails
      */
     @Test
-    public void logPostTest() throws ApiException {
+    public void apiV1LogPostTest() throws ApiException {
         LogRestApiPost body = null;
-        InlineResponse2013 response = api.logPost(body);
+        InlineResponse20112 response = api.apiV1LogPost(body);
 
         // TODO: test validations
     }

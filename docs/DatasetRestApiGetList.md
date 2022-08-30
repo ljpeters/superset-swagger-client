@@ -3,18 +3,20 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**changedBy** | [**Meta9**](Meta9.md) |  |  [optional]
-**changedByFk** | **Integer** |  |  [optional]
+**changedBy** | [**DatasetRestApiGetListUser1**](DatasetRestApiGetListUser1.md) |  |  [optional]
 **changedByName** | **Object** |  |  [optional]
 **changedByUrl** | **Object** |  |  [optional]
-**changedOn** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
-**databaseId** | **Integer** |  | 
-**databaseName** | **Object** |  |  [optional]
+**changedOnDeltaHumanized** | **Object** |  |  [optional]
+**changedOnUtc** | **Object** |  |  [optional]
+**database** | [**DatasetRestApiGetListDatabase**](DatasetRestApiGetListDatabase.md) |  | 
+**datasourceType** | **Object** |  |  [optional]
 **defaultEndpoint** | **String** |  |  [optional]
+**description** | **String** |  |  [optional]
 **exploreUrl** | **Object** |  |  [optional]
+**extra** | **String** |  |  [optional]
 **id** | **Integer** |  |  [optional]
 **kind** | **Object** |  |  [optional]
-**owners** | [**Meta8**](Meta8.md) |  |  [optional]
+**owners** | [**DatasetRestApiGetListUser**](DatasetRestApiGetListUser.md) |  |  [optional]
 **schema** | **String** |  |  [optional]
 **sql** | **String** |  |  [optional]
 **tableName** | **String** |  | 

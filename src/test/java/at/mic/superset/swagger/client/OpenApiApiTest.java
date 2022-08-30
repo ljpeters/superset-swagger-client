@@ -39,9 +39,9 @@ public class OpenApiApiTest {
      *          if the Api call fails
      */
     @Test
-    public void openapiVersionOpenapiGetTest() throws ApiException {
+    public void apiVersionOpenapiGetTest() throws ApiException {
         String version = null;
-        Object response = api.openapiVersionOpenapiGet(version);
+        Object response = api.apiVersionOpenapiGet(version);
 
         // TODO: test validations
     }

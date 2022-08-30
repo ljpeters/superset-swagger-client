@@ -14,7 +14,7 @@ package at.mic.superset.swagger.client.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import at.mic.superset.swagger.client.model.ChartRestApiPost;
+import at.mic.superset.swagger.client.model.AnnotationLayerRestApiPost;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -27,13 +27,13 @@ import java.math.BigDecimal;
  * InlineResponse201
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-11-06T17:36:10.263+01:00[Europe/Vienna]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2022-08-29T14:48:42.974+02:00[Europe/Berlin]")
 public class InlineResponse201 {
   @SerializedName("id")
   private BigDecimal id = null;
 
   @SerializedName("result")
-  private ChartRestApiPost result = null;
+  private AnnotationLayerRestApiPost result = null;
 
   public InlineResponse201 id(BigDecimal id) {
     this.id = id;
@@ -53,7 +53,7 @@ public class InlineResponse201 {
     this.id = id;
   }
 
-  public InlineResponse201 result(ChartRestApiPost result) {
+  public InlineResponse201 result(AnnotationLayerRestApiPost result) {
     this.result = result;
     return this;
   }
@@ -63,17 +63,17 @@ public class InlineResponse201 {
    * @return result
   **/
   @Schema(description = "")
-  public ChartRestApiPost getResult() {
+  public AnnotationLayerRestApiPost getResult() {
     return result;
   }
 
-  public void setResult(ChartRestApiPost result) {
+  public void setResult(AnnotationLayerRestApiPost result) {
     this.result = result;
   }
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -106,7 +106,7 @@ public class InlineResponse201 {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

@@ -14,6 +14,7 @@ package at.mic.superset.swagger.client.model;
 
 import java.util.Objects;
 import java.util.Arrays;
+import at.mic.superset.swagger.client.model.ChartRestApiPut;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -21,36 +22,58 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
+import java.math.BigDecimal;
 /**
  * InlineResponse20011
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-11-06T17:36:10.263+01:00[Europe/Vienna]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2022-08-29T14:48:42.974+02:00[Europe/Berlin]")
 public class InlineResponse20011 {
-  @SerializedName("result")
-  private String result = null;
+  @SerializedName("id")
+  private BigDecimal id = null;
 
-  public InlineResponse20011 result(String result) {
+  @SerializedName("result")
+  private ChartRestApiPut result = null;
+
+  public InlineResponse20011 id(BigDecimal id) {
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * Get id
+   * @return id
+  **/
+  @Schema(description = "")
+  public BigDecimal getId() {
+    return id;
+  }
+
+  public void setId(BigDecimal id) {
+    this.id = id;
+  }
+
+  public InlineResponse20011 result(ChartRestApiPut result) {
     this.result = result;
     return this;
   }
 
    /**
-   * SQL select star
+   * Get result
    * @return result
   **/
-  @Schema(description = "SQL select star")
-  public String getResult() {
+  @Schema(description = "")
+  public ChartRestApiPut getResult() {
     return result;
   }
 
-  public void setResult(String result) {
+  public void setResult(ChartRestApiPut result) {
     this.result = result;
   }
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -58,12 +81,13 @@ public class InlineResponse20011 {
       return false;
     }
     InlineResponse20011 inlineResponse20011 = (InlineResponse20011) o;
-    return Objects.equals(this.result, inlineResponse20011.result);
+    return Objects.equals(this.id, inlineResponse20011.id) &&
+        Objects.equals(this.result, inlineResponse20011.result);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(result);
+    return Objects.hash(id, result);
   }
 
 
@@ -72,6 +96,7 @@ public class InlineResponse20011 {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse20011 {\n");
     
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    result: ").append(toIndentedString(result)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -81,7 +106,7 @@ public class InlineResponse20011 {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

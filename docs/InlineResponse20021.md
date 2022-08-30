@@ -3,5 +3,4 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**accessToken** | **String** |  |  [optional]
-**refreshToken** | **String** |  |  [optional]
+**result** | [**List&lt;DashboardDatasetSchema&gt;**](DashboardDatasetSchema.md) |  |  [optional]

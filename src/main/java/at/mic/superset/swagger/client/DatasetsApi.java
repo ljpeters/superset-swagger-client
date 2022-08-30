@@ -29,16 +29,22 @@ import java.io.IOException;
 import at.mic.superset.swagger.client.model.DatasetRelatedObjectsResponse;
 import at.mic.superset.swagger.client.model.DatasetRestApiPost;
 import at.mic.superset.swagger.client.model.DatasetRestApiPut;
+import at.mic.superset.swagger.client.model.DistincResponseSchema;
+import java.io.File;
+import at.mic.superset.swagger.client.model.GetDeleteIdsSchema;
+import at.mic.superset.swagger.client.model.GetExportIdsSchema;
 import at.mic.superset.swagger.client.model.GetInfoSchema;
 import at.mic.superset.swagger.client.model.GetItemSchema;
 import at.mic.superset.swagger.client.model.GetListSchema;
-import at.mic.superset.swagger.client.model.InlineResponse2001;
-import at.mic.superset.swagger.client.model.InlineResponse20013;
-import at.mic.superset.swagger.client.model.InlineResponse20014;
-import at.mic.superset.swagger.client.model.InlineResponse20015;
-import at.mic.superset.swagger.client.model.InlineResponse2003;
-import at.mic.superset.swagger.client.model.InlineResponse2012;
+import at.mic.superset.swagger.client.model.GetRelatedSchema;
+import at.mic.superset.swagger.client.model.InlineResponse2002;
+import at.mic.superset.swagger.client.model.InlineResponse20031;
+import at.mic.superset.swagger.client.model.InlineResponse20032;
+import at.mic.superset.swagger.client.model.InlineResponse20033;
+import at.mic.superset.swagger.client.model.InlineResponse20034;
+import at.mic.superset.swagger.client.model.InlineResponse2019;
 import at.mic.superset.swagger.client.model.InlineResponse400;
+import at.mic.superset.swagger.client.model.RelatedResponseSchema;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -66,388 +72,23 @@ public class DatasetsApi {
     }
 
     /**
-     * Build call for datasetExportGet
+     * Build call for apiV1DatasetDelete
      * @param q  (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call datasetExportGetCall(List<Integer> q, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call apiV1DatasetDeleteCall(GetDeleteIdsSchema q, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
-        String localVarPath = "/dataset/export/";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        if (q != null)
-        localVarCollectionQueryParams.addAll(apiClient.parameterToPairs("multi", "q", q));
-
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "text/plain", "application/json"
-        };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
-
-        final String[] localVarContentTypes = {
-            
-        };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
-
-        if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                    .build();
-                }
-            });
-        }
-
-        String[] localVarAuthNames = new String[] { "jwt" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
-    }
-    
-    @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call datasetExportGetValidateBeforeCall(List<Integer> q, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
-        com.squareup.okhttp.Call call = datasetExportGetCall(q, progressListener, progressRequestListener);
-        return call;
-
-        
-        
-        
-        
-    }
-
-    /**
-     * 
-     * Exports multiple datasets and downloads them as YAML files
-     * @param q  (optional)
-     * @return String
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public String datasetExportGet(List<Integer> q) throws ApiException {
-        ApiResponse<String> resp = datasetExportGetWithHttpInfo(q);
-        return resp.getData();
-    }
-
-    /**
-     * 
-     * Exports multiple datasets and downloads them as YAML files
-     * @param q  (optional)
-     * @return ApiResponse&lt;String&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<String> datasetExportGetWithHttpInfo(List<Integer> q) throws ApiException {
-        com.squareup.okhttp.Call call = datasetExportGetValidateBeforeCall(q, null, null);
-        Type localVarReturnType = new TypeToken<String>(){}.getType();
-        return apiClient.execute(call, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * Exports multiple datasets and downloads them as YAML files
-     * @param q  (optional)
-     * @param callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public com.squareup.okhttp.Call datasetExportGetAsync(List<Integer> q, final ApiCallback<String> callback) throws ApiException {
-
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
-        com.squareup.okhttp.Call call = datasetExportGetValidateBeforeCall(q, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<String>(){}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
-    }
-    /**
-     * Build call for datasetGet
-     * @param q  (optional)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public com.squareup.okhttp.Call datasetGetCall(GetListSchema q, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        Object localVarPostBody = null;
-        
-        // create path and map variables
-        String localVarPath = "/dataset/";
+        String localVarPath = "/api/v1/dataset/";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (q != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("q", q));
-
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
-
-        final String[] localVarContentTypes = {
-            
-        };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
-
-        if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                    .build();
-                }
-            });
-        }
-
-        String[] localVarAuthNames = new String[] { "jwt" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
-    }
-    
-    @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call datasetGetValidateBeforeCall(GetListSchema q, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
-        com.squareup.okhttp.Call call = datasetGetCall(q, progressListener, progressRequestListener);
-        return call;
-
-        
-        
-        
-        
-    }
-
-    /**
-     * 
-     * Get a list of models
-     * @param q  (optional)
-     * @return InlineResponse20013
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public InlineResponse20013 datasetGet(GetListSchema q) throws ApiException {
-        ApiResponse<InlineResponse20013> resp = datasetGetWithHttpInfo(q);
-        return resp.getData();
-    }
-
-    /**
-     * 
-     * Get a list of models
-     * @param q  (optional)
-     * @return ApiResponse&lt;InlineResponse20013&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<InlineResponse20013> datasetGetWithHttpInfo(GetListSchema q) throws ApiException {
-        com.squareup.okhttp.Call call = datasetGetValidateBeforeCall(q, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse20013>(){}.getType();
-        return apiClient.execute(call, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * Get a list of models
-     * @param q  (optional)
-     * @param callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public com.squareup.okhttp.Call datasetGetAsync(GetListSchema q, final ApiCallback<InlineResponse20013> callback) throws ApiException {
-
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
-        com.squareup.okhttp.Call call = datasetGetValidateBeforeCall(q, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse20013>(){}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
-    }
-    /**
-     * Build call for datasetInfoGet
-     * @param q  (optional)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public com.squareup.okhttp.Call datasetInfoGetCall(GetInfoSchema q, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        Object localVarPostBody = null;
-        
-        // create path and map variables
-        String localVarPath = "/dataset/_info";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        if (q != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("q", q));
-
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
-
-        final String[] localVarContentTypes = {
-            
-        };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
-
-        if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                    .build();
-                }
-            });
-        }
-
-        String[] localVarAuthNames = new String[] { "jwt" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
-    }
-    
-    @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call datasetInfoGetValidateBeforeCall(GetInfoSchema q, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
-        com.squareup.okhttp.Call call = datasetInfoGetCall(q, progressListener, progressRequestListener);
-        return call;
-
-        
-        
-        
-        
-    }
-
-    /**
-     * 
-     * Get metadata information about this API resource
-     * @param q  (optional)
-     * @return InlineResponse2001
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public InlineResponse2001 datasetInfoGet(GetInfoSchema q) throws ApiException {
-        ApiResponse<InlineResponse2001> resp = datasetInfoGetWithHttpInfo(q);
-        return resp.getData();
-    }
-
-    /**
-     * 
-     * Get metadata information about this API resource
-     * @param q  (optional)
-     * @return ApiResponse&lt;InlineResponse2001&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<InlineResponse2001> datasetInfoGetWithHttpInfo(GetInfoSchema q) throws ApiException {
-        com.squareup.okhttp.Call call = datasetInfoGetValidateBeforeCall(q, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse2001>(){}.getType();
-        return apiClient.execute(call, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * Get metadata information about this API resource
-     * @param q  (optional)
-     * @param callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public com.squareup.okhttp.Call datasetInfoGetAsync(GetInfoSchema q, final ApiCallback<InlineResponse2001> callback) throws ApiException {
-
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
-        com.squareup.okhttp.Call call = datasetInfoGetValidateBeforeCall(q, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse2001>(){}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
-    }
-    /**
-     * Build call for datasetPkDelete
-     * @param pk  (required)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public com.squareup.okhttp.Call datasetPkDeleteCall(Integer pk, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        Object localVarPostBody = null;
-        
-        // create path and map variables
-        String localVarPath = "/dataset/{pk}"
-            .replaceAll("\\{" + "pk" + "\\}", apiClient.escapeString(pk.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -482,13 +123,9 @@ public class DatasetsApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call datasetPkDeleteValidateBeforeCall(Integer pk, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        // verify the required parameter 'pk' is set
-        if (pk == null) {
-            throw new ApiException("Missing the required parameter 'pk' when calling datasetPkDelete(Async)");
-        }
+    private com.squareup.okhttp.Call apiV1DatasetDeleteValidateBeforeCall(GetDeleteIdsSchema q, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
-        com.squareup.okhttp.Call call = datasetPkDeleteCall(pk, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = apiV1DatasetDeleteCall(q, progressListener, progressRequestListener);
         return call;
 
         
@@ -499,38 +136,38 @@ public class DatasetsApi {
 
     /**
      * 
-     * Deletes a Dataset
-     * @param pk  (required)
+     * Deletes multiple Datasets in a bulk operation.
+     * @param q  (optional)
      * @return InlineResponse400
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse400 datasetPkDelete(Integer pk) throws ApiException {
-        ApiResponse<InlineResponse400> resp = datasetPkDeleteWithHttpInfo(pk);
+    public InlineResponse400 apiV1DatasetDelete(GetDeleteIdsSchema q) throws ApiException {
+        ApiResponse<InlineResponse400> resp = apiV1DatasetDeleteWithHttpInfo(q);
         return resp.getData();
     }
 
     /**
      * 
-     * Deletes a Dataset
-     * @param pk  (required)
+     * Deletes multiple Datasets in a bulk operation.
+     * @param q  (optional)
      * @return ApiResponse&lt;InlineResponse400&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse400> datasetPkDeleteWithHttpInfo(Integer pk) throws ApiException {
-        com.squareup.okhttp.Call call = datasetPkDeleteValidateBeforeCall(pk, null, null);
+    public ApiResponse<InlineResponse400> apiV1DatasetDeleteWithHttpInfo(GetDeleteIdsSchema q) throws ApiException {
+        com.squareup.okhttp.Call call = apiV1DatasetDeleteValidateBeforeCall(q, null, null);
         Type localVarReturnType = new TypeToken<InlineResponse400>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
     /**
      *  (asynchronously)
-     * Deletes a Dataset
-     * @param pk  (required)
+     * Deletes multiple Datasets in a bulk operation.
+     * @param q  (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call datasetPkDeleteAsync(Integer pk, final ApiCallback<InlineResponse400> callback) throws ApiException {
+    public com.squareup.okhttp.Call apiV1DatasetDeleteAsync(GetDeleteIdsSchema q, final ApiCallback<InlineResponse400> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -551,651 +188,13 @@ public class DatasetsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = datasetPkDeleteValidateBeforeCall(pk, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = apiV1DatasetDeleteValidateBeforeCall(q, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<InlineResponse400>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
-     * Build call for datasetPkGet
-     * @param pk  (required)
-     * @param q  (optional)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public com.squareup.okhttp.Call datasetPkGetCall(Integer pk, GetItemSchema q, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        Object localVarPostBody = null;
-        
-        // create path and map variables
-        String localVarPath = "/dataset/{pk}"
-            .replaceAll("\\{" + "pk" + "\\}", apiClient.escapeString(pk.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        if (q != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("q", q));
-
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
-
-        final String[] localVarContentTypes = {
-            
-        };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
-
-        if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                    .build();
-                }
-            });
-        }
-
-        String[] localVarAuthNames = new String[] { "jwt" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
-    }
-    
-    @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call datasetPkGetValidateBeforeCall(Integer pk, GetItemSchema q, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        // verify the required parameter 'pk' is set
-        if (pk == null) {
-            throw new ApiException("Missing the required parameter 'pk' when calling datasetPkGet(Async)");
-        }
-        
-        com.squareup.okhttp.Call call = datasetPkGetCall(pk, q, progressListener, progressRequestListener);
-        return call;
-
-        
-        
-        
-        
-    }
-
-    /**
-     * 
-     * Get an item model
-     * @param pk  (required)
-     * @param q  (optional)
-     * @return InlineResponse20014
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public InlineResponse20014 datasetPkGet(Integer pk, GetItemSchema q) throws ApiException {
-        ApiResponse<InlineResponse20014> resp = datasetPkGetWithHttpInfo(pk, q);
-        return resp.getData();
-    }
-
-    /**
-     * 
-     * Get an item model
-     * @param pk  (required)
-     * @param q  (optional)
-     * @return ApiResponse&lt;InlineResponse20014&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<InlineResponse20014> datasetPkGetWithHttpInfo(Integer pk, GetItemSchema q) throws ApiException {
-        com.squareup.okhttp.Call call = datasetPkGetValidateBeforeCall(pk, q, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse20014>(){}.getType();
-        return apiClient.execute(call, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * Get an item model
-     * @param pk  (required)
-     * @param q  (optional)
-     * @param callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public com.squareup.okhttp.Call datasetPkGetAsync(Integer pk, GetItemSchema q, final ApiCallback<InlineResponse20014> callback) throws ApiException {
-
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
-        com.squareup.okhttp.Call call = datasetPkGetValidateBeforeCall(pk, q, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse20014>(){}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
-    }
-    /**
-     * Build call for datasetPkPut
-     * @param body Dataset schema (required)
-     * @param pk  (required)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public com.squareup.okhttp.Call datasetPkPutCall(DatasetRestApiPut body, Integer pk, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        Object localVarPostBody = body;
-        
-        // create path and map variables
-        String localVarPath = "/dataset/{pk}"
-            .replaceAll("\\{" + "pk" + "\\}", apiClient.escapeString(pk.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
-
-        if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                    .build();
-                }
-            });
-        }
-
-        String[] localVarAuthNames = new String[] { "jwt" };
-        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
-    }
-    
-    @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call datasetPkPutValidateBeforeCall(DatasetRestApiPut body, Integer pk, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        // verify the required parameter 'body' is set
-        if (body == null) {
-            throw new ApiException("Missing the required parameter 'body' when calling datasetPkPut(Async)");
-        }
-        // verify the required parameter 'pk' is set
-        if (pk == null) {
-            throw new ApiException("Missing the required parameter 'pk' when calling datasetPkPut(Async)");
-        }
-        
-        com.squareup.okhttp.Call call = datasetPkPutCall(body, pk, progressListener, progressRequestListener);
-        return call;
-
-        
-        
-        
-        
-    }
-
-    /**
-     * 
-     * Changes a Dataset
-     * @param body Dataset schema (required)
-     * @param pk  (required)
-     * @return InlineResponse20015
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public InlineResponse20015 datasetPkPut(DatasetRestApiPut body, Integer pk) throws ApiException {
-        ApiResponse<InlineResponse20015> resp = datasetPkPutWithHttpInfo(body, pk);
-        return resp.getData();
-    }
-
-    /**
-     * 
-     * Changes a Dataset
-     * @param body Dataset schema (required)
-     * @param pk  (required)
-     * @return ApiResponse&lt;InlineResponse20015&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<InlineResponse20015> datasetPkPutWithHttpInfo(DatasetRestApiPut body, Integer pk) throws ApiException {
-        com.squareup.okhttp.Call call = datasetPkPutValidateBeforeCall(body, pk, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse20015>(){}.getType();
-        return apiClient.execute(call, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * Changes a Dataset
-     * @param body Dataset schema (required)
-     * @param pk  (required)
-     * @param callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public com.squareup.okhttp.Call datasetPkPutAsync(DatasetRestApiPut body, Integer pk, final ApiCallback<InlineResponse20015> callback) throws ApiException {
-
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
-        com.squareup.okhttp.Call call = datasetPkPutValidateBeforeCall(body, pk, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse20015>(){}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
-    }
-    /**
-     * Build call for datasetPkRefreshPut
-     * @param pk  (required)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public com.squareup.okhttp.Call datasetPkRefreshPutCall(Integer pk, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        Object localVarPostBody = null;
-        
-        // create path and map variables
-        String localVarPath = "/dataset/{pk}/refresh"
-            .replaceAll("\\{" + "pk" + "\\}", apiClient.escapeString(pk.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
-
-        final String[] localVarContentTypes = {
-            
-        };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
-
-        if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                    .build();
-                }
-            });
-        }
-
-        String[] localVarAuthNames = new String[] { "jwt" };
-        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
-    }
-    
-    @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call datasetPkRefreshPutValidateBeforeCall(Integer pk, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        // verify the required parameter 'pk' is set
-        if (pk == null) {
-            throw new ApiException("Missing the required parameter 'pk' when calling datasetPkRefreshPut(Async)");
-        }
-        
-        com.squareup.okhttp.Call call = datasetPkRefreshPutCall(pk, progressListener, progressRequestListener);
-        return call;
-
-        
-        
-        
-        
-    }
-
-    /**
-     * 
-     * Refreshes and updates columns of a dataset
-     * @param pk  (required)
-     * @return InlineResponse400
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public InlineResponse400 datasetPkRefreshPut(Integer pk) throws ApiException {
-        ApiResponse<InlineResponse400> resp = datasetPkRefreshPutWithHttpInfo(pk);
-        return resp.getData();
-    }
-
-    /**
-     * 
-     * Refreshes and updates columns of a dataset
-     * @param pk  (required)
-     * @return ApiResponse&lt;InlineResponse400&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<InlineResponse400> datasetPkRefreshPutWithHttpInfo(Integer pk) throws ApiException {
-        com.squareup.okhttp.Call call = datasetPkRefreshPutValidateBeforeCall(pk, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse400>(){}.getType();
-        return apiClient.execute(call, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * Refreshes and updates columns of a dataset
-     * @param pk  (required)
-     * @param callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public com.squareup.okhttp.Call datasetPkRefreshPutAsync(Integer pk, final ApiCallback<InlineResponse400> callback) throws ApiException {
-
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
-        com.squareup.okhttp.Call call = datasetPkRefreshPutValidateBeforeCall(pk, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse400>(){}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
-    }
-    /**
-     * Build call for datasetPkRelatedObjectsGet
-     * @param pk  (required)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public com.squareup.okhttp.Call datasetPkRelatedObjectsGetCall(Integer pk, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        Object localVarPostBody = null;
-        
-        // create path and map variables
-        String localVarPath = "/dataset/{pk}/related_objects"
-            .replaceAll("\\{" + "pk" + "\\}", apiClient.escapeString(pk.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
-
-        final String[] localVarContentTypes = {
-            
-        };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
-
-        if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                    .build();
-                }
-            });
-        }
-
-        String[] localVarAuthNames = new String[] { "jwt" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
-    }
-    
-    @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call datasetPkRelatedObjectsGetValidateBeforeCall(Integer pk, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        // verify the required parameter 'pk' is set
-        if (pk == null) {
-            throw new ApiException("Missing the required parameter 'pk' when calling datasetPkRelatedObjectsGet(Async)");
-        }
-        
-        com.squareup.okhttp.Call call = datasetPkRelatedObjectsGetCall(pk, progressListener, progressRequestListener);
-        return call;
-
-        
-        
-        
-        
-    }
-
-    /**
-     * 
-     * Get charts and dashboards count associated to a dataset
-     * @param pk  (required)
-     * @return DatasetRelatedObjectsResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public DatasetRelatedObjectsResponse datasetPkRelatedObjectsGet(Integer pk) throws ApiException {
-        ApiResponse<DatasetRelatedObjectsResponse> resp = datasetPkRelatedObjectsGetWithHttpInfo(pk);
-        return resp.getData();
-    }
-
-    /**
-     * 
-     * Get charts and dashboards count associated to a dataset
-     * @param pk  (required)
-     * @return ApiResponse&lt;DatasetRelatedObjectsResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<DatasetRelatedObjectsResponse> datasetPkRelatedObjectsGetWithHttpInfo(Integer pk) throws ApiException {
-        com.squareup.okhttp.Call call = datasetPkRelatedObjectsGetValidateBeforeCall(pk, null, null);
-        Type localVarReturnType = new TypeToken<DatasetRelatedObjectsResponse>(){}.getType();
-        return apiClient.execute(call, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * Get charts and dashboards count associated to a dataset
-     * @param pk  (required)
-     * @param callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public com.squareup.okhttp.Call datasetPkRelatedObjectsGetAsync(Integer pk, final ApiCallback<DatasetRelatedObjectsResponse> callback) throws ApiException {
-
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
-        com.squareup.okhttp.Call call = datasetPkRelatedObjectsGetValidateBeforeCall(pk, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<DatasetRelatedObjectsResponse>(){}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
-    }
-    /**
-     * Build call for datasetPost
-     * @param body Dataset schema (required)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public com.squareup.okhttp.Call datasetPostCall(DatasetRestApiPost body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        Object localVarPostBody = body;
-        
-        // create path and map variables
-        String localVarPath = "/dataset/";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
-
-        if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                    .build();
-                }
-            });
-        }
-
-        String[] localVarAuthNames = new String[] { "jwt" };
-        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
-    }
-    
-    @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call datasetPostValidateBeforeCall(DatasetRestApiPost body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        // verify the required parameter 'body' is set
-        if (body == null) {
-            throw new ApiException("Missing the required parameter 'body' when calling datasetPost(Async)");
-        }
-        
-        com.squareup.okhttp.Call call = datasetPostCall(body, progressListener, progressRequestListener);
-        return call;
-
-        
-        
-        
-        
-    }
-
-    /**
-     * 
-     * Create a new Dataset
-     * @param body Dataset schema (required)
-     * @return InlineResponse2012
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public InlineResponse2012 datasetPost(DatasetRestApiPost body) throws ApiException {
-        ApiResponse<InlineResponse2012> resp = datasetPostWithHttpInfo(body);
-        return resp.getData();
-    }
-
-    /**
-     * 
-     * Create a new Dataset
-     * @param body Dataset schema (required)
-     * @return ApiResponse&lt;InlineResponse2012&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<InlineResponse2012> datasetPostWithHttpInfo(DatasetRestApiPost body) throws ApiException {
-        com.squareup.okhttp.Call call = datasetPostValidateBeforeCall(body, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse2012>(){}.getType();
-        return apiClient.execute(call, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * Create a new Dataset
-     * @param body Dataset schema (required)
-     * @param callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public com.squareup.okhttp.Call datasetPostAsync(DatasetRestApiPost body, final ApiCallback<InlineResponse2012> callback) throws ApiException {
-
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
-        com.squareup.okhttp.Call call = datasetPostValidateBeforeCall(body, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse2012>(){}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
-    }
-    /**
-     * Build call for datasetRelatedColumnNameGet
+     * Build call for apiV1DatasetDistinctColumnNameGet
      * @param columnName  (required)
      * @param q  (optional)
      * @param progressListener Progress listener
@@ -1203,11 +202,11 @@ public class DatasetsApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call datasetRelatedColumnNameGetCall(String columnName, Object q, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call apiV1DatasetDistinctColumnNameGetCall(String columnName, GetRelatedSchema q, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
-        String localVarPath = "/dataset/related/{column_name}"
+        String localVarPath = "/api/v1/dataset/distinct/{column_name}"
             .replaceAll("\\{" + "column_name" + "\\}", apiClient.escapeString(columnName.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -1248,13 +247,13 @@ public class DatasetsApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call datasetRelatedColumnNameGetValidateBeforeCall(String columnName, Object q, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call apiV1DatasetDistinctColumnNameGetValidateBeforeCall(String columnName, GetRelatedSchema q, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'columnName' is set
         if (columnName == null) {
-            throw new ApiException("Missing the required parameter 'columnName' when calling datasetRelatedColumnNameGet(Async)");
+            throw new ApiException("Missing the required parameter 'columnName' when calling apiV1DatasetDistinctColumnNameGet(Async)");
         }
         
-        com.squareup.okhttp.Call call = datasetRelatedColumnNameGetCall(columnName, q, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = apiV1DatasetDistinctColumnNameGetCall(columnName, q, progressListener, progressRequestListener);
         return call;
 
         
@@ -1268,11 +267,11 @@ public class DatasetsApi {
      * 
      * @param columnName  (required)
      * @param q  (optional)
-     * @return InlineResponse2003
+     * @return DistincResponseSchema
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse2003 datasetRelatedColumnNameGet(String columnName, Object q) throws ApiException {
-        ApiResponse<InlineResponse2003> resp = datasetRelatedColumnNameGetWithHttpInfo(columnName, q);
+    public DistincResponseSchema apiV1DatasetDistinctColumnNameGet(String columnName, GetRelatedSchema q) throws ApiException {
+        ApiResponse<DistincResponseSchema> resp = apiV1DatasetDistinctColumnNameGetWithHttpInfo(columnName, q);
         return resp.getData();
     }
 
@@ -1281,12 +280,12 @@ public class DatasetsApi {
      * 
      * @param columnName  (required)
      * @param q  (optional)
-     * @return ApiResponse&lt;InlineResponse2003&gt;
+     * @return ApiResponse&lt;DistincResponseSchema&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse2003> datasetRelatedColumnNameGetWithHttpInfo(String columnName, Object q) throws ApiException {
-        com.squareup.okhttp.Call call = datasetRelatedColumnNameGetValidateBeforeCall(columnName, q, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse2003>(){}.getType();
+    public ApiResponse<DistincResponseSchema> apiV1DatasetDistinctColumnNameGetWithHttpInfo(String columnName, GetRelatedSchema q) throws ApiException {
+        com.squareup.okhttp.Call call = apiV1DatasetDistinctColumnNameGetValidateBeforeCall(columnName, q, null, null);
+        Type localVarReturnType = new TypeToken<DistincResponseSchema>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -1299,7 +298,7 @@ public class DatasetsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call datasetRelatedColumnNameGetAsync(String columnName, Object q, final ApiCallback<InlineResponse2003> callback) throws ApiException {
+    public com.squareup.okhttp.Call apiV1DatasetDistinctColumnNameGetAsync(String columnName, GetRelatedSchema q, final ApiCallback<DistincResponseSchema> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1320,8 +319,1819 @@ public class DatasetsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = datasetRelatedColumnNameGetValidateBeforeCall(columnName, q, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse2003>(){}.getType();
+        com.squareup.okhttp.Call call = apiV1DatasetDistinctColumnNameGetValidateBeforeCall(columnName, q, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<DistincResponseSchema>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for apiV1DatasetExportGet
+     * @param q  (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call apiV1DatasetExportGetCall(GetExportIdsSchema q, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/api/v1/dataset/export/";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (q != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("q", q));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain", "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "jwt" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call apiV1DatasetExportGetValidateBeforeCall(GetExportIdsSchema q, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        com.squareup.okhttp.Call call = apiV1DatasetExportGetCall(q, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * 
+     * Exports multiple datasets and downloads them as YAML files
+     * @param q  (optional)
+     * @return String
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public String apiV1DatasetExportGet(GetExportIdsSchema q) throws ApiException {
+        ApiResponse<String> resp = apiV1DatasetExportGetWithHttpInfo(q);
+        return resp.getData();
+    }
+
+    /**
+     * 
+     * Exports multiple datasets and downloads them as YAML files
+     * @param q  (optional)
+     * @return ApiResponse&lt;String&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<String> apiV1DatasetExportGetWithHttpInfo(GetExportIdsSchema q) throws ApiException {
+        com.squareup.okhttp.Call call = apiV1DatasetExportGetValidateBeforeCall(q, null, null);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Exports multiple datasets and downloads them as YAML files
+     * @param q  (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call apiV1DatasetExportGetAsync(GetExportIdsSchema q, final ApiCallback<String> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = apiV1DatasetExportGetValidateBeforeCall(q, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for apiV1DatasetGet
+     * @param q  (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call apiV1DatasetGetCall(GetListSchema q, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/api/v1/dataset/";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (q != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("q", q));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "jwt" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call apiV1DatasetGetValidateBeforeCall(GetListSchema q, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        com.squareup.okhttp.Call call = apiV1DatasetGetCall(q, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * 
+     * Get a list of models
+     * @param q  (optional)
+     * @return InlineResponse20031
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public InlineResponse20031 apiV1DatasetGet(GetListSchema q) throws ApiException {
+        ApiResponse<InlineResponse20031> resp = apiV1DatasetGetWithHttpInfo(q);
+        return resp.getData();
+    }
+
+    /**
+     * 
+     * Get a list of models
+     * @param q  (optional)
+     * @return ApiResponse&lt;InlineResponse20031&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<InlineResponse20031> apiV1DatasetGetWithHttpInfo(GetListSchema q) throws ApiException {
+        com.squareup.okhttp.Call call = apiV1DatasetGetValidateBeforeCall(q, null, null);
+        Type localVarReturnType = new TypeToken<InlineResponse20031>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Get a list of models
+     * @param q  (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call apiV1DatasetGetAsync(GetListSchema q, final ApiCallback<InlineResponse20031> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = apiV1DatasetGetValidateBeforeCall(q, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<InlineResponse20031>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for apiV1DatasetImportPost
+     * @param formData  (required)
+     * @param overwrite  (required)
+     * @param passwords  (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call apiV1DatasetImportPostCall(File formData, Boolean overwrite, String passwords, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/api/v1/dataset/import/";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        if (formData != null)
+        localVarFormParams.put("formData", formData);
+        if (overwrite != null)
+        localVarFormParams.put("overwrite", overwrite);
+        if (passwords != null)
+        localVarFormParams.put("passwords", passwords);
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "multipart/form-data"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "jwt" };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call apiV1DatasetImportPostValidateBeforeCall(File formData, Boolean overwrite, String passwords, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'formData' is set
+        if (formData == null) {
+            throw new ApiException("Missing the required parameter 'formData' when calling apiV1DatasetImportPost(Async)");
+        }
+        // verify the required parameter 'overwrite' is set
+        if (overwrite == null) {
+            throw new ApiException("Missing the required parameter 'overwrite' when calling apiV1DatasetImportPost(Async)");
+        }
+        // verify the required parameter 'passwords' is set
+        if (passwords == null) {
+            throw new ApiException("Missing the required parameter 'passwords' when calling apiV1DatasetImportPost(Async)");
+        }
+        
+        com.squareup.okhttp.Call call = apiV1DatasetImportPostCall(formData, overwrite, passwords, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * 
+     * 
+     * @param formData  (required)
+     * @param overwrite  (required)
+     * @param passwords  (required)
+     * @return InlineResponse400
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public InlineResponse400 apiV1DatasetImportPost(File formData, Boolean overwrite, String passwords) throws ApiException {
+        ApiResponse<InlineResponse400> resp = apiV1DatasetImportPostWithHttpInfo(formData, overwrite, passwords);
+        return resp.getData();
+    }
+
+    /**
+     * 
+     * 
+     * @param formData  (required)
+     * @param overwrite  (required)
+     * @param passwords  (required)
+     * @return ApiResponse&lt;InlineResponse400&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<InlineResponse400> apiV1DatasetImportPostWithHttpInfo(File formData, Boolean overwrite, String passwords) throws ApiException {
+        com.squareup.okhttp.Call call = apiV1DatasetImportPostValidateBeforeCall(formData, overwrite, passwords, null, null);
+        Type localVarReturnType = new TypeToken<InlineResponse400>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * 
+     * @param formData  (required)
+     * @param overwrite  (required)
+     * @param passwords  (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call apiV1DatasetImportPostAsync(File formData, Boolean overwrite, String passwords, final ApiCallback<InlineResponse400> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = apiV1DatasetImportPostValidateBeforeCall(formData, overwrite, passwords, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<InlineResponse400>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for apiV1DatasetInfoGet
+     * @param q  (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call apiV1DatasetInfoGetCall(GetInfoSchema q, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/api/v1/dataset/_info";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (q != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("q", q));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "jwt" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call apiV1DatasetInfoGetValidateBeforeCall(GetInfoSchema q, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        com.squareup.okhttp.Call call = apiV1DatasetInfoGetCall(q, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * 
+     * Get metadata information about this API resource
+     * @param q  (optional)
+     * @return InlineResponse2002
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public InlineResponse2002 apiV1DatasetInfoGet(GetInfoSchema q) throws ApiException {
+        ApiResponse<InlineResponse2002> resp = apiV1DatasetInfoGetWithHttpInfo(q);
+        return resp.getData();
+    }
+
+    /**
+     * 
+     * Get metadata information about this API resource
+     * @param q  (optional)
+     * @return ApiResponse&lt;InlineResponse2002&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<InlineResponse2002> apiV1DatasetInfoGetWithHttpInfo(GetInfoSchema q) throws ApiException {
+        com.squareup.okhttp.Call call = apiV1DatasetInfoGetValidateBeforeCall(q, null, null);
+        Type localVarReturnType = new TypeToken<InlineResponse2002>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Get metadata information about this API resource
+     * @param q  (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call apiV1DatasetInfoGetAsync(GetInfoSchema q, final ApiCallback<InlineResponse2002> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = apiV1DatasetInfoGetValidateBeforeCall(q, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<InlineResponse2002>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for apiV1DatasetPkColumnColumnIdDelete
+     * @param pk The dataset pk for this column (required)
+     * @param columnId The column id for this dataset (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call apiV1DatasetPkColumnColumnIdDeleteCall(Integer pk, Integer columnId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/api/v1/dataset/{pk}/column/{column_id}"
+            .replaceAll("\\{" + "pk" + "\\}", apiClient.escapeString(pk.toString()))
+            .replaceAll("\\{" + "column_id" + "\\}", apiClient.escapeString(columnId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "jwt" };
+        return apiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call apiV1DatasetPkColumnColumnIdDeleteValidateBeforeCall(Integer pk, Integer columnId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'pk' is set
+        if (pk == null) {
+            throw new ApiException("Missing the required parameter 'pk' when calling apiV1DatasetPkColumnColumnIdDelete(Async)");
+        }
+        // verify the required parameter 'columnId' is set
+        if (columnId == null) {
+            throw new ApiException("Missing the required parameter 'columnId' when calling apiV1DatasetPkColumnColumnIdDelete(Async)");
+        }
+        
+        com.squareup.okhttp.Call call = apiV1DatasetPkColumnColumnIdDeleteCall(pk, columnId, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * 
+     * Delete a Dataset column
+     * @param pk The dataset pk for this column (required)
+     * @param columnId The column id for this dataset (required)
+     * @return InlineResponse400
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public InlineResponse400 apiV1DatasetPkColumnColumnIdDelete(Integer pk, Integer columnId) throws ApiException {
+        ApiResponse<InlineResponse400> resp = apiV1DatasetPkColumnColumnIdDeleteWithHttpInfo(pk, columnId);
+        return resp.getData();
+    }
+
+    /**
+     * 
+     * Delete a Dataset column
+     * @param pk The dataset pk for this column (required)
+     * @param columnId The column id for this dataset (required)
+     * @return ApiResponse&lt;InlineResponse400&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<InlineResponse400> apiV1DatasetPkColumnColumnIdDeleteWithHttpInfo(Integer pk, Integer columnId) throws ApiException {
+        com.squareup.okhttp.Call call = apiV1DatasetPkColumnColumnIdDeleteValidateBeforeCall(pk, columnId, null, null);
+        Type localVarReturnType = new TypeToken<InlineResponse400>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Delete a Dataset column
+     * @param pk The dataset pk for this column (required)
+     * @param columnId The column id for this dataset (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call apiV1DatasetPkColumnColumnIdDeleteAsync(Integer pk, Integer columnId, final ApiCallback<InlineResponse400> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = apiV1DatasetPkColumnColumnIdDeleteValidateBeforeCall(pk, columnId, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<InlineResponse400>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for apiV1DatasetPkDelete
+     * @param pk  (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call apiV1DatasetPkDeleteCall(Integer pk, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/api/v1/dataset/{pk}"
+            .replaceAll("\\{" + "pk" + "\\}", apiClient.escapeString(pk.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "jwt" };
+        return apiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call apiV1DatasetPkDeleteValidateBeforeCall(Integer pk, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'pk' is set
+        if (pk == null) {
+            throw new ApiException("Missing the required parameter 'pk' when calling apiV1DatasetPkDelete(Async)");
+        }
+        
+        com.squareup.okhttp.Call call = apiV1DatasetPkDeleteCall(pk, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * 
+     * Deletes a Dataset
+     * @param pk  (required)
+     * @return InlineResponse400
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public InlineResponse400 apiV1DatasetPkDelete(Integer pk) throws ApiException {
+        ApiResponse<InlineResponse400> resp = apiV1DatasetPkDeleteWithHttpInfo(pk);
+        return resp.getData();
+    }
+
+    /**
+     * 
+     * Deletes a Dataset
+     * @param pk  (required)
+     * @return ApiResponse&lt;InlineResponse400&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<InlineResponse400> apiV1DatasetPkDeleteWithHttpInfo(Integer pk) throws ApiException {
+        com.squareup.okhttp.Call call = apiV1DatasetPkDeleteValidateBeforeCall(pk, null, null);
+        Type localVarReturnType = new TypeToken<InlineResponse400>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Deletes a Dataset
+     * @param pk  (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call apiV1DatasetPkDeleteAsync(Integer pk, final ApiCallback<InlineResponse400> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = apiV1DatasetPkDeleteValidateBeforeCall(pk, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<InlineResponse400>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for apiV1DatasetPkGet
+     * @param pk  (required)
+     * @param q  (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call apiV1DatasetPkGetCall(Integer pk, GetItemSchema q, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/api/v1/dataset/{pk}"
+            .replaceAll("\\{" + "pk" + "\\}", apiClient.escapeString(pk.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (q != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("q", q));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "jwt" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call apiV1DatasetPkGetValidateBeforeCall(Integer pk, GetItemSchema q, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'pk' is set
+        if (pk == null) {
+            throw new ApiException("Missing the required parameter 'pk' when calling apiV1DatasetPkGet(Async)");
+        }
+        
+        com.squareup.okhttp.Call call = apiV1DatasetPkGetCall(pk, q, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * 
+     * Get an item model
+     * @param pk  (required)
+     * @param q  (optional)
+     * @return InlineResponse20032
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public InlineResponse20032 apiV1DatasetPkGet(Integer pk, GetItemSchema q) throws ApiException {
+        ApiResponse<InlineResponse20032> resp = apiV1DatasetPkGetWithHttpInfo(pk, q);
+        return resp.getData();
+    }
+
+    /**
+     * 
+     * Get an item model
+     * @param pk  (required)
+     * @param q  (optional)
+     * @return ApiResponse&lt;InlineResponse20032&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<InlineResponse20032> apiV1DatasetPkGetWithHttpInfo(Integer pk, GetItemSchema q) throws ApiException {
+        com.squareup.okhttp.Call call = apiV1DatasetPkGetValidateBeforeCall(pk, q, null, null);
+        Type localVarReturnType = new TypeToken<InlineResponse20032>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Get an item model
+     * @param pk  (required)
+     * @param q  (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call apiV1DatasetPkGetAsync(Integer pk, GetItemSchema q, final ApiCallback<InlineResponse20032> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = apiV1DatasetPkGetValidateBeforeCall(pk, q, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<InlineResponse20032>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for apiV1DatasetPkMetricMetricIdDelete
+     * @param pk The dataset pk for this column (required)
+     * @param metricId The metric id for this dataset (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call apiV1DatasetPkMetricMetricIdDeleteCall(Integer pk, Integer metricId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/api/v1/dataset/{pk}/metric/{metric_id}"
+            .replaceAll("\\{" + "pk" + "\\}", apiClient.escapeString(pk.toString()))
+            .replaceAll("\\{" + "metric_id" + "\\}", apiClient.escapeString(metricId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "jwt" };
+        return apiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call apiV1DatasetPkMetricMetricIdDeleteValidateBeforeCall(Integer pk, Integer metricId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'pk' is set
+        if (pk == null) {
+            throw new ApiException("Missing the required parameter 'pk' when calling apiV1DatasetPkMetricMetricIdDelete(Async)");
+        }
+        // verify the required parameter 'metricId' is set
+        if (metricId == null) {
+            throw new ApiException("Missing the required parameter 'metricId' when calling apiV1DatasetPkMetricMetricIdDelete(Async)");
+        }
+        
+        com.squareup.okhttp.Call call = apiV1DatasetPkMetricMetricIdDeleteCall(pk, metricId, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * 
+     * Delete a Dataset metric
+     * @param pk The dataset pk for this column (required)
+     * @param metricId The metric id for this dataset (required)
+     * @return InlineResponse400
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public InlineResponse400 apiV1DatasetPkMetricMetricIdDelete(Integer pk, Integer metricId) throws ApiException {
+        ApiResponse<InlineResponse400> resp = apiV1DatasetPkMetricMetricIdDeleteWithHttpInfo(pk, metricId);
+        return resp.getData();
+    }
+
+    /**
+     * 
+     * Delete a Dataset metric
+     * @param pk The dataset pk for this column (required)
+     * @param metricId The metric id for this dataset (required)
+     * @return ApiResponse&lt;InlineResponse400&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<InlineResponse400> apiV1DatasetPkMetricMetricIdDeleteWithHttpInfo(Integer pk, Integer metricId) throws ApiException {
+        com.squareup.okhttp.Call call = apiV1DatasetPkMetricMetricIdDeleteValidateBeforeCall(pk, metricId, null, null);
+        Type localVarReturnType = new TypeToken<InlineResponse400>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Delete a Dataset metric
+     * @param pk The dataset pk for this column (required)
+     * @param metricId The metric id for this dataset (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call apiV1DatasetPkMetricMetricIdDeleteAsync(Integer pk, Integer metricId, final ApiCallback<InlineResponse400> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = apiV1DatasetPkMetricMetricIdDeleteValidateBeforeCall(pk, metricId, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<InlineResponse400>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for apiV1DatasetPkPut
+     * @param body Dataset schema (required)
+     * @param pk  (required)
+     * @param overrideColumns  (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call apiV1DatasetPkPutCall(DatasetRestApiPut body, Integer pk, Boolean overrideColumns, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = body;
+        
+        // create path and map variables
+        String localVarPath = "/api/v1/dataset/{pk}"
+            .replaceAll("\\{" + "pk" + "\\}", apiClient.escapeString(pk.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (overrideColumns != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("override_columns", overrideColumns));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "jwt" };
+        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call apiV1DatasetPkPutValidateBeforeCall(DatasetRestApiPut body, Integer pk, Boolean overrideColumns, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException("Missing the required parameter 'body' when calling apiV1DatasetPkPut(Async)");
+        }
+        // verify the required parameter 'pk' is set
+        if (pk == null) {
+            throw new ApiException("Missing the required parameter 'pk' when calling apiV1DatasetPkPut(Async)");
+        }
+        
+        com.squareup.okhttp.Call call = apiV1DatasetPkPutCall(body, pk, overrideColumns, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * 
+     * Changes a Dataset
+     * @param body Dataset schema (required)
+     * @param pk  (required)
+     * @param overrideColumns  (optional)
+     * @return InlineResponse20033
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public InlineResponse20033 apiV1DatasetPkPut(DatasetRestApiPut body, Integer pk, Boolean overrideColumns) throws ApiException {
+        ApiResponse<InlineResponse20033> resp = apiV1DatasetPkPutWithHttpInfo(body, pk, overrideColumns);
+        return resp.getData();
+    }
+
+    /**
+     * 
+     * Changes a Dataset
+     * @param body Dataset schema (required)
+     * @param pk  (required)
+     * @param overrideColumns  (optional)
+     * @return ApiResponse&lt;InlineResponse20033&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<InlineResponse20033> apiV1DatasetPkPutWithHttpInfo(DatasetRestApiPut body, Integer pk, Boolean overrideColumns) throws ApiException {
+        com.squareup.okhttp.Call call = apiV1DatasetPkPutValidateBeforeCall(body, pk, overrideColumns, null, null);
+        Type localVarReturnType = new TypeToken<InlineResponse20033>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Changes a Dataset
+     * @param body Dataset schema (required)
+     * @param pk  (required)
+     * @param overrideColumns  (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call apiV1DatasetPkPutAsync(DatasetRestApiPut body, Integer pk, Boolean overrideColumns, final ApiCallback<InlineResponse20033> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = apiV1DatasetPkPutValidateBeforeCall(body, pk, overrideColumns, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<InlineResponse20033>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for apiV1DatasetPkRefreshPut
+     * @param pk  (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call apiV1DatasetPkRefreshPutCall(Integer pk, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/api/v1/dataset/{pk}/refresh"
+            .replaceAll("\\{" + "pk" + "\\}", apiClient.escapeString(pk.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "jwt" };
+        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call apiV1DatasetPkRefreshPutValidateBeforeCall(Integer pk, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'pk' is set
+        if (pk == null) {
+            throw new ApiException("Missing the required parameter 'pk' when calling apiV1DatasetPkRefreshPut(Async)");
+        }
+        
+        com.squareup.okhttp.Call call = apiV1DatasetPkRefreshPutCall(pk, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * 
+     * Refreshes and updates columns of a dataset
+     * @param pk  (required)
+     * @return InlineResponse400
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public InlineResponse400 apiV1DatasetPkRefreshPut(Integer pk) throws ApiException {
+        ApiResponse<InlineResponse400> resp = apiV1DatasetPkRefreshPutWithHttpInfo(pk);
+        return resp.getData();
+    }
+
+    /**
+     * 
+     * Refreshes and updates columns of a dataset
+     * @param pk  (required)
+     * @return ApiResponse&lt;InlineResponse400&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<InlineResponse400> apiV1DatasetPkRefreshPutWithHttpInfo(Integer pk) throws ApiException {
+        com.squareup.okhttp.Call call = apiV1DatasetPkRefreshPutValidateBeforeCall(pk, null, null);
+        Type localVarReturnType = new TypeToken<InlineResponse400>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Refreshes and updates columns of a dataset
+     * @param pk  (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call apiV1DatasetPkRefreshPutAsync(Integer pk, final ApiCallback<InlineResponse400> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = apiV1DatasetPkRefreshPutValidateBeforeCall(pk, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<InlineResponse400>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for apiV1DatasetPkRelatedObjectsGet
+     * @param pk  (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call apiV1DatasetPkRelatedObjectsGetCall(Integer pk, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/api/v1/dataset/{pk}/related_objects"
+            .replaceAll("\\{" + "pk" + "\\}", apiClient.escapeString(pk.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "jwt" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call apiV1DatasetPkRelatedObjectsGetValidateBeforeCall(Integer pk, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'pk' is set
+        if (pk == null) {
+            throw new ApiException("Missing the required parameter 'pk' when calling apiV1DatasetPkRelatedObjectsGet(Async)");
+        }
+        
+        com.squareup.okhttp.Call call = apiV1DatasetPkRelatedObjectsGetCall(pk, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * 
+     * Get charts and dashboards count associated to a dataset
+     * @param pk  (required)
+     * @return DatasetRelatedObjectsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public DatasetRelatedObjectsResponse apiV1DatasetPkRelatedObjectsGet(Integer pk) throws ApiException {
+        ApiResponse<DatasetRelatedObjectsResponse> resp = apiV1DatasetPkRelatedObjectsGetWithHttpInfo(pk);
+        return resp.getData();
+    }
+
+    /**
+     * 
+     * Get charts and dashboards count associated to a dataset
+     * @param pk  (required)
+     * @return ApiResponse&lt;DatasetRelatedObjectsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<DatasetRelatedObjectsResponse> apiV1DatasetPkRelatedObjectsGetWithHttpInfo(Integer pk) throws ApiException {
+        com.squareup.okhttp.Call call = apiV1DatasetPkRelatedObjectsGetValidateBeforeCall(pk, null, null);
+        Type localVarReturnType = new TypeToken<DatasetRelatedObjectsResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Get charts and dashboards count associated to a dataset
+     * @param pk  (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call apiV1DatasetPkRelatedObjectsGetAsync(Integer pk, final ApiCallback<DatasetRelatedObjectsResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = apiV1DatasetPkRelatedObjectsGetValidateBeforeCall(pk, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<DatasetRelatedObjectsResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for apiV1DatasetPkSamplesGet
+     * @param pk  (required)
+     * @param force  (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call apiV1DatasetPkSamplesGetCall(Integer pk, Boolean force, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/api/v1/dataset/{pk}/samples"
+            .replaceAll("\\{" + "pk" + "\\}", apiClient.escapeString(pk.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (force != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("force", force));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "jwt" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call apiV1DatasetPkSamplesGetValidateBeforeCall(Integer pk, Boolean force, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'pk' is set
+        if (pk == null) {
+            throw new ApiException("Missing the required parameter 'pk' when calling apiV1DatasetPkSamplesGet(Async)");
+        }
+        
+        com.squareup.okhttp.Call call = apiV1DatasetPkSamplesGetCall(pk, force, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * 
+     * get samples from a Dataset
+     * @param pk  (required)
+     * @param force  (optional)
+     * @return InlineResponse20034
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public InlineResponse20034 apiV1DatasetPkSamplesGet(Integer pk, Boolean force) throws ApiException {
+        ApiResponse<InlineResponse20034> resp = apiV1DatasetPkSamplesGetWithHttpInfo(pk, force);
+        return resp.getData();
+    }
+
+    /**
+     * 
+     * get samples from a Dataset
+     * @param pk  (required)
+     * @param force  (optional)
+     * @return ApiResponse&lt;InlineResponse20034&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<InlineResponse20034> apiV1DatasetPkSamplesGetWithHttpInfo(Integer pk, Boolean force) throws ApiException {
+        com.squareup.okhttp.Call call = apiV1DatasetPkSamplesGetValidateBeforeCall(pk, force, null, null);
+        Type localVarReturnType = new TypeToken<InlineResponse20034>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * get samples from a Dataset
+     * @param pk  (required)
+     * @param force  (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call apiV1DatasetPkSamplesGetAsync(Integer pk, Boolean force, final ApiCallback<InlineResponse20034> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = apiV1DatasetPkSamplesGetValidateBeforeCall(pk, force, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<InlineResponse20034>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for apiV1DatasetPost
+     * @param body Dataset schema (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call apiV1DatasetPostCall(DatasetRestApiPost body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = body;
+        
+        // create path and map variables
+        String localVarPath = "/api/v1/dataset/";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "jwt" };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call apiV1DatasetPostValidateBeforeCall(DatasetRestApiPost body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException("Missing the required parameter 'body' when calling apiV1DatasetPost(Async)");
+        }
+        
+        com.squareup.okhttp.Call call = apiV1DatasetPostCall(body, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * 
+     * Create a new Dataset
+     * @param body Dataset schema (required)
+     * @return InlineResponse2019
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public InlineResponse2019 apiV1DatasetPost(DatasetRestApiPost body) throws ApiException {
+        ApiResponse<InlineResponse2019> resp = apiV1DatasetPostWithHttpInfo(body);
+        return resp.getData();
+    }
+
+    /**
+     * 
+     * Create a new Dataset
+     * @param body Dataset schema (required)
+     * @return ApiResponse&lt;InlineResponse2019&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<InlineResponse2019> apiV1DatasetPostWithHttpInfo(DatasetRestApiPost body) throws ApiException {
+        com.squareup.okhttp.Call call = apiV1DatasetPostValidateBeforeCall(body, null, null);
+        Type localVarReturnType = new TypeToken<InlineResponse2019>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Create a new Dataset
+     * @param body Dataset schema (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call apiV1DatasetPostAsync(DatasetRestApiPost body, final ApiCallback<InlineResponse2019> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = apiV1DatasetPostValidateBeforeCall(body, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<InlineResponse2019>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for apiV1DatasetRelatedColumnNameGet
+     * @param columnName  (required)
+     * @param q  (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call apiV1DatasetRelatedColumnNameGetCall(String columnName, GetRelatedSchema q, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/api/v1/dataset/related/{column_name}"
+            .replaceAll("\\{" + "column_name" + "\\}", apiClient.escapeString(columnName.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (q != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("q", q));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "jwt" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call apiV1DatasetRelatedColumnNameGetValidateBeforeCall(String columnName, GetRelatedSchema q, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'columnName' is set
+        if (columnName == null) {
+            throw new ApiException("Missing the required parameter 'columnName' when calling apiV1DatasetRelatedColumnNameGet(Async)");
+        }
+        
+        com.squareup.okhttp.Call call = apiV1DatasetRelatedColumnNameGetCall(columnName, q, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * 
+     * 
+     * @param columnName  (required)
+     * @param q  (optional)
+     * @return RelatedResponseSchema
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public RelatedResponseSchema apiV1DatasetRelatedColumnNameGet(String columnName, GetRelatedSchema q) throws ApiException {
+        ApiResponse<RelatedResponseSchema> resp = apiV1DatasetRelatedColumnNameGetWithHttpInfo(columnName, q);
+        return resp.getData();
+    }
+
+    /**
+     * 
+     * 
+     * @param columnName  (required)
+     * @param q  (optional)
+     * @return ApiResponse&lt;RelatedResponseSchema&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<RelatedResponseSchema> apiV1DatasetRelatedColumnNameGetWithHttpInfo(String columnName, GetRelatedSchema q) throws ApiException {
+        com.squareup.okhttp.Call call = apiV1DatasetRelatedColumnNameGetValidateBeforeCall(columnName, q, null, null);
+        Type localVarReturnType = new TypeToken<RelatedResponseSchema>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * 
+     * @param columnName  (required)
+     * @param q  (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call apiV1DatasetRelatedColumnNameGetAsync(String columnName, GetRelatedSchema q, final ApiCallback<RelatedResponseSchema> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = apiV1DatasetRelatedColumnNameGetValidateBeforeCall(columnName, q, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<RelatedResponseSchema>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

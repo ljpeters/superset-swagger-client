@@ -14,9 +14,7 @@ package at.mic.superset.swagger.client.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import at.mic.superset.swagger.client.model.DashboardRestApiGet;
-import at.mic.superset.swagger.client.model.InlineResponse200DescriptionColumns;
-import at.mic.superset.swagger.client.model.InlineResponse200LabelColumns;
+import at.mic.superset.swagger.client.model.InlineResponse2008Result;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -30,82 +28,21 @@ import java.util.List;
  * InlineResponse2008
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-11-06T17:36:10.263+01:00[Europe/Vienna]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2022-08-29T14:48:42.974+02:00[Europe/Berlin]")
 public class InlineResponse2008 {
-  @SerializedName("description_columns")
-  private InlineResponse200DescriptionColumns descriptionColumns = null;
-
-  @SerializedName("id")
-  private String id = null;
-
-  @SerializedName("label_columns")
-  private InlineResponse200LabelColumns labelColumns = null;
-
   @SerializedName("result")
-  private DashboardRestApiGet result = null;
+  private List<InlineResponse2008Result> result = null;
 
-  @SerializedName("show_columns")
-  private List<String> showColumns = null;
-
-  @SerializedName("show_title")
-  private String showTitle = null;
-
-  public InlineResponse2008 descriptionColumns(InlineResponse200DescriptionColumns descriptionColumns) {
-    this.descriptionColumns = descriptionColumns;
-    return this;
-  }
-
-   /**
-   * Get descriptionColumns
-   * @return descriptionColumns
-  **/
-  @Schema(description = "")
-  public InlineResponse200DescriptionColumns getDescriptionColumns() {
-    return descriptionColumns;
-  }
-
-  public void setDescriptionColumns(InlineResponse200DescriptionColumns descriptionColumns) {
-    this.descriptionColumns = descriptionColumns;
-  }
-
-  public InlineResponse2008 id(String id) {
-    this.id = id;
-    return this;
-  }
-
-   /**
-   * The item id
-   * @return id
-  **/
-  @Schema(description = "The item id")
-  public String getId() {
-    return id;
-  }
-
-  public void setId(String id) {
-    this.id = id;
-  }
-
-  public InlineResponse2008 labelColumns(InlineResponse200LabelColumns labelColumns) {
-    this.labelColumns = labelColumns;
-    return this;
-  }
-
-   /**
-   * Get labelColumns
-   * @return labelColumns
-  **/
-  @Schema(description = "")
-  public InlineResponse200LabelColumns getLabelColumns() {
-    return labelColumns;
-  }
-
-  public void setLabelColumns(InlineResponse200LabelColumns labelColumns) {
-    this.labelColumns = labelColumns;
-  }
-
-  public InlineResponse2008 result(DashboardRestApiGet result) {
+  public InlineResponse2008 result(List<InlineResponse2008Result> result) {
     this.result = result;
+    return this;
+  }
+
+  public InlineResponse2008 addResultItem(InlineResponse2008Result resultItem) {
+    if (this.result == null) {
+      this.result = new ArrayList<InlineResponse2008Result>();
+    }
+    this.result.add(resultItem);
     return this;
   }
 
@@ -114,61 +51,17 @@ public class InlineResponse2008 {
    * @return result
   **/
   @Schema(description = "")
-  public DashboardRestApiGet getResult() {
+  public List<InlineResponse2008Result> getResult() {
     return result;
   }
 
-  public void setResult(DashboardRestApiGet result) {
+  public void setResult(List<InlineResponse2008Result> result) {
     this.result = result;
-  }
-
-  public InlineResponse2008 showColumns(List<String> showColumns) {
-    this.showColumns = showColumns;
-    return this;
-  }
-
-  public InlineResponse2008 addShowColumnsItem(String showColumnsItem) {
-    if (this.showColumns == null) {
-      this.showColumns = new ArrayList<String>();
-    }
-    this.showColumns.add(showColumnsItem);
-    return this;
-  }
-
-   /**
-   * A list of columns
-   * @return showColumns
-  **/
-  @Schema(description = "A list of columns")
-  public List<String> getShowColumns() {
-    return showColumns;
-  }
-
-  public void setShowColumns(List<String> showColumns) {
-    this.showColumns = showColumns;
-  }
-
-  public InlineResponse2008 showTitle(String showTitle) {
-    this.showTitle = showTitle;
-    return this;
-  }
-
-   /**
-   * A title to render. Will be translated by babel
-   * @return showTitle
-  **/
-  @Schema(example = "Show Item Details", description = "A title to render. Will be translated by babel")
-  public String getShowTitle() {
-    return showTitle;
-  }
-
-  public void setShowTitle(String showTitle) {
-    this.showTitle = showTitle;
   }
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -176,17 +69,12 @@ public class InlineResponse2008 {
       return false;
     }
     InlineResponse2008 inlineResponse2008 = (InlineResponse2008) o;
-    return Objects.equals(this.descriptionColumns, inlineResponse2008.descriptionColumns) &&
-        Objects.equals(this.id, inlineResponse2008.id) &&
-        Objects.equals(this.labelColumns, inlineResponse2008.labelColumns) &&
-        Objects.equals(this.result, inlineResponse2008.result) &&
-        Objects.equals(this.showColumns, inlineResponse2008.showColumns) &&
-        Objects.equals(this.showTitle, inlineResponse2008.showTitle);
+    return Objects.equals(this.result, inlineResponse2008.result);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(descriptionColumns, id, labelColumns, result, showColumns, showTitle);
+    return Objects.hash(result);
   }
 
 
@@ -195,12 +83,7 @@ public class InlineResponse2008 {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse2008 {\n");
     
-    sb.append("    descriptionColumns: ").append(toIndentedString(descriptionColumns)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    labelColumns: ").append(toIndentedString(labelColumns)).append("\n");
     sb.append("    result: ").append(toIndentedString(result)).append("\n");
-    sb.append("    showColumns: ").append(toIndentedString(showColumns)).append("\n");
-    sb.append("    showTitle: ").append(toIndentedString(showTitle)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -209,7 +92,7 @@ public class InlineResponse2008 {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

@@ -20,141 +20,59 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.io.File;
 import java.io.IOException;
 /**
  * Body
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-11-06T17:36:10.263+01:00[Europe/Vienna]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2022-08-29T11:55:36.089+02:00[Europe/Berlin]")
 public class Body {
-  @SerializedName("password")
-  private String password = null;
+  @SerializedName("bundle")
+  private File bundle = null;
 
-  /**
-   * Choose an authentication provider
-   */
-  @JsonAdapter(ProviderEnum.Adapter.class)
-  public enum ProviderEnum {
-    DB("db"),
-    LDAP("ldap");
+  @SerializedName("passwords")
+  private String passwords = null;
 
-    private String value;
-
-    ProviderEnum(String value) {
-      this.value = value;
-    }
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-    public static ProviderEnum fromValue(String text) {
-      for (ProviderEnum b : ProviderEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-    public static class Adapter extends TypeAdapter<ProviderEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final ProviderEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public ProviderEnum read(final JsonReader jsonReader) throws IOException {
-        String value = jsonReader.nextString();
-        return ProviderEnum.fromValue(String.valueOf(value));
-      }
-    }
-  }  @SerializedName("provider")
-  private ProviderEnum provider = null;
-
-  @SerializedName("refresh")
-  private Boolean refresh = null;
-
-  @SerializedName("username")
-  private String username = null;
-
-  public Body password(String password) {
-    this.password = password;
+  public Body bundle(File bundle) {
+    this.bundle = bundle;
     return this;
   }
 
    /**
-   * The password for authentication
-   * @return password
+   * upload file (ZIP or JSON)
+   * @return bundle
   **/
-  @Schema(example = "complex-password", description = "The password for authentication")
-  public String getPassword() {
-    return password;
+  @Schema(description = "upload file (ZIP or JSON)")
+  public File getBundle() {
+    return bundle;
   }
 
-  public void setPassword(String password) {
-    this.password = password;
+  public void setBundle(File bundle) {
+    this.bundle = bundle;
   }
 
-  public Body provider(ProviderEnum provider) {
-    this.provider = provider;
+  public Body passwords(String passwords) {
+    this.passwords = passwords;
     return this;
   }
 
    /**
-   * Choose an authentication provider
-   * @return provider
+   * JSON map of passwords for each featured database in the ZIP file. If the ZIP includes a database config in the path &#x60;databases/MyDatabase.yaml&#x60;, the password should be provided in the following format: &#x60;{\&quot;databases/MyDatabase.yaml\&quot;: \&quot;my_password\&quot;}&#x60;.
+   * @return passwords
   **/
-  @Schema(example = "db", description = "Choose an authentication provider")
-  public ProviderEnum getProvider() {
-    return provider;
+  @Schema(description = "JSON map of passwords for each featured database in the ZIP file. If the ZIP includes a database config in the path `databases/MyDatabase.yaml`, the password should be provided in the following format: `{\"databases/MyDatabase.yaml\": \"my_password\"}`.")
+  public String getPasswords() {
+    return passwords;
   }
 
-  public void setProvider(ProviderEnum provider) {
-    this.provider = provider;
-  }
-
-  public Body refresh(Boolean refresh) {
-    this.refresh = refresh;
-    return this;
-  }
-
-   /**
-   * If true a refresh token is provided also
-   * @return refresh
-  **/
-  @Schema(example = "true", description = "If true a refresh token is provided also")
-  public Boolean isRefresh() {
-    return refresh;
-  }
-
-  public void setRefresh(Boolean refresh) {
-    this.refresh = refresh;
-  }
-
-  public Body username(String username) {
-    this.username = username;
-    return this;
-  }
-
-   /**
-   * The username for authentication
-   * @return username
-  **/
-  @Schema(example = "admin", description = "The username for authentication")
-  public String getUsername() {
-    return username;
-  }
-
-  public void setUsername(String username) {
-    this.username = username;
+  public void setPasswords(String passwords) {
+    this.passwords = passwords;
   }
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -162,15 +80,13 @@ public class Body {
       return false;
     }
     Body body = (Body) o;
-    return Objects.equals(this.password, body.password) &&
-        Objects.equals(this.provider, body.provider) &&
-        Objects.equals(this.refresh, body.refresh) &&
-        Objects.equals(this.username, body.username);
+    return Objects.equals(this.bundle, body.bundle) &&
+        Objects.equals(this.passwords, body.passwords);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(password, provider, refresh, username);
+    return Objects.hash(Objects.hashCode(bundle), passwords);
   }
 
 
@@ -179,10 +95,8 @@ public class Body {
     StringBuilder sb = new StringBuilder();
     sb.append("class Body {\n");
     
-    sb.append("    password: ").append(toIndentedString(password)).append("\n");
-    sb.append("    provider: ").append(toIndentedString(provider)).append("\n");
-    sb.append("    refresh: ").append(toIndentedString(refresh)).append("\n");
-    sb.append("    username: ").append(toIndentedString(username)).append("\n");
+    sb.append("    bundle: ").append(toIndentedString(bundle)).append("\n");
+    sb.append("    passwords: ").append(toIndentedString(passwords)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -191,7 +105,7 @@ public class Body {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

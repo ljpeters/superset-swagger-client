@@ -14,7 +14,7 @@ package at.mic.superset.swagger.client.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import at.mic.superset.swagger.client.model.ChartRestApiPut;
+import at.mic.superset.swagger.client.model.AnnotationRestApiGetList;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -23,57 +23,96 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 /**
  * InlineResponse2005
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-11-06T17:36:10.263+01:00[Europe/Vienna]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2022-08-29T14:48:42.974+02:00[Europe/Berlin]")
 public class InlineResponse2005 {
-  @SerializedName("id")
-  private BigDecimal id = null;
+  @SerializedName("count")
+  private BigDecimal count = null;
+
+  @SerializedName("ids")
+  private List<String> ids = null;
 
   @SerializedName("result")
-  private ChartRestApiPut result = null;
+  private List<AnnotationRestApiGetList> result = null;
 
-  public InlineResponse2005 id(BigDecimal id) {
-    this.id = id;
+  public InlineResponse2005 count(BigDecimal count) {
+    this.count = count;
     return this;
   }
 
    /**
-   * Get id
-   * @return id
+   * The total record count on the backend
+   * @return count
   **/
-  @Schema(description = "")
-  public BigDecimal getId() {
-    return id;
+  @Schema(description = "The total record count on the backend")
+  public BigDecimal getCount() {
+    return count;
   }
 
-  public void setId(BigDecimal id) {
-    this.id = id;
+  public void setCount(BigDecimal count) {
+    this.count = count;
   }
 
-  public InlineResponse2005 result(ChartRestApiPut result) {
+  public InlineResponse2005 ids(List<String> ids) {
+    this.ids = ids;
+    return this;
+  }
+
+  public InlineResponse2005 addIdsItem(String idsItem) {
+    if (this.ids == null) {
+      this.ids = new ArrayList<String>();
+    }
+    this.ids.add(idsItem);
+    return this;
+  }
+
+   /**
+   * A list of annotation ids
+   * @return ids
+  **/
+  @Schema(description = "A list of annotation ids")
+  public List<String> getIds() {
+    return ids;
+  }
+
+  public void setIds(List<String> ids) {
+    this.ids = ids;
+  }
+
+  public InlineResponse2005 result(List<AnnotationRestApiGetList> result) {
     this.result = result;
     return this;
   }
 
+  public InlineResponse2005 addResultItem(AnnotationRestApiGetList resultItem) {
+    if (this.result == null) {
+      this.result = new ArrayList<AnnotationRestApiGetList>();
+    }
+    this.result.add(resultItem);
+    return this;
+  }
+
    /**
-   * Get result
+   * The result from the get list query
    * @return result
   **/
-  @Schema(description = "")
-  public ChartRestApiPut getResult() {
+  @Schema(description = "The result from the get list query")
+  public List<AnnotationRestApiGetList> getResult() {
     return result;
   }
 
-  public void setResult(ChartRestApiPut result) {
+  public void setResult(List<AnnotationRestApiGetList> result) {
     this.result = result;
   }
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -81,13 +120,14 @@ public class InlineResponse2005 {
       return false;
     }
     InlineResponse2005 inlineResponse2005 = (InlineResponse2005) o;
-    return Objects.equals(this.id, inlineResponse2005.id) &&
+    return Objects.equals(this.count, inlineResponse2005.count) &&
+        Objects.equals(this.ids, inlineResponse2005.ids) &&
         Objects.equals(this.result, inlineResponse2005.result);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, result);
+    return Objects.hash(count, ids, result);
   }
 
 
@@ -96,7 +136,8 @@ public class InlineResponse2005 {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse2005 {\n");
     
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    count: ").append(toIndentedString(count)).append("\n");
+    sb.append("    ids: ").append(toIndentedString(ids)).append("\n");
     sb.append("    result: ").append(toIndentedString(result)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -106,7 +147,7 @@ public class InlineResponse2005 {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

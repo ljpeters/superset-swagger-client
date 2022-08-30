@@ -16,16 +16,22 @@ import at.mic.superset.swagger.ApiException;
 import at.mic.superset.swagger.client.model.DatasetRelatedObjectsResponse;
 import at.mic.superset.swagger.client.model.DatasetRestApiPost;
 import at.mic.superset.swagger.client.model.DatasetRestApiPut;
+import at.mic.superset.swagger.client.model.DistincResponseSchema;
+import java.io.File;
+import at.mic.superset.swagger.client.model.GetDeleteIdsSchema;
+import at.mic.superset.swagger.client.model.GetExportIdsSchema;
 import at.mic.superset.swagger.client.model.GetInfoSchema;
 import at.mic.superset.swagger.client.model.GetItemSchema;
 import at.mic.superset.swagger.client.model.GetListSchema;
-import at.mic.superset.swagger.client.model.InlineResponse2001;
-import at.mic.superset.swagger.client.model.InlineResponse20013;
-import at.mic.superset.swagger.client.model.InlineResponse20014;
-import at.mic.superset.swagger.client.model.InlineResponse20015;
-import at.mic.superset.swagger.client.model.InlineResponse2003;
-import at.mic.superset.swagger.client.model.InlineResponse2012;
+import at.mic.superset.swagger.client.model.GetRelatedSchema;
+import at.mic.superset.swagger.client.model.InlineResponse2002;
+import at.mic.superset.swagger.client.model.InlineResponse20031;
+import at.mic.superset.swagger.client.model.InlineResponse20032;
+import at.mic.superset.swagger.client.model.InlineResponse20033;
+import at.mic.superset.swagger.client.model.InlineResponse20034;
+import at.mic.superset.swagger.client.model.InlineResponse2019;
 import at.mic.superset.swagger.client.model.InlineResponse400;
+import at.mic.superset.swagger.client.model.RelatedResponseSchema;
 import org.junit.Test;
 import org.junit.Ignore;
 
@@ -45,15 +51,46 @@ public class DatasetsApiTest {
     /**
      * 
      *
+     * Deletes multiple Datasets in a bulk operation.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void apiV1DatasetDeleteTest() throws ApiException {
+        GetDeleteIdsSchema q = null;
+        InlineResponse400 response = api.apiV1DatasetDelete(q);
+
+        // TODO: test validations
+    }
+    /**
+     * 
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void apiV1DatasetDistinctColumnNameGetTest() throws ApiException {
+        String columnName = null;
+        GetRelatedSchema q = null;
+        DistincResponseSchema response = api.apiV1DatasetDistinctColumnNameGet(columnName, q);
+
+        // TODO: test validations
+    }
+    /**
+     * 
+     *
      * Exports multiple datasets and downloads them as YAML files
      *
      * @throws ApiException
      *          if the Api call fails
      */
     @Test
-    public void datasetExportGetTest() throws ApiException {
-        List<Integer> q = null;
-        String response = api.datasetExportGet(q);
+    public void apiV1DatasetExportGetTest() throws ApiException {
+        GetExportIdsSchema q = null;
+        String response = api.apiV1DatasetExportGet(q);
 
         // TODO: test validations
     }
@@ -66,9 +103,26 @@ public class DatasetsApiTest {
      *          if the Api call fails
      */
     @Test
-    public void datasetGetTest() throws ApiException {
+    public void apiV1DatasetGetTest() throws ApiException {
         GetListSchema q = null;
-        InlineResponse20013 response = api.datasetGet(q);
+        InlineResponse20031 response = api.apiV1DatasetGet(q);
+
+        // TODO: test validations
+    }
+    /**
+     * 
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void apiV1DatasetImportPostTest() throws ApiException {
+        File formData = null;
+        Boolean overwrite = null;
+        String passwords = null;
+        InlineResponse400 response = api.apiV1DatasetImportPost(formData, overwrite, passwords);
 
         // TODO: test validations
     }
@@ -81,9 +135,25 @@ public class DatasetsApiTest {
      *          if the Api call fails
      */
     @Test
-    public void datasetInfoGetTest() throws ApiException {
+    public void apiV1DatasetInfoGetTest() throws ApiException {
         GetInfoSchema q = null;
-        InlineResponse2001 response = api.datasetInfoGet(q);
+        InlineResponse2002 response = api.apiV1DatasetInfoGet(q);
+
+        // TODO: test validations
+    }
+    /**
+     * 
+     *
+     * Delete a Dataset column
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void apiV1DatasetPkColumnColumnIdDeleteTest() throws ApiException {
+        Integer pk = null;
+        Integer columnId = null;
+        InlineResponse400 response = api.apiV1DatasetPkColumnColumnIdDelete(pk, columnId);
 
         // TODO: test validations
     }
@@ -96,9 +166,9 @@ public class DatasetsApiTest {
      *          if the Api call fails
      */
     @Test
-    public void datasetPkDeleteTest() throws ApiException {
+    public void apiV1DatasetPkDeleteTest() throws ApiException {
         Integer pk = null;
-        InlineResponse400 response = api.datasetPkDelete(pk);
+        InlineResponse400 response = api.apiV1DatasetPkDelete(pk);
 
         // TODO: test validations
     }
@@ -111,10 +181,26 @@ public class DatasetsApiTest {
      *          if the Api call fails
      */
     @Test
-    public void datasetPkGetTest() throws ApiException {
+    public void apiV1DatasetPkGetTest() throws ApiException {
         Integer pk = null;
         GetItemSchema q = null;
-        InlineResponse20014 response = api.datasetPkGet(pk, q);
+        InlineResponse20032 response = api.apiV1DatasetPkGet(pk, q);
+
+        // TODO: test validations
+    }
+    /**
+     * 
+     *
+     * Delete a Dataset metric
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void apiV1DatasetPkMetricMetricIdDeleteTest() throws ApiException {
+        Integer pk = null;
+        Integer metricId = null;
+        InlineResponse400 response = api.apiV1DatasetPkMetricMetricIdDelete(pk, metricId);
 
         // TODO: test validations
     }
@@ -127,10 +213,11 @@ public class DatasetsApiTest {
      *          if the Api call fails
      */
     @Test
-    public void datasetPkPutTest() throws ApiException {
+    public void apiV1DatasetPkPutTest() throws ApiException {
         DatasetRestApiPut body = null;
         Integer pk = null;
-        InlineResponse20015 response = api.datasetPkPut(body, pk);
+        Boolean overrideColumns = null;
+        InlineResponse20033 response = api.apiV1DatasetPkPut(body, pk, overrideColumns);
 
         // TODO: test validations
     }
@@ -143,9 +230,9 @@ public class DatasetsApiTest {
      *          if the Api call fails
      */
     @Test
-    public void datasetPkRefreshPutTest() throws ApiException {
+    public void apiV1DatasetPkRefreshPutTest() throws ApiException {
         Integer pk = null;
-        InlineResponse400 response = api.datasetPkRefreshPut(pk);
+        InlineResponse400 response = api.apiV1DatasetPkRefreshPut(pk);
 
         // TODO: test validations
     }
@@ -158,9 +245,25 @@ public class DatasetsApiTest {
      *          if the Api call fails
      */
     @Test
-    public void datasetPkRelatedObjectsGetTest() throws ApiException {
+    public void apiV1DatasetPkRelatedObjectsGetTest() throws ApiException {
         Integer pk = null;
-        DatasetRelatedObjectsResponse response = api.datasetPkRelatedObjectsGet(pk);
+        DatasetRelatedObjectsResponse response = api.apiV1DatasetPkRelatedObjectsGet(pk);
+
+        // TODO: test validations
+    }
+    /**
+     * 
+     *
+     * get samples from a Dataset
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void apiV1DatasetPkSamplesGetTest() throws ApiException {
+        Integer pk = null;
+        Boolean force = null;
+        InlineResponse20034 response = api.apiV1DatasetPkSamplesGet(pk, force);
 
         // TODO: test validations
     }
@@ -173,9 +276,9 @@ public class DatasetsApiTest {
      *          if the Api call fails
      */
     @Test
-    public void datasetPostTest() throws ApiException {
+    public void apiV1DatasetPostTest() throws ApiException {
         DatasetRestApiPost body = null;
-        InlineResponse2012 response = api.datasetPost(body);
+        InlineResponse2019 response = api.apiV1DatasetPost(body);
 
         // TODO: test validations
     }
@@ -188,10 +291,10 @@ public class DatasetsApiTest {
      *          if the Api call fails
      */
     @Test
-    public void datasetRelatedColumnNameGetTest() throws ApiException {
+    public void apiV1DatasetRelatedColumnNameGetTest() throws ApiException {
         String columnName = null;
-        Object q = null;
-        InlineResponse2003 response = api.datasetRelatedColumnNameGet(columnName, q);
+        GetRelatedSchema q = null;
+        RelatedResponseSchema response = api.apiV1DatasetRelatedColumnNameGet(columnName, q);
 
         // TODO: test validations
     }

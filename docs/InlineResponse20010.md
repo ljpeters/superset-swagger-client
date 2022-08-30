@@ -3,11 +3,9 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**count** | [**BigDecimal**](BigDecimal.md) | The total record count on the backend |  [optional]
-**descriptionColumns** | [**InlineResponse200DescriptionColumns**](InlineResponse200DescriptionColumns.md) |  |  [optional]
-**ids** | **List&lt;String&gt;** | A list of item ids, useful when you don&#x27;t know the column id |  [optional]
-**labelColumns** | [**InlineResponse200LabelColumns**](InlineResponse200LabelColumns.md) |  |  [optional]
-**listColumns** | **List&lt;String&gt;** | A list of columns |  [optional]
-**listTitle** | **String** | A title to render. Will be translated by babel |  [optional]
-**orderColumns** | **List&lt;String&gt;** | A list of allowed columns to sort |  [optional]
-**result** | [**List&lt;DatabaseRestApiGetList&gt;**](DatabaseRestApiGetList.md) | The result from the get list query |  [optional]
+**descriptionColumns** | [**InlineResponse2001DescriptionColumns**](InlineResponse2001DescriptionColumns.md) |  |  [optional]
+**id** | **String** | The item id |  [optional]
+**labelColumns** | [**InlineResponse2001LabelColumns**](InlineResponse2001LabelColumns.md) |  |  [optional]
+**result** | [**ChartRestApiGet**](ChartRestApiGet.md) |  |  [optional]
+**showColumns** | **List&lt;String&gt;** | A list of columns |  [optional]
+**showTitle** | **String** | A title to render. Will be translated by babel |  [optional]

@@ -14,7 +14,7 @@ package at.mic.superset.swagger.client.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import at.mic.superset.swagger.client.model.Meta18;
+import at.mic.superset.swagger.client.model.LogRestApiGetUser;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -27,16 +27,34 @@ import org.threeten.bp.OffsetDateTime;
  * LogRestApiGet
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-11-06T17:36:10.263+01:00[Europe/Vienna]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2022-08-29T14:48:42.974+02:00[Europe/Berlin]")
 public class LogRestApiGet {
   @SerializedName("action")
   private String action = null;
 
+  @SerializedName("dashboard_id")
+  private Integer dashboardId = null;
+
   @SerializedName("dttm")
   private OffsetDateTime dttm = null;
 
+  @SerializedName("duration_ms")
+  private Integer durationMs = null;
+
+  @SerializedName("json")
+  private String json = null;
+
+  @SerializedName("referrer")
+  private String referrer = null;
+
+  @SerializedName("slice_id")
+  private Integer sliceId = null;
+
   @SerializedName("user")
-  private Meta18 user = null;
+  private LogRestApiGetUser user = null;
+
+  @SerializedName("user_id")
+  private Integer userId = null;
 
   public LogRestApiGet action(String action) {
     this.action = action;
@@ -54,6 +72,24 @@ public class LogRestApiGet {
 
   public void setAction(String action) {
     this.action = action;
+  }
+
+  public LogRestApiGet dashboardId(Integer dashboardId) {
+    this.dashboardId = dashboardId;
+    return this;
+  }
+
+   /**
+   * Get dashboardId
+   * @return dashboardId
+  **/
+  @Schema(description = "")
+  public Integer getDashboardId() {
+    return dashboardId;
+  }
+
+  public void setDashboardId(Integer dashboardId) {
+    this.dashboardId = dashboardId;
   }
 
   public LogRestApiGet dttm(OffsetDateTime dttm) {
@@ -74,7 +110,79 @@ public class LogRestApiGet {
     this.dttm = dttm;
   }
 
-  public LogRestApiGet user(Meta18 user) {
+  public LogRestApiGet durationMs(Integer durationMs) {
+    this.durationMs = durationMs;
+    return this;
+  }
+
+   /**
+   * Get durationMs
+   * @return durationMs
+  **/
+  @Schema(description = "")
+  public Integer getDurationMs() {
+    return durationMs;
+  }
+
+  public void setDurationMs(Integer durationMs) {
+    this.durationMs = durationMs;
+  }
+
+  public LogRestApiGet json(String json) {
+    this.json = json;
+    return this;
+  }
+
+   /**
+   * Get json
+   * @return json
+  **/
+  @Schema(description = "")
+  public String getJson() {
+    return json;
+  }
+
+  public void setJson(String json) {
+    this.json = json;
+  }
+
+  public LogRestApiGet referrer(String referrer) {
+    this.referrer = referrer;
+    return this;
+  }
+
+   /**
+   * Get referrer
+   * @return referrer
+  **/
+  @Schema(description = "")
+  public String getReferrer() {
+    return referrer;
+  }
+
+  public void setReferrer(String referrer) {
+    this.referrer = referrer;
+  }
+
+  public LogRestApiGet sliceId(Integer sliceId) {
+    this.sliceId = sliceId;
+    return this;
+  }
+
+   /**
+   * Get sliceId
+   * @return sliceId
+  **/
+  @Schema(description = "")
+  public Integer getSliceId() {
+    return sliceId;
+  }
+
+  public void setSliceId(Integer sliceId) {
+    this.sliceId = sliceId;
+  }
+
+  public LogRestApiGet user(LogRestApiGetUser user) {
     this.user = user;
     return this;
   }
@@ -84,17 +192,35 @@ public class LogRestApiGet {
    * @return user
   **/
   @Schema(description = "")
-  public Meta18 getUser() {
+  public LogRestApiGetUser getUser() {
     return user;
   }
 
-  public void setUser(Meta18 user) {
+  public void setUser(LogRestApiGetUser user) {
     this.user = user;
+  }
+
+  public LogRestApiGet userId(Integer userId) {
+    this.userId = userId;
+    return this;
+  }
+
+   /**
+   * Get userId
+   * @return userId
+  **/
+  @Schema(description = "")
+  public Integer getUserId() {
+    return userId;
+  }
+
+  public void setUserId(Integer userId) {
+    this.userId = userId;
   }
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -103,13 +229,19 @@ public class LogRestApiGet {
     }
     LogRestApiGet logRestApiGet = (LogRestApiGet) o;
     return Objects.equals(this.action, logRestApiGet.action) &&
+        Objects.equals(this.dashboardId, logRestApiGet.dashboardId) &&
         Objects.equals(this.dttm, logRestApiGet.dttm) &&
-        Objects.equals(this.user, logRestApiGet.user);
+        Objects.equals(this.durationMs, logRestApiGet.durationMs) &&
+        Objects.equals(this.json, logRestApiGet.json) &&
+        Objects.equals(this.referrer, logRestApiGet.referrer) &&
+        Objects.equals(this.sliceId, logRestApiGet.sliceId) &&
+        Objects.equals(this.user, logRestApiGet.user) &&
+        Objects.equals(this.userId, logRestApiGet.userId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(action, dttm, user);
+    return Objects.hash(action, dashboardId, dttm, durationMs, json, referrer, sliceId, user, userId);
   }
 
 
@@ -119,8 +251,14 @@ public class LogRestApiGet {
     sb.append("class LogRestApiGet {\n");
     
     sb.append("    action: ").append(toIndentedString(action)).append("\n");
+    sb.append("    dashboardId: ").append(toIndentedString(dashboardId)).append("\n");
     sb.append("    dttm: ").append(toIndentedString(dttm)).append("\n");
+    sb.append("    durationMs: ").append(toIndentedString(durationMs)).append("\n");
+    sb.append("    json: ").append(toIndentedString(json)).append("\n");
+    sb.append("    referrer: ").append(toIndentedString(referrer)).append("\n");
+    sb.append("    sliceId: ").append(toIndentedString(sliceId)).append("\n");
     sb.append("    user: ").append(toIndentedString(user)).append("\n");
+    sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -129,7 +267,7 @@ public class LogRestApiGet {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

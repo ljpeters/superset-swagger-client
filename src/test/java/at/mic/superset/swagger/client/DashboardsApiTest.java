@@ -15,17 +15,25 @@ package at.mic.superset.swagger.client;
 import at.mic.superset.swagger.ApiException;
 import at.mic.superset.swagger.client.model.DashboardRestApiPost;
 import at.mic.superset.swagger.client.model.DashboardRestApiPut;
+import at.mic.superset.swagger.client.model.EmbeddedDashboardConfig;
 import java.io.File;
+import at.mic.superset.swagger.client.model.GetDeleteIdsSchema;
+import at.mic.superset.swagger.client.model.GetExportIdsSchema;
+import at.mic.superset.swagger.client.model.GetFavStarIdsSchema;
 import at.mic.superset.swagger.client.model.GetInfoSchema;
-import at.mic.superset.swagger.client.model.GetItemSchema;
 import at.mic.superset.swagger.client.model.GetListSchema;
-import at.mic.superset.swagger.client.model.InlineResponse2001;
-import at.mic.superset.swagger.client.model.InlineResponse2003;
-import at.mic.superset.swagger.client.model.InlineResponse2007;
-import at.mic.superset.swagger.client.model.InlineResponse2008;
-import at.mic.superset.swagger.client.model.InlineResponse2009;
-import at.mic.superset.swagger.client.model.InlineResponse2011;
+import at.mic.superset.swagger.client.model.GetRelatedSchema;
+import at.mic.superset.swagger.client.model.InlineResponse20015;
+import at.mic.superset.swagger.client.model.InlineResponse20019;
+import at.mic.superset.swagger.client.model.InlineResponse2002;
+import at.mic.superset.swagger.client.model.InlineResponse20020;
+import at.mic.superset.swagger.client.model.InlineResponse20021;
+import at.mic.superset.swagger.client.model.InlineResponse20022;
+import at.mic.superset.swagger.client.model.InlineResponse20023;
+import at.mic.superset.swagger.client.model.InlineResponse2014;
 import at.mic.superset.swagger.client.model.InlineResponse400;
+import at.mic.superset.swagger.client.model.RelatedResponseSchema;
+import at.mic.superset.swagger.client.model.ThumbnailQuerySchema;
 import org.junit.Test;
 import org.junit.Ignore;
 
@@ -51,9 +59,9 @@ public class DashboardsApiTest {
      *          if the Api call fails
      */
     @Test
-    public void dashboardDeleteTest() throws ApiException {
-        List<Integer> q = null;
-        InlineResponse400 response = api.dashboardDelete(q);
+    public void apiV1DashboardDeleteTest() throws ApiException {
+        GetDeleteIdsSchema q = null;
+        InlineResponse400 response = api.apiV1DashboardDelete(q);
 
         // TODO: test validations
     }
@@ -66,9 +74,24 @@ public class DashboardsApiTest {
      *          if the Api call fails
      */
     @Test
-    public void dashboardExportGetTest() throws ApiException {
-        List<Integer> q = null;
-        String response = api.dashboardExportGet(q);
+    public void apiV1DashboardExportGetTest() throws ApiException {
+        GetExportIdsSchema q = null;
+        String response = api.apiV1DashboardExportGet(q);
+
+        // TODO: test validations
+    }
+    /**
+     * 
+     *
+     * Check favorited dashboards for current user
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void apiV1DashboardFavoriteStatusGetTest() throws ApiException {
+        GetFavStarIdsSchema q = null;
+        GetFavStarIdsSchema response = api.apiV1DashboardFavoriteStatusGet(q);
 
         // TODO: test validations
     }
@@ -81,39 +104,101 @@ public class DashboardsApiTest {
      *          if the Api call fails
      */
     @Test
-    public void dashboardGetTest() throws ApiException {
+    public void apiV1DashboardGetTest() throws ApiException {
         GetListSchema q = null;
-        InlineResponse2007 response = api.dashboardGet(q);
+        InlineResponse20015 response = api.apiV1DashboardGet(q);
 
         // TODO: test validations
     }
     /**
      * 
      *
-     * Several metadata information about dashboard API endpoints.
+     * Get the chart definitions for a given dashboard
      *
      * @throws ApiException
      *          if the Api call fails
      */
     @Test
-    public void dashboardInfoGetTest() throws ApiException {
-        GetInfoSchema q = null;
-        InlineResponse2001 response = api.dashboardInfoGet(q);
+    public void apiV1DashboardIdOrSlugChartsGetTest() throws ApiException {
+        String idOrSlug = null;
+        InlineResponse20020 response = api.apiV1DashboardIdOrSlugChartsGet(idOrSlug);
 
         // TODO: test validations
     }
     /**
      * 
      *
-     * Deletes a Dashboard.
+     * Returns a list of a dashboard&#x27;s datasets. Each dataset includes only the information necessary to render the dashboard&#x27;s charts.
      *
      * @throws ApiException
      *          if the Api call fails
      */
     @Test
-    public void dashboardPkDeleteTest() throws ApiException {
-        Integer pk = null;
-        InlineResponse400 response = api.dashboardPkDelete(pk);
+    public void apiV1DashboardIdOrSlugDatasetsGetTest() throws ApiException {
+        String idOrSlug = null;
+        InlineResponse20021 response = api.apiV1DashboardIdOrSlugDatasetsGet(idOrSlug);
+
+        // TODO: test validations
+    }
+    /**
+     * 
+     *
+     * Removes a dashboard&#x27;s embedded configuration.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void apiV1DashboardIdOrSlugEmbeddedDeleteTest() throws ApiException {
+        String idOrSlug = null;
+        InlineResponse400 response = api.apiV1DashboardIdOrSlugEmbeddedDelete(idOrSlug);
+
+        // TODO: test validations
+    }
+    /**
+     * 
+     *
+     * Returns the dashboard&#x27;s embedded configuration
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void apiV1DashboardIdOrSlugEmbeddedGetTest() throws ApiException {
+        String idOrSlug = null;
+        InlineResponse20022 response = api.apiV1DashboardIdOrSlugEmbeddedGet(idOrSlug);
+
+        // TODO: test validations
+    }
+    /**
+     * 
+     *
+     * Sets a dashboard&#x27;s embedded configuration.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void apiV1DashboardIdOrSlugEmbeddedPostTest() throws ApiException {
+        EmbeddedDashboardConfig body = null;
+        String idOrSlug = null;
+        InlineResponse20022 response = api.apiV1DashboardIdOrSlugEmbeddedPost(body, idOrSlug);
+
+        // TODO: test validations
+    }
+    /**
+     * 
+     *
+     * Sets a dashboard&#x27;s embedded configuration.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void apiV1DashboardIdOrSlugEmbeddedPutTest() throws ApiException {
+        EmbeddedDashboardConfig body = null;
+        String idOrSlug = null;
+        InlineResponse20022 response = api.apiV1DashboardIdOrSlugEmbeddedPut(body, idOrSlug);
 
         // TODO: test validations
     }
@@ -126,10 +211,56 @@ public class DashboardsApiTest {
      *          if the Api call fails
      */
     @Test
-    public void dashboardPkGetTest() throws ApiException {
+    public void apiV1DashboardIdOrSlugGetTest() throws ApiException {
+        String idOrSlug = null;
+        InlineResponse20019 response = api.apiV1DashboardIdOrSlugGet(idOrSlug);
+
+        // TODO: test validations
+    }
+    /**
+     * 
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void apiV1DashboardImportPostTest() throws ApiException {
+        File formData = null;
+        Boolean overwrite = null;
+        String passwords = null;
+        InlineResponse400 response = api.apiV1DashboardImportPost(formData, overwrite, passwords);
+
+        // TODO: test validations
+    }
+    /**
+     * 
+     *
+     * Several metadata information about dashboard API endpoints.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void apiV1DashboardInfoGetTest() throws ApiException {
+        GetInfoSchema q = null;
+        InlineResponse2002 response = api.apiV1DashboardInfoGet(q);
+
+        // TODO: test validations
+    }
+    /**
+     * 
+     *
+     * Deletes a Dashboard.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void apiV1DashboardPkDeleteTest() throws ApiException {
         Integer pk = null;
-        GetItemSchema q = null;
-        InlineResponse2008 response = api.dashboardPkGet(pk, q);
+        InlineResponse400 response = api.apiV1DashboardPkDelete(pk);
 
         // TODO: test validations
     }
@@ -142,10 +273,10 @@ public class DashboardsApiTest {
      *          if the Api call fails
      */
     @Test
-    public void dashboardPkPutTest() throws ApiException {
+    public void apiV1DashboardPkPutTest() throws ApiException {
         DashboardRestApiPut body = null;
         Integer pk = null;
-        InlineResponse2009 response = api.dashboardPkPut(body, pk);
+        InlineResponse20023 response = api.apiV1DashboardPkPut(body, pk);
 
         // TODO: test validations
     }
@@ -158,11 +289,11 @@ public class DashboardsApiTest {
      *          if the Api call fails
      */
     @Test
-    public void dashboardPkThumbnailDigestGetTest() throws ApiException {
+    public void apiV1DashboardPkThumbnailDigestGetTest() throws ApiException {
         Integer pk = null;
         String digest = null;
-        Object q = null;
-        File response = api.dashboardPkThumbnailDigestGet(pk, digest, q);
+        ThumbnailQuerySchema q = null;
+        File response = api.apiV1DashboardPkThumbnailDigestGet(pk, digest, q);
 
         // TODO: test validations
     }
@@ -175,9 +306,9 @@ public class DashboardsApiTest {
      *          if the Api call fails
      */
     @Test
-    public void dashboardPostTest() throws ApiException {
+    public void apiV1DashboardPostTest() throws ApiException {
         DashboardRestApiPost body = null;
-        InlineResponse2011 response = api.dashboardPost(body);
+        InlineResponse2014 response = api.apiV1DashboardPost(body);
 
         // TODO: test validations
     }
@@ -190,10 +321,10 @@ public class DashboardsApiTest {
      *          if the Api call fails
      */
     @Test
-    public void dashboardRelatedColumnNameGetTest() throws ApiException {
+    public void apiV1DashboardRelatedColumnNameGetTest() throws ApiException {
         String columnName = null;
-        Object q = null;
-        InlineResponse2003 response = api.dashboardRelatedColumnNameGet(columnName, q);
+        GetRelatedSchema q = null;
+        RelatedResponseSchema response = api.apiV1DashboardRelatedColumnNameGet(columnName, q);
 
         // TODO: test validations
     }

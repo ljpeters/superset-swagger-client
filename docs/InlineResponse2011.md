@@ -4,4 +4,4 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | [**BigDecimal**](BigDecimal.md) |  |  [optional]
-**result** | [**DashboardRestApiPost**](DashboardRestApiPost.md) |  |  [optional]
+**result** | [**AnnotationRestApiPost**](AnnotationRestApiPost.md) |  |  [optional]

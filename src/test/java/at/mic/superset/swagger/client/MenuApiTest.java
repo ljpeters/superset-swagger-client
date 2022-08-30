@@ -13,7 +13,7 @@
 package at.mic.superset.swagger.client;
 
 import at.mic.superset.swagger.ApiException;
-import at.mic.superset.swagger.client.model.InlineResponse20018;
+import at.mic.superset.swagger.client.model.InlineResponse20039;
 import at.mic.superset.swagger.client.model.InlineResponse400;
 import org.junit.Test;
 import org.junit.Ignore;
@@ -40,8 +40,8 @@ public class MenuApiTest {
      *          if the Api call fails
      */
     @Test
-    public void menuGetTest() throws ApiException {
-        InlineResponse20018 response = api.menuGet();
+    public void apiV1MenuGetTest() throws ApiException {
+        InlineResponse20039 response = api.apiV1MenuGet();
 
         // TODO: test validations
     }

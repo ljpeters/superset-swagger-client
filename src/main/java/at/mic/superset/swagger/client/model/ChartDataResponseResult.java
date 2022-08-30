@@ -23,12 +23,19 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 /**
  * ChartDataResponseResult
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-11-06T17:36:10.263+01:00[Europe/Vienna]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2022-08-29T14:48:42.974+02:00[Europe/Berlin]")
 public class ChartDataResponseResult {
+  @SerializedName("annotation_data")
+  private List<Map<String, String>> annotationData = null;
+
+  @SerializedName("applied_filters")
+  private List<Object> appliedFilters = null;
+
   @SerializedName("cache_key")
   private String cacheKey = null;
 
@@ -38,17 +45,29 @@ public class ChartDataResponseResult {
   @SerializedName("cached_dttm")
   private String cachedDttm = null;
 
+  @SerializedName("colnames")
+  private List<String> colnames = null;
+
+  @SerializedName("coltypes")
+  private List<Integer> coltypes = null;
+
   @SerializedName("data")
   private List<Object> data = null;
 
   @SerializedName("error")
   private String error = null;
 
+  @SerializedName("from_dttm")
+  private Integer fromDttm = null;
+
   @SerializedName("is_cached")
   private Boolean isCached = null;
 
   @SerializedName("query")
   private String query = null;
+
+  @SerializedName("rejected_filters")
+  private List<Object> rejectedFilters = null;
 
   @SerializedName("rowcount")
   private Integer rowcount = null;
@@ -82,9 +101,9 @@ public class ChartDataResponseResult {
     public String toString() {
       return String.valueOf(value);
     }
-    public static StatusEnum fromValue(String text) {
+    public static StatusEnum fromValue(String input) {
       for (StatusEnum b : StatusEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
+        if (b.value.equals(input)) {
           return b;
         }
       }
@@ -93,17 +112,72 @@ public class ChartDataResponseResult {
     public static class Adapter extends TypeAdapter<StatusEnum> {
       @Override
       public void write(final JsonWriter jsonWriter, final StatusEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
+        jsonWriter.value(String.valueOf(enumeration.getValue()));
       }
 
       @Override
       public StatusEnum read(final JsonReader jsonReader) throws IOException {
-        String value = jsonReader.nextString();
-        return StatusEnum.fromValue(String.valueOf(value));
+        Object value = jsonReader.nextString();
+        return StatusEnum.fromValue((String)(value));
       }
     }
   }  @SerializedName("status")
   private StatusEnum status = null;
+
+  @SerializedName("to_dttm")
+  private Integer toDttm = null;
+
+  public ChartDataResponseResult annotationData(List<Map<String, String>> annotationData) {
+    this.annotationData = annotationData;
+    return this;
+  }
+
+  public ChartDataResponseResult addAnnotationDataItem(Map<String, String> annotationDataItem) {
+    if (this.annotationData == null) {
+      this.annotationData = new ArrayList<Map<String, String>>();
+    }
+    this.annotationData.add(annotationDataItem);
+    return this;
+  }
+
+   /**
+   * All requested annotation data
+   * @return annotationData
+  **/
+  @Schema(description = "All requested annotation data")
+  public List<Map<String, String>> getAnnotationData() {
+    return annotationData;
+  }
+
+  public void setAnnotationData(List<Map<String, String>> annotationData) {
+    this.annotationData = annotationData;
+  }
+
+  public ChartDataResponseResult appliedFilters(List<Object> appliedFilters) {
+    this.appliedFilters = appliedFilters;
+    return this;
+  }
+
+  public ChartDataResponseResult addAppliedFiltersItem(Object appliedFiltersItem) {
+    if (this.appliedFilters == null) {
+      this.appliedFilters = new ArrayList<Object>();
+    }
+    this.appliedFilters.add(appliedFiltersItem);
+    return this;
+  }
+
+   /**
+   * A list with applied filters
+   * @return appliedFilters
+  **/
+  @Schema(description = "A list with applied filters")
+  public List<Object> getAppliedFilters() {
+    return appliedFilters;
+  }
+
+  public void setAppliedFilters(List<Object> appliedFilters) {
+    this.appliedFilters = appliedFilters;
+  }
 
   public ChartDataResponseResult cacheKey(String cacheKey) {
     this.cacheKey = cacheKey;
@@ -159,6 +233,58 @@ public class ChartDataResponseResult {
     this.cachedDttm = cachedDttm;
   }
 
+  public ChartDataResponseResult colnames(List<String> colnames) {
+    this.colnames = colnames;
+    return this;
+  }
+
+  public ChartDataResponseResult addColnamesItem(String colnamesItem) {
+    if (this.colnames == null) {
+      this.colnames = new ArrayList<String>();
+    }
+    this.colnames.add(colnamesItem);
+    return this;
+  }
+
+   /**
+   * A list of column names
+   * @return colnames
+  **/
+  @Schema(description = "A list of column names")
+  public List<String> getColnames() {
+    return colnames;
+  }
+
+  public void setColnames(List<String> colnames) {
+    this.colnames = colnames;
+  }
+
+  public ChartDataResponseResult coltypes(List<Integer> coltypes) {
+    this.coltypes = coltypes;
+    return this;
+  }
+
+  public ChartDataResponseResult addColtypesItem(Integer coltypesItem) {
+    if (this.coltypes == null) {
+      this.coltypes = new ArrayList<Integer>();
+    }
+    this.coltypes.add(coltypesItem);
+    return this;
+  }
+
+   /**
+   * A list of generic data types of each column
+   * @return coltypes
+  **/
+  @Schema(description = "A list of generic data types of each column")
+  public List<Integer> getColtypes() {
+    return coltypes;
+  }
+
+  public void setColtypes(List<Integer> coltypes) {
+    this.coltypes = coltypes;
+  }
+
   public ChartDataResponseResult data(List<Object> data) {
     this.data = data;
     return this;
@@ -203,6 +329,24 @@ public class ChartDataResponseResult {
     this.error = error;
   }
 
+  public ChartDataResponseResult fromDttm(Integer fromDttm) {
+    this.fromDttm = fromDttm;
+    return this;
+  }
+
+   /**
+   * Get fromDttm
+   * @return fromDttm
+  **/
+  @Schema(description = "")
+  public Integer getFromDttm() {
+    return fromDttm;
+  }
+
+  public void setFromDttm(Integer fromDttm) {
+    this.fromDttm = fromDttm;
+  }
+
   public ChartDataResponseResult isCached(Boolean isCached) {
     this.isCached = isCached;
     return this;
@@ -237,6 +381,32 @@ public class ChartDataResponseResult {
 
   public void setQuery(String query) {
     this.query = query;
+  }
+
+  public ChartDataResponseResult rejectedFilters(List<Object> rejectedFilters) {
+    this.rejectedFilters = rejectedFilters;
+    return this;
+  }
+
+  public ChartDataResponseResult addRejectedFiltersItem(Object rejectedFiltersItem) {
+    if (this.rejectedFilters == null) {
+      this.rejectedFilters = new ArrayList<Object>();
+    }
+    this.rejectedFilters.add(rejectedFiltersItem);
+    return this;
+  }
+
+   /**
+   * A list with rejected filters
+   * @return rejectedFilters
+  **/
+  @Schema(description = "A list with rejected filters")
+  public List<Object> getRejectedFilters() {
+    return rejectedFilters;
+  }
+
+  public void setRejectedFilters(List<Object> rejectedFilters) {
+    this.rejectedFilters = rejectedFilters;
   }
 
   public ChartDataResponseResult rowcount(Integer rowcount) {
@@ -293,9 +463,27 @@ public class ChartDataResponseResult {
     this.status = status;
   }
 
+  public ChartDataResponseResult toDttm(Integer toDttm) {
+    this.toDttm = toDttm;
+    return this;
+  }
+
+   /**
+   * Get toDttm
+   * @return toDttm
+  **/
+  @Schema(description = "")
+  public Integer getToDttm() {
+    return toDttm;
+  }
+
+  public void setToDttm(Integer toDttm) {
+    this.toDttm = toDttm;
+  }
+
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -303,21 +491,28 @@ public class ChartDataResponseResult {
       return false;
     }
     ChartDataResponseResult chartDataResponseResult = (ChartDataResponseResult) o;
-    return Objects.equals(this.cacheKey, chartDataResponseResult.cacheKey) &&
+    return Objects.equals(this.annotationData, chartDataResponseResult.annotationData) &&
+        Objects.equals(this.appliedFilters, chartDataResponseResult.appliedFilters) &&
+        Objects.equals(this.cacheKey, chartDataResponseResult.cacheKey) &&
         Objects.equals(this.cacheTimeout, chartDataResponseResult.cacheTimeout) &&
         Objects.equals(this.cachedDttm, chartDataResponseResult.cachedDttm) &&
+        Objects.equals(this.colnames, chartDataResponseResult.colnames) &&
+        Objects.equals(this.coltypes, chartDataResponseResult.coltypes) &&
         Objects.equals(this.data, chartDataResponseResult.data) &&
         Objects.equals(this.error, chartDataResponseResult.error) &&
+        Objects.equals(this.fromDttm, chartDataResponseResult.fromDttm) &&
         Objects.equals(this.isCached, chartDataResponseResult.isCached) &&
         Objects.equals(this.query, chartDataResponseResult.query) &&
+        Objects.equals(this.rejectedFilters, chartDataResponseResult.rejectedFilters) &&
         Objects.equals(this.rowcount, chartDataResponseResult.rowcount) &&
         Objects.equals(this.stacktrace, chartDataResponseResult.stacktrace) &&
-        Objects.equals(this.status, chartDataResponseResult.status);
+        Objects.equals(this.status, chartDataResponseResult.status) &&
+        Objects.equals(this.toDttm, chartDataResponseResult.toDttm);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(cacheKey, cacheTimeout, cachedDttm, data, error, isCached, query, rowcount, stacktrace, status);
+    return Objects.hash(annotationData, appliedFilters, cacheKey, cacheTimeout, cachedDttm, colnames, coltypes, data, error, fromDttm, isCached, query, rejectedFilters, rowcount, stacktrace, status, toDttm);
   }
 
 
@@ -326,16 +521,23 @@ public class ChartDataResponseResult {
     StringBuilder sb = new StringBuilder();
     sb.append("class ChartDataResponseResult {\n");
     
+    sb.append("    annotationData: ").append(toIndentedString(annotationData)).append("\n");
+    sb.append("    appliedFilters: ").append(toIndentedString(appliedFilters)).append("\n");
     sb.append("    cacheKey: ").append(toIndentedString(cacheKey)).append("\n");
     sb.append("    cacheTimeout: ").append(toIndentedString(cacheTimeout)).append("\n");
     sb.append("    cachedDttm: ").append(toIndentedString(cachedDttm)).append("\n");
+    sb.append("    colnames: ").append(toIndentedString(colnames)).append("\n");
+    sb.append("    coltypes: ").append(toIndentedString(coltypes)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("    error: ").append(toIndentedString(error)).append("\n");
+    sb.append("    fromDttm: ").append(toIndentedString(fromDttm)).append("\n");
     sb.append("    isCached: ").append(toIndentedString(isCached)).append("\n");
     sb.append("    query: ").append(toIndentedString(query)).append("\n");
+    sb.append("    rejectedFilters: ").append(toIndentedString(rejectedFilters)).append("\n");
     sb.append("    rowcount: ").append(toIndentedString(rowcount)).append("\n");
     sb.append("    stacktrace: ").append(toIndentedString(stacktrace)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    toDttm: ").append(toIndentedString(toDttm)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -344,7 +546,7 @@ public class ChartDataResponseResult {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

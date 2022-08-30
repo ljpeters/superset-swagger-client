@@ -25,7 +25,7 @@ import java.io.IOException;
  * ChartDataRollingOptionsSchema
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-11-06T17:36:10.263+01:00[Europe/Vienna]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2022-08-29T14:48:42.974+02:00[Europe/Berlin]")
 public class ChartDataRollingOptionsSchema {
   @SerializedName("center")
   private Boolean center = null;
@@ -51,6 +51,7 @@ public class ChartDataRollingOptionsSchema {
     NANMAX("nanmax"),
     NANMEAN("nanmean"),
     NANMEDIAN("nanmedian"),
+    NANPERCENTILE("nanpercentile"),
     MIN("min"),
     PERCENTILE("percentile"),
     PROD("prod"),
@@ -72,9 +73,9 @@ public class ChartDataRollingOptionsSchema {
     public String toString() {
       return String.valueOf(value);
     }
-    public static RollingTypeEnum fromValue(String text) {
+    public static RollingTypeEnum fromValue(String input) {
       for (RollingTypeEnum b : RollingTypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
+        if (b.value.equals(input)) {
           return b;
         }
       }
@@ -83,13 +84,13 @@ public class ChartDataRollingOptionsSchema {
     public static class Adapter extends TypeAdapter<RollingTypeEnum> {
       @Override
       public void write(final JsonWriter jsonWriter, final RollingTypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
+        jsonWriter.value(String.valueOf(enumeration.getValue()));
       }
 
       @Override
       public RollingTypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value = jsonReader.nextString();
-        return RollingTypeEnum.fromValue(String.valueOf(value));
+        Object value = jsonReader.nextString();
+        return RollingTypeEnum.fromValue((String)(value));
       }
     }
   }  @SerializedName("rolling_type")
@@ -132,9 +133,9 @@ public class ChartDataRollingOptionsSchema {
     public String toString() {
       return String.valueOf(value);
     }
-    public static WinTypeEnum fromValue(String text) {
+    public static WinTypeEnum fromValue(String input) {
       for (WinTypeEnum b : WinTypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
+        if (b.value.equals(input)) {
           return b;
         }
       }
@@ -143,13 +144,13 @@ public class ChartDataRollingOptionsSchema {
     public static class Adapter extends TypeAdapter<WinTypeEnum> {
       @Override
       public void write(final JsonWriter jsonWriter, final WinTypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
+        jsonWriter.value(String.valueOf(enumeration.getValue()));
       }
 
       @Override
       public WinTypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value = jsonReader.nextString();
-        return WinTypeEnum.fromValue(String.valueOf(value));
+        Object value = jsonReader.nextString();
+        return WinTypeEnum.fromValue((String)(value));
       }
     }
   }  @SerializedName("win_type")
@@ -268,7 +269,7 @@ public class ChartDataRollingOptionsSchema {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -309,7 +310,7 @@ public class ChartDataRollingOptionsSchema {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

@@ -21,12 +21,16 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
+import java.util.UUID;
 /**
  * DatasetColumnsPut
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-11-06T17:36:10.263+01:00[Europe/Vienna]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2022-08-29T14:48:42.974+02:00[Europe/Berlin]")
 public class DatasetColumnsPut {
+  @SerializedName("advanced_data_type")
+  private String advancedDataType = null;
+
   @SerializedName("column_name")
   private String columnName = null;
 
@@ -35,6 +39,9 @@ public class DatasetColumnsPut {
 
   @SerializedName("expression")
   private String expression = null;
+
+  @SerializedName("extra")
+  private String extra = null;
 
   @SerializedName("filterable")
   private Boolean filterable = null;
@@ -57,8 +64,29 @@ public class DatasetColumnsPut {
   @SerializedName("type")
   private String type = null;
 
+  @SerializedName("uuid")
+  private UUID uuid = null;
+
   @SerializedName("verbose_name")
   private String verboseName = null;
+
+  public DatasetColumnsPut advancedDataType(String advancedDataType) {
+    this.advancedDataType = advancedDataType;
+    return this;
+  }
+
+   /**
+   * Get advancedDataType
+   * @return advancedDataType
+  **/
+  @Schema(description = "")
+  public String getAdvancedDataType() {
+    return advancedDataType;
+  }
+
+  public void setAdvancedDataType(String advancedDataType) {
+    this.advancedDataType = advancedDataType;
+  }
 
   public DatasetColumnsPut columnName(String columnName) {
     this.columnName = columnName;
@@ -112,6 +140,24 @@ public class DatasetColumnsPut {
 
   public void setExpression(String expression) {
     this.expression = expression;
+  }
+
+  public DatasetColumnsPut extra(String extra) {
+    this.extra = extra;
+    return this;
+  }
+
+   /**
+   * Get extra
+   * @return extra
+  **/
+  @Schema(description = "")
+  public String getExtra() {
+    return extra;
+  }
+
+  public void setExtra(String extra) {
+    this.extra = extra;
   }
 
   public DatasetColumnsPut filterable(Boolean filterable) {
@@ -240,6 +286,24 @@ public class DatasetColumnsPut {
     this.type = type;
   }
 
+  public DatasetColumnsPut uuid(UUID uuid) {
+    this.uuid = uuid;
+    return this;
+  }
+
+   /**
+   * Get uuid
+   * @return uuid
+  **/
+  @Schema(description = "")
+  public UUID getUuid() {
+    return uuid;
+  }
+
+  public void setUuid(UUID uuid) {
+    this.uuid = uuid;
+  }
+
   public DatasetColumnsPut verboseName(String verboseName) {
     this.verboseName = verboseName;
     return this;
@@ -260,7 +324,7 @@ public class DatasetColumnsPut {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -268,9 +332,11 @@ public class DatasetColumnsPut {
       return false;
     }
     DatasetColumnsPut datasetColumnsPut = (DatasetColumnsPut) o;
-    return Objects.equals(this.columnName, datasetColumnsPut.columnName) &&
+    return Objects.equals(this.advancedDataType, datasetColumnsPut.advancedDataType) &&
+        Objects.equals(this.columnName, datasetColumnsPut.columnName) &&
         Objects.equals(this.description, datasetColumnsPut.description) &&
         Objects.equals(this.expression, datasetColumnsPut.expression) &&
+        Objects.equals(this.extra, datasetColumnsPut.extra) &&
         Objects.equals(this.filterable, datasetColumnsPut.filterable) &&
         Objects.equals(this.groupby, datasetColumnsPut.groupby) &&
         Objects.equals(this.id, datasetColumnsPut.id) &&
@@ -278,12 +344,13 @@ public class DatasetColumnsPut {
         Objects.equals(this.isDttm, datasetColumnsPut.isDttm) &&
         Objects.equals(this.pythonDateFormat, datasetColumnsPut.pythonDateFormat) &&
         Objects.equals(this.type, datasetColumnsPut.type) &&
+        Objects.equals(this.uuid, datasetColumnsPut.uuid) &&
         Objects.equals(this.verboseName, datasetColumnsPut.verboseName);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(columnName, description, expression, filterable, groupby, id, isActive, isDttm, pythonDateFormat, type, verboseName);
+    return Objects.hash(advancedDataType, columnName, description, expression, extra, filterable, groupby, id, isActive, isDttm, pythonDateFormat, type, uuid, verboseName);
   }
 
 
@@ -292,9 +359,11 @@ public class DatasetColumnsPut {
     StringBuilder sb = new StringBuilder();
     sb.append("class DatasetColumnsPut {\n");
     
+    sb.append("    advancedDataType: ").append(toIndentedString(advancedDataType)).append("\n");
     sb.append("    columnName: ").append(toIndentedString(columnName)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    expression: ").append(toIndentedString(expression)).append("\n");
+    sb.append("    extra: ").append(toIndentedString(extra)).append("\n");
     sb.append("    filterable: ").append(toIndentedString(filterable)).append("\n");
     sb.append("    groupby: ").append(toIndentedString(groupby)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
@@ -302,6 +371,7 @@ public class DatasetColumnsPut {
     sb.append("    isDttm: ").append(toIndentedString(isDttm)).append("\n");
     sb.append("    pythonDateFormat: ").append(toIndentedString(pythonDateFormat)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    uuid: ").append(toIndentedString(uuid)).append("\n");
     sb.append("    verboseName: ").append(toIndentedString(verboseName)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -311,7 +381,7 @@ public class DatasetColumnsPut {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

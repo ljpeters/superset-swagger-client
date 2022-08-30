@@ -14,6 +14,7 @@ package at.mic.superset.swagger.client.model;
 
 import java.util.Objects;
 import java.util.Arrays;
+import at.mic.superset.swagger.client.model.DashboardDatasetSchema;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -21,57 +22,46 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 /**
  * InlineResponse20021
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-11-06T17:36:10.263+01:00[Europe/Vienna]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2022-08-29T14:48:42.974+02:00[Europe/Berlin]")
 public class InlineResponse20021 {
-  @SerializedName("access_token")
-  private String accessToken = null;
+  @SerializedName("result")
+  private List<DashboardDatasetSchema> result = null;
 
-  @SerializedName("refresh_token")
-  private String refreshToken = null;
+  public InlineResponse20021 result(List<DashboardDatasetSchema> result) {
+    this.result = result;
+    return this;
+  }
 
-  public InlineResponse20021 accessToken(String accessToken) {
-    this.accessToken = accessToken;
+  public InlineResponse20021 addResultItem(DashboardDatasetSchema resultItem) {
+    if (this.result == null) {
+      this.result = new ArrayList<DashboardDatasetSchema>();
+    }
+    this.result.add(resultItem);
     return this;
   }
 
    /**
-   * Get accessToken
-   * @return accessToken
+   * Get result
+   * @return result
   **/
   @Schema(description = "")
-  public String getAccessToken() {
-    return accessToken;
+  public List<DashboardDatasetSchema> getResult() {
+    return result;
   }
 
-  public void setAccessToken(String accessToken) {
-    this.accessToken = accessToken;
-  }
-
-  public InlineResponse20021 refreshToken(String refreshToken) {
-    this.refreshToken = refreshToken;
-    return this;
-  }
-
-   /**
-   * Get refreshToken
-   * @return refreshToken
-  **/
-  @Schema(description = "")
-  public String getRefreshToken() {
-    return refreshToken;
-  }
-
-  public void setRefreshToken(String refreshToken) {
-    this.refreshToken = refreshToken;
+  public void setResult(List<DashboardDatasetSchema> result) {
+    this.result = result;
   }
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -79,13 +69,12 @@ public class InlineResponse20021 {
       return false;
     }
     InlineResponse20021 inlineResponse20021 = (InlineResponse20021) o;
-    return Objects.equals(this.accessToken, inlineResponse20021.accessToken) &&
-        Objects.equals(this.refreshToken, inlineResponse20021.refreshToken);
+    return Objects.equals(this.result, inlineResponse20021.result);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(accessToken, refreshToken);
+    return Objects.hash(result);
   }
 
 
@@ -94,8 +83,7 @@ public class InlineResponse20021 {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse20021 {\n");
     
-    sb.append("    accessToken: ").append(toIndentedString(accessToken)).append("\n");
-    sb.append("    refreshToken: ").append(toIndentedString(refreshToken)).append("\n");
+    sb.append("    result: ").append(toIndentedString(result)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -104,7 +92,7 @@ public class InlineResponse20021 {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

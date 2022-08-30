@@ -1,0 +1,32 @@
+# ChartDataRestApiGetList
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**cacheTimeout** | **Integer** |  |  [optional]
+**certificationDetails** | **String** |  |  [optional]
+**certifiedBy** | **String** |  |  [optional]
+**changedBy** | [**ChartDataRestApiGetListUser2**](ChartDataRestApiGetListUser2.md) |  |  [optional]
+**changedByName** | **Object** |  |  [optional]
+**changedByUrl** | **Object** |  |  [optional]
+**changedOnDeltaHumanized** | **Object** |  |  [optional]
+**changedOnUtc** | **Object** |  |  [optional]
+**createdBy** | [**ChartDataRestApiGetListUser1**](ChartDataRestApiGetListUser1.md) |  |  [optional]
+**datasourceId** | **Integer** |  |  [optional]
+**datasourceNameText** | **Object** |  |  [optional]
+**datasourceType** | **String** |  |  [optional]
+**datasourceUrl** | **Object** |  |  [optional]
+**description** | **String** |  |  [optional]
+**descriptionMarkeddown** | **Object** |  |  [optional]
+**editUrl** | **Object** |  |  [optional]
+**id** | **Integer** |  |  [optional]
+**isManagedExternally** | **Boolean** |  |  [optional]
+**lastSavedAt** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
+**lastSavedBy** | [**ChartDataRestApiGetListUser**](ChartDataRestApiGetListUser.md) |  |  [optional]
+**owners** | [**ChartDataRestApiGetListUser3**](ChartDataRestApiGetListUser3.md) |  |  [optional]
+**params** | **String** |  |  [optional]
+**sliceName** | **String** |  |  [optional]
+**table** | [**ChartDataRestApiGetListSqlaTable**](ChartDataRestApiGetListSqlaTable.md) |  |  [optional]
+**thumbnailUrl** | **Object** |  |  [optional]
+**url** | **Object** |  |  [optional]
+**vizType** | **String** |  |  [optional]

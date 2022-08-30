@@ -13,11 +13,31 @@
 package at.mic.superset.swagger.client;
 
 import at.mic.superset.swagger.ApiException;
+import at.mic.superset.swagger.client.model.DatabaseFunctionNamesResponse;
+import at.mic.superset.swagger.client.model.DatabaseRelatedObjectsResponse;
+import at.mic.superset.swagger.client.model.DatabaseRestApiPost;
+import at.mic.superset.swagger.client.model.DatabaseRestApiPut;
+import at.mic.superset.swagger.client.model.DatabaseSchemasQuerySchema;
+import at.mic.superset.swagger.client.model.DatabaseTestConnectionSchema;
+import at.mic.superset.swagger.client.model.DatabaseValidateParametersSchema;
+import java.io.File;
+import at.mic.superset.swagger.client.model.GetExportIdsSchema;
+import at.mic.superset.swagger.client.model.GetInfoSchema;
+import at.mic.superset.swagger.client.model.GetItemSchema;
 import at.mic.superset.swagger.client.model.GetListSchema;
-import at.mic.superset.swagger.client.model.InlineResponse20010;
-import at.mic.superset.swagger.client.model.InlineResponse20011;
-import at.mic.superset.swagger.client.model.InlineResponse20012;
+import at.mic.superset.swagger.client.model.InlineResponse2002;
+import at.mic.superset.swagger.client.model.InlineResponse20026;
+import at.mic.superset.swagger.client.model.InlineResponse20027;
+import at.mic.superset.swagger.client.model.InlineResponse20028;
+import at.mic.superset.swagger.client.model.InlineResponse20029;
+import at.mic.superset.swagger.client.model.InlineResponse20030;
+import at.mic.superset.swagger.client.model.InlineResponse2018;
 import at.mic.superset.swagger.client.model.InlineResponse400;
+import at.mic.superset.swagger.client.model.SchemasResponseSchema;
+import at.mic.superset.swagger.client.model.SelectStarResponseSchema;
+import at.mic.superset.swagger.client.model.TableExtraMetadataResponseSchema;
+import at.mic.superset.swagger.client.model.TableMetadataResponseSchema;
+import at.mic.superset.swagger.client.model.ValidateSQLRequest;
 import org.junit.Test;
 import org.junit.Ignore;
 
@@ -37,15 +57,169 @@ public class DatabaseApiTest {
     /**
      * 
      *
+     * Get names of databases currently available
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void apiV1DatabaseAvailableGetTest() throws ApiException {
+        List<InlineResponse20027> response = api.apiV1DatabaseAvailableGet();
+
+        // TODO: test validations
+    }
+    /**
+     * 
+     *
+     * Download database(s) and associated dataset(s) as a zip file
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void apiV1DatabaseExportGetTest() throws ApiException {
+        GetExportIdsSchema q = null;
+        File response = api.apiV1DatabaseExportGet(q);
+
+        // TODO: test validations
+    }
+    /**
+     * 
+     *
      * Get a list of models
      *
      * @throws ApiException
      *          if the Api call fails
      */
     @Test
-    public void databaseGetTest() throws ApiException {
+    public void apiV1DatabaseGetTest() throws ApiException {
         GetListSchema q = null;
-        InlineResponse20010 response = api.databaseGet(q);
+        InlineResponse20026 response = api.apiV1DatabaseGet(q);
+
+        // TODO: test validations
+    }
+    /**
+     * 
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void apiV1DatabaseImportPostTest() throws ApiException {
+        File formData = null;
+        Boolean overwrite = null;
+        String passwords = null;
+        InlineResponse400 response = api.apiV1DatabaseImportPost(formData, overwrite, passwords);
+
+        // TODO: test validations
+    }
+    /**
+     * 
+     *
+     * Get metadata information about this API resource
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void apiV1DatabaseInfoGetTest() throws ApiException {
+        GetInfoSchema q = null;
+        InlineResponse2002 response = api.apiV1DatabaseInfoGet(q);
+
+        // TODO: test validations
+    }
+    /**
+     * 
+     *
+     * Deletes a Database.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void apiV1DatabasePkDeleteTest() throws ApiException {
+        Integer pk = null;
+        InlineResponse400 response = api.apiV1DatabasePkDelete(pk);
+
+        // TODO: test validations
+    }
+    /**
+     * 
+     *
+     * Get function names supported by a database
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void apiV1DatabasePkFunctionNamesGetTest() throws ApiException {
+        Integer pk = null;
+        DatabaseFunctionNamesResponse response = api.apiV1DatabasePkFunctionNamesGet(pk);
+
+        // TODO: test validations
+    }
+    /**
+     * 
+     *
+     * Get an item model
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void apiV1DatabasePkGetTest() throws ApiException {
+        Integer pk = null;
+        GetItemSchema q = null;
+        InlineResponse20028 response = api.apiV1DatabasePkGet(pk, q);
+
+        // TODO: test validations
+    }
+    /**
+     * 
+     *
+     * Changes a Database.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void apiV1DatabasePkPutTest() throws ApiException {
+        DatabaseRestApiPut body = null;
+        Integer pk = null;
+        InlineResponse20029 response = api.apiV1DatabasePkPut(body, pk);
+
+        // TODO: test validations
+    }
+    /**
+     * 
+     *
+     * Get charts and dashboards count associated to a database
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void apiV1DatabasePkRelatedObjectsGetTest() throws ApiException {
+        Integer pk = null;
+        DatabaseRelatedObjectsResponse response = api.apiV1DatabasePkRelatedObjectsGet(pk);
+
+        // TODO: test validations
+    }
+    /**
+     * 
+     *
+     * Get all schemas from a database
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void apiV1DatabasePkSchemasGetTest() throws ApiException {
+        Integer pk = null;
+        DatabaseSchemasQuerySchema q = null;
+        SchemasResponseSchema response = api.apiV1DatabasePkSchemasGet(pk, q);
 
         // TODO: test validations
     }
@@ -58,11 +232,11 @@ public class DatabaseApiTest {
      *          if the Api call fails
      */
     @Test
-    public void databasePkSelectStarTableNameGetTest() throws ApiException {
+    public void apiV1DatabasePkSelectStarTableNameGetTest() throws ApiException {
         Integer pk = null;
         String tableName = null;
         String schemaName = null;
-        InlineResponse20011 response = api.databasePkSelectStarTableNameGet(pk, tableName, schemaName);
+        SelectStarResponseSchema response = api.apiV1DatabasePkSelectStarTableNameGet(pk, tableName, schemaName);
 
         // TODO: test validations
     }
@@ -75,11 +249,28 @@ public class DatabaseApiTest {
      *          if the Api call fails
      */
     @Test
-    public void databasePkSelectStarTableNameSchemaNameGetTest() throws ApiException {
+    public void apiV1DatabasePkSelectStarTableNameSchemaNameGetTest() throws ApiException {
         Integer pk = null;
         String tableName = null;
         String schemaName = null;
-        InlineResponse20011 response = api.databasePkSelectStarTableNameSchemaNameGet(pk, tableName, schemaName);
+        SelectStarResponseSchema response = api.apiV1DatabasePkSelectStarTableNameSchemaNameGet(pk, tableName, schemaName);
+
+        // TODO: test validations
+    }
+    /**
+     * Get table extra metadata
+     *
+     * Response depends on each DB engine spec normally focused on partitions
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void apiV1DatabasePkTableExtraTableNameSchemaNameGetTest() throws ApiException {
+        Integer pk = null;
+        String tableName = null;
+        String schemaName = null;
+        TableExtraMetadataResponseSchema response = api.apiV1DatabasePkTableExtraTableNameSchemaNameGet(pk, tableName, schemaName);
 
         // TODO: test validations
     }
@@ -92,11 +283,72 @@ public class DatabaseApiTest {
      *          if the Api call fails
      */
     @Test
-    public void databasePkTableTableNameSchemaNameGetTest() throws ApiException {
+    public void apiV1DatabasePkTableTableNameSchemaNameGetTest() throws ApiException {
         Integer pk = null;
         String tableName = null;
         String schemaName = null;
-        InlineResponse20012 response = api.databasePkTableTableNameSchemaNameGet(pk, tableName, schemaName);
+        TableMetadataResponseSchema response = api.apiV1DatabasePkTableTableNameSchemaNameGet(pk, tableName, schemaName);
+
+        // TODO: test validations
+    }
+    /**
+     * Validates that arbitrary sql is acceptable for the given database
+     *
+     * Validates arbitrary SQL.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void apiV1DatabasePkValidateSqlPostTest() throws ApiException {
+        ValidateSQLRequest body = null;
+        Integer pk = null;
+        InlineResponse20030 response = api.apiV1DatabasePkValidateSqlPost(body, pk);
+
+        // TODO: test validations
+    }
+    /**
+     * 
+     *
+     * Create a new Database.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void apiV1DatabasePostTest() throws ApiException {
+        DatabaseRestApiPost body = null;
+        InlineResponse2018 response = api.apiV1DatabasePost(body);
+
+        // TODO: test validations
+    }
+    /**
+     * 
+     *
+     * Tests a database connection
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void apiV1DatabaseTestConnectionPostTest() throws ApiException {
+        DatabaseTestConnectionSchema body = null;
+        InlineResponse400 response = api.apiV1DatabaseTestConnectionPost(body);
+
+        // TODO: test validations
+    }
+    /**
+     * 
+     *
+     * Validates parameters used to connect to a database
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void apiV1DatabaseValidateParametersPostTest() throws ApiException {
+        DatabaseValidateParametersSchema body = null;
+        InlineResponse400 response = api.apiV1DatabaseValidateParametersPost(body);
 
         // TODO: test validations
     }

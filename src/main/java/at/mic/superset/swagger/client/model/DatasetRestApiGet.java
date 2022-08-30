@@ -14,10 +14,10 @@ package at.mic.superset.swagger.client.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import at.mic.superset.swagger.client.model.Meta10;
-import at.mic.superset.swagger.client.model.Meta11;
-import at.mic.superset.swagger.client.model.Meta12;
-import at.mic.superset.swagger.client.model.Meta13;
+import at.mic.superset.swagger.client.model.DatasetRestApiGetDatabase;
+import at.mic.superset.swagger.client.model.DatasetRestApiGetSqlMetric;
+import at.mic.superset.swagger.client.model.DatasetRestApiGetTableColumn;
+import at.mic.superset.swagger.client.model.DatasetRestApiGetUser;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -29,16 +29,19 @@ import java.io.IOException;
  * DatasetRestApiGet
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-11-06T17:36:10.263+01:00[Europe/Vienna]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2022-08-29T14:48:42.974+02:00[Europe/Berlin]")
 public class DatasetRestApiGet {
   @SerializedName("cache_timeout")
   private Integer cacheTimeout = null;
 
   @SerializedName("columns")
-  private Meta12 columns = null;
+  private DatasetRestApiGetTableColumn columns = null;
 
   @SerializedName("database")
-  private Meta13 database = null;
+  private DatasetRestApiGetDatabase database = null;
+
+  @SerializedName("datasource_type")
+  private Object datasourceType = null;
 
   @SerializedName("default_endpoint")
   private String defaultEndpoint = null;
@@ -46,26 +49,38 @@ public class DatasetRestApiGet {
   @SerializedName("description")
   private String description = null;
 
+  @SerializedName("extra")
+  private String extra = null;
+
   @SerializedName("fetch_values_predicate")
   private String fetchValuesPredicate = null;
 
   @SerializedName("filter_select_enabled")
   private Boolean filterSelectEnabled = null;
 
+  @SerializedName("id")
+  private Integer id = null;
+
+  @SerializedName("is_managed_externally")
+  private Boolean isManagedExternally = null;
+
   @SerializedName("is_sqllab_view")
   private Boolean isSqllabView = null;
+
+  @SerializedName("kind")
+  private Object kind = null;
 
   @SerializedName("main_dttm_col")
   private String mainDttmCol = null;
 
   @SerializedName("metrics")
-  private Meta11 metrics = null;
+  private DatasetRestApiGetSqlMetric metrics = null;
 
   @SerializedName("offset")
   private Integer offset = null;
 
   @SerializedName("owners")
-  private Meta10 owners = null;
+  private DatasetRestApiGetUser owners = null;
 
   @SerializedName("schema")
   private String schema = null;
@@ -78,6 +93,9 @@ public class DatasetRestApiGet {
 
   @SerializedName("template_params")
   private String templateParams = null;
+
+  @SerializedName("url")
+  private Object url = null;
 
   public DatasetRestApiGet cacheTimeout(Integer cacheTimeout) {
     this.cacheTimeout = cacheTimeout;
@@ -97,7 +115,7 @@ public class DatasetRestApiGet {
     this.cacheTimeout = cacheTimeout;
   }
 
-  public DatasetRestApiGet columns(Meta12 columns) {
+  public DatasetRestApiGet columns(DatasetRestApiGetTableColumn columns) {
     this.columns = columns;
     return this;
   }
@@ -107,15 +125,15 @@ public class DatasetRestApiGet {
    * @return columns
   **/
   @Schema(required = true, description = "")
-  public Meta12 getColumns() {
+  public DatasetRestApiGetTableColumn getColumns() {
     return columns;
   }
 
-  public void setColumns(Meta12 columns) {
+  public void setColumns(DatasetRestApiGetTableColumn columns) {
     this.columns = columns;
   }
 
-  public DatasetRestApiGet database(Meta13 database) {
+  public DatasetRestApiGet database(DatasetRestApiGetDatabase database) {
     this.database = database;
     return this;
   }
@@ -125,12 +143,21 @@ public class DatasetRestApiGet {
    * @return database
   **/
   @Schema(required = true, description = "")
-  public Meta13 getDatabase() {
+  public DatasetRestApiGetDatabase getDatabase() {
     return database;
   }
 
-  public void setDatabase(Meta13 database) {
+  public void setDatabase(DatasetRestApiGetDatabase database) {
     this.database = database;
+  }
+
+   /**
+   * Get datasourceType
+   * @return datasourceType
+  **/
+  @Schema(description = "")
+  public Object getDatasourceType() {
+    return datasourceType;
   }
 
   public DatasetRestApiGet defaultEndpoint(String defaultEndpoint) {
@@ -169,6 +196,24 @@ public class DatasetRestApiGet {
     this.description = description;
   }
 
+  public DatasetRestApiGet extra(String extra) {
+    this.extra = extra;
+    return this;
+  }
+
+   /**
+   * Get extra
+   * @return extra
+  **/
+  @Schema(description = "")
+  public String getExtra() {
+    return extra;
+  }
+
+  public void setExtra(String extra) {
+    this.extra = extra;
+  }
+
   public DatasetRestApiGet fetchValuesPredicate(String fetchValuesPredicate) {
     this.fetchValuesPredicate = fetchValuesPredicate;
     return this;
@@ -205,6 +250,42 @@ public class DatasetRestApiGet {
     this.filterSelectEnabled = filterSelectEnabled;
   }
 
+  public DatasetRestApiGet id(Integer id) {
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * Get id
+   * @return id
+  **/
+  @Schema(description = "")
+  public Integer getId() {
+    return id;
+  }
+
+  public void setId(Integer id) {
+    this.id = id;
+  }
+
+  public DatasetRestApiGet isManagedExternally(Boolean isManagedExternally) {
+    this.isManagedExternally = isManagedExternally;
+    return this;
+  }
+
+   /**
+   * Get isManagedExternally
+   * @return isManagedExternally
+  **/
+  @Schema(description = "")
+  public Boolean isIsManagedExternally() {
+    return isManagedExternally;
+  }
+
+  public void setIsManagedExternally(Boolean isManagedExternally) {
+    this.isManagedExternally = isManagedExternally;
+  }
+
   public DatasetRestApiGet isSqllabView(Boolean isSqllabView) {
     this.isSqllabView = isSqllabView;
     return this;
@@ -221,6 +302,15 @@ public class DatasetRestApiGet {
 
   public void setIsSqllabView(Boolean isSqllabView) {
     this.isSqllabView = isSqllabView;
+  }
+
+   /**
+   * Get kind
+   * @return kind
+  **/
+  @Schema(description = "")
+  public Object getKind() {
+    return kind;
   }
 
   public DatasetRestApiGet mainDttmCol(String mainDttmCol) {
@@ -241,7 +331,7 @@ public class DatasetRestApiGet {
     this.mainDttmCol = mainDttmCol;
   }
 
-  public DatasetRestApiGet metrics(Meta11 metrics) {
+  public DatasetRestApiGet metrics(DatasetRestApiGetSqlMetric metrics) {
     this.metrics = metrics;
     return this;
   }
@@ -251,11 +341,11 @@ public class DatasetRestApiGet {
    * @return metrics
   **/
   @Schema(required = true, description = "")
-  public Meta11 getMetrics() {
+  public DatasetRestApiGetSqlMetric getMetrics() {
     return metrics;
   }
 
-  public void setMetrics(Meta11 metrics) {
+  public void setMetrics(DatasetRestApiGetSqlMetric metrics) {
     this.metrics = metrics;
   }
 
@@ -277,7 +367,7 @@ public class DatasetRestApiGet {
     this.offset = offset;
   }
 
-  public DatasetRestApiGet owners(Meta10 owners) {
+  public DatasetRestApiGet owners(DatasetRestApiGetUser owners) {
     this.owners = owners;
     return this;
   }
@@ -287,11 +377,11 @@ public class DatasetRestApiGet {
    * @return owners
   **/
   @Schema(description = "")
-  public Meta10 getOwners() {
+  public DatasetRestApiGetUser getOwners() {
     return owners;
   }
 
-  public void setOwners(Meta10 owners) {
+  public void setOwners(DatasetRestApiGetUser owners) {
     this.owners = owners;
   }
 
@@ -367,9 +457,18 @@ public class DatasetRestApiGet {
     this.templateParams = templateParams;
   }
 
+   /**
+   * Get url
+   * @return url
+  **/
+  @Schema(description = "")
+  public Object getUrl() {
+    return url;
+  }
+
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -380,11 +479,16 @@ public class DatasetRestApiGet {
     return Objects.equals(this.cacheTimeout, datasetRestApiGet.cacheTimeout) &&
         Objects.equals(this.columns, datasetRestApiGet.columns) &&
         Objects.equals(this.database, datasetRestApiGet.database) &&
+        Objects.equals(this.datasourceType, datasetRestApiGet.datasourceType) &&
         Objects.equals(this.defaultEndpoint, datasetRestApiGet.defaultEndpoint) &&
         Objects.equals(this.description, datasetRestApiGet.description) &&
+        Objects.equals(this.extra, datasetRestApiGet.extra) &&
         Objects.equals(this.fetchValuesPredicate, datasetRestApiGet.fetchValuesPredicate) &&
         Objects.equals(this.filterSelectEnabled, datasetRestApiGet.filterSelectEnabled) &&
+        Objects.equals(this.id, datasetRestApiGet.id) &&
+        Objects.equals(this.isManagedExternally, datasetRestApiGet.isManagedExternally) &&
         Objects.equals(this.isSqllabView, datasetRestApiGet.isSqllabView) &&
+        Objects.equals(this.kind, datasetRestApiGet.kind) &&
         Objects.equals(this.mainDttmCol, datasetRestApiGet.mainDttmCol) &&
         Objects.equals(this.metrics, datasetRestApiGet.metrics) &&
         Objects.equals(this.offset, datasetRestApiGet.offset) &&
@@ -392,12 +496,13 @@ public class DatasetRestApiGet {
         Objects.equals(this.schema, datasetRestApiGet.schema) &&
         Objects.equals(this.sql, datasetRestApiGet.sql) &&
         Objects.equals(this.tableName, datasetRestApiGet.tableName) &&
-        Objects.equals(this.templateParams, datasetRestApiGet.templateParams);
+        Objects.equals(this.templateParams, datasetRestApiGet.templateParams) &&
+        Objects.equals(this.url, datasetRestApiGet.url);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(cacheTimeout, columns, database, defaultEndpoint, description, fetchValuesPredicate, filterSelectEnabled, isSqllabView, mainDttmCol, metrics, offset, owners, schema, sql, tableName, templateParams);
+    return Objects.hash(cacheTimeout, columns, database, datasourceType, defaultEndpoint, description, extra, fetchValuesPredicate, filterSelectEnabled, id, isManagedExternally, isSqllabView, kind, mainDttmCol, metrics, offset, owners, schema, sql, tableName, templateParams, url);
   }
 
 
@@ -409,11 +514,16 @@ public class DatasetRestApiGet {
     sb.append("    cacheTimeout: ").append(toIndentedString(cacheTimeout)).append("\n");
     sb.append("    columns: ").append(toIndentedString(columns)).append("\n");
     sb.append("    database: ").append(toIndentedString(database)).append("\n");
+    sb.append("    datasourceType: ").append(toIndentedString(datasourceType)).append("\n");
     sb.append("    defaultEndpoint: ").append(toIndentedString(defaultEndpoint)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    extra: ").append(toIndentedString(extra)).append("\n");
     sb.append("    fetchValuesPredicate: ").append(toIndentedString(fetchValuesPredicate)).append("\n");
     sb.append("    filterSelectEnabled: ").append(toIndentedString(filterSelectEnabled)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    isManagedExternally: ").append(toIndentedString(isManagedExternally)).append("\n");
     sb.append("    isSqllabView: ").append(toIndentedString(isSqllabView)).append("\n");
+    sb.append("    kind: ").append(toIndentedString(kind)).append("\n");
     sb.append("    mainDttmCol: ").append(toIndentedString(mainDttmCol)).append("\n");
     sb.append("    metrics: ").append(toIndentedString(metrics)).append("\n");
     sb.append("    offset: ").append(toIndentedString(offset)).append("\n");
@@ -422,6 +532,7 @@ public class DatasetRestApiGet {
     sb.append("    sql: ").append(toIndentedString(sql)).append("\n");
     sb.append("    tableName: ").append(toIndentedString(tableName)).append("\n");
     sb.append("    templateParams: ").append(toIndentedString(templateParams)).append("\n");
+    sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -430,7 +541,7 @@ public class DatasetRestApiGet {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

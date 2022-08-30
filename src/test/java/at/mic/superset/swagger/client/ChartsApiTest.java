@@ -13,23 +13,28 @@
 package at.mic.superset.swagger.client;
 
 import at.mic.superset.swagger.ApiException;
+import at.mic.superset.swagger.client.model.ChartCacheScreenshotResponseSchema;
+import at.mic.superset.swagger.client.model.ChartDataAsyncResponseSchema;
 import at.mic.superset.swagger.client.model.ChartDataQueryContextSchema;
 import at.mic.superset.swagger.client.model.ChartDataResponseSchema;
 import at.mic.superset.swagger.client.model.ChartRestApiPost;
 import at.mic.superset.swagger.client.model.ChartRestApiPut;
 import java.io.File;
+import at.mic.superset.swagger.client.model.GetDeleteIdsSchema;
+import at.mic.superset.swagger.client.model.GetExportIdsSchema;
+import at.mic.superset.swagger.client.model.GetFavStarIdsSchema;
 import at.mic.superset.swagger.client.model.GetInfoSchema;
 import at.mic.superset.swagger.client.model.GetItemSchema;
 import at.mic.superset.swagger.client.model.GetListSchema;
-import at.mic.superset.swagger.client.model.InlineResponse200;
-import at.mic.superset.swagger.client.model.InlineResponse2001;
+import at.mic.superset.swagger.client.model.GetRelatedSchema;
+import at.mic.superset.swagger.client.model.InlineResponse20010;
+import at.mic.superset.swagger.client.model.InlineResponse20011;
 import at.mic.superset.swagger.client.model.InlineResponse2002;
-import at.mic.superset.swagger.client.model.InlineResponse2003;
-import at.mic.superset.swagger.client.model.InlineResponse2004;
-import at.mic.superset.swagger.client.model.InlineResponse2005;
-import at.mic.superset.swagger.client.model.InlineResponse2006;
-import at.mic.superset.swagger.client.model.InlineResponse201;
+import at.mic.superset.swagger.client.model.InlineResponse2009;
+import at.mic.superset.swagger.client.model.InlineResponse2012;
 import at.mic.superset.swagger.client.model.InlineResponse400;
+import at.mic.superset.swagger.client.model.RelatedResponseSchema;
+import at.mic.superset.swagger.client.model.ScreenshotQuerySchema;
 import org.junit.Test;
 import org.junit.Ignore;
 
@@ -49,29 +54,30 @@ public class ChartsApiTest {
     /**
      * 
      *
-     * Takes a query context constructed in the client and returns payload data response for the given query.
+     * Takes a query context cache key and returns payload data response for the given query.
      *
      * @throws ApiException
      *          if the Api call fails
      */
     @Test
-    public void chartDataPostTest() throws ApiException {
-        ChartDataQueryContextSchema body = null;
-        ChartDataResponseSchema response = api.chartDataPost(body);
+    public void apiV1ChartDataCacheKeyGetTest() throws ApiException {
+        String cacheKey = null;
+        ChartDataResponseSchema response = api.apiV1ChartDataCacheKeyGet(cacheKey);
 
         // TODO: test validations
     }
     /**
      * 
      *
-     * Get available datasources.
+     * Takes a query context constructed in the client and returns payload data response for the given query.
      *
      * @throws ApiException
      *          if the Api call fails
      */
     @Test
-    public void chartDatasourcesGetTest() throws ApiException {
-        InlineResponse2002 response = api.chartDatasourcesGet();
+    public void apiV1ChartDataPostTest() throws ApiException {
+        ChartDataQueryContextSchema body = null;
+        ChartDataResponseSchema response = api.apiV1ChartDataPost(body);
 
         // TODO: test validations
     }
@@ -84,9 +90,39 @@ public class ChartsApiTest {
      *          if the Api call fails
      */
     @Test
-    public void chartDeleteTest() throws ApiException {
-        List<Integer> q = null;
-        InlineResponse400 response = api.chartDelete(q);
+    public void apiV1ChartDeleteTest() throws ApiException {
+        GetDeleteIdsSchema q = null;
+        InlineResponse400 response = api.apiV1ChartDelete(q);
+
+        // TODO: test validations
+    }
+    /**
+     * 
+     *
+     * Exports multiple charts and downloads them as YAML files
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void apiV1ChartExportGetTest() throws ApiException {
+        GetExportIdsSchema q = null;
+        File response = api.apiV1ChartExportGet(q);
+
+        // TODO: test validations
+    }
+    /**
+     * 
+     *
+     * Check favorited dashboards for current user
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void apiV1ChartFavoriteStatusGetTest() throws ApiException {
+        GetFavStarIdsSchema q = null;
+        GetFavStarIdsSchema response = api.apiV1ChartFavoriteStatusGet(q);
 
         // TODO: test validations
     }
@@ -99,9 +135,26 @@ public class ChartsApiTest {
      *          if the Api call fails
      */
     @Test
-    public void chartGetTest() throws ApiException {
+    public void apiV1ChartGetTest() throws ApiException {
         GetListSchema q = null;
-        InlineResponse200 response = api.chartGet(q);
+        InlineResponse2009 response = api.apiV1ChartGet(q);
+
+        // TODO: test validations
+    }
+    /**
+     * 
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void apiV1ChartImportPostTest() throws ApiException {
+        File formData = null;
+        Boolean overwrite = null;
+        String passwords = null;
+        InlineResponse400 response = api.apiV1ChartImportPost(formData, overwrite, passwords);
 
         // TODO: test validations
     }
@@ -114,25 +167,42 @@ public class ChartsApiTest {
      *          if the Api call fails
      */
     @Test
-    public void chartInfoGetTest() throws ApiException {
+    public void apiV1ChartInfoGetTest() throws ApiException {
         GetInfoSchema q = null;
-        InlineResponse2001 response = api.chartInfoGet(q);
+        InlineResponse2002 response = api.apiV1ChartInfoGet(q);
 
         // TODO: test validations
     }
     /**
      * 
      *
-     * Compute or get already computed screenshot from cache.
+     * Compute and cache a screenshot.
      *
      * @throws ApiException
      *          if the Api call fails
      */
     @Test
-    public void chartPkCacheScreenshotGetTest() throws ApiException {
+    public void apiV1ChartPkCacheScreenshotGetTest() throws ApiException {
         Integer pk = null;
-        String sha = null;
-        InlineResponse2006 response = api.chartPkCacheScreenshotGet(pk, sha);
+        ScreenshotQuerySchema q = null;
+        ChartCacheScreenshotResponseSchema response = api.apiV1ChartPkCacheScreenshotGet(pk, q);
+
+        // TODO: test validations
+    }
+    /**
+     * 
+     *
+     * Takes a chart ID and uses the query context stored when the chart was saved to return payload data response.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void apiV1ChartPkDataGetTest() throws ApiException {
+        Integer pk = null;
+        String format = null;
+        String type = null;
+        ChartDataResponseSchema response = api.apiV1ChartPkDataGet(pk, format, type);
 
         // TODO: test validations
     }
@@ -145,9 +215,9 @@ public class ChartsApiTest {
      *          if the Api call fails
      */
     @Test
-    public void chartPkDeleteTest() throws ApiException {
+    public void apiV1ChartPkDeleteTest() throws ApiException {
         Integer pk = null;
-        InlineResponse400 response = api.chartPkDelete(pk);
+        InlineResponse400 response = api.apiV1ChartPkDelete(pk);
 
         // TODO: test validations
     }
@@ -160,10 +230,10 @@ public class ChartsApiTest {
      *          if the Api call fails
      */
     @Test
-    public void chartPkGetTest() throws ApiException {
+    public void apiV1ChartPkGetTest() throws ApiException {
         Integer pk = null;
         GetItemSchema q = null;
-        InlineResponse2004 response = api.chartPkGet(pk, q);
+        InlineResponse20010 response = api.apiV1ChartPkGet(pk, q);
 
         // TODO: test validations
     }
@@ -176,10 +246,10 @@ public class ChartsApiTest {
      *          if the Api call fails
      */
     @Test
-    public void chartPkPutTest() throws ApiException {
+    public void apiV1ChartPkPutTest() throws ApiException {
         ChartRestApiPut body = null;
         Integer pk = null;
-        InlineResponse2005 response = api.chartPkPut(body, pk);
+        InlineResponse20011 response = api.apiV1ChartPkPut(body, pk);
 
         // TODO: test validations
     }
@@ -192,10 +262,10 @@ public class ChartsApiTest {
      *          if the Api call fails
      */
     @Test
-    public void chartPkScreenshotDigestGetTest() throws ApiException {
+    public void apiV1ChartPkScreenshotDigestGetTest() throws ApiException {
         Integer pk = null;
         String digest = null;
-        File response = api.chartPkScreenshotDigestGet(pk, digest);
+        File response = api.apiV1ChartPkScreenshotDigestGet(pk, digest);
 
         // TODO: test validations
     }
@@ -208,10 +278,10 @@ public class ChartsApiTest {
      *          if the Api call fails
      */
     @Test
-    public void chartPkThumbnailDigestGetTest() throws ApiException {
+    public void apiV1ChartPkThumbnailDigestGetTest() throws ApiException {
         Integer pk = null;
         String digest = null;
-        api.chartPkThumbnailDigestGet(pk, digest);
+        File response = api.apiV1ChartPkThumbnailDigestGet(pk, digest);
 
         // TODO: test validations
     }
@@ -224,25 +294,25 @@ public class ChartsApiTest {
      *          if the Api call fails
      */
     @Test
-    public void chartPostTest() throws ApiException {
+    public void apiV1ChartPostTest() throws ApiException {
         ChartRestApiPost body = null;
-        InlineResponse201 response = api.chartPost(body);
+        InlineResponse2012 response = api.apiV1ChartPost(body);
 
         // TODO: test validations
     }
     /**
      * 
      *
-     * Get a list of all possible owners for a chart.
+     * Get a list of all possible owners for a chart. Use &#x60;owners&#x60; has the &#x60;column_name&#x60; parameter
      *
      * @throws ApiException
      *          if the Api call fails
      */
     @Test
-    public void chartRelatedColumnNameGetTest() throws ApiException {
+    public void apiV1ChartRelatedColumnNameGetTest() throws ApiException {
         String columnName = null;
-        Object q = null;
-        InlineResponse2003 response = api.chartRelatedColumnNameGet(columnName, q);
+        GetRelatedSchema q = null;
+        RelatedResponseSchema response = api.apiV1ChartRelatedColumnNameGet(columnName, q);
 
         // TODO: test validations
     }

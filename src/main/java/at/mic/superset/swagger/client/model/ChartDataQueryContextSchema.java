@@ -29,7 +29,7 @@ import java.util.List;
  * ChartDataQueryContextSchema
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-11-06T17:36:10.263+01:00[Europe/Vienna]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2022-08-29T14:48:42.974+02:00[Europe/Berlin]")
 public class ChartDataQueryContextSchema {
   @SerializedName("datasource")
   private ChartDataDatasource datasource = null;
@@ -37,98 +37,17 @@ public class ChartDataQueryContextSchema {
   @SerializedName("force")
   private Boolean force = null;
 
+  @SerializedName("form_data")
+  private Object formData = null;
+
   @SerializedName("queries")
   private List<ChartDataQueryObject> queries = null;
 
-  /**
-   * Format of result payload
-   */
-  @JsonAdapter(ResultFormatEnum.Adapter.class)
-  public enum ResultFormatEnum {
-    JSON("json"),
-    CSV("csv");
+  @SerializedName("result_format")
+  private Object resultFormat = null;
 
-    private String value;
-
-    ResultFormatEnum(String value) {
-      this.value = value;
-    }
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-    public static ResultFormatEnum fromValue(String text) {
-      for (ResultFormatEnum b : ResultFormatEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-    public static class Adapter extends TypeAdapter<ResultFormatEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final ResultFormatEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public ResultFormatEnum read(final JsonReader jsonReader) throws IOException {
-        String value = jsonReader.nextString();
-        return ResultFormatEnum.fromValue(String.valueOf(value));
-      }
-    }
-  }  @SerializedName("result_format")
-  private ResultFormatEnum resultFormat = null;
-
-  /**
-   * Type of results to return
-   */
-  @JsonAdapter(ResultTypeEnum.Adapter.class)
-  public enum ResultTypeEnum {
-    FULL("full"),
-    QUERY("query"),
-    RESULTS("results"),
-    SAMPLES("samples");
-
-    private String value;
-
-    ResultTypeEnum(String value) {
-      this.value = value;
-    }
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-    public static ResultTypeEnum fromValue(String text) {
-      for (ResultTypeEnum b : ResultTypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-    public static class Adapter extends TypeAdapter<ResultTypeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final ResultTypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public ResultTypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value = jsonReader.nextString();
-        return ResultTypeEnum.fromValue(String.valueOf(value));
-      }
-    }
-  }  @SerializedName("result_type")
-  private ResultTypeEnum resultType = null;
+  @SerializedName("result_type")
+  private Object resultType = null;
 
   public ChartDataQueryContextSchema datasource(ChartDataDatasource datasource) {
     this.datasource = datasource;
@@ -166,6 +85,24 @@ public class ChartDataQueryContextSchema {
     this.force = force;
   }
 
+  public ChartDataQueryContextSchema formData(Object formData) {
+    this.formData = formData;
+    return this;
+  }
+
+   /**
+   * Get formData
+   * @return formData
+  **/
+  @Schema(description = "")
+  public Object getFormData() {
+    return formData;
+  }
+
+  public void setFormData(Object formData) {
+    this.formData = formData;
+  }
+
   public ChartDataQueryContextSchema queries(List<ChartDataQueryObject> queries) {
     this.queries = queries;
     return this;
@@ -192,45 +129,45 @@ public class ChartDataQueryContextSchema {
     this.queries = queries;
   }
 
-  public ChartDataQueryContextSchema resultFormat(ResultFormatEnum resultFormat) {
+  public ChartDataQueryContextSchema resultFormat(Object resultFormat) {
     this.resultFormat = resultFormat;
     return this;
   }
 
    /**
-   * Format of result payload
+   * Get resultFormat
    * @return resultFormat
   **/
-  @Schema(description = "Format of result payload")
-  public ResultFormatEnum getResultFormat() {
+  @Schema(description = "")
+  public Object getResultFormat() {
     return resultFormat;
   }
 
-  public void setResultFormat(ResultFormatEnum resultFormat) {
+  public void setResultFormat(Object resultFormat) {
     this.resultFormat = resultFormat;
   }
 
-  public ChartDataQueryContextSchema resultType(ResultTypeEnum resultType) {
+  public ChartDataQueryContextSchema resultType(Object resultType) {
     this.resultType = resultType;
     return this;
   }
 
    /**
-   * Type of results to return
+   * Get resultType
    * @return resultType
   **/
-  @Schema(description = "Type of results to return")
-  public ResultTypeEnum getResultType() {
+  @Schema(description = "")
+  public Object getResultType() {
     return resultType;
   }
 
-  public void setResultType(ResultTypeEnum resultType) {
+  public void setResultType(Object resultType) {
     this.resultType = resultType;
   }
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -240,6 +177,7 @@ public class ChartDataQueryContextSchema {
     ChartDataQueryContextSchema chartDataQueryContextSchema = (ChartDataQueryContextSchema) o;
     return Objects.equals(this.datasource, chartDataQueryContextSchema.datasource) &&
         Objects.equals(this.force, chartDataQueryContextSchema.force) &&
+        Objects.equals(this.formData, chartDataQueryContextSchema.formData) &&
         Objects.equals(this.queries, chartDataQueryContextSchema.queries) &&
         Objects.equals(this.resultFormat, chartDataQueryContextSchema.resultFormat) &&
         Objects.equals(this.resultType, chartDataQueryContextSchema.resultType);
@@ -247,7 +185,7 @@ public class ChartDataQueryContextSchema {
 
   @Override
   public int hashCode() {
-    return Objects.hash(datasource, force, queries, resultFormat, resultType);
+    return Objects.hash(datasource, force, formData, queries, resultFormat, resultType);
   }
 
 
@@ -258,6 +196,7 @@ public class ChartDataQueryContextSchema {
     
     sb.append("    datasource: ").append(toIndentedString(datasource)).append("\n");
     sb.append("    force: ").append(toIndentedString(force)).append("\n");
+    sb.append("    formData: ").append(toIndentedString(formData)).append("\n");
     sb.append("    queries: ").append(toIndentedString(queries)).append("\n");
     sb.append("    resultFormat: ").append(toIndentedString(resultFormat)).append("\n");
     sb.append("    resultType: ").append(toIndentedString(resultType)).append("\n");
@@ -269,7 +208,7 @@ public class ChartDataQueryContextSchema {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

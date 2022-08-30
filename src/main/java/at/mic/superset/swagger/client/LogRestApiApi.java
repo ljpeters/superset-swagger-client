@@ -28,9 +28,9 @@ import java.io.IOException;
 
 import at.mic.superset.swagger.client.model.GetItemSchema;
 import at.mic.superset.swagger.client.model.GetListSchema;
-import at.mic.superset.swagger.client.model.InlineResponse20016;
-import at.mic.superset.swagger.client.model.InlineResponse20017;
-import at.mic.superset.swagger.client.model.InlineResponse2013;
+import at.mic.superset.swagger.client.model.InlineResponse20036;
+import at.mic.superset.swagger.client.model.InlineResponse20037;
+import at.mic.superset.swagger.client.model.InlineResponse20112;
 import at.mic.superset.swagger.client.model.InlineResponse400;
 import at.mic.superset.swagger.client.model.LogRestApiPost;
 
@@ -60,18 +60,18 @@ public class LogRestApiApi {
     }
 
     /**
-     * Build call for logGet
+     * Build call for apiV1LogGet
      * @param q  (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call logGetCall(GetListSchema q, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call apiV1LogGetCall(GetListSchema q, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
-        String localVarPath = "/log/";
+        String localVarPath = "/api/v1/log/";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -111,9 +111,9 @@ public class LogRestApiApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call logGetValidateBeforeCall(GetListSchema q, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call apiV1LogGetValidateBeforeCall(GetListSchema q, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
-        com.squareup.okhttp.Call call = logGetCall(q, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = apiV1LogGetCall(q, progressListener, progressRequestListener);
         return call;
 
         
@@ -126,11 +126,11 @@ public class LogRestApiApi {
      * 
      * Get a list of models
      * @param q  (optional)
-     * @return InlineResponse20016
+     * @return InlineResponse20036
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse20016 logGet(GetListSchema q) throws ApiException {
-        ApiResponse<InlineResponse20016> resp = logGetWithHttpInfo(q);
+    public InlineResponse20036 apiV1LogGet(GetListSchema q) throws ApiException {
+        ApiResponse<InlineResponse20036> resp = apiV1LogGetWithHttpInfo(q);
         return resp.getData();
     }
 
@@ -138,12 +138,12 @@ public class LogRestApiApi {
      * 
      * Get a list of models
      * @param q  (optional)
-     * @return ApiResponse&lt;InlineResponse20016&gt;
+     * @return ApiResponse&lt;InlineResponse20036&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse20016> logGetWithHttpInfo(GetListSchema q) throws ApiException {
-        com.squareup.okhttp.Call call = logGetValidateBeforeCall(q, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse20016>(){}.getType();
+    public ApiResponse<InlineResponse20036> apiV1LogGetWithHttpInfo(GetListSchema q) throws ApiException {
+        com.squareup.okhttp.Call call = apiV1LogGetValidateBeforeCall(q, null, null);
+        Type localVarReturnType = new TypeToken<InlineResponse20036>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -155,7 +155,7 @@ public class LogRestApiApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call logGetAsync(GetListSchema q, final ApiCallback<InlineResponse20016> callback) throws ApiException {
+    public com.squareup.okhttp.Call apiV1LogGetAsync(GetListSchema q, final ApiCallback<InlineResponse20036> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -176,13 +176,13 @@ public class LogRestApiApi {
             };
         }
 
-        com.squareup.okhttp.Call call = logGetValidateBeforeCall(q, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse20016>(){}.getType();
+        com.squareup.okhttp.Call call = apiV1LogGetValidateBeforeCall(q, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<InlineResponse20036>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
-     * Build call for logPkGet
+     * Build call for apiV1LogPkGet
      * @param pk  (required)
      * @param q  (optional)
      * @param progressListener Progress listener
@@ -190,11 +190,11 @@ public class LogRestApiApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call logPkGetCall(Integer pk, GetItemSchema q, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call apiV1LogPkGetCall(Integer pk, GetItemSchema q, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
-        String localVarPath = "/log/{pk}"
+        String localVarPath = "/api/v1/log/{pk}"
             .replaceAll("\\{" + "pk" + "\\}", apiClient.escapeString(pk.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -235,13 +235,13 @@ public class LogRestApiApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call logPkGetValidateBeforeCall(Integer pk, GetItemSchema q, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call apiV1LogPkGetValidateBeforeCall(Integer pk, GetItemSchema q, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'pk' is set
         if (pk == null) {
-            throw new ApiException("Missing the required parameter 'pk' when calling logPkGet(Async)");
+            throw new ApiException("Missing the required parameter 'pk' when calling apiV1LogPkGet(Async)");
         }
         
-        com.squareup.okhttp.Call call = logPkGetCall(pk, q, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = apiV1LogPkGetCall(pk, q, progressListener, progressRequestListener);
         return call;
 
         
@@ -255,11 +255,11 @@ public class LogRestApiApi {
      * Get an item model
      * @param pk  (required)
      * @param q  (optional)
-     * @return InlineResponse20017
+     * @return InlineResponse20037
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse20017 logPkGet(Integer pk, GetItemSchema q) throws ApiException {
-        ApiResponse<InlineResponse20017> resp = logPkGetWithHttpInfo(pk, q);
+    public InlineResponse20037 apiV1LogPkGet(Integer pk, GetItemSchema q) throws ApiException {
+        ApiResponse<InlineResponse20037> resp = apiV1LogPkGetWithHttpInfo(pk, q);
         return resp.getData();
     }
 
@@ -268,12 +268,12 @@ public class LogRestApiApi {
      * Get an item model
      * @param pk  (required)
      * @param q  (optional)
-     * @return ApiResponse&lt;InlineResponse20017&gt;
+     * @return ApiResponse&lt;InlineResponse20037&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse20017> logPkGetWithHttpInfo(Integer pk, GetItemSchema q) throws ApiException {
-        com.squareup.okhttp.Call call = logPkGetValidateBeforeCall(pk, q, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse20017>(){}.getType();
+    public ApiResponse<InlineResponse20037> apiV1LogPkGetWithHttpInfo(Integer pk, GetItemSchema q) throws ApiException {
+        com.squareup.okhttp.Call call = apiV1LogPkGetValidateBeforeCall(pk, q, null, null);
+        Type localVarReturnType = new TypeToken<InlineResponse20037>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -286,7 +286,7 @@ public class LogRestApiApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call logPkGetAsync(Integer pk, GetItemSchema q, final ApiCallback<InlineResponse20017> callback) throws ApiException {
+    public com.squareup.okhttp.Call apiV1LogPkGetAsync(Integer pk, GetItemSchema q, final ApiCallback<InlineResponse20037> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -307,24 +307,24 @@ public class LogRestApiApi {
             };
         }
 
-        com.squareup.okhttp.Call call = logPkGetValidateBeforeCall(pk, q, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse20017>(){}.getType();
+        com.squareup.okhttp.Call call = apiV1LogPkGetValidateBeforeCall(pk, q, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<InlineResponse20037>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
-     * Build call for logPost
+     * Build call for apiV1LogPost
      * @param body Model schema (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call logPostCall(LogRestApiPost body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call apiV1LogPostCall(LogRestApiPost body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = body;
         
         // create path and map variables
-        String localVarPath = "/log/";
+        String localVarPath = "/api/v1/log/";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -362,13 +362,13 @@ public class LogRestApiApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call logPostValidateBeforeCall(LogRestApiPost body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call apiV1LogPostValidateBeforeCall(LogRestApiPost body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'body' is set
         if (body == null) {
-            throw new ApiException("Missing the required parameter 'body' when calling logPost(Async)");
+            throw new ApiException("Missing the required parameter 'body' when calling apiV1LogPost(Async)");
         }
         
-        com.squareup.okhttp.Call call = logPostCall(body, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = apiV1LogPostCall(body, progressListener, progressRequestListener);
         return call;
 
         
@@ -381,11 +381,11 @@ public class LogRestApiApi {
      * 
      * 
      * @param body Model schema (required)
-     * @return InlineResponse2013
+     * @return InlineResponse20112
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse2013 logPost(LogRestApiPost body) throws ApiException {
-        ApiResponse<InlineResponse2013> resp = logPostWithHttpInfo(body);
+    public InlineResponse20112 apiV1LogPost(LogRestApiPost body) throws ApiException {
+        ApiResponse<InlineResponse20112> resp = apiV1LogPostWithHttpInfo(body);
         return resp.getData();
     }
 
@@ -393,12 +393,12 @@ public class LogRestApiApi {
      * 
      * 
      * @param body Model schema (required)
-     * @return ApiResponse&lt;InlineResponse2013&gt;
+     * @return ApiResponse&lt;InlineResponse20112&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse2013> logPostWithHttpInfo(LogRestApiPost body) throws ApiException {
-        com.squareup.okhttp.Call call = logPostValidateBeforeCall(body, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse2013>(){}.getType();
+    public ApiResponse<InlineResponse20112> apiV1LogPostWithHttpInfo(LogRestApiPost body) throws ApiException {
+        com.squareup.okhttp.Call call = apiV1LogPostValidateBeforeCall(body, null, null);
+        Type localVarReturnType = new TypeToken<InlineResponse20112>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -410,7 +410,7 @@ public class LogRestApiApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call logPostAsync(LogRestApiPost body, final ApiCallback<InlineResponse2013> callback) throws ApiException {
+    public com.squareup.okhttp.Call apiV1LogPostAsync(LogRestApiPost body, final ApiCallback<InlineResponse20112> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -431,8 +431,8 @@ public class LogRestApiApi {
             };
         }
 
-        com.squareup.okhttp.Call call = logPostValidateBeforeCall(body, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse2013>(){}.getType();
+        com.squareup.okhttp.Call call = apiV1LogPostValidateBeforeCall(body, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<InlineResponse20112>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

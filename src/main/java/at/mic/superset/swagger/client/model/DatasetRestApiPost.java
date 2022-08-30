@@ -27,10 +27,16 @@ import java.util.List;
  * DatasetRestApiPost
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-11-06T17:36:10.263+01:00[Europe/Vienna]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2022-08-29T14:48:42.974+02:00[Europe/Berlin]")
 public class DatasetRestApiPost {
   @SerializedName("database")
   private Integer database = null;
+
+  @SerializedName("external_url")
+  private String externalUrl = null;
+
+  @SerializedName("is_managed_externally")
+  private Boolean isManagedExternally = null;
 
   @SerializedName("owners")
   private List<Integer> owners = null;
@@ -57,6 +63,42 @@ public class DatasetRestApiPost {
 
   public void setDatabase(Integer database) {
     this.database = database;
+  }
+
+  public DatasetRestApiPost externalUrl(String externalUrl) {
+    this.externalUrl = externalUrl;
+    return this;
+  }
+
+   /**
+   * Get externalUrl
+   * @return externalUrl
+  **/
+  @Schema(description = "")
+  public String getExternalUrl() {
+    return externalUrl;
+  }
+
+  public void setExternalUrl(String externalUrl) {
+    this.externalUrl = externalUrl;
+  }
+
+  public DatasetRestApiPost isManagedExternally(Boolean isManagedExternally) {
+    this.isManagedExternally = isManagedExternally;
+    return this;
+  }
+
+   /**
+   * Get isManagedExternally
+   * @return isManagedExternally
+  **/
+  @Schema(description = "")
+  public Boolean isIsManagedExternally() {
+    return isManagedExternally;
+  }
+
+  public void setIsManagedExternally(Boolean isManagedExternally) {
+    this.isManagedExternally = isManagedExternally;
   }
 
   public DatasetRestApiPost owners(List<Integer> owners) {
@@ -123,7 +165,7 @@ public class DatasetRestApiPost {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -132,6 +174,8 @@ public class DatasetRestApiPost {
     }
     DatasetRestApiPost datasetRestApiPost = (DatasetRestApiPost) o;
     return Objects.equals(this.database, datasetRestApiPost.database) &&
+        Objects.equals(this.externalUrl, datasetRestApiPost.externalUrl) &&
+        Objects.equals(this.isManagedExternally, datasetRestApiPost.isManagedExternally) &&
         Objects.equals(this.owners, datasetRestApiPost.owners) &&
         Objects.equals(this.schema, datasetRestApiPost.schema) &&
         Objects.equals(this.tableName, datasetRestApiPost.tableName);
@@ -139,7 +183,7 @@ public class DatasetRestApiPost {
 
   @Override
   public int hashCode() {
-    return Objects.hash(database, owners, schema, tableName);
+    return Objects.hash(database, externalUrl, isManagedExternally, owners, schema, tableName);
   }
 
 
@@ -149,6 +193,8 @@ public class DatasetRestApiPost {
     sb.append("class DatasetRestApiPost {\n");
     
     sb.append("    database: ").append(toIndentedString(database)).append("\n");
+    sb.append("    externalUrl: ").append(toIndentedString(externalUrl)).append("\n");
+    sb.append("    isManagedExternally: ").append(toIndentedString(isManagedExternally)).append("\n");
     sb.append("    owners: ").append(toIndentedString(owners)).append("\n");
     sb.append("    schema: ").append(toIndentedString(schema)).append("\n");
     sb.append("    tableName: ").append(toIndentedString(tableName)).append("\n");
@@ -160,7 +206,7 @@ public class DatasetRestApiPost {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

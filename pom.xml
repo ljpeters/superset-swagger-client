@@ -5,7 +5,7 @@
   <artifactId>superset-swagger-client</artifactId>
   <packaging>jar</packaging>
   <name>superset-swagger-client</name>
-  <version>1.1.0</version>
+  <version>1.2.0</version>
   <url>https://github.com/swagger-api/swagger-codegen</url>
   <description>Swagger Java</description>
   <scm>

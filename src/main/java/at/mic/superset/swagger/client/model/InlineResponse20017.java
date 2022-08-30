@@ -14,9 +14,6 @@ package at.mic.superset.swagger.client.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import at.mic.superset.swagger.client.model.InlineResponse200DescriptionColumns;
-import at.mic.superset.swagger.client.model.InlineResponse200LabelColumns;
-import at.mic.superset.swagger.client.model.LogRestApiGet;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -24,151 +21,141 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 /**
  * InlineResponse20017
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-11-06T17:36:10.263+01:00[Europe/Vienna]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2022-08-29T14:48:42.974+02:00[Europe/Berlin]")
 public class InlineResponse20017 {
-  @SerializedName("description_columns")
-  private InlineResponse200DescriptionColumns descriptionColumns = null;
+  @SerializedName("description")
+  private String description = null;
 
-  @SerializedName("id")
-  private String id = null;
+  @SerializedName("json_metadata")
+  private String jsonMetadata = null;
 
-  @SerializedName("label_columns")
-  private InlineResponse200LabelColumns labelColumns = null;
+  @SerializedName("name")
+  private String name = null;
 
-  @SerializedName("result")
-  private LogRestApiGet result = null;
+  @SerializedName("owner_id")
+  private Integer ownerId = null;
 
-  @SerializedName("show_columns")
-  private List<String> showColumns = null;
+  @SerializedName("owner_type")
+  private Integer ownerType = null;
 
-  @SerializedName("show_title")
-  private String showTitle = null;
+  @SerializedName("parameters")
+  private Object parameters = null;
 
-  public InlineResponse20017 descriptionColumns(InlineResponse200DescriptionColumns descriptionColumns) {
-    this.descriptionColumns = descriptionColumns;
+  public InlineResponse20017 description(String description) {
+    this.description = description;
     return this;
   }
 
    /**
-   * Get descriptionColumns
-   * @return descriptionColumns
+   * A description field of the filter set
+   * @return description
   **/
-  @Schema(description = "")
-  public InlineResponse200DescriptionColumns getDescriptionColumns() {
-    return descriptionColumns;
+  @Schema(description = "A description field of the filter set")
+  public String getDescription() {
+    return description;
   }
 
-  public void setDescriptionColumns(InlineResponse200DescriptionColumns descriptionColumns) {
-    this.descriptionColumns = descriptionColumns;
+  public void setDescription(String description) {
+    this.description = description;
   }
 
-  public InlineResponse20017 id(String id) {
-    this.id = id;
+  public InlineResponse20017 jsonMetadata(String jsonMetadata) {
+    this.jsonMetadata = jsonMetadata;
     return this;
   }
 
    /**
-   * The item id
-   * @return id
+   * metadata of the filter set
+   * @return jsonMetadata
   **/
-  @Schema(description = "The item id")
-  public String getId() {
-    return id;
+  @Schema(description = "metadata of the filter set")
+  public String getJsonMetadata() {
+    return jsonMetadata;
   }
 
-  public void setId(String id) {
-    this.id = id;
+  public void setJsonMetadata(String jsonMetadata) {
+    this.jsonMetadata = jsonMetadata;
   }
 
-  public InlineResponse20017 labelColumns(InlineResponse200LabelColumns labelColumns) {
-    this.labelColumns = labelColumns;
+  public InlineResponse20017 name(String name) {
+    this.name = name;
     return this;
   }
 
    /**
-   * Get labelColumns
-   * @return labelColumns
+   * Name of the Filter set
+   * @return name
   **/
-  @Schema(description = "")
-  public InlineResponse200LabelColumns getLabelColumns() {
-    return labelColumns;
+  @Schema(description = "Name of the Filter set")
+  public String getName() {
+    return name;
   }
 
-  public void setLabelColumns(InlineResponse200LabelColumns labelColumns) {
-    this.labelColumns = labelColumns;
+  public void setName(String name) {
+    this.name = name;
   }
 
-  public InlineResponse20017 result(LogRestApiGet result) {
-    this.result = result;
+  public InlineResponse20017 ownerId(Integer ownerId) {
+    this.ownerId = ownerId;
     return this;
   }
 
    /**
-   * Get result
-   * @return result
+   * A description field of the filter set
+   * @return ownerId
   **/
-  @Schema(description = "")
-  public LogRestApiGet getResult() {
-    return result;
+  @Schema(description = "A description field of the filter set")
+  public Integer getOwnerId() {
+    return ownerId;
   }
 
-  public void setResult(LogRestApiGet result) {
-    this.result = result;
+  public void setOwnerId(Integer ownerId) {
+    this.ownerId = ownerId;
   }
 
-  public InlineResponse20017 showColumns(List<String> showColumns) {
-    this.showColumns = showColumns;
-    return this;
-  }
-
-  public InlineResponse20017 addShowColumnsItem(String showColumnsItem) {
-    if (this.showColumns == null) {
-      this.showColumns = new ArrayList<String>();
-    }
-    this.showColumns.add(showColumnsItem);
+  public InlineResponse20017 ownerType(Integer ownerType) {
+    this.ownerType = ownerType;
     return this;
   }
 
    /**
-   * A list of columns
-   * @return showColumns
+   * the Type of the owner ( Dashboard/User)
+   * @return ownerType
   **/
-  @Schema(description = "A list of columns")
-  public List<String> getShowColumns() {
-    return showColumns;
+  @Schema(description = "the Type of the owner ( Dashboard/User)")
+  public Integer getOwnerType() {
+    return ownerType;
   }
 
-  public void setShowColumns(List<String> showColumns) {
-    this.showColumns = showColumns;
+  public void setOwnerType(Integer ownerType) {
+    this.ownerType = ownerType;
   }
 
-  public InlineResponse20017 showTitle(String showTitle) {
-    this.showTitle = showTitle;
+  public InlineResponse20017 parameters(Object parameters) {
+    this.parameters = parameters;
     return this;
   }
 
    /**
-   * A title to render. Will be translated by babel
-   * @return showTitle
+   * JSON schema defining the needed parameters
+   * @return parameters
   **/
-  @Schema(example = "Show Item Details", description = "A title to render. Will be translated by babel")
-  public String getShowTitle() {
-    return showTitle;
+  @Schema(description = "JSON schema defining the needed parameters")
+  public Object getParameters() {
+    return parameters;
   }
 
-  public void setShowTitle(String showTitle) {
-    this.showTitle = showTitle;
+  public void setParameters(Object parameters) {
+    this.parameters = parameters;
   }
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -176,17 +163,17 @@ public class InlineResponse20017 {
       return false;
     }
     InlineResponse20017 inlineResponse20017 = (InlineResponse20017) o;
-    return Objects.equals(this.descriptionColumns, inlineResponse20017.descriptionColumns) &&
-        Objects.equals(this.id, inlineResponse20017.id) &&
-        Objects.equals(this.labelColumns, inlineResponse20017.labelColumns) &&
-        Objects.equals(this.result, inlineResponse20017.result) &&
-        Objects.equals(this.showColumns, inlineResponse20017.showColumns) &&
-        Objects.equals(this.showTitle, inlineResponse20017.showTitle);
+    return Objects.equals(this.description, inlineResponse20017.description) &&
+        Objects.equals(this.jsonMetadata, inlineResponse20017.jsonMetadata) &&
+        Objects.equals(this.name, inlineResponse20017.name) &&
+        Objects.equals(this.ownerId, inlineResponse20017.ownerId) &&
+        Objects.equals(this.ownerType, inlineResponse20017.ownerType) &&
+        Objects.equals(this.parameters, inlineResponse20017.parameters);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(descriptionColumns, id, labelColumns, result, showColumns, showTitle);
+    return Objects.hash(description, jsonMetadata, name, ownerId, ownerType, parameters);
   }
 
 
@@ -195,12 +182,12 @@ public class InlineResponse20017 {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse20017 {\n");
     
-    sb.append("    descriptionColumns: ").append(toIndentedString(descriptionColumns)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    labelColumns: ").append(toIndentedString(labelColumns)).append("\n");
-    sb.append("    result: ").append(toIndentedString(result)).append("\n");
-    sb.append("    showColumns: ").append(toIndentedString(showColumns)).append("\n");
-    sb.append("    showTitle: ").append(toIndentedString(showTitle)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    jsonMetadata: ").append(toIndentedString(jsonMetadata)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    ownerId: ").append(toIndentedString(ownerId)).append("\n");
+    sb.append("    ownerType: ").append(toIndentedString(ownerType)).append("\n");
+    sb.append("    parameters: ").append(toIndentedString(parameters)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -209,7 +196,7 @@ public class InlineResponse20017 {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

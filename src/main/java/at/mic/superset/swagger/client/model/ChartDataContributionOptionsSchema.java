@@ -25,7 +25,7 @@ import java.io.IOException;
  * ChartDataContributionOptionsSchema
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-11-06T17:36:10.263+01:00[Europe/Vienna]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2022-08-29T14:48:42.974+02:00[Europe/Berlin]")
 public class ChartDataContributionOptionsSchema {
   /**
    * Should cell values be calculated across the row or column.
@@ -48,9 +48,9 @@ public class ChartDataContributionOptionsSchema {
     public String toString() {
       return String.valueOf(value);
     }
-    public static OrientationEnum fromValue(String text) {
+    public static OrientationEnum fromValue(String input) {
       for (OrientationEnum b : OrientationEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
+        if (b.value.equals(input)) {
           return b;
         }
       }
@@ -59,13 +59,13 @@ public class ChartDataContributionOptionsSchema {
     public static class Adapter extends TypeAdapter<OrientationEnum> {
       @Override
       public void write(final JsonWriter jsonWriter, final OrientationEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
+        jsonWriter.value(String.valueOf(enumeration.getValue()));
       }
 
       @Override
       public OrientationEnum read(final JsonReader jsonReader) throws IOException {
-        String value = jsonReader.nextString();
-        return OrientationEnum.fromValue(String.valueOf(value));
+        Object value = jsonReader.nextString();
+        return OrientationEnum.fromValue((String)(value));
       }
     }
   }  @SerializedName("orientation")
@@ -91,7 +91,7 @@ public class ChartDataContributionOptionsSchema {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -122,7 +122,7 @@ public class ChartDataContributionOptionsSchema {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

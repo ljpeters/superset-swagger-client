@@ -3,19 +3,24 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**allowCsvUpload** | **Boolean** |  |  [optional]
 **allowCtas** | **Boolean** |  |  [optional]
 **allowCvas** | **Boolean** |  |  [optional]
 **allowDml** | **Boolean** |  |  [optional]
+**allowFileUpload** | **Boolean** |  |  [optional]
 **allowMultiSchemaMetadataFetch** | **Boolean** |  |  [optional]
 **allowRunAsync** | **Boolean** |  |  [optional]
-**allowsCostEstimate** | **Object** |  |  [optional]
-**allowsSubquery** | **Object** |  |  [optional]
-**allowsVirtualTableExplore** | **Object** |  |  [optional]
 **backend** | **Object** |  |  [optional]
+**cacheTimeout** | **Integer** |  |  [optional]
+**configurationMethod** | **String** |  |  [optional]
 **databaseName** | **String** |  | 
-**exploreDatabaseId** | **Object** |  |  [optional]
+**encryptedExtra** | **String** |  |  [optional]
 **exposeInSqllab** | **Boolean** |  |  [optional]
+**extra** | **String** |  |  [optional]
 **forceCtasSchema** | **String** |  |  [optional]
-**functionNames** | **Object** |  |  [optional]
 **id** | **Integer** |  |  [optional]
+**impersonateUser** | **Boolean** |  |  [optional]
+**isManagedExternally** | **Boolean** |  |  [optional]
+**parameters** | **Object** |  |  [optional]
+**parametersSchema** | **Object** |  |  [optional]
+**serverCert** | **String** |  |  [optional]
+**sqlalchemyUri** | **String** |  | 

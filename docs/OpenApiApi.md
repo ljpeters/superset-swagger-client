@@ -1,14 +1,14 @@
 # OpenApiApi
 
-All URIs are relative to */api/v1*
+All URIs are relative to *http://localhost:8088/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**openapiVersionOpenapiGet**](OpenApiApi.md#openapiVersionOpenapiGet) | **GET** /openapi/{version}/_openapi | 
+[**apiVersionOpenapiGet**](OpenApiApi.md#apiVersionOpenapiGet) | **GET** /api/{version}/_openapi | 
 
-<a name="openapiVersionOpenapiGet"></a>
-# **openapiVersionOpenapiGet**
-> Object openapiVersionOpenapiGet(version)
+<a name="apiVersionOpenapiGet"></a>
+# **apiVersionOpenapiGet**
+> Object apiVersionOpenapiGet(version)
 
 
 
@@ -29,10 +29,10 @@ ApiClient defaultClient = Configuration.getDefaultApiClient();
 OpenApiApi apiInstance = new OpenApiApi();
 String version = "version_example"; // String | 
 try {
-    Object result = apiInstance.openapiVersionOpenapiGet(version);
+    Object result = apiInstance.apiVersionOpenapiGet(version);
     System.out.println(result);
 } catch (ApiException e) {
-    System.err.println("Exception when calling OpenApiApi#openapiVersionOpenapiGet");
+    System.err.println("Exception when calling OpenApiApi#apiVersionOpenapiGet");
     e.printStackTrace();
 }
 ```

@@ -3,8 +3,18 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**database** | [**Meta15**](Meta15.md) |  | 
-**endTime** | [**BigDecimal**](BigDecimal.md) |  |  [optional]
-**startTime** | [**BigDecimal**](BigDecimal.md) |  |  [optional]
+**changedOn** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
+**database** | [**Database1**](Database1.md) |  |  [optional]
+**endTime** | **Float** |  |  [optional]
+**executedSql** | **String** |  |  [optional]
+**id** | **Integer** |  |  [optional]
+**rows** | **Integer** |  |  [optional]
+**schema** | **String** |  |  [optional]
+**sql** | **String** |  |  [optional]
+**sqlTables** | **Object** |  |  [optional]
+**startTime** | **Float** |  |  [optional]
 **status** | **String** |  |  [optional]
-**user** | [**Meta14**](Meta14.md) |  |  [optional]
+**tabName** | **String** |  |  [optional]
+**tmpTableName** | **String** |  |  [optional]
+**trackingUrl** | **String** |  |  [optional]
+**user** | [**User**](User.md) |  |  [optional]

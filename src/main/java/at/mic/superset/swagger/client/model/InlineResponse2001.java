@@ -14,7 +14,9 @@ package at.mic.superset.swagger.client.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import at.mic.superset.swagger.client.model.InlineResponse2001Filters;
+import at.mic.superset.swagger.client.model.AnnotationLayerRestApiGetList;
+import at.mic.superset.swagger.client.model.InlineResponse2001DescriptionColumns;
+import at.mic.superset.swagger.client.model.InlineResponse2001LabelColumns;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -22,109 +24,218 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 /**
  * InlineResponse2001
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-11-06T17:36:10.263+01:00[Europe/Vienna]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2022-08-29T14:48:42.974+02:00[Europe/Berlin]")
 public class InlineResponse2001 {
-  @SerializedName("add_columns")
-  private Object addColumns = null;
+  @SerializedName("count")
+  private BigDecimal count = null;
 
-  @SerializedName("edit_columns")
-  private Object editColumns = null;
+  @SerializedName("description_columns")
+  private InlineResponse2001DescriptionColumns descriptionColumns = null;
 
-  @SerializedName("filters")
-  private InlineResponse2001Filters filters = null;
+  @SerializedName("ids")
+  private List<String> ids = null;
 
-  @SerializedName("permissions")
-  private List<String> permissions = null;
+  @SerializedName("label_columns")
+  private InlineResponse2001LabelColumns labelColumns = null;
 
-  public InlineResponse2001 addColumns(Object addColumns) {
-    this.addColumns = addColumns;
+  @SerializedName("list_columns")
+  private List<String> listColumns = null;
+
+  @SerializedName("list_title")
+  private String listTitle = null;
+
+  @SerializedName("order_columns")
+  private List<String> orderColumns = null;
+
+  @SerializedName("result")
+  private List<AnnotationLayerRestApiGetList> result = null;
+
+  public InlineResponse2001 count(BigDecimal count) {
+    this.count = count;
     return this;
   }
 
    /**
-   * Get addColumns
-   * @return addColumns
+   * The total record count on the backend
+   * @return count
   **/
-  @Schema(description = "")
-  public Object getAddColumns() {
-    return addColumns;
+  @Schema(description = "The total record count on the backend")
+  public BigDecimal getCount() {
+    return count;
   }
 
-  public void setAddColumns(Object addColumns) {
-    this.addColumns = addColumns;
+  public void setCount(BigDecimal count) {
+    this.count = count;
   }
 
-  public InlineResponse2001 editColumns(Object editColumns) {
-    this.editColumns = editColumns;
+  public InlineResponse2001 descriptionColumns(InlineResponse2001DescriptionColumns descriptionColumns) {
+    this.descriptionColumns = descriptionColumns;
     return this;
   }
 
    /**
-   * Get editColumns
-   * @return editColumns
+   * Get descriptionColumns
+   * @return descriptionColumns
   **/
   @Schema(description = "")
-  public Object getEditColumns() {
-    return editColumns;
+  public InlineResponse2001DescriptionColumns getDescriptionColumns() {
+    return descriptionColumns;
   }
 
-  public void setEditColumns(Object editColumns) {
-    this.editColumns = editColumns;
+  public void setDescriptionColumns(InlineResponse2001DescriptionColumns descriptionColumns) {
+    this.descriptionColumns = descriptionColumns;
   }
 
-  public InlineResponse2001 filters(InlineResponse2001Filters filters) {
-    this.filters = filters;
+  public InlineResponse2001 ids(List<String> ids) {
+    this.ids = ids;
     return this;
   }
 
-   /**
-   * Get filters
-   * @return filters
-  **/
-  @Schema(description = "")
-  public InlineResponse2001Filters getFilters() {
-    return filters;
-  }
-
-  public void setFilters(InlineResponse2001Filters filters) {
-    this.filters = filters;
-  }
-
-  public InlineResponse2001 permissions(List<String> permissions) {
-    this.permissions = permissions;
-    return this;
-  }
-
-  public InlineResponse2001 addPermissionsItem(String permissionsItem) {
-    if (this.permissions == null) {
-      this.permissions = new ArrayList<String>();
+  public InlineResponse2001 addIdsItem(String idsItem) {
+    if (this.ids == null) {
+      this.ids = new ArrayList<String>();
     }
-    this.permissions.add(permissionsItem);
+    this.ids.add(idsItem);
     return this;
   }
 
    /**
-   * The user permissions for this API resource
-   * @return permissions
+   * A list of item ids, useful when you don&#x27;t know the column id
+   * @return ids
   **/
-  @Schema(description = "The user permissions for this API resource")
-  public List<String> getPermissions() {
-    return permissions;
+  @Schema(description = "A list of item ids, useful when you don't know the column id")
+  public List<String> getIds() {
+    return ids;
   }
 
-  public void setPermissions(List<String> permissions) {
-    this.permissions = permissions;
+  public void setIds(List<String> ids) {
+    this.ids = ids;
+  }
+
+  public InlineResponse2001 labelColumns(InlineResponse2001LabelColumns labelColumns) {
+    this.labelColumns = labelColumns;
+    return this;
+  }
+
+   /**
+   * Get labelColumns
+   * @return labelColumns
+  **/
+  @Schema(description = "")
+  public InlineResponse2001LabelColumns getLabelColumns() {
+    return labelColumns;
+  }
+
+  public void setLabelColumns(InlineResponse2001LabelColumns labelColumns) {
+    this.labelColumns = labelColumns;
+  }
+
+  public InlineResponse2001 listColumns(List<String> listColumns) {
+    this.listColumns = listColumns;
+    return this;
+  }
+
+  public InlineResponse2001 addListColumnsItem(String listColumnsItem) {
+    if (this.listColumns == null) {
+      this.listColumns = new ArrayList<String>();
+    }
+    this.listColumns.add(listColumnsItem);
+    return this;
+  }
+
+   /**
+   * A list of columns
+   * @return listColumns
+  **/
+  @Schema(description = "A list of columns")
+  public List<String> getListColumns() {
+    return listColumns;
+  }
+
+  public void setListColumns(List<String> listColumns) {
+    this.listColumns = listColumns;
+  }
+
+  public InlineResponse2001 listTitle(String listTitle) {
+    this.listTitle = listTitle;
+    return this;
+  }
+
+   /**
+   * A title to render. Will be translated by babel
+   * @return listTitle
+  **/
+  @Schema(example = "List Items", description = "A title to render. Will be translated by babel")
+  public String getListTitle() {
+    return listTitle;
+  }
+
+  public void setListTitle(String listTitle) {
+    this.listTitle = listTitle;
+  }
+
+  public InlineResponse2001 orderColumns(List<String> orderColumns) {
+    this.orderColumns = orderColumns;
+    return this;
+  }
+
+  public InlineResponse2001 addOrderColumnsItem(String orderColumnsItem) {
+    if (this.orderColumns == null) {
+      this.orderColumns = new ArrayList<String>();
+    }
+    this.orderColumns.add(orderColumnsItem);
+    return this;
+  }
+
+   /**
+   * A list of allowed columns to sort
+   * @return orderColumns
+  **/
+  @Schema(description = "A list of allowed columns to sort")
+  public List<String> getOrderColumns() {
+    return orderColumns;
+  }
+
+  public void setOrderColumns(List<String> orderColumns) {
+    this.orderColumns = orderColumns;
+  }
+
+  public InlineResponse2001 result(List<AnnotationLayerRestApiGetList> result) {
+    this.result = result;
+    return this;
+  }
+
+  public InlineResponse2001 addResultItem(AnnotationLayerRestApiGetList resultItem) {
+    if (this.result == null) {
+      this.result = new ArrayList<AnnotationLayerRestApiGetList>();
+    }
+    this.result.add(resultItem);
+    return this;
+  }
+
+   /**
+   * The result from the get list query
+   * @return result
+  **/
+  @Schema(description = "The result from the get list query")
+  public List<AnnotationLayerRestApiGetList> getResult() {
+    return result;
+  }
+
+  public void setResult(List<AnnotationLayerRestApiGetList> result) {
+    this.result = result;
   }
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -132,15 +243,19 @@ public class InlineResponse2001 {
       return false;
     }
     InlineResponse2001 inlineResponse2001 = (InlineResponse2001) o;
-    return Objects.equals(this.addColumns, inlineResponse2001.addColumns) &&
-        Objects.equals(this.editColumns, inlineResponse2001.editColumns) &&
-        Objects.equals(this.filters, inlineResponse2001.filters) &&
-        Objects.equals(this.permissions, inlineResponse2001.permissions);
+    return Objects.equals(this.count, inlineResponse2001.count) &&
+        Objects.equals(this.descriptionColumns, inlineResponse2001.descriptionColumns) &&
+        Objects.equals(this.ids, inlineResponse2001.ids) &&
+        Objects.equals(this.labelColumns, inlineResponse2001.labelColumns) &&
+        Objects.equals(this.listColumns, inlineResponse2001.listColumns) &&
+        Objects.equals(this.listTitle, inlineResponse2001.listTitle) &&
+        Objects.equals(this.orderColumns, inlineResponse2001.orderColumns) &&
+        Objects.equals(this.result, inlineResponse2001.result);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(addColumns, editColumns, filters, permissions);
+    return Objects.hash(count, descriptionColumns, ids, labelColumns, listColumns, listTitle, orderColumns, result);
   }
 
 
@@ -149,10 +264,14 @@ public class InlineResponse2001 {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse2001 {\n");
     
-    sb.append("    addColumns: ").append(toIndentedString(addColumns)).append("\n");
-    sb.append("    editColumns: ").append(toIndentedString(editColumns)).append("\n");
-    sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
-    sb.append("    permissions: ").append(toIndentedString(permissions)).append("\n");
+    sb.append("    count: ").append(toIndentedString(count)).append("\n");
+    sb.append("    descriptionColumns: ").append(toIndentedString(descriptionColumns)).append("\n");
+    sb.append("    ids: ").append(toIndentedString(ids)).append("\n");
+    sb.append("    labelColumns: ").append(toIndentedString(labelColumns)).append("\n");
+    sb.append("    listColumns: ").append(toIndentedString(listColumns)).append("\n");
+    sb.append("    listTitle: ").append(toIndentedString(listTitle)).append("\n");
+    sb.append("    orderColumns: ").append(toIndentedString(orderColumns)).append("\n");
+    sb.append("    result: ").append(toIndentedString(result)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -161,7 +280,7 @@ public class InlineResponse2001 {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

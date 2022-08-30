@@ -27,10 +27,16 @@ import java.util.List;
  * ChartRestApiPost
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-11-06T17:36:10.263+01:00[Europe/Vienna]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2022-08-29T14:48:42.974+02:00[Europe/Berlin]")
 public class ChartRestApiPost {
   @SerializedName("cache_timeout")
   private Integer cacheTimeout = null;
+
+  @SerializedName("certification_details")
+  private String certificationDetails = null;
+
+  @SerializedName("certified_by")
+  private String certifiedBy = null;
 
   @SerializedName("dashboards")
   private List<Integer> dashboards = null;
@@ -46,8 +52,11 @@ public class ChartRestApiPost {
    */
   @JsonAdapter(DatasourceTypeEnum.Adapter.class)
   public enum DatasourceTypeEnum {
-    DRUID("druid"),
+    SL_TABLE("sl_table"),
     TABLE("table"),
+    DATASET("dataset"),
+    QUERY("query"),
+    SAVED_QUERY("saved_query"),
     VIEW("view");
 
     private String value;
@@ -63,9 +72,9 @@ public class ChartRestApiPost {
     public String toString() {
       return String.valueOf(value);
     }
-    public static DatasourceTypeEnum fromValue(String text) {
+    public static DatasourceTypeEnum fromValue(String input) {
       for (DatasourceTypeEnum b : DatasourceTypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
+        if (b.value.equals(input)) {
           return b;
         }
       }
@@ -74,13 +83,13 @@ public class ChartRestApiPost {
     public static class Adapter extends TypeAdapter<DatasourceTypeEnum> {
       @Override
       public void write(final JsonWriter jsonWriter, final DatasourceTypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
+        jsonWriter.value(String.valueOf(enumeration.getValue()));
       }
 
       @Override
       public DatasourceTypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value = jsonReader.nextString();
-        return DatasourceTypeEnum.fromValue(String.valueOf(value));
+        Object value = jsonReader.nextString();
+        return DatasourceTypeEnum.fromValue((String)(value));
       }
     }
   }  @SerializedName("datasource_type")
@@ -89,11 +98,23 @@ public class ChartRestApiPost {
   @SerializedName("description")
   private String description = null;
 
+  @SerializedName("external_url")
+  private String externalUrl = null;
+
+  @SerializedName("is_managed_externally")
+  private Boolean isManagedExternally = null;
+
   @SerializedName("owners")
   private List<Integer> owners = null;
 
   @SerializedName("params")
   private String params = null;
+
+  @SerializedName("query_context")
+  private String queryContext = null;
+
+  @SerializedName("query_context_generation")
+  private Boolean queryContextGeneration = null;
 
   @SerializedName("slice_name")
   private String sliceName = null;
@@ -117,6 +138,42 @@ public class ChartRestApiPost {
 
   public void setCacheTimeout(Integer cacheTimeout) {
     this.cacheTimeout = cacheTimeout;
+  }
+
+  public ChartRestApiPost certificationDetails(String certificationDetails) {
+    this.certificationDetails = certificationDetails;
+    return this;
+  }
+
+   /**
+   * Details of the certification
+   * @return certificationDetails
+  **/
+  @Schema(description = "Details of the certification")
+  public String getCertificationDetails() {
+    return certificationDetails;
+  }
+
+  public void setCertificationDetails(String certificationDetails) {
+    this.certificationDetails = certificationDetails;
+  }
+
+  public ChartRestApiPost certifiedBy(String certifiedBy) {
+    this.certifiedBy = certifiedBy;
+    return this;
+  }
+
+   /**
+   * Person or group that has certified this chart
+   * @return certifiedBy
+  **/
+  @Schema(description = "Person or group that has certified this chart")
+  public String getCertifiedBy() {
+    return certifiedBy;
+  }
+
+  public void setCertifiedBy(String certifiedBy) {
+    this.certifiedBy = certifiedBy;
   }
 
   public ChartRestApiPost dashboards(List<Integer> dashboards) {
@@ -217,6 +274,42 @@ public class ChartRestApiPost {
     this.description = description;
   }
 
+  public ChartRestApiPost externalUrl(String externalUrl) {
+    this.externalUrl = externalUrl;
+    return this;
+  }
+
+   /**
+   * Get externalUrl
+   * @return externalUrl
+  **/
+  @Schema(description = "")
+  public String getExternalUrl() {
+    return externalUrl;
+  }
+
+  public void setExternalUrl(String externalUrl) {
+    this.externalUrl = externalUrl;
+  }
+
+  public ChartRestApiPost isManagedExternally(Boolean isManagedExternally) {
+    this.isManagedExternally = isManagedExternally;
+    return this;
+  }
+
+   /**
+   * Get isManagedExternally
+   * @return isManagedExternally
+  **/
+  @Schema(description = "")
+  public Boolean isIsManagedExternally() {
+    return isManagedExternally;
+  }
+
+  public void setIsManagedExternally(Boolean isManagedExternally) {
+    this.isManagedExternally = isManagedExternally;
+  }
+
   public ChartRestApiPost owners(List<Integer> owners) {
     this.owners = owners;
     return this;
@@ -261,6 +354,42 @@ public class ChartRestApiPost {
     this.params = params;
   }
 
+  public ChartRestApiPost queryContext(String queryContext) {
+    this.queryContext = queryContext;
+    return this;
+  }
+
+   /**
+   * The query context represents the queries that need to run in order to generate the data the visualization, and in what format the data should be returned.
+   * @return queryContext
+  **/
+  @Schema(description = "The query context represents the queries that need to run in order to generate the data the visualization, and in what format the data should be returned.")
+  public String getQueryContext() {
+    return queryContext;
+  }
+
+  public void setQueryContext(String queryContext) {
+    this.queryContext = queryContext;
+  }
+
+  public ChartRestApiPost queryContextGeneration(Boolean queryContextGeneration) {
+    this.queryContextGeneration = queryContextGeneration;
+    return this;
+  }
+
+   /**
+   * The query context generation represents whether the query_contextis user generated or not so that it does not update user modfiedstate.
+   * @return queryContextGeneration
+  **/
+  @Schema(description = "The query context generation represents whether the query_contextis user generated or not so that it does not update user modfiedstate.")
+  public Boolean isQueryContextGeneration() {
+    return queryContextGeneration;
+  }
+
+  public void setQueryContextGeneration(Boolean queryContextGeneration) {
+    this.queryContextGeneration = queryContextGeneration;
+  }
+
   public ChartRestApiPost sliceName(String sliceName) {
     this.sliceName = sliceName;
     return this;
@@ -299,7 +428,7 @@ public class ChartRestApiPost {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -308,20 +437,26 @@ public class ChartRestApiPost {
     }
     ChartRestApiPost chartRestApiPost = (ChartRestApiPost) o;
     return Objects.equals(this.cacheTimeout, chartRestApiPost.cacheTimeout) &&
+        Objects.equals(this.certificationDetails, chartRestApiPost.certificationDetails) &&
+        Objects.equals(this.certifiedBy, chartRestApiPost.certifiedBy) &&
         Objects.equals(this.dashboards, chartRestApiPost.dashboards) &&
         Objects.equals(this.datasourceId, chartRestApiPost.datasourceId) &&
         Objects.equals(this.datasourceName, chartRestApiPost.datasourceName) &&
         Objects.equals(this.datasourceType, chartRestApiPost.datasourceType) &&
         Objects.equals(this.description, chartRestApiPost.description) &&
+        Objects.equals(this.externalUrl, chartRestApiPost.externalUrl) &&
+        Objects.equals(this.isManagedExternally, chartRestApiPost.isManagedExternally) &&
         Objects.equals(this.owners, chartRestApiPost.owners) &&
         Objects.equals(this.params, chartRestApiPost.params) &&
+        Objects.equals(this.queryContext, chartRestApiPost.queryContext) &&
+        Objects.equals(this.queryContextGeneration, chartRestApiPost.queryContextGeneration) &&
         Objects.equals(this.sliceName, chartRestApiPost.sliceName) &&
         Objects.equals(this.vizType, chartRestApiPost.vizType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(cacheTimeout, dashboards, datasourceId, datasourceName, datasourceType, description, owners, params, sliceName, vizType);
+    return Objects.hash(cacheTimeout, certificationDetails, certifiedBy, dashboards, datasourceId, datasourceName, datasourceType, description, externalUrl, isManagedExternally, owners, params, queryContext, queryContextGeneration, sliceName, vizType);
   }
 
 
@@ -331,13 +466,19 @@ public class ChartRestApiPost {
     sb.append("class ChartRestApiPost {\n");
     
     sb.append("    cacheTimeout: ").append(toIndentedString(cacheTimeout)).append("\n");
+    sb.append("    certificationDetails: ").append(toIndentedString(certificationDetails)).append("\n");
+    sb.append("    certifiedBy: ").append(toIndentedString(certifiedBy)).append("\n");
     sb.append("    dashboards: ").append(toIndentedString(dashboards)).append("\n");
     sb.append("    datasourceId: ").append(toIndentedString(datasourceId)).append("\n");
     sb.append("    datasourceName: ").append(toIndentedString(datasourceName)).append("\n");
     sb.append("    datasourceType: ").append(toIndentedString(datasourceType)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    externalUrl: ").append(toIndentedString(externalUrl)).append("\n");
+    sb.append("    isManagedExternally: ").append(toIndentedString(isManagedExternally)).append("\n");
     sb.append("    owners: ").append(toIndentedString(owners)).append("\n");
     sb.append("    params: ").append(toIndentedString(params)).append("\n");
+    sb.append("    queryContext: ").append(toIndentedString(queryContext)).append("\n");
+    sb.append("    queryContextGeneration: ").append(toIndentedString(queryContextGeneration)).append("\n");
     sb.append("    sliceName: ").append(toIndentedString(sliceName)).append("\n");
     sb.append("    vizType: ").append(toIndentedString(vizType)).append("\n");
     sb.append("}");
@@ -348,7 +489,7 @@ public class ChartRestApiPost {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

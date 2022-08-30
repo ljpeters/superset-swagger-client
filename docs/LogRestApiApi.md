@@ -1,16 +1,16 @@
 # LogRestApiApi
 
-All URIs are relative to */api/v1*
+All URIs are relative to *http://localhost:8088/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**logGet**](LogRestApiApi.md#logGet) | **GET** /log/ | 
-[**logPkGet**](LogRestApiApi.md#logPkGet) | **GET** /log/{pk} | 
-[**logPost**](LogRestApiApi.md#logPost) | **POST** /log/ | 
+[**apiV1LogGet**](LogRestApiApi.md#apiV1LogGet) | **GET** /api/v1/log/ | 
+[**apiV1LogPkGet**](LogRestApiApi.md#apiV1LogPkGet) | **GET** /api/v1/log/{pk} | 
+[**apiV1LogPost**](LogRestApiApi.md#apiV1LogPost) | **POST** /api/v1/log/ | 
 
-<a name="logGet"></a>
-# **logGet**
-> InlineResponse20016 logGet(q)
+<a name="apiV1LogGet"></a>
+# **apiV1LogGet**
+> InlineResponse20036 apiV1LogGet(q)
 
 
 
@@ -31,10 +31,10 @@ ApiClient defaultClient = Configuration.getDefaultApiClient();
 LogRestApiApi apiInstance = new LogRestApiApi();
 GetListSchema q = new GetListSchema(); // GetListSchema | 
 try {
-    InlineResponse20016 result = apiInstance.logGet(q);
+    InlineResponse20036 result = apiInstance.apiV1LogGet(q);
     System.out.println(result);
 } catch (ApiException e) {
-    System.err.println("Exception when calling LogRestApiApi#logGet");
+    System.err.println("Exception when calling LogRestApiApi#apiV1LogGet");
     e.printStackTrace();
 }
 ```
@@ -47,7 +47,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20016**](InlineResponse20016.md)
+[**InlineResponse20036**](InlineResponse20036.md)
 
 ### Authorization
 
@@ -58,9 +58,9 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="logPkGet"></a>
-# **logPkGet**
-> InlineResponse20017 logPkGet(pk, q)
+<a name="apiV1LogPkGet"></a>
+# **apiV1LogPkGet**
+> InlineResponse20037 apiV1LogPkGet(pk, q)
 
 
 
@@ -82,10 +82,10 @@ LogRestApiApi apiInstance = new LogRestApiApi();
 Integer pk = 56; // Integer | 
 GetItemSchema q = new GetItemSchema(); // GetItemSchema | 
 try {
-    InlineResponse20017 result = apiInstance.logPkGet(pk, q);
+    InlineResponse20037 result = apiInstance.apiV1LogPkGet(pk, q);
     System.out.println(result);
 } catch (ApiException e) {
-    System.err.println("Exception when calling LogRestApiApi#logPkGet");
+    System.err.println("Exception when calling LogRestApiApi#apiV1LogPkGet");
     e.printStackTrace();
 }
 ```
@@ -99,7 +99,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20017**](InlineResponse20017.md)
+[**InlineResponse20037**](InlineResponse20037.md)
 
 ### Authorization
 
@@ -110,9 +110,9 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="logPost"></a>
-# **logPost**
-> InlineResponse2013 logPost(body)
+<a name="apiV1LogPost"></a>
+# **apiV1LogPost**
+> InlineResponse20112 apiV1LogPost(body)
 
 
 
@@ -131,10 +131,10 @@ ApiClient defaultClient = Configuration.getDefaultApiClient();
 LogRestApiApi apiInstance = new LogRestApiApi();
 LogRestApiPost body = new LogRestApiPost(); // LogRestApiPost | Model schema
 try {
-    InlineResponse2013 result = apiInstance.logPost(body);
+    InlineResponse20112 result = apiInstance.apiV1LogPost(body);
     System.out.println(result);
 } catch (ApiException e) {
-    System.err.println("Exception when calling LogRestApiApi#logPost");
+    System.err.println("Exception when calling LogRestApiApi#apiV1LogPost");
     e.printStackTrace();
 }
 ```
@@ -147,7 +147,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2013**](InlineResponse2013.md)
+[**InlineResponse20112**](InlineResponse20112.md)
 
 ### Authorization
 

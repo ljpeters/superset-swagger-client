@@ -4,4 +4,4 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** |  |  [optional]
-**result** | [**LogRestApiPost**](LogRestApiPost.md) |  |  [optional]
+**result** | [**CssTemplateRestApiPost**](CssTemplateRestApiPost.md) |  |  [optional]

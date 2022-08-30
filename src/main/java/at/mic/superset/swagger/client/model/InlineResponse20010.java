@@ -14,9 +14,9 @@ package at.mic.superset.swagger.client.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import at.mic.superset.swagger.client.model.DatabaseRestApiGetList;
-import at.mic.superset.swagger.client.model.InlineResponse200DescriptionColumns;
-import at.mic.superset.swagger.client.model.InlineResponse200LabelColumns;
+import at.mic.superset.swagger.client.model.ChartRestApiGet;
+import at.mic.superset.swagger.client.model.InlineResponse2001DescriptionColumns;
+import at.mic.superset.swagger.client.model.InlineResponse2001LabelColumns;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -24,58 +24,33 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 /**
  * InlineResponse20010
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-11-06T17:36:10.263+01:00[Europe/Vienna]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2022-08-29T14:48:42.974+02:00[Europe/Berlin]")
 public class InlineResponse20010 {
-  @SerializedName("count")
-  private BigDecimal count = null;
-
   @SerializedName("description_columns")
-  private InlineResponse200DescriptionColumns descriptionColumns = null;
+  private InlineResponse2001DescriptionColumns descriptionColumns = null;
 
-  @SerializedName("ids")
-  private List<String> ids = null;
+  @SerializedName("id")
+  private String id = null;
 
   @SerializedName("label_columns")
-  private InlineResponse200LabelColumns labelColumns = null;
-
-  @SerializedName("list_columns")
-  private List<String> listColumns = null;
-
-  @SerializedName("list_title")
-  private String listTitle = null;
-
-  @SerializedName("order_columns")
-  private List<String> orderColumns = null;
+  private InlineResponse2001LabelColumns labelColumns = null;
 
   @SerializedName("result")
-  private List<DatabaseRestApiGetList> result = null;
+  private ChartRestApiGet result = null;
 
-  public InlineResponse20010 count(BigDecimal count) {
-    this.count = count;
-    return this;
-  }
+  @SerializedName("show_columns")
+  private List<String> showColumns = null;
 
-   /**
-   * The total record count on the backend
-   * @return count
-  **/
-  @Schema(description = "The total record count on the backend")
-  public BigDecimal getCount() {
-    return count;
-  }
+  @SerializedName("show_title")
+  private String showTitle = null;
 
-  public void setCount(BigDecimal count) {
-    this.count = count;
-  }
-
-  public InlineResponse20010 descriptionColumns(InlineResponse200DescriptionColumns descriptionColumns) {
+  public InlineResponse20010 descriptionColumns(InlineResponse2001DescriptionColumns descriptionColumns) {
     this.descriptionColumns = descriptionColumns;
     return this;
   }
@@ -85,41 +60,33 @@ public class InlineResponse20010 {
    * @return descriptionColumns
   **/
   @Schema(description = "")
-  public InlineResponse200DescriptionColumns getDescriptionColumns() {
+  public InlineResponse2001DescriptionColumns getDescriptionColumns() {
     return descriptionColumns;
   }
 
-  public void setDescriptionColumns(InlineResponse200DescriptionColumns descriptionColumns) {
+  public void setDescriptionColumns(InlineResponse2001DescriptionColumns descriptionColumns) {
     this.descriptionColumns = descriptionColumns;
   }
 
-  public InlineResponse20010 ids(List<String> ids) {
-    this.ids = ids;
-    return this;
-  }
-
-  public InlineResponse20010 addIdsItem(String idsItem) {
-    if (this.ids == null) {
-      this.ids = new ArrayList<String>();
-    }
-    this.ids.add(idsItem);
+  public InlineResponse20010 id(String id) {
+    this.id = id;
     return this;
   }
 
    /**
-   * A list of item ids, useful when you don&#x27;t know the column id
-   * @return ids
+   * The item id
+   * @return id
   **/
-  @Schema(description = "A list of item ids, useful when you don't know the column id")
-  public List<String> getIds() {
-    return ids;
+  @Schema(description = "The item id")
+  public String getId() {
+    return id;
   }
 
-  public void setIds(List<String> ids) {
-    this.ids = ids;
+  public void setId(String id) {
+    this.id = id;
   }
 
-  public InlineResponse20010 labelColumns(InlineResponse200LabelColumns labelColumns) {
+  public InlineResponse20010 labelColumns(InlineResponse2001LabelColumns labelColumns) {
     this.labelColumns = labelColumns;
     return this;
   }
@@ -129,113 +96,79 @@ public class InlineResponse20010 {
    * @return labelColumns
   **/
   @Schema(description = "")
-  public InlineResponse200LabelColumns getLabelColumns() {
+  public InlineResponse2001LabelColumns getLabelColumns() {
     return labelColumns;
   }
 
-  public void setLabelColumns(InlineResponse200LabelColumns labelColumns) {
+  public void setLabelColumns(InlineResponse2001LabelColumns labelColumns) {
     this.labelColumns = labelColumns;
   }
 
-  public InlineResponse20010 listColumns(List<String> listColumns) {
-    this.listColumns = listColumns;
+  public InlineResponse20010 result(ChartRestApiGet result) {
+    this.result = result;
     return this;
   }
 
-  public InlineResponse20010 addListColumnsItem(String listColumnsItem) {
-    if (this.listColumns == null) {
-      this.listColumns = new ArrayList<String>();
+   /**
+   * Get result
+   * @return result
+  **/
+  @Schema(description = "")
+  public ChartRestApiGet getResult() {
+    return result;
+  }
+
+  public void setResult(ChartRestApiGet result) {
+    this.result = result;
+  }
+
+  public InlineResponse20010 showColumns(List<String> showColumns) {
+    this.showColumns = showColumns;
+    return this;
+  }
+
+  public InlineResponse20010 addShowColumnsItem(String showColumnsItem) {
+    if (this.showColumns == null) {
+      this.showColumns = new ArrayList<String>();
     }
-    this.listColumns.add(listColumnsItem);
+    this.showColumns.add(showColumnsItem);
     return this;
   }
 
    /**
    * A list of columns
-   * @return listColumns
+   * @return showColumns
   **/
   @Schema(description = "A list of columns")
-  public List<String> getListColumns() {
-    return listColumns;
+  public List<String> getShowColumns() {
+    return showColumns;
   }
 
-  public void setListColumns(List<String> listColumns) {
-    this.listColumns = listColumns;
+  public void setShowColumns(List<String> showColumns) {
+    this.showColumns = showColumns;
   }
 
-  public InlineResponse20010 listTitle(String listTitle) {
-    this.listTitle = listTitle;
+  public InlineResponse20010 showTitle(String showTitle) {
+    this.showTitle = showTitle;
     return this;
   }
 
    /**
    * A title to render. Will be translated by babel
-   * @return listTitle
+   * @return showTitle
   **/
-  @Schema(example = "List Items", description = "A title to render. Will be translated by babel")
-  public String getListTitle() {
-    return listTitle;
+  @Schema(example = "Show Item Details", description = "A title to render. Will be translated by babel")
+  public String getShowTitle() {
+    return showTitle;
   }
 
-  public void setListTitle(String listTitle) {
-    this.listTitle = listTitle;
-  }
-
-  public InlineResponse20010 orderColumns(List<String> orderColumns) {
-    this.orderColumns = orderColumns;
-    return this;
-  }
-
-  public InlineResponse20010 addOrderColumnsItem(String orderColumnsItem) {
-    if (this.orderColumns == null) {
-      this.orderColumns = new ArrayList<String>();
-    }
-    this.orderColumns.add(orderColumnsItem);
-    return this;
-  }
-
-   /**
-   * A list of allowed columns to sort
-   * @return orderColumns
-  **/
-  @Schema(description = "A list of allowed columns to sort")
-  public List<String> getOrderColumns() {
-    return orderColumns;
-  }
-
-  public void setOrderColumns(List<String> orderColumns) {
-    this.orderColumns = orderColumns;
-  }
-
-  public InlineResponse20010 result(List<DatabaseRestApiGetList> result) {
-    this.result = result;
-    return this;
-  }
-
-  public InlineResponse20010 addResultItem(DatabaseRestApiGetList resultItem) {
-    if (this.result == null) {
-      this.result = new ArrayList<DatabaseRestApiGetList>();
-    }
-    this.result.add(resultItem);
-    return this;
-  }
-
-   /**
-   * The result from the get list query
-   * @return result
-  **/
-  @Schema(description = "The result from the get list query")
-  public List<DatabaseRestApiGetList> getResult() {
-    return result;
-  }
-
-  public void setResult(List<DatabaseRestApiGetList> result) {
-    this.result = result;
+  public void setShowTitle(String showTitle) {
+    this.showTitle = showTitle;
   }
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -243,19 +176,17 @@ public class InlineResponse20010 {
       return false;
     }
     InlineResponse20010 inlineResponse20010 = (InlineResponse20010) o;
-    return Objects.equals(this.count, inlineResponse20010.count) &&
-        Objects.equals(this.descriptionColumns, inlineResponse20010.descriptionColumns) &&
-        Objects.equals(this.ids, inlineResponse20010.ids) &&
+    return Objects.equals(this.descriptionColumns, inlineResponse20010.descriptionColumns) &&
+        Objects.equals(this.id, inlineResponse20010.id) &&
         Objects.equals(this.labelColumns, inlineResponse20010.labelColumns) &&
-        Objects.equals(this.listColumns, inlineResponse20010.listColumns) &&
-        Objects.equals(this.listTitle, inlineResponse20010.listTitle) &&
-        Objects.equals(this.orderColumns, inlineResponse20010.orderColumns) &&
-        Objects.equals(this.result, inlineResponse20010.result);
+        Objects.equals(this.result, inlineResponse20010.result) &&
+        Objects.equals(this.showColumns, inlineResponse20010.showColumns) &&
+        Objects.equals(this.showTitle, inlineResponse20010.showTitle);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(count, descriptionColumns, ids, labelColumns, listColumns, listTitle, orderColumns, result);
+    return Objects.hash(descriptionColumns, id, labelColumns, result, showColumns, showTitle);
   }
 
 
@@ -264,14 +195,12 @@ public class InlineResponse20010 {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse20010 {\n");
     
-    sb.append("    count: ").append(toIndentedString(count)).append("\n");
     sb.append("    descriptionColumns: ").append(toIndentedString(descriptionColumns)).append("\n");
-    sb.append("    ids: ").append(toIndentedString(ids)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    labelColumns: ").append(toIndentedString(labelColumns)).append("\n");
-    sb.append("    listColumns: ").append(toIndentedString(listColumns)).append("\n");
-    sb.append("    listTitle: ").append(toIndentedString(listTitle)).append("\n");
-    sb.append("    orderColumns: ").append(toIndentedString(orderColumns)).append("\n");
     sb.append("    result: ").append(toIndentedString(result)).append("\n");
+    sb.append("    showColumns: ").append(toIndentedString(showColumns)).append("\n");
+    sb.append("    showTitle: ").append(toIndentedString(showTitle)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -280,7 +209,7 @@ public class InlineResponse20010 {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

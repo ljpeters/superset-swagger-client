@@ -1,14 +1,14 @@
 # MenuApi
 
-All URIs are relative to */api/v1*
+All URIs are relative to *http://localhost:8088/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**menuGet**](MenuApi.md#menuGet) | **GET** /menu/ | 
+[**apiV1MenuGet**](MenuApi.md#apiV1MenuGet) | **GET** /api/v1/menu/ | 
 
-<a name="menuGet"></a>
-# **menuGet**
-> InlineResponse20018 menuGet()
+<a name="apiV1MenuGet"></a>
+# **apiV1MenuGet**
+> InlineResponse20039 apiV1MenuGet()
 
 
 
@@ -28,10 +28,10 @@ ApiClient defaultClient = Configuration.getDefaultApiClient();
 
 MenuApi apiInstance = new MenuApi();
 try {
-    InlineResponse20018 result = apiInstance.menuGet();
+    InlineResponse20039 result = apiInstance.apiV1MenuGet();
     System.out.println(result);
 } catch (ApiException e) {
-    System.err.println("Exception when calling MenuApi#menuGet");
+    System.err.println("Exception when calling MenuApi#apiV1MenuGet");
     e.printStackTrace();
 }
 ```
@@ -41,7 +41,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**InlineResponse20018**](InlineResponse20018.md)
+[**InlineResponse20039**](InlineResponse20039.md)
 
 ### Authorization
 

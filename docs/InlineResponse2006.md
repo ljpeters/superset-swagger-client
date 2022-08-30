@@ -3,6 +3,5 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**cacheKey** | **String** |  |  [optional]
-**chartUrl** | **String** |  |  [optional]
-**imageUrl** | **String** |  |  [optional]
+**id** | **String** | The item id |  [optional]
+**result** | [**AnnotationRestApiGet**](AnnotationRestApiGet.md) |  |  [optional]

@@ -3,4 +3,5 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**result** | **String** | SQL select star |  [optional]
+**id** | [**BigDecimal**](BigDecimal.md) |  |  [optional]
+**result** | [**ChartRestApiPut**](ChartRestApiPut.md) |  |  [optional]

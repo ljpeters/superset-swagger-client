@@ -50,6 +50,68 @@ public class JSON {
 
     public static GsonBuilder createGson() {
         GsonFireBuilder fireBuilder = new GsonFireBuilder()
+          .registerTypeSelector(ChartDataDatasource.class, new TypeSelector<ChartDataDatasource>() {
+            @Override
+            public Class<? extends ChartDataDatasource> getClassForElement(JsonElement readElement) {
+                Map<String, Class<? extends ChartDataDatasource>> classByDiscriminatorValue = new HashMap<>();
+                    classByDiscriminatorValue.put("AllOfChartDataQueryObjectDatasource".toUpperCase(), AllOfChartDataQueryObjectDatasource.class);
+                    classByDiscriminatorValue.put("ChartDataDatasource".toUpperCase(), ChartDataDatasource.class);
+                return getClassByDiscriminator(
+                            classByDiscriminatorValue,
+                            getDiscriminatorValue(readElement, ""));
+            }
+          })
+          .registerPostProcessor(ChartDataDatasource.class, new PostProcessor<ChartDataDatasource>() {
+              @Override
+              public void postDeserialize(ChartDataDatasource result, JsonElement src, Gson gson) {
+
+              }
+
+              @Override
+              public void postSerialize(JsonElement result, ChartDataDatasource src, Gson gson) {
+                  Map<Class<? extends ChartDataDatasource>, String> discriminatorValueByClass = new HashMap<>();
+                      discriminatorValueByClass.put(AllOfChartDataQueryObjectDatasource.class, "AllOfChartDataQueryObjectDatasource");
+                      discriminatorValueByClass.put(ChartDataDatasource.class, "ChartDataDatasource");
+                  if(result instanceof JsonObject)
+                  {
+                      if(!((JsonObject) result).has(""))
+                      {
+                          ((JsonObject) result).addProperty("", discriminatorValueByClass.get(src.getClass()));
+                      }
+                  }
+              }
+          })
+          .registerTypeSelector(ChartDataExtras.class, new TypeSelector<ChartDataExtras>() {
+            @Override
+            public Class<? extends ChartDataExtras> getClassForElement(JsonElement readElement) {
+                Map<String, Class<? extends ChartDataExtras>> classByDiscriminatorValue = new HashMap<>();
+                    classByDiscriminatorValue.put("AllOfChartDataQueryObjectExtras".toUpperCase(), AllOfChartDataQueryObjectExtras.class);
+                    classByDiscriminatorValue.put("ChartDataExtras".toUpperCase(), ChartDataExtras.class);
+                return getClassByDiscriminator(
+                            classByDiscriminatorValue,
+                            getDiscriminatorValue(readElement, ""));
+            }
+          })
+          .registerPostProcessor(ChartDataExtras.class, new PostProcessor<ChartDataExtras>() {
+              @Override
+              public void postDeserialize(ChartDataExtras result, JsonElement src, Gson gson) {
+
+              }
+
+              @Override
+              public void postSerialize(JsonElement result, ChartDataExtras src, Gson gson) {
+                  Map<Class<? extends ChartDataExtras>, String> discriminatorValueByClass = new HashMap<>();
+                      discriminatorValueByClass.put(AllOfChartDataQueryObjectExtras.class, "AllOfChartDataQueryObjectExtras");
+                      discriminatorValueByClass.put(ChartDataExtras.class, "ChartDataExtras");
+                  if(result instanceof JsonObject)
+                  {
+                      if(!((JsonObject) result).has(""))
+                      {
+                          ((JsonObject) result).addProperty("", discriminatorValueByClass.get(src.getClass()));
+                      }
+                  }
+              }
+          })
           .registerTypeSelector(ChartDataPostProcessingOperation.class, new TypeSelector<ChartDataPostProcessingOperation>() {
             @Override
             public Class<? extends ChartDataPostProcessingOperation> getClassForElement(JsonElement readElement) {
@@ -72,6 +134,37 @@ public class JSON {
                   Map<Class<? extends ChartDataPostProcessingOperation>, String> discriminatorValueByClass = new HashMap<>();
                       discriminatorValueByClass.put(AllOfChartDataQueryObjectPostProcessingItems.class, "AllOfChartDataQueryObjectPostProcessingItems");
                       discriminatorValueByClass.put(ChartDataPostProcessingOperation.class, "ChartDataPostProcessingOperation");
+                  if(result instanceof JsonObject)
+                  {
+                      if(!((JsonObject) result).has(""))
+                      {
+                          ((JsonObject) result).addProperty("", discriminatorValueByClass.get(src.getClass()));
+                      }
+                  }
+              }
+          })
+          .registerTypeSelector(TableMetadataPrimaryKeyResponse.class, new TypeSelector<TableMetadataPrimaryKeyResponse>() {
+            @Override
+            public Class<? extends TableMetadataPrimaryKeyResponse> getClassForElement(JsonElement readElement) {
+                Map<String, Class<? extends TableMetadataPrimaryKeyResponse>> classByDiscriminatorValue = new HashMap<>();
+                    classByDiscriminatorValue.put("AllOfTableMetadataResponseSchemaPrimaryKey".toUpperCase(), AllOfTableMetadataResponseSchemaPrimaryKey.class);
+                    classByDiscriminatorValue.put("TableMetadataPrimaryKeyResponse".toUpperCase(), TableMetadataPrimaryKeyResponse.class);
+                return getClassByDiscriminator(
+                            classByDiscriminatorValue,
+                            getDiscriminatorValue(readElement, ""));
+            }
+          })
+          .registerPostProcessor(TableMetadataPrimaryKeyResponse.class, new PostProcessor<TableMetadataPrimaryKeyResponse>() {
+              @Override
+              public void postDeserialize(TableMetadataPrimaryKeyResponse result, JsonElement src, Gson gson) {
+
+              }
+
+              @Override
+              public void postSerialize(JsonElement result, TableMetadataPrimaryKeyResponse src, Gson gson) {
+                  Map<Class<? extends TableMetadataPrimaryKeyResponse>, String> discriminatorValueByClass = new HashMap<>();
+                      discriminatorValueByClass.put(AllOfTableMetadataResponseSchemaPrimaryKey.class, "AllOfTableMetadataResponseSchemaPrimaryKey");
+                      discriminatorValueByClass.put(TableMetadataPrimaryKeyResponse.class, "TableMetadataPrimaryKeyResponse");
                   if(result instanceof JsonObject)
                   {
                       if(!((JsonObject) result).has(""))

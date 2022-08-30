@@ -26,7 +26,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import at.mic.superset.swagger.client.model.InlineResponse20018;
+import at.mic.superset.swagger.client.model.InlineResponse20039;
 import at.mic.superset.swagger.client.model.InlineResponse400;
 
 import java.lang.reflect.Type;
@@ -55,17 +55,17 @@ public class MenuApi {
     }
 
     /**
-     * Build call for menuGet
+     * Build call for apiV1MenuGet
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call menuGetCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call apiV1MenuGetCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
-        String localVarPath = "/menu/";
+        String localVarPath = "/api/v1/menu/";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -103,9 +103,9 @@ public class MenuApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call menuGetValidateBeforeCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call apiV1MenuGetValidateBeforeCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
-        com.squareup.okhttp.Call call = menuGetCall(progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = apiV1MenuGetCall(progressListener, progressRequestListener);
         return call;
 
         
@@ -117,23 +117,23 @@ public class MenuApi {
     /**
      * 
      * Get the menu data structure. Returns a forest like structure with the menu the user has access to
-     * @return InlineResponse20018
+     * @return InlineResponse20039
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse20018 menuGet() throws ApiException {
-        ApiResponse<InlineResponse20018> resp = menuGetWithHttpInfo();
+    public InlineResponse20039 apiV1MenuGet() throws ApiException {
+        ApiResponse<InlineResponse20039> resp = apiV1MenuGetWithHttpInfo();
         return resp.getData();
     }
 
     /**
      * 
      * Get the menu data structure. Returns a forest like structure with the menu the user has access to
-     * @return ApiResponse&lt;InlineResponse20018&gt;
+     * @return ApiResponse&lt;InlineResponse20039&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse20018> menuGetWithHttpInfo() throws ApiException {
-        com.squareup.okhttp.Call call = menuGetValidateBeforeCall(null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse20018>(){}.getType();
+    public ApiResponse<InlineResponse20039> apiV1MenuGetWithHttpInfo() throws ApiException {
+        com.squareup.okhttp.Call call = apiV1MenuGetValidateBeforeCall(null, null);
+        Type localVarReturnType = new TypeToken<InlineResponse20039>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -144,7 +144,7 @@ public class MenuApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call menuGetAsync(final ApiCallback<InlineResponse20018> callback) throws ApiException {
+    public com.squareup.okhttp.Call apiV1MenuGetAsync(final ApiCallback<InlineResponse20039> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -165,8 +165,8 @@ public class MenuApi {
             };
         }
 
-        com.squareup.okhttp.Call call = menuGetValidateBeforeCall(progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse20018>(){}.getType();
+        com.squareup.okhttp.Call call = apiV1MenuGetValidateBeforeCall(progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<InlineResponse20039>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

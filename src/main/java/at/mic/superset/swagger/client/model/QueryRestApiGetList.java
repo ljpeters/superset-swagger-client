@@ -14,8 +14,8 @@ package at.mic.superset.swagger.client.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import at.mic.superset.swagger.client.model.Meta14;
-import at.mic.superset.swagger.client.model.Meta15;
+import at.mic.superset.swagger.client.model.Database1;
+import at.mic.superset.swagger.client.model.User;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -23,29 +23,77 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
-import java.math.BigDecimal;
+import org.threeten.bp.OffsetDateTime;
 /**
  * QueryRestApiGetList
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-11-06T17:36:10.263+01:00[Europe/Vienna]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2022-08-29T14:48:42.974+02:00[Europe/Berlin]")
 public class QueryRestApiGetList {
+  @SerializedName("changed_on")
+  private OffsetDateTime changedOn = null;
+
   @SerializedName("database")
-  private Meta15 database = null;
+  private Database1 database = null;
 
   @SerializedName("end_time")
-  private BigDecimal endTime = null;
+  private Float endTime = null;
+
+  @SerializedName("executed_sql")
+  private String executedSql = null;
+
+  @SerializedName("id")
+  private Integer id = null;
+
+  @SerializedName("rows")
+  private Integer rows = null;
+
+  @SerializedName("schema")
+  private String schema = null;
+
+  @SerializedName("sql")
+  private String sql = null;
+
+  @SerializedName("sql_tables")
+  private Object sqlTables = null;
 
   @SerializedName("start_time")
-  private BigDecimal startTime = null;
+  private Float startTime = null;
 
   @SerializedName("status")
   private String status = null;
 
-  @SerializedName("user")
-  private Meta14 user = null;
+  @SerializedName("tab_name")
+  private String tabName = null;
 
-  public QueryRestApiGetList database(Meta15 database) {
+  @SerializedName("tmp_table_name")
+  private String tmpTableName = null;
+
+  @SerializedName("tracking_url")
+  private String trackingUrl = null;
+
+  @SerializedName("user")
+  private User user = null;
+
+  public QueryRestApiGetList changedOn(OffsetDateTime changedOn) {
+    this.changedOn = changedOn;
+    return this;
+  }
+
+   /**
+   * Get changedOn
+   * @return changedOn
+  **/
+  @Schema(description = "")
+  public OffsetDateTime getChangedOn() {
+    return changedOn;
+  }
+
+  public void setChangedOn(OffsetDateTime changedOn) {
+    this.changedOn = changedOn;
+  }
+
+  public QueryRestApiGetList database(Database1 database) {
     this.database = database;
     return this;
   }
@@ -54,16 +102,16 @@ public class QueryRestApiGetList {
    * Get database
    * @return database
   **/
-  @Schema(required = true, description = "")
-  public Meta15 getDatabase() {
+  @Schema(description = "")
+  public Database1 getDatabase() {
     return database;
   }
 
-  public void setDatabase(Meta15 database) {
+  public void setDatabase(Database1 database) {
     this.database = database;
   }
 
-  public QueryRestApiGetList endTime(BigDecimal endTime) {
+  public QueryRestApiGetList endTime(Float endTime) {
     this.endTime = endTime;
     return this;
   }
@@ -73,15 +121,114 @@ public class QueryRestApiGetList {
    * @return endTime
   **/
   @Schema(description = "")
-  public BigDecimal getEndTime() {
+  public Float getEndTime() {
     return endTime;
   }
 
-  public void setEndTime(BigDecimal endTime) {
+  public void setEndTime(Float endTime) {
     this.endTime = endTime;
   }
 
-  public QueryRestApiGetList startTime(BigDecimal startTime) {
+  public QueryRestApiGetList executedSql(String executedSql) {
+    this.executedSql = executedSql;
+    return this;
+  }
+
+   /**
+   * Get executedSql
+   * @return executedSql
+  **/
+  @Schema(description = "")
+  public String getExecutedSql() {
+    return executedSql;
+  }
+
+  public void setExecutedSql(String executedSql) {
+    this.executedSql = executedSql;
+  }
+
+  public QueryRestApiGetList id(Integer id) {
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * Get id
+   * @return id
+  **/
+  @Schema(description = "")
+  public Integer getId() {
+    return id;
+  }
+
+  public void setId(Integer id) {
+    this.id = id;
+  }
+
+  public QueryRestApiGetList rows(Integer rows) {
+    this.rows = rows;
+    return this;
+  }
+
+   /**
+   * Get rows
+   * @return rows
+  **/
+  @Schema(description = "")
+  public Integer getRows() {
+    return rows;
+  }
+
+  public void setRows(Integer rows) {
+    this.rows = rows;
+  }
+
+  public QueryRestApiGetList schema(String schema) {
+    this.schema = schema;
+    return this;
+  }
+
+   /**
+   * Get schema
+   * @return schema
+  **/
+  @Schema(description = "")
+  public String getSchema() {
+    return schema;
+  }
+
+  public void setSchema(String schema) {
+    this.schema = schema;
+  }
+
+  public QueryRestApiGetList sql(String sql) {
+    this.sql = sql;
+    return this;
+  }
+
+   /**
+   * Get sql
+   * @return sql
+  **/
+  @Schema(description = "")
+  public String getSql() {
+    return sql;
+  }
+
+  public void setSql(String sql) {
+    this.sql = sql;
+  }
+
+   /**
+   * Get sqlTables
+   * @return sqlTables
+  **/
+  @Schema(description = "")
+  public Object getSqlTables() {
+    return sqlTables;
+  }
+
+  public QueryRestApiGetList startTime(Float startTime) {
     this.startTime = startTime;
     return this;
   }
@@ -91,11 +238,11 @@ public class QueryRestApiGetList {
    * @return startTime
   **/
   @Schema(description = "")
-  public BigDecimal getStartTime() {
+  public Float getStartTime() {
     return startTime;
   }
 
-  public void setStartTime(BigDecimal startTime) {
+  public void setStartTime(Float startTime) {
     this.startTime = startTime;
   }
 
@@ -117,7 +264,61 @@ public class QueryRestApiGetList {
     this.status = status;
   }
 
-  public QueryRestApiGetList user(Meta14 user) {
+  public QueryRestApiGetList tabName(String tabName) {
+    this.tabName = tabName;
+    return this;
+  }
+
+   /**
+   * Get tabName
+   * @return tabName
+  **/
+  @Schema(description = "")
+  public String getTabName() {
+    return tabName;
+  }
+
+  public void setTabName(String tabName) {
+    this.tabName = tabName;
+  }
+
+  public QueryRestApiGetList tmpTableName(String tmpTableName) {
+    this.tmpTableName = tmpTableName;
+    return this;
+  }
+
+   /**
+   * Get tmpTableName
+   * @return tmpTableName
+  **/
+  @Schema(description = "")
+  public String getTmpTableName() {
+    return tmpTableName;
+  }
+
+  public void setTmpTableName(String tmpTableName) {
+    this.tmpTableName = tmpTableName;
+  }
+
+  public QueryRestApiGetList trackingUrl(String trackingUrl) {
+    this.trackingUrl = trackingUrl;
+    return this;
+  }
+
+   /**
+   * Get trackingUrl
+   * @return trackingUrl
+  **/
+  @Schema(description = "")
+  public String getTrackingUrl() {
+    return trackingUrl;
+  }
+
+  public void setTrackingUrl(String trackingUrl) {
+    this.trackingUrl = trackingUrl;
+  }
+
+  public QueryRestApiGetList user(User user) {
     this.user = user;
     return this;
   }
@@ -127,17 +328,17 @@ public class QueryRestApiGetList {
    * @return user
   **/
   @Schema(description = "")
-  public Meta14 getUser() {
+  public User getUser() {
     return user;
   }
 
-  public void setUser(Meta14 user) {
+  public void setUser(User user) {
     this.user = user;
   }
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -145,16 +346,26 @@ public class QueryRestApiGetList {
       return false;
     }
     QueryRestApiGetList queryRestApiGetList = (QueryRestApiGetList) o;
-    return Objects.equals(this.database, queryRestApiGetList.database) &&
+    return Objects.equals(this.changedOn, queryRestApiGetList.changedOn) &&
+        Objects.equals(this.database, queryRestApiGetList.database) &&
         Objects.equals(this.endTime, queryRestApiGetList.endTime) &&
+        Objects.equals(this.executedSql, queryRestApiGetList.executedSql) &&
+        Objects.equals(this.id, queryRestApiGetList.id) &&
+        Objects.equals(this.rows, queryRestApiGetList.rows) &&
+        Objects.equals(this.schema, queryRestApiGetList.schema) &&
+        Objects.equals(this.sql, queryRestApiGetList.sql) &&
+        Objects.equals(this.sqlTables, queryRestApiGetList.sqlTables) &&
         Objects.equals(this.startTime, queryRestApiGetList.startTime) &&
         Objects.equals(this.status, queryRestApiGetList.status) &&
+        Objects.equals(this.tabName, queryRestApiGetList.tabName) &&
+        Objects.equals(this.tmpTableName, queryRestApiGetList.tmpTableName) &&
+        Objects.equals(this.trackingUrl, queryRestApiGetList.trackingUrl) &&
         Objects.equals(this.user, queryRestApiGetList.user);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(database, endTime, startTime, status, user);
+    return Objects.hash(changedOn, database, endTime, executedSql, id, rows, schema, sql, sqlTables, startTime, status, tabName, tmpTableName, trackingUrl, user);
   }
 
 
@@ -163,10 +374,20 @@ public class QueryRestApiGetList {
     StringBuilder sb = new StringBuilder();
     sb.append("class QueryRestApiGetList {\n");
     
+    sb.append("    changedOn: ").append(toIndentedString(changedOn)).append("\n");
     sb.append("    database: ").append(toIndentedString(database)).append("\n");
     sb.append("    endTime: ").append(toIndentedString(endTime)).append("\n");
+    sb.append("    executedSql: ").append(toIndentedString(executedSql)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    rows: ").append(toIndentedString(rows)).append("\n");
+    sb.append("    schema: ").append(toIndentedString(schema)).append("\n");
+    sb.append("    sql: ").append(toIndentedString(sql)).append("\n");
+    sb.append("    sqlTables: ").append(toIndentedString(sqlTables)).append("\n");
     sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    tabName: ").append(toIndentedString(tabName)).append("\n");
+    sb.append("    tmpTableName: ").append(toIndentedString(tmpTableName)).append("\n");
+    sb.append("    trackingUrl: ").append(toIndentedString(trackingUrl)).append("\n");
     sb.append("    user: ").append(toIndentedString(user)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -176,7 +397,7 @@ public class QueryRestApiGetList {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

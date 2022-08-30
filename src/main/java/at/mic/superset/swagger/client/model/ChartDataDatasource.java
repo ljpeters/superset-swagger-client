@@ -25,7 +25,7 @@ import java.io.IOException;
  * ChartDataDatasource
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-11-06T17:36:10.263+01:00[Europe/Vienna]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2022-08-29T14:48:42.974+02:00[Europe/Berlin]")
 public class ChartDataDatasource {
   @SerializedName("id")
   private Integer id = null;
@@ -35,8 +35,12 @@ public class ChartDataDatasource {
    */
   @JsonAdapter(TypeEnum.Adapter.class)
   public enum TypeEnum {
-    DRUID("druid"),
-    TABLE("table");
+    SL_TABLE("sl_table"),
+    TABLE("table"),
+    DATASET("dataset"),
+    QUERY("query"),
+    SAVED_QUERY("saved_query"),
+    VIEW("view");
 
     private String value;
 
@@ -51,9 +55,9 @@ public class ChartDataDatasource {
     public String toString() {
       return String.valueOf(value);
     }
-    public static TypeEnum fromValue(String text) {
+    public static TypeEnum fromValue(String input) {
       for (TypeEnum b : TypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
+        if (b.value.equals(input)) {
           return b;
         }
       }
@@ -62,13 +66,13 @@ public class ChartDataDatasource {
     public static class Adapter extends TypeAdapter<TypeEnum> {
       @Override
       public void write(final JsonWriter jsonWriter, final TypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
+        jsonWriter.value(String.valueOf(enumeration.getValue()));
       }
 
       @Override
       public TypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value = jsonReader.nextString();
-        return TypeEnum.fromValue(String.valueOf(value));
+        Object value = jsonReader.nextString();
+        return TypeEnum.fromValue((String)(value));
       }
     }
   }  @SerializedName("type")
@@ -112,7 +116,7 @@ public class ChartDataDatasource {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -145,7 +149,7 @@ public class ChartDataDatasource {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

@@ -29,7 +29,7 @@ import java.util.List;
  * DatasetRestApiPut
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-11-06T17:36:10.263+01:00[Europe/Vienna]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2022-08-29T14:48:42.974+02:00[Europe/Berlin]")
 public class DatasetRestApiPut {
   @SerializedName("cache_timeout")
   private Integer cacheTimeout = null;
@@ -37,17 +37,29 @@ public class DatasetRestApiPut {
   @SerializedName("columns")
   private List<DatasetColumnsPut> columns = null;
 
+  @SerializedName("database_id")
+  private Integer databaseId = null;
+
   @SerializedName("default_endpoint")
   private String defaultEndpoint = null;
 
   @SerializedName("description")
   private String description = null;
 
+  @SerializedName("external_url")
+  private String externalUrl = null;
+
+  @SerializedName("extra")
+  private String extra = null;
+
   @SerializedName("fetch_values_predicate")
   private String fetchValuesPredicate = null;
 
   @SerializedName("filter_select_enabled")
   private Boolean filterSelectEnabled = null;
+
+  @SerializedName("is_managed_externally")
+  private Boolean isManagedExternally = null;
 
   @SerializedName("is_sqllab_view")
   private Boolean isSqllabView = null;
@@ -120,6 +132,24 @@ public class DatasetRestApiPut {
     this.columns = columns;
   }
 
+  public DatasetRestApiPut databaseId(Integer databaseId) {
+    this.databaseId = databaseId;
+    return this;
+  }
+
+   /**
+   * Get databaseId
+   * @return databaseId
+  **/
+  @Schema(description = "")
+  public Integer getDatabaseId() {
+    return databaseId;
+  }
+
+  public void setDatabaseId(Integer databaseId) {
+    this.databaseId = databaseId;
+  }
+
   public DatasetRestApiPut defaultEndpoint(String defaultEndpoint) {
     this.defaultEndpoint = defaultEndpoint;
     return this;
@@ -156,6 +186,42 @@ public class DatasetRestApiPut {
     this.description = description;
   }
 
+  public DatasetRestApiPut externalUrl(String externalUrl) {
+    this.externalUrl = externalUrl;
+    return this;
+  }
+
+   /**
+   * Get externalUrl
+   * @return externalUrl
+  **/
+  @Schema(description = "")
+  public String getExternalUrl() {
+    return externalUrl;
+  }
+
+  public void setExternalUrl(String externalUrl) {
+    this.externalUrl = externalUrl;
+  }
+
+  public DatasetRestApiPut extra(String extra) {
+    this.extra = extra;
+    return this;
+  }
+
+   /**
+   * Get extra
+   * @return extra
+  **/
+  @Schema(description = "")
+  public String getExtra() {
+    return extra;
+  }
+
+  public void setExtra(String extra) {
+    this.extra = extra;
+  }
+
   public DatasetRestApiPut fetchValuesPredicate(String fetchValuesPredicate) {
     this.fetchValuesPredicate = fetchValuesPredicate;
     return this;
@@ -190,6 +256,24 @@ public class DatasetRestApiPut {
 
   public void setFilterSelectEnabled(Boolean filterSelectEnabled) {
     this.filterSelectEnabled = filterSelectEnabled;
+  }
+
+  public DatasetRestApiPut isManagedExternally(Boolean isManagedExternally) {
+    this.isManagedExternally = isManagedExternally;
+    return this;
+  }
+
+   /**
+   * Get isManagedExternally
+   * @return isManagedExternally
+  **/
+  @Schema(description = "")
+  public Boolean isIsManagedExternally() {
+    return isManagedExternally;
+  }
+
+  public void setIsManagedExternally(Boolean isManagedExternally) {
+    this.isManagedExternally = isManagedExternally;
   }
 
   public DatasetRestApiPut isSqllabView(Boolean isSqllabView) {
@@ -372,7 +456,7 @@ public class DatasetRestApiPut {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -382,10 +466,14 @@ public class DatasetRestApiPut {
     DatasetRestApiPut datasetRestApiPut = (DatasetRestApiPut) o;
     return Objects.equals(this.cacheTimeout, datasetRestApiPut.cacheTimeout) &&
         Objects.equals(this.columns, datasetRestApiPut.columns) &&
+        Objects.equals(this.databaseId, datasetRestApiPut.databaseId) &&
         Objects.equals(this.defaultEndpoint, datasetRestApiPut.defaultEndpoint) &&
         Objects.equals(this.description, datasetRestApiPut.description) &&
+        Objects.equals(this.externalUrl, datasetRestApiPut.externalUrl) &&
+        Objects.equals(this.extra, datasetRestApiPut.extra) &&
         Objects.equals(this.fetchValuesPredicate, datasetRestApiPut.fetchValuesPredicate) &&
         Objects.equals(this.filterSelectEnabled, datasetRestApiPut.filterSelectEnabled) &&
+        Objects.equals(this.isManagedExternally, datasetRestApiPut.isManagedExternally) &&
         Objects.equals(this.isSqllabView, datasetRestApiPut.isSqllabView) &&
         Objects.equals(this.mainDttmCol, datasetRestApiPut.mainDttmCol) &&
         Objects.equals(this.metrics, datasetRestApiPut.metrics) &&
@@ -399,7 +487,7 @@ public class DatasetRestApiPut {
 
   @Override
   public int hashCode() {
-    return Objects.hash(cacheTimeout, columns, defaultEndpoint, description, fetchValuesPredicate, filterSelectEnabled, isSqllabView, mainDttmCol, metrics, offset, owners, schema, sql, tableName, templateParams);
+    return Objects.hash(cacheTimeout, columns, databaseId, defaultEndpoint, description, externalUrl, extra, fetchValuesPredicate, filterSelectEnabled, isManagedExternally, isSqllabView, mainDttmCol, metrics, offset, owners, schema, sql, tableName, templateParams);
   }
 
 
@@ -410,10 +498,14 @@ public class DatasetRestApiPut {
     
     sb.append("    cacheTimeout: ").append(toIndentedString(cacheTimeout)).append("\n");
     sb.append("    columns: ").append(toIndentedString(columns)).append("\n");
+    sb.append("    databaseId: ").append(toIndentedString(databaseId)).append("\n");
     sb.append("    defaultEndpoint: ").append(toIndentedString(defaultEndpoint)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    externalUrl: ").append(toIndentedString(externalUrl)).append("\n");
+    sb.append("    extra: ").append(toIndentedString(extra)).append("\n");
     sb.append("    fetchValuesPredicate: ").append(toIndentedString(fetchValuesPredicate)).append("\n");
     sb.append("    filterSelectEnabled: ").append(toIndentedString(filterSelectEnabled)).append("\n");
+    sb.append("    isManagedExternally: ").append(toIndentedString(isManagedExternally)).append("\n");
     sb.append("    isSqllabView: ").append(toIndentedString(isSqllabView)).append("\n");
     sb.append("    mainDttmCol: ").append(toIndentedString(mainDttmCol)).append("\n");
     sb.append("    metrics: ").append(toIndentedString(metrics)).append("\n");
@@ -431,7 +523,7 @@ public class DatasetRestApiPut {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

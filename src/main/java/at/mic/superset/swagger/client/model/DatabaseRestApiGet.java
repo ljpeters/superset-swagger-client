@@ -25,11 +25,8 @@ import java.io.IOException;
  * DatabaseRestApiGet
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-11-06T17:36:10.263+01:00[Europe/Vienna]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2022-08-29T14:48:42.974+02:00[Europe/Berlin]")
 public class DatabaseRestApiGet {
-  @SerializedName("allow_csv_upload")
-  private Boolean allowCsvUpload = null;
-
   @SerializedName("allow_ctas")
   private Boolean allowCtas = null;
 
@@ -39,59 +36,59 @@ public class DatabaseRestApiGet {
   @SerializedName("allow_dml")
   private Boolean allowDml = null;
 
+  @SerializedName("allow_file_upload")
+  private Boolean allowFileUpload = null;
+
   @SerializedName("allow_multi_schema_metadata_fetch")
   private Boolean allowMultiSchemaMetadataFetch = null;
 
   @SerializedName("allow_run_async")
   private Boolean allowRunAsync = null;
 
-  @SerializedName("allows_cost_estimate")
-  private Object allowsCostEstimate = null;
-
-  @SerializedName("allows_subquery")
-  private Object allowsSubquery = null;
-
-  @SerializedName("allows_virtual_table_explore")
-  private Object allowsVirtualTableExplore = null;
-
   @SerializedName("backend")
   private Object backend = null;
+
+  @SerializedName("cache_timeout")
+  private Integer cacheTimeout = null;
+
+  @SerializedName("configuration_method")
+  private String configurationMethod = null;
 
   @SerializedName("database_name")
   private String databaseName = null;
 
-  @SerializedName("explore_database_id")
-  private Object exploreDatabaseId = null;
+  @SerializedName("encrypted_extra")
+  private String encryptedExtra = null;
 
   @SerializedName("expose_in_sqllab")
   private Boolean exposeInSqllab = null;
 
+  @SerializedName("extra")
+  private String extra = null;
+
   @SerializedName("force_ctas_schema")
   private String forceCtasSchema = null;
-
-  @SerializedName("function_names")
-  private Object functionNames = null;
 
   @SerializedName("id")
   private Integer id = null;
 
-  public DatabaseRestApiGet allowCsvUpload(Boolean allowCsvUpload) {
-    this.allowCsvUpload = allowCsvUpload;
-    return this;
-  }
+  @SerializedName("impersonate_user")
+  private Boolean impersonateUser = null;
 
-   /**
-   * Get allowCsvUpload
-   * @return allowCsvUpload
-  **/
-  @Schema(description = "")
-  public Boolean isAllowCsvUpload() {
-    return allowCsvUpload;
-  }
+  @SerializedName("is_managed_externally")
+  private Boolean isManagedExternally = null;
 
-  public void setAllowCsvUpload(Boolean allowCsvUpload) {
-    this.allowCsvUpload = allowCsvUpload;
-  }
+  @SerializedName("parameters")
+  private Object parameters = null;
+
+  @SerializedName("parameters_schema")
+  private Object parametersSchema = null;
+
+  @SerializedName("server_cert")
+  private String serverCert = null;
+
+  @SerializedName("sqlalchemy_uri")
+  private String sqlalchemyUri = null;
 
   public DatabaseRestApiGet allowCtas(Boolean allowCtas) {
     this.allowCtas = allowCtas;
@@ -147,6 +144,24 @@ public class DatabaseRestApiGet {
     this.allowDml = allowDml;
   }
 
+  public DatabaseRestApiGet allowFileUpload(Boolean allowFileUpload) {
+    this.allowFileUpload = allowFileUpload;
+    return this;
+  }
+
+   /**
+   * Get allowFileUpload
+   * @return allowFileUpload
+  **/
+  @Schema(description = "")
+  public Boolean isAllowFileUpload() {
+    return allowFileUpload;
+  }
+
+  public void setAllowFileUpload(Boolean allowFileUpload) {
+    this.allowFileUpload = allowFileUpload;
+  }
+
   public DatabaseRestApiGet allowMultiSchemaMetadataFetch(Boolean allowMultiSchemaMetadataFetch) {
     this.allowMultiSchemaMetadataFetch = allowMultiSchemaMetadataFetch;
     return this;
@@ -184,39 +199,48 @@ public class DatabaseRestApiGet {
   }
 
    /**
-   * Get allowsCostEstimate
-   * @return allowsCostEstimate
-  **/
-  @Schema(description = "")
-  public Object getAllowsCostEstimate() {
-    return allowsCostEstimate;
-  }
-
-   /**
-   * Get allowsSubquery
-   * @return allowsSubquery
-  **/
-  @Schema(description = "")
-  public Object getAllowsSubquery() {
-    return allowsSubquery;
-  }
-
-   /**
-   * Get allowsVirtualTableExplore
-   * @return allowsVirtualTableExplore
-  **/
-  @Schema(description = "")
-  public Object getAllowsVirtualTableExplore() {
-    return allowsVirtualTableExplore;
-  }
-
-   /**
    * Get backend
    * @return backend
   **/
   @Schema(description = "")
   public Object getBackend() {
     return backend;
+  }
+
+  public DatabaseRestApiGet cacheTimeout(Integer cacheTimeout) {
+    this.cacheTimeout = cacheTimeout;
+    return this;
+  }
+
+   /**
+   * Get cacheTimeout
+   * @return cacheTimeout
+  **/
+  @Schema(description = "")
+  public Integer getCacheTimeout() {
+    return cacheTimeout;
+  }
+
+  public void setCacheTimeout(Integer cacheTimeout) {
+    this.cacheTimeout = cacheTimeout;
+  }
+
+  public DatabaseRestApiGet configurationMethod(String configurationMethod) {
+    this.configurationMethod = configurationMethod;
+    return this;
+  }
+
+   /**
+   * Get configurationMethod
+   * @return configurationMethod
+  **/
+  @Schema(description = "")
+  public String getConfigurationMethod() {
+    return configurationMethod;
+  }
+
+  public void setConfigurationMethod(String configurationMethod) {
+    this.configurationMethod = configurationMethod;
   }
 
   public DatabaseRestApiGet databaseName(String databaseName) {
@@ -237,13 +261,22 @@ public class DatabaseRestApiGet {
     this.databaseName = databaseName;
   }
 
+  public DatabaseRestApiGet encryptedExtra(String encryptedExtra) {
+    this.encryptedExtra = encryptedExtra;
+    return this;
+  }
+
    /**
-   * Get exploreDatabaseId
-   * @return exploreDatabaseId
+   * Get encryptedExtra
+   * @return encryptedExtra
   **/
   @Schema(description = "")
-  public Object getExploreDatabaseId() {
-    return exploreDatabaseId;
+  public String getEncryptedExtra() {
+    return encryptedExtra;
+  }
+
+  public void setEncryptedExtra(String encryptedExtra) {
+    this.encryptedExtra = encryptedExtra;
   }
 
   public DatabaseRestApiGet exposeInSqllab(Boolean exposeInSqllab) {
@@ -264,6 +297,24 @@ public class DatabaseRestApiGet {
     this.exposeInSqllab = exposeInSqllab;
   }
 
+  public DatabaseRestApiGet extra(String extra) {
+    this.extra = extra;
+    return this;
+  }
+
+   /**
+   * Get extra
+   * @return extra
+  **/
+  @Schema(description = "")
+  public String getExtra() {
+    return extra;
+  }
+
+  public void setExtra(String extra) {
+    this.extra = extra;
+  }
+
   public DatabaseRestApiGet forceCtasSchema(String forceCtasSchema) {
     this.forceCtasSchema = forceCtasSchema;
     return this;
@@ -280,15 +331,6 @@ public class DatabaseRestApiGet {
 
   public void setForceCtasSchema(String forceCtasSchema) {
     this.forceCtasSchema = forceCtasSchema;
-  }
-
-   /**
-   * Get functionNames
-   * @return functionNames
-  **/
-  @Schema(description = "")
-  public Object getFunctionNames() {
-    return functionNames;
   }
 
   public DatabaseRestApiGet id(Integer id) {
@@ -309,9 +351,99 @@ public class DatabaseRestApiGet {
     this.id = id;
   }
 
+  public DatabaseRestApiGet impersonateUser(Boolean impersonateUser) {
+    this.impersonateUser = impersonateUser;
+    return this;
+  }
+
+   /**
+   * Get impersonateUser
+   * @return impersonateUser
+  **/
+  @Schema(description = "")
+  public Boolean isImpersonateUser() {
+    return impersonateUser;
+  }
+
+  public void setImpersonateUser(Boolean impersonateUser) {
+    this.impersonateUser = impersonateUser;
+  }
+
+  public DatabaseRestApiGet isManagedExternally(Boolean isManagedExternally) {
+    this.isManagedExternally = isManagedExternally;
+    return this;
+  }
+
+   /**
+   * Get isManagedExternally
+   * @return isManagedExternally
+  **/
+  @Schema(description = "")
+  public Boolean isIsManagedExternally() {
+    return isManagedExternally;
+  }
+
+  public void setIsManagedExternally(Boolean isManagedExternally) {
+    this.isManagedExternally = isManagedExternally;
+  }
+
+   /**
+   * Get parameters
+   * @return parameters
+  **/
+  @Schema(description = "")
+  public Object getParameters() {
+    return parameters;
+  }
+
+   /**
+   * Get parametersSchema
+   * @return parametersSchema
+  **/
+  @Schema(description = "")
+  public Object getParametersSchema() {
+    return parametersSchema;
+  }
+
+  public DatabaseRestApiGet serverCert(String serverCert) {
+    this.serverCert = serverCert;
+    return this;
+  }
+
+   /**
+   * Get serverCert
+   * @return serverCert
+  **/
+  @Schema(description = "")
+  public String getServerCert() {
+    return serverCert;
+  }
+
+  public void setServerCert(String serverCert) {
+    this.serverCert = serverCert;
+  }
+
+  public DatabaseRestApiGet sqlalchemyUri(String sqlalchemyUri) {
+    this.sqlalchemyUri = sqlalchemyUri;
+    return this;
+  }
+
+   /**
+   * Get sqlalchemyUri
+   * @return sqlalchemyUri
+  **/
+  @Schema(required = true, description = "")
+  public String getSqlalchemyUri() {
+    return sqlalchemyUri;
+  }
+
+  public void setSqlalchemyUri(String sqlalchemyUri) {
+    this.sqlalchemyUri = sqlalchemyUri;
+  }
+
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -319,27 +451,32 @@ public class DatabaseRestApiGet {
       return false;
     }
     DatabaseRestApiGet databaseRestApiGet = (DatabaseRestApiGet) o;
-    return Objects.equals(this.allowCsvUpload, databaseRestApiGet.allowCsvUpload) &&
-        Objects.equals(this.allowCtas, databaseRestApiGet.allowCtas) &&
+    return Objects.equals(this.allowCtas, databaseRestApiGet.allowCtas) &&
         Objects.equals(this.allowCvas, databaseRestApiGet.allowCvas) &&
         Objects.equals(this.allowDml, databaseRestApiGet.allowDml) &&
+        Objects.equals(this.allowFileUpload, databaseRestApiGet.allowFileUpload) &&
         Objects.equals(this.allowMultiSchemaMetadataFetch, databaseRestApiGet.allowMultiSchemaMetadataFetch) &&
         Objects.equals(this.allowRunAsync, databaseRestApiGet.allowRunAsync) &&
-        Objects.equals(this.allowsCostEstimate, databaseRestApiGet.allowsCostEstimate) &&
-        Objects.equals(this.allowsSubquery, databaseRestApiGet.allowsSubquery) &&
-        Objects.equals(this.allowsVirtualTableExplore, databaseRestApiGet.allowsVirtualTableExplore) &&
         Objects.equals(this.backend, databaseRestApiGet.backend) &&
+        Objects.equals(this.cacheTimeout, databaseRestApiGet.cacheTimeout) &&
+        Objects.equals(this.configurationMethod, databaseRestApiGet.configurationMethod) &&
         Objects.equals(this.databaseName, databaseRestApiGet.databaseName) &&
-        Objects.equals(this.exploreDatabaseId, databaseRestApiGet.exploreDatabaseId) &&
+        Objects.equals(this.encryptedExtra, databaseRestApiGet.encryptedExtra) &&
         Objects.equals(this.exposeInSqllab, databaseRestApiGet.exposeInSqllab) &&
+        Objects.equals(this.extra, databaseRestApiGet.extra) &&
         Objects.equals(this.forceCtasSchema, databaseRestApiGet.forceCtasSchema) &&
-        Objects.equals(this.functionNames, databaseRestApiGet.functionNames) &&
-        Objects.equals(this.id, databaseRestApiGet.id);
+        Objects.equals(this.id, databaseRestApiGet.id) &&
+        Objects.equals(this.impersonateUser, databaseRestApiGet.impersonateUser) &&
+        Objects.equals(this.isManagedExternally, databaseRestApiGet.isManagedExternally) &&
+        Objects.equals(this.parameters, databaseRestApiGet.parameters) &&
+        Objects.equals(this.parametersSchema, databaseRestApiGet.parametersSchema) &&
+        Objects.equals(this.serverCert, databaseRestApiGet.serverCert) &&
+        Objects.equals(this.sqlalchemyUri, databaseRestApiGet.sqlalchemyUri);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(allowCsvUpload, allowCtas, allowCvas, allowDml, allowMultiSchemaMetadataFetch, allowRunAsync, allowsCostEstimate, allowsSubquery, allowsVirtualTableExplore, backend, databaseName, exploreDatabaseId, exposeInSqllab, forceCtasSchema, functionNames, id);
+    return Objects.hash(allowCtas, allowCvas, allowDml, allowFileUpload, allowMultiSchemaMetadataFetch, allowRunAsync, backend, cacheTimeout, configurationMethod, databaseName, encryptedExtra, exposeInSqllab, extra, forceCtasSchema, id, impersonateUser, isManagedExternally, parameters, parametersSchema, serverCert, sqlalchemyUri);
   }
 
 
@@ -348,22 +485,27 @@ public class DatabaseRestApiGet {
     StringBuilder sb = new StringBuilder();
     sb.append("class DatabaseRestApiGet {\n");
     
-    sb.append("    allowCsvUpload: ").append(toIndentedString(allowCsvUpload)).append("\n");
     sb.append("    allowCtas: ").append(toIndentedString(allowCtas)).append("\n");
     sb.append("    allowCvas: ").append(toIndentedString(allowCvas)).append("\n");
     sb.append("    allowDml: ").append(toIndentedString(allowDml)).append("\n");
+    sb.append("    allowFileUpload: ").append(toIndentedString(allowFileUpload)).append("\n");
     sb.append("    allowMultiSchemaMetadataFetch: ").append(toIndentedString(allowMultiSchemaMetadataFetch)).append("\n");
     sb.append("    allowRunAsync: ").append(toIndentedString(allowRunAsync)).append("\n");
-    sb.append("    allowsCostEstimate: ").append(toIndentedString(allowsCostEstimate)).append("\n");
-    sb.append("    allowsSubquery: ").append(toIndentedString(allowsSubquery)).append("\n");
-    sb.append("    allowsVirtualTableExplore: ").append(toIndentedString(allowsVirtualTableExplore)).append("\n");
     sb.append("    backend: ").append(toIndentedString(backend)).append("\n");
+    sb.append("    cacheTimeout: ").append(toIndentedString(cacheTimeout)).append("\n");
+    sb.append("    configurationMethod: ").append(toIndentedString(configurationMethod)).append("\n");
     sb.append("    databaseName: ").append(toIndentedString(databaseName)).append("\n");
-    sb.append("    exploreDatabaseId: ").append(toIndentedString(exploreDatabaseId)).append("\n");
+    sb.append("    encryptedExtra: ").append(toIndentedString(encryptedExtra)).append("\n");
     sb.append("    exposeInSqllab: ").append(toIndentedString(exposeInSqllab)).append("\n");
+    sb.append("    extra: ").append(toIndentedString(extra)).append("\n");
     sb.append("    forceCtasSchema: ").append(toIndentedString(forceCtasSchema)).append("\n");
-    sb.append("    functionNames: ").append(toIndentedString(functionNames)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    impersonateUser: ").append(toIndentedString(impersonateUser)).append("\n");
+    sb.append("    isManagedExternally: ").append(toIndentedString(isManagedExternally)).append("\n");
+    sb.append("    parameters: ").append(toIndentedString(parameters)).append("\n");
+    sb.append("    parametersSchema: ").append(toIndentedString(parametersSchema)).append("\n");
+    sb.append("    serverCert: ").append(toIndentedString(serverCert)).append("\n");
+    sb.append("    sqlalchemyUri: ").append(toIndentedString(sqlalchemyUri)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -372,7 +514,7 @@ public class DatabaseRestApiGet {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

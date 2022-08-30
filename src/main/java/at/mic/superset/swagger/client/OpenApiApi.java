@@ -54,18 +54,18 @@ public class OpenApiApi {
     }
 
     /**
-     * Build call for openapiVersionOpenapiGet
+     * Build call for apiVersionOpenapiGet
      * @param version  (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call openapiVersionOpenapiGetCall(String version, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call apiVersionOpenapiGetCall(String version, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
-        String localVarPath = "/openapi/{version}/_openapi"
+        String localVarPath = "/api/{version}/_openapi"
             .replaceAll("\\{" + "version" + "\\}", apiClient.escapeString(version.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -104,13 +104,13 @@ public class OpenApiApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call openapiVersionOpenapiGetValidateBeforeCall(String version, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call apiVersionOpenapiGetValidateBeforeCall(String version, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'version' is set
         if (version == null) {
-            throw new ApiException("Missing the required parameter 'version' when calling openapiVersionOpenapiGet(Async)");
+            throw new ApiException("Missing the required parameter 'version' when calling apiVersionOpenapiGet(Async)");
         }
         
-        com.squareup.okhttp.Call call = openapiVersionOpenapiGetCall(version, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = apiVersionOpenapiGetCall(version, progressListener, progressRequestListener);
         return call;
 
         
@@ -126,8 +126,8 @@ public class OpenApiApi {
      * @return Object
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public Object openapiVersionOpenapiGet(String version) throws ApiException {
-        ApiResponse<Object> resp = openapiVersionOpenapiGetWithHttpInfo(version);
+    public Object apiVersionOpenapiGet(String version) throws ApiException {
+        ApiResponse<Object> resp = apiVersionOpenapiGetWithHttpInfo(version);
         return resp.getData();
     }
 
@@ -138,8 +138,8 @@ public class OpenApiApi {
      * @return ApiResponse&lt;Object&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Object> openapiVersionOpenapiGetWithHttpInfo(String version) throws ApiException {
-        com.squareup.okhttp.Call call = openapiVersionOpenapiGetValidateBeforeCall(version, null, null);
+    public ApiResponse<Object> apiVersionOpenapiGetWithHttpInfo(String version) throws ApiException {
+        com.squareup.okhttp.Call call = apiVersionOpenapiGetValidateBeforeCall(version, null, null);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -152,7 +152,7 @@ public class OpenApiApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call openapiVersionOpenapiGetAsync(String version, final ApiCallback<Object> callback) throws ApiException {
+    public com.squareup.okhttp.Call apiVersionOpenapiGetAsync(String version, final ApiCallback<Object> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -173,7 +173,7 @@ public class OpenApiApi {
             };
         }
 
-        com.squareup.okhttp.Call call = openapiVersionOpenapiGetValidateBeforeCall(version, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = apiVersionOpenapiGetValidateBeforeCall(version, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

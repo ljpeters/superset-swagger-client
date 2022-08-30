@@ -13,11 +13,25 @@
 package at.mic.superset.swagger.client;
 
 import at.mic.superset.swagger.ApiException;
+import at.mic.superset.swagger.client.model.DistincResponseSchema;
+import java.io.File;
+import at.mic.superset.swagger.client.model.GetDeleteIdsSchema;
+import at.mic.superset.swagger.client.model.GetExportIdsSchema;
+import at.mic.superset.swagger.client.model.GetInfoSchema;
 import at.mic.superset.swagger.client.model.GetItemSchema;
 import at.mic.superset.swagger.client.model.GetListSchema;
-import at.mic.superset.swagger.client.model.InlineResponse20019;
-import at.mic.superset.swagger.client.model.InlineResponse20020;
+import at.mic.superset.swagger.client.model.GetRelatedSchema;
+import at.mic.superset.swagger.client.model.InlineResponse2002;
+import at.mic.superset.swagger.client.model.InlineResponse20040;
+import at.mic.superset.swagger.client.model.InlineResponse20041;
+import at.mic.superset.swagger.client.model.InlineResponse20047;
+import at.mic.superset.swagger.client.model.InlineResponse20048;
+import at.mic.superset.swagger.client.model.InlineResponse20049;
+import at.mic.superset.swagger.client.model.InlineResponse20114;
 import at.mic.superset.swagger.client.model.InlineResponse400;
+import at.mic.superset.swagger.client.model.RelatedResponseSchema;
+import at.mic.superset.swagger.client.model.SavedQueryRestApiPost;
+import at.mic.superset.swagger.client.model.SavedQueryRestApiPut;
 import org.junit.Test;
 import org.junit.Ignore;
 
@@ -37,15 +51,31 @@ public class QueriesApiTest {
     /**
      * 
      *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void apiV1QueryDistinctColumnNameGetTest() throws ApiException {
+        String columnName = null;
+        GetRelatedSchema q = null;
+        DistincResponseSchema response = api.apiV1QueryDistinctColumnNameGet(columnName, q);
+
+        // TODO: test validations
+    }
+    /**
+     * 
+     *
      * Get a list of queries, use Rison or JSON query parameters for filtering, sorting, pagination and  for selecting specific columns and metadata.
      *
      * @throws ApiException
      *          if the Api call fails
      */
     @Test
-    public void queryGetTest() throws ApiException {
+    public void apiV1QueryGetTest() throws ApiException {
         GetListSchema q = null;
-        InlineResponse20019 response = api.queryGet(q);
+        InlineResponse20040 response = api.apiV1QueryGet(q);
 
         // TODO: test validations
     }
@@ -58,10 +88,197 @@ public class QueriesApiTest {
      *          if the Api call fails
      */
     @Test
-    public void queryPkGetTest() throws ApiException {
+    public void apiV1QueryPkGetTest() throws ApiException {
         Integer pk = null;
         GetItemSchema q = null;
-        InlineResponse20020 response = api.queryPkGet(pk, q);
+        InlineResponse20041 response = api.apiV1QueryPkGet(pk, q);
+
+        // TODO: test validations
+    }
+    /**
+     * 
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void apiV1QueryRelatedColumnNameGetTest() throws ApiException {
+        String columnName = null;
+        GetRelatedSchema q = null;
+        RelatedResponseSchema response = api.apiV1QueryRelatedColumnNameGet(columnName, q);
+
+        // TODO: test validations
+    }
+    /**
+     * 
+     *
+     * Deletes multiple saved queries in a bulk operation.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void apiV1SavedQueryDeleteTest() throws ApiException {
+        GetDeleteIdsSchema q = null;
+        InlineResponse400 response = api.apiV1SavedQueryDelete(q);
+
+        // TODO: test validations
+    }
+    /**
+     * 
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void apiV1SavedQueryDistinctColumnNameGetTest() throws ApiException {
+        String columnName = null;
+        GetRelatedSchema q = null;
+        DistincResponseSchema response = api.apiV1SavedQueryDistinctColumnNameGet(columnName, q);
+
+        // TODO: test validations
+    }
+    /**
+     * 
+     *
+     * Exports multiple saved queries and downloads them as YAML files
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void apiV1SavedQueryExportGetTest() throws ApiException {
+        GetExportIdsSchema q = null;
+        File response = api.apiV1SavedQueryExportGet(q);
+
+        // TODO: test validations
+    }
+    /**
+     * 
+     *
+     * Get a list of saved queries, use Rison or JSON query parameters for filtering, sorting, pagination and for selecting specific columns and metadata.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void apiV1SavedQueryGetTest() throws ApiException {
+        GetListSchema q = null;
+        InlineResponse20047 response = api.apiV1SavedQueryGet(q);
+
+        // TODO: test validations
+    }
+    /**
+     * 
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void apiV1SavedQueryImportPostTest() throws ApiException {
+        File formData = null;
+        Boolean overwrite = null;
+        String passwords = null;
+        InlineResponse400 response = api.apiV1SavedQueryImportPost(formData, overwrite, passwords);
+
+        // TODO: test validations
+    }
+    /**
+     * 
+     *
+     * Get metadata information about this API resource
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void apiV1SavedQueryInfoGetTest() throws ApiException {
+        GetInfoSchema q = null;
+        InlineResponse2002 response = api.apiV1SavedQueryInfoGet(q);
+
+        // TODO: test validations
+    }
+    /**
+     * 
+     *
+     * Delete saved query
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void apiV1SavedQueryPkDeleteTest() throws ApiException {
+        Integer pk = null;
+        InlineResponse400 response = api.apiV1SavedQueryPkDelete(pk);
+
+        // TODO: test validations
+    }
+    /**
+     * 
+     *
+     * Get a saved query
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void apiV1SavedQueryPkGetTest() throws ApiException {
+        Integer pk = null;
+        GetItemSchema q = null;
+        InlineResponse20048 response = api.apiV1SavedQueryPkGet(pk, q);
+
+        // TODO: test validations
+    }
+    /**
+     * 
+     *
+     * Update a saved query
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void apiV1SavedQueryPkPutTest() throws ApiException {
+        SavedQueryRestApiPut body = null;
+        Integer pk = null;
+        InlineResponse20049 response = api.apiV1SavedQueryPkPut(body, pk);
+
+        // TODO: test validations
+    }
+    /**
+     * 
+     *
+     * Create a saved query
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void apiV1SavedQueryPostTest() throws ApiException {
+        SavedQueryRestApiPost body = null;
+        InlineResponse20114 response = api.apiV1SavedQueryPost(body);
+
+        // TODO: test validations
+    }
+    /**
+     * 
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void apiV1SavedQueryRelatedColumnNameGetTest() throws ApiException {
+        String columnName = null;
+        GetRelatedSchema q = null;
+        RelatedResponseSchema response = api.apiV1SavedQueryRelatedColumnNameGet(columnName, q);
 
         // TODO: test validations
     }

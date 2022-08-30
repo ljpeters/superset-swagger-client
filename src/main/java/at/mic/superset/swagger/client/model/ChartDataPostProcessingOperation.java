@@ -25,20 +25,28 @@ import java.io.IOException;
  * ChartDataPostProcessingOperation
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-11-06T17:36:10.263+01:00[Europe/Vienna]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2022-08-29T14:48:42.974+02:00[Europe/Berlin]")
 public class ChartDataPostProcessingOperation {
   /**
    * Post processing operation type
    */
   @JsonAdapter(OperationEnum.Adapter.class)
   public enum OperationEnum {
+    _FLATTEN_COLUMN_AFTER_PIVOT("_flatten_column_after_pivot"),
     AGGREGATE("aggregate"),
+    BOXPLOT("boxplot"),
+    COMPARE("compare"),
     CONTRIBUTION("contribution"),
     CUM("cum"),
+    DIFF("diff"),
+    FLATTEN("flatten"),
     GEODETIC_PARSE("geodetic_parse"),
     GEOHASH_DECODE("geohash_decode"),
     GEOHASH_ENCODE("geohash_encode"),
     PIVOT("pivot"),
+    PROPHET("prophet"),
+    RENAME("rename"),
+    RESAMPLE("resample"),
     ROLLING("rolling"),
     SELECT("select"),
     SORT("sort");
@@ -56,9 +64,9 @@ public class ChartDataPostProcessingOperation {
     public String toString() {
       return String.valueOf(value);
     }
-    public static OperationEnum fromValue(String text) {
+    public static OperationEnum fromValue(String input) {
       for (OperationEnum b : OperationEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
+        if (b.value.equals(input)) {
           return b;
         }
       }
@@ -67,13 +75,13 @@ public class ChartDataPostProcessingOperation {
     public static class Adapter extends TypeAdapter<OperationEnum> {
       @Override
       public void write(final JsonWriter jsonWriter, final OperationEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
+        jsonWriter.value(String.valueOf(enumeration.getValue()));
       }
 
       @Override
       public OperationEnum read(final JsonReader jsonReader) throws IOException {
-        String value = jsonReader.nextString();
-        return OperationEnum.fromValue(String.valueOf(value));
+        Object value = jsonReader.nextString();
+        return OperationEnum.fromValue((String)(value));
       }
     }
   }  @SerializedName("operation")
@@ -120,7 +128,7 @@ public class ChartDataPostProcessingOperation {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -153,7 +161,7 @@ public class ChartDataPostProcessingOperation {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

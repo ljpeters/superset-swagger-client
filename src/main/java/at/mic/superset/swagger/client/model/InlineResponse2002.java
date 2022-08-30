@@ -14,7 +14,7 @@ package at.mic.superset.swagger.client.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import at.mic.superset.swagger.client.model.InlineResponse2002Result;
+import at.mic.superset.swagger.client.model.InlineResponse2002Filters;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -22,57 +22,109 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 /**
  * InlineResponse2002
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-11-06T17:36:10.263+01:00[Europe/Vienna]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2022-08-29T14:48:42.974+02:00[Europe/Berlin]")
 public class InlineResponse2002 {
-  @SerializedName("count")
-  private Integer count = null;
+  @SerializedName("add_columns")
+  private Object addColumns = null;
 
-  @SerializedName("result")
-  private InlineResponse2002Result result = null;
+  @SerializedName("edit_columns")
+  private Object editColumns = null;
 
-  public InlineResponse2002 count(Integer count) {
-    this.count = count;
+  @SerializedName("filters")
+  private InlineResponse2002Filters filters = null;
+
+  @SerializedName("permissions")
+  private List<String> permissions = null;
+
+  public InlineResponse2002 addColumns(Object addColumns) {
+    this.addColumns = addColumns;
     return this;
   }
 
    /**
-   * Get count
-   * @return count
+   * Get addColumns
+   * @return addColumns
   **/
   @Schema(description = "")
-  public Integer getCount() {
-    return count;
+  public Object getAddColumns() {
+    return addColumns;
   }
 
-  public void setCount(Integer count) {
-    this.count = count;
+  public void setAddColumns(Object addColumns) {
+    this.addColumns = addColumns;
   }
 
-  public InlineResponse2002 result(InlineResponse2002Result result) {
-    this.result = result;
+  public InlineResponse2002 editColumns(Object editColumns) {
+    this.editColumns = editColumns;
     return this;
   }
 
    /**
-   * Get result
-   * @return result
+   * Get editColumns
+   * @return editColumns
   **/
   @Schema(description = "")
-  public InlineResponse2002Result getResult() {
-    return result;
+  public Object getEditColumns() {
+    return editColumns;
   }
 
-  public void setResult(InlineResponse2002Result result) {
-    this.result = result;
+  public void setEditColumns(Object editColumns) {
+    this.editColumns = editColumns;
+  }
+
+  public InlineResponse2002 filters(InlineResponse2002Filters filters) {
+    this.filters = filters;
+    return this;
+  }
+
+   /**
+   * Get filters
+   * @return filters
+  **/
+  @Schema(description = "")
+  public InlineResponse2002Filters getFilters() {
+    return filters;
+  }
+
+  public void setFilters(InlineResponse2002Filters filters) {
+    this.filters = filters;
+  }
+
+  public InlineResponse2002 permissions(List<String> permissions) {
+    this.permissions = permissions;
+    return this;
+  }
+
+  public InlineResponse2002 addPermissionsItem(String permissionsItem) {
+    if (this.permissions == null) {
+      this.permissions = new ArrayList<String>();
+    }
+    this.permissions.add(permissionsItem);
+    return this;
+  }
+
+   /**
+   * The user permissions for this API resource
+   * @return permissions
+  **/
+  @Schema(description = "The user permissions for this API resource")
+  public List<String> getPermissions() {
+    return permissions;
+  }
+
+  public void setPermissions(List<String> permissions) {
+    this.permissions = permissions;
   }
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -80,13 +132,15 @@ public class InlineResponse2002 {
       return false;
     }
     InlineResponse2002 inlineResponse2002 = (InlineResponse2002) o;
-    return Objects.equals(this.count, inlineResponse2002.count) &&
-        Objects.equals(this.result, inlineResponse2002.result);
+    return Objects.equals(this.addColumns, inlineResponse2002.addColumns) &&
+        Objects.equals(this.editColumns, inlineResponse2002.editColumns) &&
+        Objects.equals(this.filters, inlineResponse2002.filters) &&
+        Objects.equals(this.permissions, inlineResponse2002.permissions);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(count, result);
+    return Objects.hash(addColumns, editColumns, filters, permissions);
   }
 
 
@@ -95,8 +149,10 @@ public class InlineResponse2002 {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse2002 {\n");
     
-    sb.append("    count: ").append(toIndentedString(count)).append("\n");
-    sb.append("    result: ").append(toIndentedString(result)).append("\n");
+    sb.append("    addColumns: ").append(toIndentedString(addColumns)).append("\n");
+    sb.append("    editColumns: ").append(toIndentedString(editColumns)).append("\n");
+    sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
+    sb.append("    permissions: ").append(toIndentedString(permissions)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -105,7 +161,7 @@ public class InlineResponse2002 {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

@@ -27,6 +27,7 @@ NANMIN | &quot;nanmin&quot;
 NANMAX | &quot;nanmax&quot;
 NANMEAN | &quot;nanmean&quot;
 NANMEDIAN | &quot;nanmedian&quot;
+NANPERCENTILE | &quot;nanpercentile&quot;
 MIN | &quot;min&quot;
 PERCENTILE | &quot;percentile&quot;
 PROD | &quot;prod&quot;

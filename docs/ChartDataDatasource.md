@@ -10,5 +10,9 @@ Name | Type | Description | Notes
 ## Enum: TypeEnum
 Name | Value
 ---- | -----
-DRUID | &quot;druid&quot;
+SL_TABLE | &quot;sl_table&quot;
 TABLE | &quot;table&quot;
+DATASET | &quot;dataset&quot;
+QUERY | &quot;query&quot;
+SAVED_QUERY | &quot;saved_query&quot;
+VIEW | &quot;view&quot;

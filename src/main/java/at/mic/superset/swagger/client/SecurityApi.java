@@ -26,10 +26,13 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import at.mic.superset.swagger.client.model.Body;
-import at.mic.superset.swagger.client.model.InlineResponse20021;
-import at.mic.superset.swagger.client.model.InlineResponse20022;
+import at.mic.superset.swagger.client.model.GuestTokenCreate;
+import at.mic.superset.swagger.client.model.InlineResponse20050;
+import at.mic.superset.swagger.client.model.InlineResponse20051;
+import at.mic.superset.swagger.client.model.InlineResponse20052;
+import at.mic.superset.swagger.client.model.InlineResponse20053;
 import at.mic.superset.swagger.client.model.InlineResponse400;
+import at.mic.superset.swagger.client.model.SecurityLoginBody;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -57,18 +60,258 @@ public class SecurityApi {
     }
 
     /**
-     * Build call for securityLoginPost
+     * Build call for apiV1SecurityCsrfTokenGet
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call apiV1SecurityCsrfTokenGetCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/api/v1/security/csrf_token/";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "jwt" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call apiV1SecurityCsrfTokenGetValidateBeforeCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        com.squareup.okhttp.Call call = apiV1SecurityCsrfTokenGetCall(progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * 
+     * Fetch the CSRF token
+     * @return InlineResponse20050
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public InlineResponse20050 apiV1SecurityCsrfTokenGet() throws ApiException {
+        ApiResponse<InlineResponse20050> resp = apiV1SecurityCsrfTokenGetWithHttpInfo();
+        return resp.getData();
+    }
+
+    /**
+     * 
+     * Fetch the CSRF token
+     * @return ApiResponse&lt;InlineResponse20050&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<InlineResponse20050> apiV1SecurityCsrfTokenGetWithHttpInfo() throws ApiException {
+        com.squareup.okhttp.Call call = apiV1SecurityCsrfTokenGetValidateBeforeCall(null, null);
+        Type localVarReturnType = new TypeToken<InlineResponse20050>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Fetch the CSRF token
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call apiV1SecurityCsrfTokenGetAsync(final ApiCallback<InlineResponse20050> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = apiV1SecurityCsrfTokenGetValidateBeforeCall(progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<InlineResponse20050>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for apiV1SecurityGuestTokenPost
+     * @param body Parameters for the guest token (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call apiV1SecurityGuestTokenPostCall(GuestTokenCreate body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = body;
+        
+        // create path and map variables
+        String localVarPath = "/api/v1/security/guest_token/";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "jwt" };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call apiV1SecurityGuestTokenPostValidateBeforeCall(GuestTokenCreate body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException("Missing the required parameter 'body' when calling apiV1SecurityGuestTokenPost(Async)");
+        }
+        
+        com.squareup.okhttp.Call call = apiV1SecurityGuestTokenPostCall(body, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * 
+     * Fetches a guest token
+     * @param body Parameters for the guest token (required)
+     * @return InlineResponse20051
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public InlineResponse20051 apiV1SecurityGuestTokenPost(GuestTokenCreate body) throws ApiException {
+        ApiResponse<InlineResponse20051> resp = apiV1SecurityGuestTokenPostWithHttpInfo(body);
+        return resp.getData();
+    }
+
+    /**
+     * 
+     * Fetches a guest token
+     * @param body Parameters for the guest token (required)
+     * @return ApiResponse&lt;InlineResponse20051&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<InlineResponse20051> apiV1SecurityGuestTokenPostWithHttpInfo(GuestTokenCreate body) throws ApiException {
+        com.squareup.okhttp.Call call = apiV1SecurityGuestTokenPostValidateBeforeCall(body, null, null);
+        Type localVarReturnType = new TypeToken<InlineResponse20051>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Fetches a guest token
+     * @param body Parameters for the guest token (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call apiV1SecurityGuestTokenPostAsync(GuestTokenCreate body, final ApiCallback<InlineResponse20051> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = apiV1SecurityGuestTokenPostValidateBeforeCall(body, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<InlineResponse20051>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for apiV1SecurityLoginPost
      * @param body  (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call securityLoginPostCall(Body body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call apiV1SecurityLoginPostCall(SecurityLoginBody body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = body;
         
         // create path and map variables
-        String localVarPath = "/security/login";
+        String localVarPath = "/api/v1/security/login";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -106,13 +349,13 @@ public class SecurityApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call securityLoginPostValidateBeforeCall(Body body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call apiV1SecurityLoginPostValidateBeforeCall(SecurityLoginBody body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'body' is set
         if (body == null) {
-            throw new ApiException("Missing the required parameter 'body' when calling securityLoginPost(Async)");
+            throw new ApiException("Missing the required parameter 'body' when calling apiV1SecurityLoginPost(Async)");
         }
         
-        com.squareup.okhttp.Call call = securityLoginPostCall(body, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = apiV1SecurityLoginPostCall(body, progressListener, progressRequestListener);
         return call;
 
         
@@ -125,11 +368,11 @@ public class SecurityApi {
      * 
      * Authenticate and get a JWT access and refresh token
      * @param body  (required)
-     * @return InlineResponse20021
+     * @return InlineResponse20052
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse20021 securityLoginPost(Body body) throws ApiException {
-        ApiResponse<InlineResponse20021> resp = securityLoginPostWithHttpInfo(body);
+    public InlineResponse20052 apiV1SecurityLoginPost(SecurityLoginBody body) throws ApiException {
+        ApiResponse<InlineResponse20052> resp = apiV1SecurityLoginPostWithHttpInfo(body);
         return resp.getData();
     }
 
@@ -137,12 +380,12 @@ public class SecurityApi {
      * 
      * Authenticate and get a JWT access and refresh token
      * @param body  (required)
-     * @return ApiResponse&lt;InlineResponse20021&gt;
+     * @return ApiResponse&lt;InlineResponse20052&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse20021> securityLoginPostWithHttpInfo(Body body) throws ApiException {
-        com.squareup.okhttp.Call call = securityLoginPostValidateBeforeCall(body, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse20021>(){}.getType();
+    public ApiResponse<InlineResponse20052> apiV1SecurityLoginPostWithHttpInfo(SecurityLoginBody body) throws ApiException {
+        com.squareup.okhttp.Call call = apiV1SecurityLoginPostValidateBeforeCall(body, null, null);
+        Type localVarReturnType = new TypeToken<InlineResponse20052>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -154,7 +397,7 @@ public class SecurityApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call securityLoginPostAsync(Body body, final ApiCallback<InlineResponse20021> callback) throws ApiException {
+    public com.squareup.okhttp.Call apiV1SecurityLoginPostAsync(SecurityLoginBody body, final ApiCallback<InlineResponse20052> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -175,23 +418,23 @@ public class SecurityApi {
             };
         }
 
-        com.squareup.okhttp.Call call = securityLoginPostValidateBeforeCall(body, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse20021>(){}.getType();
+        com.squareup.okhttp.Call call = apiV1SecurityLoginPostValidateBeforeCall(body, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<InlineResponse20052>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
-     * Build call for securityRefreshPost
+     * Build call for apiV1SecurityRefreshPost
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call securityRefreshPostCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call apiV1SecurityRefreshPostCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
-        String localVarPath = "/security/refresh";
+        String localVarPath = "/api/v1/security/refresh";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -229,9 +472,9 @@ public class SecurityApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call securityRefreshPostValidateBeforeCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call apiV1SecurityRefreshPostValidateBeforeCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
-        com.squareup.okhttp.Call call = securityRefreshPostCall(progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = apiV1SecurityRefreshPostCall(progressListener, progressRequestListener);
         return call;
 
         
@@ -243,23 +486,23 @@ public class SecurityApi {
     /**
      * 
      * Use the refresh token to get a new JWT access token
-     * @return InlineResponse20022
+     * @return InlineResponse20053
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse20022 securityRefreshPost() throws ApiException {
-        ApiResponse<InlineResponse20022> resp = securityRefreshPostWithHttpInfo();
+    public InlineResponse20053 apiV1SecurityRefreshPost() throws ApiException {
+        ApiResponse<InlineResponse20053> resp = apiV1SecurityRefreshPostWithHttpInfo();
         return resp.getData();
     }
 
     /**
      * 
      * Use the refresh token to get a new JWT access token
-     * @return ApiResponse&lt;InlineResponse20022&gt;
+     * @return ApiResponse&lt;InlineResponse20053&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse20022> securityRefreshPostWithHttpInfo() throws ApiException {
-        com.squareup.okhttp.Call call = securityRefreshPostValidateBeforeCall(null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse20022>(){}.getType();
+    public ApiResponse<InlineResponse20053> apiV1SecurityRefreshPostWithHttpInfo() throws ApiException {
+        com.squareup.okhttp.Call call = apiV1SecurityRefreshPostValidateBeforeCall(null, null);
+        Type localVarReturnType = new TypeToken<InlineResponse20053>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -270,7 +513,7 @@ public class SecurityApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call securityRefreshPostAsync(final ApiCallback<InlineResponse20022> callback) throws ApiException {
+    public com.squareup.okhttp.Call apiV1SecurityRefreshPostAsync(final ApiCallback<InlineResponse20053> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -291,8 +534,8 @@ public class SecurityApi {
             };
         }
 
-        com.squareup.okhttp.Call call = securityRefreshPostValidateBeforeCall(progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse20022>(){}.getType();
+        com.squareup.okhttp.Call call = apiV1SecurityRefreshPostValidateBeforeCall(progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<InlineResponse20053>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

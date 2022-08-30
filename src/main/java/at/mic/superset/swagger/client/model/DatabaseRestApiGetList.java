@@ -14,6 +14,7 @@ package at.mic.superset.swagger.client.model;
 
 import java.util.Objects;
 import java.util.Arrays;
+import at.mic.superset.swagger.client.model.DatabaseRestApiGetListUser;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -21,15 +22,13 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
+import org.threeten.bp.OffsetDateTime;
 /**
  * DatabaseRestApiGetList
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-11-06T17:36:10.263+01:00[Europe/Vienna]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2022-08-29T14:48:42.974+02:00[Europe/Berlin]")
 public class DatabaseRestApiGetList {
-  @SerializedName("allow_csv_upload")
-  private Boolean allowCsvUpload = null;
-
   @SerializedName("allow_ctas")
   private Boolean allowCtas = null;
 
@@ -38,6 +37,9 @@ public class DatabaseRestApiGetList {
 
   @SerializedName("allow_dml")
   private Boolean allowDml = null;
+
+  @SerializedName("allow_file_upload")
+  private Boolean allowFileUpload = null;
 
   @SerializedName("allow_multi_schema_metadata_fetch")
   private Boolean allowMultiSchemaMetadataFetch = null;
@@ -57,8 +59,20 @@ public class DatabaseRestApiGetList {
   @SerializedName("backend")
   private Object backend = null;
 
+  @SerializedName("changed_on")
+  private OffsetDateTime changedOn = null;
+
+  @SerializedName("changed_on_delta_humanized")
+  private Object changedOnDeltaHumanized = null;
+
+  @SerializedName("created_by")
+  private DatabaseRestApiGetListUser createdBy = null;
+
   @SerializedName("database_name")
   private String databaseName = null;
+
+  @SerializedName("disable_data_preview")
+  private Object disableDataPreview = null;
 
   @SerializedName("explore_database_id")
   private Object exploreDatabaseId = null;
@@ -66,32 +80,14 @@ public class DatabaseRestApiGetList {
   @SerializedName("expose_in_sqllab")
   private Boolean exposeInSqllab = null;
 
+  @SerializedName("extra")
+  private String extra = null;
+
   @SerializedName("force_ctas_schema")
   private String forceCtasSchema = null;
 
-  @SerializedName("function_names")
-  private Object functionNames = null;
-
   @SerializedName("id")
   private Integer id = null;
-
-  public DatabaseRestApiGetList allowCsvUpload(Boolean allowCsvUpload) {
-    this.allowCsvUpload = allowCsvUpload;
-    return this;
-  }
-
-   /**
-   * Get allowCsvUpload
-   * @return allowCsvUpload
-  **/
-  @Schema(description = "")
-  public Boolean isAllowCsvUpload() {
-    return allowCsvUpload;
-  }
-
-  public void setAllowCsvUpload(Boolean allowCsvUpload) {
-    this.allowCsvUpload = allowCsvUpload;
-  }
 
   public DatabaseRestApiGetList allowCtas(Boolean allowCtas) {
     this.allowCtas = allowCtas;
@@ -145,6 +141,24 @@ public class DatabaseRestApiGetList {
 
   public void setAllowDml(Boolean allowDml) {
     this.allowDml = allowDml;
+  }
+
+  public DatabaseRestApiGetList allowFileUpload(Boolean allowFileUpload) {
+    this.allowFileUpload = allowFileUpload;
+    return this;
+  }
+
+   /**
+   * Get allowFileUpload
+   * @return allowFileUpload
+  **/
+  @Schema(description = "")
+  public Boolean isAllowFileUpload() {
+    return allowFileUpload;
+  }
+
+  public void setAllowFileUpload(Boolean allowFileUpload) {
+    this.allowFileUpload = allowFileUpload;
   }
 
   public DatabaseRestApiGetList allowMultiSchemaMetadataFetch(Boolean allowMultiSchemaMetadataFetch) {
@@ -219,6 +233,51 @@ public class DatabaseRestApiGetList {
     return backend;
   }
 
+  public DatabaseRestApiGetList changedOn(OffsetDateTime changedOn) {
+    this.changedOn = changedOn;
+    return this;
+  }
+
+   /**
+   * Get changedOn
+   * @return changedOn
+  **/
+  @Schema(description = "")
+  public OffsetDateTime getChangedOn() {
+    return changedOn;
+  }
+
+  public void setChangedOn(OffsetDateTime changedOn) {
+    this.changedOn = changedOn;
+  }
+
+   /**
+   * Get changedOnDeltaHumanized
+   * @return changedOnDeltaHumanized
+  **/
+  @Schema(description = "")
+  public Object getChangedOnDeltaHumanized() {
+    return changedOnDeltaHumanized;
+  }
+
+  public DatabaseRestApiGetList createdBy(DatabaseRestApiGetListUser createdBy) {
+    this.createdBy = createdBy;
+    return this;
+  }
+
+   /**
+   * Get createdBy
+   * @return createdBy
+  **/
+  @Schema(description = "")
+  public DatabaseRestApiGetListUser getCreatedBy() {
+    return createdBy;
+  }
+
+  public void setCreatedBy(DatabaseRestApiGetListUser createdBy) {
+    this.createdBy = createdBy;
+  }
+
   public DatabaseRestApiGetList databaseName(String databaseName) {
     this.databaseName = databaseName;
     return this;
@@ -235,6 +294,15 @@ public class DatabaseRestApiGetList {
 
   public void setDatabaseName(String databaseName) {
     this.databaseName = databaseName;
+  }
+
+   /**
+   * Get disableDataPreview
+   * @return disableDataPreview
+  **/
+  @Schema(description = "")
+  public Object getDisableDataPreview() {
+    return disableDataPreview;
   }
 
    /**
@@ -264,6 +332,24 @@ public class DatabaseRestApiGetList {
     this.exposeInSqllab = exposeInSqllab;
   }
 
+  public DatabaseRestApiGetList extra(String extra) {
+    this.extra = extra;
+    return this;
+  }
+
+   /**
+   * Get extra
+   * @return extra
+  **/
+  @Schema(description = "")
+  public String getExtra() {
+    return extra;
+  }
+
+  public void setExtra(String extra) {
+    this.extra = extra;
+  }
+
   public DatabaseRestApiGetList forceCtasSchema(String forceCtasSchema) {
     this.forceCtasSchema = forceCtasSchema;
     return this;
@@ -280,15 +366,6 @@ public class DatabaseRestApiGetList {
 
   public void setForceCtasSchema(String forceCtasSchema) {
     this.forceCtasSchema = forceCtasSchema;
-  }
-
-   /**
-   * Get functionNames
-   * @return functionNames
-  **/
-  @Schema(description = "")
-  public Object getFunctionNames() {
-    return functionNames;
   }
 
   public DatabaseRestApiGetList id(Integer id) {
@@ -311,7 +388,7 @@ public class DatabaseRestApiGetList {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -319,27 +396,31 @@ public class DatabaseRestApiGetList {
       return false;
     }
     DatabaseRestApiGetList databaseRestApiGetList = (DatabaseRestApiGetList) o;
-    return Objects.equals(this.allowCsvUpload, databaseRestApiGetList.allowCsvUpload) &&
-        Objects.equals(this.allowCtas, databaseRestApiGetList.allowCtas) &&
+    return Objects.equals(this.allowCtas, databaseRestApiGetList.allowCtas) &&
         Objects.equals(this.allowCvas, databaseRestApiGetList.allowCvas) &&
         Objects.equals(this.allowDml, databaseRestApiGetList.allowDml) &&
+        Objects.equals(this.allowFileUpload, databaseRestApiGetList.allowFileUpload) &&
         Objects.equals(this.allowMultiSchemaMetadataFetch, databaseRestApiGetList.allowMultiSchemaMetadataFetch) &&
         Objects.equals(this.allowRunAsync, databaseRestApiGetList.allowRunAsync) &&
         Objects.equals(this.allowsCostEstimate, databaseRestApiGetList.allowsCostEstimate) &&
         Objects.equals(this.allowsSubquery, databaseRestApiGetList.allowsSubquery) &&
         Objects.equals(this.allowsVirtualTableExplore, databaseRestApiGetList.allowsVirtualTableExplore) &&
         Objects.equals(this.backend, databaseRestApiGetList.backend) &&
+        Objects.equals(this.changedOn, databaseRestApiGetList.changedOn) &&
+        Objects.equals(this.changedOnDeltaHumanized, databaseRestApiGetList.changedOnDeltaHumanized) &&
+        Objects.equals(this.createdBy, databaseRestApiGetList.createdBy) &&
         Objects.equals(this.databaseName, databaseRestApiGetList.databaseName) &&
+        Objects.equals(this.disableDataPreview, databaseRestApiGetList.disableDataPreview) &&
         Objects.equals(this.exploreDatabaseId, databaseRestApiGetList.exploreDatabaseId) &&
         Objects.equals(this.exposeInSqllab, databaseRestApiGetList.exposeInSqllab) &&
+        Objects.equals(this.extra, databaseRestApiGetList.extra) &&
         Objects.equals(this.forceCtasSchema, databaseRestApiGetList.forceCtasSchema) &&
-        Objects.equals(this.functionNames, databaseRestApiGetList.functionNames) &&
         Objects.equals(this.id, databaseRestApiGetList.id);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(allowCsvUpload, allowCtas, allowCvas, allowDml, allowMultiSchemaMetadataFetch, allowRunAsync, allowsCostEstimate, allowsSubquery, allowsVirtualTableExplore, backend, databaseName, exploreDatabaseId, exposeInSqllab, forceCtasSchema, functionNames, id);
+    return Objects.hash(allowCtas, allowCvas, allowDml, allowFileUpload, allowMultiSchemaMetadataFetch, allowRunAsync, allowsCostEstimate, allowsSubquery, allowsVirtualTableExplore, backend, changedOn, changedOnDeltaHumanized, createdBy, databaseName, disableDataPreview, exploreDatabaseId, exposeInSqllab, extra, forceCtasSchema, id);
   }
 
 
@@ -348,21 +429,25 @@ public class DatabaseRestApiGetList {
     StringBuilder sb = new StringBuilder();
     sb.append("class DatabaseRestApiGetList {\n");
     
-    sb.append("    allowCsvUpload: ").append(toIndentedString(allowCsvUpload)).append("\n");
     sb.append("    allowCtas: ").append(toIndentedString(allowCtas)).append("\n");
     sb.append("    allowCvas: ").append(toIndentedString(allowCvas)).append("\n");
     sb.append("    allowDml: ").append(toIndentedString(allowDml)).append("\n");
+    sb.append("    allowFileUpload: ").append(toIndentedString(allowFileUpload)).append("\n");
     sb.append("    allowMultiSchemaMetadataFetch: ").append(toIndentedString(allowMultiSchemaMetadataFetch)).append("\n");
     sb.append("    allowRunAsync: ").append(toIndentedString(allowRunAsync)).append("\n");
     sb.append("    allowsCostEstimate: ").append(toIndentedString(allowsCostEstimate)).append("\n");
     sb.append("    allowsSubquery: ").append(toIndentedString(allowsSubquery)).append("\n");
     sb.append("    allowsVirtualTableExplore: ").append(toIndentedString(allowsVirtualTableExplore)).append("\n");
     sb.append("    backend: ").append(toIndentedString(backend)).append("\n");
+    sb.append("    changedOn: ").append(toIndentedString(changedOn)).append("\n");
+    sb.append("    changedOnDeltaHumanized: ").append(toIndentedString(changedOnDeltaHumanized)).append("\n");
+    sb.append("    createdBy: ").append(toIndentedString(createdBy)).append("\n");
     sb.append("    databaseName: ").append(toIndentedString(databaseName)).append("\n");
+    sb.append("    disableDataPreview: ").append(toIndentedString(disableDataPreview)).append("\n");
     sb.append("    exploreDatabaseId: ").append(toIndentedString(exploreDatabaseId)).append("\n");
     sb.append("    exposeInSqllab: ").append(toIndentedString(exposeInSqllab)).append("\n");
+    sb.append("    extra: ").append(toIndentedString(extra)).append("\n");
     sb.append("    forceCtasSchema: ").append(toIndentedString(forceCtasSchema)).append("\n");
-    sb.append("    functionNames: ").append(toIndentedString(functionNames)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -372,7 +457,7 @@ public class DatabaseRestApiGetList {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

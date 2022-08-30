@@ -27,13 +27,25 @@ import java.util.List;
  * DashboardRestApiPut
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-11-06T17:36:10.263+01:00[Europe/Vienna]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2022-08-29T14:48:42.974+02:00[Europe/Berlin]")
 public class DashboardRestApiPut {
+  @SerializedName("certification_details")
+  private String certificationDetails = null;
+
+  @SerializedName("certified_by")
+  private String certifiedBy = null;
+
   @SerializedName("css")
   private String css = null;
 
   @SerializedName("dashboard_title")
   private String dashboardTitle = null;
+
+  @SerializedName("external_url")
+  private String externalUrl = null;
+
+  @SerializedName("is_managed_externally")
+  private Boolean isManagedExternally = null;
 
   @SerializedName("json_metadata")
   private String jsonMetadata = null;
@@ -47,8 +59,47 @@ public class DashboardRestApiPut {
   @SerializedName("published")
   private Boolean published = null;
 
+  @SerializedName("roles")
+  private List<Integer> roles = null;
+
   @SerializedName("slug")
   private String slug = null;
+
+  public DashboardRestApiPut certificationDetails(String certificationDetails) {
+    this.certificationDetails = certificationDetails;
+    return this;
+  }
+
+   /**
+   * Details of the certification
+   * @return certificationDetails
+  **/
+  @Schema(description = "Details of the certification")
+  public String getCertificationDetails() {
+    return certificationDetails;
+  }
+
+  public void setCertificationDetails(String certificationDetails) {
+    this.certificationDetails = certificationDetails;
+  }
+
+  public DashboardRestApiPut certifiedBy(String certifiedBy) {
+    this.certifiedBy = certifiedBy;
+    return this;
+  }
+
+   /**
+   * Person or group that has certified this dashboard
+   * @return certifiedBy
+  **/
+  @Schema(description = "Person or group that has certified this dashboard")
+  public String getCertifiedBy() {
+    return certifiedBy;
+  }
+
+  public void setCertifiedBy(String certifiedBy) {
+    this.certifiedBy = certifiedBy;
+  }
 
   public DashboardRestApiPut css(String css) {
     this.css = css;
@@ -84,6 +135,42 @@ public class DashboardRestApiPut {
 
   public void setDashboardTitle(String dashboardTitle) {
     this.dashboardTitle = dashboardTitle;
+  }
+
+  public DashboardRestApiPut externalUrl(String externalUrl) {
+    this.externalUrl = externalUrl;
+    return this;
+  }
+
+   /**
+   * Get externalUrl
+   * @return externalUrl
+  **/
+  @Schema(description = "")
+  public String getExternalUrl() {
+    return externalUrl;
+  }
+
+  public void setExternalUrl(String externalUrl) {
+    this.externalUrl = externalUrl;
+  }
+
+  public DashboardRestApiPut isManagedExternally(Boolean isManagedExternally) {
+    this.isManagedExternally = isManagedExternally;
+    return this;
+  }
+
+   /**
+   * Get isManagedExternally
+   * @return isManagedExternally
+  **/
+  @Schema(description = "")
+  public Boolean isIsManagedExternally() {
+    return isManagedExternally;
+  }
+
+  public void setIsManagedExternally(Boolean isManagedExternally) {
+    this.isManagedExternally = isManagedExternally;
   }
 
   public DashboardRestApiPut jsonMetadata(String jsonMetadata) {
@@ -166,6 +253,32 @@ public class DashboardRestApiPut {
     this.published = published;
   }
 
+  public DashboardRestApiPut roles(List<Integer> roles) {
+    this.roles = roles;
+    return this;
+  }
+
+  public DashboardRestApiPut addRolesItem(Integer rolesItem) {
+    if (this.roles == null) {
+      this.roles = new ArrayList<Integer>();
+    }
+    this.roles.add(rolesItem);
+    return this;
+  }
+
+   /**
+   * Get roles
+   * @return roles
+  **/
+  @Schema(description = "")
+  public List<Integer> getRoles() {
+    return roles;
+  }
+
+  public void setRoles(List<Integer> roles) {
+    this.roles = roles;
+  }
+
   public DashboardRestApiPut slug(String slug) {
     this.slug = slug;
     return this;
@@ -186,7 +299,7 @@ public class DashboardRestApiPut {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -194,18 +307,23 @@ public class DashboardRestApiPut {
       return false;
     }
     DashboardRestApiPut dashboardRestApiPut = (DashboardRestApiPut) o;
-    return Objects.equals(this.css, dashboardRestApiPut.css) &&
+    return Objects.equals(this.certificationDetails, dashboardRestApiPut.certificationDetails) &&
+        Objects.equals(this.certifiedBy, dashboardRestApiPut.certifiedBy) &&
+        Objects.equals(this.css, dashboardRestApiPut.css) &&
         Objects.equals(this.dashboardTitle, dashboardRestApiPut.dashboardTitle) &&
+        Objects.equals(this.externalUrl, dashboardRestApiPut.externalUrl) &&
+        Objects.equals(this.isManagedExternally, dashboardRestApiPut.isManagedExternally) &&
         Objects.equals(this.jsonMetadata, dashboardRestApiPut.jsonMetadata) &&
         Objects.equals(this.owners, dashboardRestApiPut.owners) &&
         Objects.equals(this.positionJson, dashboardRestApiPut.positionJson) &&
         Objects.equals(this.published, dashboardRestApiPut.published) &&
+        Objects.equals(this.roles, dashboardRestApiPut.roles) &&
         Objects.equals(this.slug, dashboardRestApiPut.slug);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(css, dashboardTitle, jsonMetadata, owners, positionJson, published, slug);
+    return Objects.hash(certificationDetails, certifiedBy, css, dashboardTitle, externalUrl, isManagedExternally, jsonMetadata, owners, positionJson, published, roles, slug);
   }
 
 
@@ -214,12 +332,17 @@ public class DashboardRestApiPut {
     StringBuilder sb = new StringBuilder();
     sb.append("class DashboardRestApiPut {\n");
     
+    sb.append("    certificationDetails: ").append(toIndentedString(certificationDetails)).append("\n");
+    sb.append("    certifiedBy: ").append(toIndentedString(certifiedBy)).append("\n");
     sb.append("    css: ").append(toIndentedString(css)).append("\n");
     sb.append("    dashboardTitle: ").append(toIndentedString(dashboardTitle)).append("\n");
+    sb.append("    externalUrl: ").append(toIndentedString(externalUrl)).append("\n");
+    sb.append("    isManagedExternally: ").append(toIndentedString(isManagedExternally)).append("\n");
     sb.append("    jsonMetadata: ").append(toIndentedString(jsonMetadata)).append("\n");
     sb.append("    owners: ").append(toIndentedString(owners)).append("\n");
     sb.append("    positionJson: ").append(toIndentedString(positionJson)).append("\n");
     sb.append("    published: ").append(toIndentedString(published)).append("\n");
+    sb.append("    roles: ").append(toIndentedString(roles)).append("\n");
     sb.append("    slug: ").append(toIndentedString(slug)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -229,7 +352,7 @@ public class DashboardRestApiPut {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

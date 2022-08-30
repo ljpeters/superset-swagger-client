@@ -14,7 +14,7 @@ package at.mic.superset.swagger.client.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import at.mic.superset.swagger.client.model.Meta16;
+import at.mic.superset.swagger.client.model.QueryRestApiGetDatabase;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -28,7 +28,7 @@ import org.threeten.bp.OffsetDateTime;
  * QueryRestApiGet
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-11-06T17:36:10.263+01:00[Europe/Vienna]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2022-08-29T14:48:42.974+02:00[Europe/Berlin]")
 public class QueryRestApiGet {
   @SerializedName("changed_on")
   private OffsetDateTime changedOn = null;
@@ -37,7 +37,7 @@ public class QueryRestApiGet {
   private String clientId = null;
 
   @SerializedName("database")
-  private Meta16 database = null;
+  private QueryRestApiGetDatabase database = null;
 
   @SerializedName("end_result_backend_time")
   private BigDecimal endResultBackendTime = null;
@@ -50,6 +50,9 @@ public class QueryRestApiGet {
 
   @SerializedName("executed_sql")
   private String executedSql = null;
+
+  @SerializedName("id")
+  private Integer id = null;
 
   @SerializedName("limit")
   private Integer limit = null;
@@ -138,7 +141,7 @@ public class QueryRestApiGet {
     this.clientId = clientId;
   }
 
-  public QueryRestApiGet database(Meta16 database) {
+  public QueryRestApiGet database(QueryRestApiGetDatabase database) {
     this.database = database;
     return this;
   }
@@ -148,11 +151,11 @@ public class QueryRestApiGet {
    * @return database
   **/
   @Schema(required = true, description = "")
-  public Meta16 getDatabase() {
+  public QueryRestApiGetDatabase getDatabase() {
     return database;
   }
 
-  public void setDatabase(Meta16 database) {
+  public void setDatabase(QueryRestApiGetDatabase database) {
     this.database = database;
   }
 
@@ -226,6 +229,24 @@ public class QueryRestApiGet {
 
   public void setExecutedSql(String executedSql) {
     this.executedSql = executedSql;
+  }
+
+  public QueryRestApiGet id(Integer id) {
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * Get id
+   * @return id
+  **/
+  @Schema(description = "")
+  public Integer getId() {
+    return id;
+  }
+
+  public void setId(Integer id) {
+    this.id = id;
   }
 
   public QueryRestApiGet limit(Integer limit) {
@@ -536,7 +557,7 @@ public class QueryRestApiGet {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -551,6 +572,7 @@ public class QueryRestApiGet {
         Objects.equals(this.endTime, queryRestApiGet.endTime) &&
         Objects.equals(this.errorMessage, queryRestApiGet.errorMessage) &&
         Objects.equals(this.executedSql, queryRestApiGet.executedSql) &&
+        Objects.equals(this.id, queryRestApiGet.id) &&
         Objects.equals(this.limit, queryRestApiGet.limit) &&
         Objects.equals(this.progress, queryRestApiGet.progress) &&
         Objects.equals(this.resultsKey, queryRestApiGet.resultsKey) &&
@@ -572,7 +594,7 @@ public class QueryRestApiGet {
 
   @Override
   public int hashCode() {
-    return Objects.hash(changedOn, clientId, database, endResultBackendTime, endTime, errorMessage, executedSql, limit, progress, resultsKey, rows, schema, selectAsCta, selectAsCtaUsed, selectSql, sql, sqlEditorId, startRunningTime, startTime, status, tabName, tmpSchemaName, tmpTableName, trackingUrl);
+    return Objects.hash(changedOn, clientId, database, endResultBackendTime, endTime, errorMessage, executedSql, id, limit, progress, resultsKey, rows, schema, selectAsCta, selectAsCtaUsed, selectSql, sql, sqlEditorId, startRunningTime, startTime, status, tabName, tmpSchemaName, tmpTableName, trackingUrl);
   }
 
 
@@ -588,6 +610,7 @@ public class QueryRestApiGet {
     sb.append("    endTime: ").append(toIndentedString(endTime)).append("\n");
     sb.append("    errorMessage: ").append(toIndentedString(errorMessage)).append("\n");
     sb.append("    executedSql: ").append(toIndentedString(executedSql)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    limit: ").append(toIndentedString(limit)).append("\n");
     sb.append("    progress: ").append(toIndentedString(progress)).append("\n");
     sb.append("    resultsKey: ").append(toIndentedString(resultsKey)).append("\n");
@@ -613,7 +636,7 @@ public class QueryRestApiGet {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

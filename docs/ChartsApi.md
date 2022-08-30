@@ -1,26 +1,80 @@
 # ChartsApi
 
-All URIs are relative to */api/v1*
+All URIs are relative to *http://localhost:8088/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**chartDataPost**](ChartsApi.md#chartDataPost) | **POST** /chart/data | 
-[**chartDatasourcesGet**](ChartsApi.md#chartDatasourcesGet) | **GET** /chart/datasources | 
-[**chartDelete**](ChartsApi.md#chartDelete) | **DELETE** /chart/ | 
-[**chartGet**](ChartsApi.md#chartGet) | **GET** /chart/ | 
-[**chartInfoGet**](ChartsApi.md#chartInfoGet) | **GET** /chart/_info | 
-[**chartPkCacheScreenshotGet**](ChartsApi.md#chartPkCacheScreenshotGet) | **GET** /chart/{pk}/cache_screenshot/ | 
-[**chartPkDelete**](ChartsApi.md#chartPkDelete) | **DELETE** /chart/{pk} | 
-[**chartPkGet**](ChartsApi.md#chartPkGet) | **GET** /chart/{pk} | 
-[**chartPkPut**](ChartsApi.md#chartPkPut) | **PUT** /chart/{pk} | 
-[**chartPkScreenshotDigestGet**](ChartsApi.md#chartPkScreenshotDigestGet) | **GET** /chart/{pk}/screenshot/{digest}/ | 
-[**chartPkThumbnailDigestGet**](ChartsApi.md#chartPkThumbnailDigestGet) | **GET** /chart/{pk}/thumbnail/{digest}/ | 
-[**chartPost**](ChartsApi.md#chartPost) | **POST** /chart/ | 
-[**chartRelatedColumnNameGet**](ChartsApi.md#chartRelatedColumnNameGet) | **GET** /chart/related/{column_name} | 
+[**apiV1ChartDataCacheKeyGet**](ChartsApi.md#apiV1ChartDataCacheKeyGet) | **GET** /api/v1/chart/data/{cache_key} | 
+[**apiV1ChartDataPost**](ChartsApi.md#apiV1ChartDataPost) | **POST** /api/v1/chart/data | 
+[**apiV1ChartDelete**](ChartsApi.md#apiV1ChartDelete) | **DELETE** /api/v1/chart/ | 
+[**apiV1ChartExportGet**](ChartsApi.md#apiV1ChartExportGet) | **GET** /api/v1/chart/export/ | 
+[**apiV1ChartFavoriteStatusGet**](ChartsApi.md#apiV1ChartFavoriteStatusGet) | **GET** /api/v1/chart/favorite_status/ | 
+[**apiV1ChartGet**](ChartsApi.md#apiV1ChartGet) | **GET** /api/v1/chart/ | 
+[**apiV1ChartImportPost**](ChartsApi.md#apiV1ChartImportPost) | **POST** /api/v1/chart/import/ | 
+[**apiV1ChartInfoGet**](ChartsApi.md#apiV1ChartInfoGet) | **GET** /api/v1/chart/_info | 
+[**apiV1ChartPkCacheScreenshotGet**](ChartsApi.md#apiV1ChartPkCacheScreenshotGet) | **GET** /api/v1/chart/{pk}/cache_screenshot/ | 
+[**apiV1ChartPkDataGet**](ChartsApi.md#apiV1ChartPkDataGet) | **GET** /api/v1/chart/{pk}/data/ | 
+[**apiV1ChartPkDelete**](ChartsApi.md#apiV1ChartPkDelete) | **DELETE** /api/v1/chart/{pk} | 
+[**apiV1ChartPkGet**](ChartsApi.md#apiV1ChartPkGet) | **GET** /api/v1/chart/{pk} | 
+[**apiV1ChartPkPut**](ChartsApi.md#apiV1ChartPkPut) | **PUT** /api/v1/chart/{pk} | 
+[**apiV1ChartPkScreenshotDigestGet**](ChartsApi.md#apiV1ChartPkScreenshotDigestGet) | **GET** /api/v1/chart/{pk}/screenshot/{digest}/ | 
+[**apiV1ChartPkThumbnailDigestGet**](ChartsApi.md#apiV1ChartPkThumbnailDigestGet) | **GET** /api/v1/chart/{pk}/thumbnail/{digest}/ | 
+[**apiV1ChartPost**](ChartsApi.md#apiV1ChartPost) | **POST** /api/v1/chart/ | 
+[**apiV1ChartRelatedColumnNameGet**](ChartsApi.md#apiV1ChartRelatedColumnNameGet) | **GET** /api/v1/chart/related/{column_name} | 
 
-<a name="chartDataPost"></a>
-# **chartDataPost**
-> ChartDataResponseSchema chartDataPost(body)
+<a name="apiV1ChartDataCacheKeyGet"></a>
+# **apiV1ChartDataCacheKeyGet**
+> ChartDataResponseSchema apiV1ChartDataCacheKeyGet(cacheKey)
+
+
+
+Takes a query context cache key and returns payload data response for the given query.
+
+### Example
+```java
+// Import classes:
+//import at.mic.superset.swagger.ApiClient;
+//import at.mic.superset.swagger.ApiException;
+//import at.mic.superset.swagger.Configuration;
+//import at.mic.superset.swagger.auth.*;
+//import at.mic.superset.swagger.client.ChartsApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+
+ChartsApi apiInstance = new ChartsApi();
+String cacheKey = "cacheKey_example"; // String | 
+try {
+    ChartDataResponseSchema result = apiInstance.apiV1ChartDataCacheKeyGet(cacheKey);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling ChartsApi#apiV1ChartDataCacheKeyGet");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **cacheKey** | **String**|  |
+
+### Return type
+
+[**ChartDataResponseSchema**](ChartDataResponseSchema.md)
+
+### Authorization
+
+[jwt](../README.md#jwt)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="apiV1ChartDataPost"></a>
+# **apiV1ChartDataPost**
+> ChartDataResponseSchema apiV1ChartDataPost(body)
 
 
 
@@ -41,10 +95,10 @@ ApiClient defaultClient = Configuration.getDefaultApiClient();
 ChartsApi apiInstance = new ChartsApi();
 ChartDataQueryContextSchema body = new ChartDataQueryContextSchema(); // ChartDataQueryContextSchema | A query context consists of a datasource from which to fetch data and one or many query objects.
 try {
-    ChartDataResponseSchema result = apiInstance.chartDataPost(body);
+    ChartDataResponseSchema result = apiInstance.apiV1ChartDataPost(body);
     System.out.println(result);
 } catch (ApiException e) {
-    System.err.println("Exception when calling ChartsApi#chartDataPost");
+    System.err.println("Exception when calling ChartsApi#apiV1ChartDataPost");
     e.printStackTrace();
 }
 ```
@@ -68,55 +122,9 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-<a name="chartDatasourcesGet"></a>
-# **chartDatasourcesGet**
-> InlineResponse2002 chartDatasourcesGet()
-
-
-
-Get available datasources.
-
-### Example
-```java
-// Import classes:
-//import at.mic.superset.swagger.ApiClient;
-//import at.mic.superset.swagger.ApiException;
-//import at.mic.superset.swagger.Configuration;
-//import at.mic.superset.swagger.auth.*;
-//import at.mic.superset.swagger.client.ChartsApi;
-
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-
-ChartsApi apiInstance = new ChartsApi();
-try {
-    InlineResponse2002 result = apiInstance.chartDatasourcesGet();
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ChartsApi#chartDatasourcesGet");
-    e.printStackTrace();
-}
-```
-
-### Parameters
-This endpoint does not need any parameter.
-
-### Return type
-
-[**InlineResponse2002**](InlineResponse2002.md)
-
-### Authorization
-
-[jwt](../README.md#jwt)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-<a name="chartDelete"></a>
-# **chartDelete**
-> InlineResponse400 chartDelete(q)
+<a name="apiV1ChartDelete"></a>
+# **apiV1ChartDelete**
+> InlineResponse400 apiV1ChartDelete(q)
 
 
 
@@ -135,12 +143,12 @@ ApiClient defaultClient = Configuration.getDefaultApiClient();
 
 
 ChartsApi apiInstance = new ChartsApi();
-List<Integer> q = Arrays.asList(56); // List<Integer> | 
+GetDeleteIdsSchema q = new GetDeleteIdsSchema(); // GetDeleteIdsSchema | 
 try {
-    InlineResponse400 result = apiInstance.chartDelete(q);
+    InlineResponse400 result = apiInstance.apiV1ChartDelete(q);
     System.out.println(result);
 } catch (ApiException e) {
-    System.err.println("Exception when calling ChartsApi#chartDelete");
+    System.err.println("Exception when calling ChartsApi#apiV1ChartDelete");
     e.printStackTrace();
 }
 ```
@@ -149,7 +157,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **q** | [**List&lt;Integer&gt;**](Integer.md)|  | [optional]
+ **q** | [**GetDeleteIdsSchema**](.md)|  | [optional]
 
 ### Return type
 
@@ -164,9 +172,109 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="chartGet"></a>
-# **chartGet**
-> InlineResponse200 chartGet(q)
+<a name="apiV1ChartExportGet"></a>
+# **apiV1ChartExportGet**
+> File apiV1ChartExportGet(q)
+
+
+
+Exports multiple charts and downloads them as YAML files
+
+### Example
+```java
+// Import classes:
+//import at.mic.superset.swagger.ApiClient;
+//import at.mic.superset.swagger.ApiException;
+//import at.mic.superset.swagger.Configuration;
+//import at.mic.superset.swagger.auth.*;
+//import at.mic.superset.swagger.client.ChartsApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+
+ChartsApi apiInstance = new ChartsApi();
+GetExportIdsSchema q = new GetExportIdsSchema(); // GetExportIdsSchema | 
+try {
+    File result = apiInstance.apiV1ChartExportGet(q);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling ChartsApi#apiV1ChartExportGet");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **q** | [**GetExportIdsSchema**](.md)|  | [optional]
+
+### Return type
+
+[**File**](File.md)
+
+### Authorization
+
+[jwt](../README.md#jwt)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/zip, application/json
+
+<a name="apiV1ChartFavoriteStatusGet"></a>
+# **apiV1ChartFavoriteStatusGet**
+> GetFavStarIdsSchema apiV1ChartFavoriteStatusGet(q)
+
+
+
+Check favorited dashboards for current user
+
+### Example
+```java
+// Import classes:
+//import at.mic.superset.swagger.ApiClient;
+//import at.mic.superset.swagger.ApiException;
+//import at.mic.superset.swagger.Configuration;
+//import at.mic.superset.swagger.auth.*;
+//import at.mic.superset.swagger.client.ChartsApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+
+ChartsApi apiInstance = new ChartsApi();
+GetFavStarIdsSchema q = new GetFavStarIdsSchema(); // GetFavStarIdsSchema | 
+try {
+    GetFavStarIdsSchema result = apiInstance.apiV1ChartFavoriteStatusGet(q);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling ChartsApi#apiV1ChartFavoriteStatusGet");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **q** | [**GetFavStarIdsSchema**](.md)|  | [optional]
+
+### Return type
+
+[**GetFavStarIdsSchema**](GetFavStarIdsSchema.md)
+
+### Authorization
+
+[jwt](../README.md#jwt)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="apiV1ChartGet"></a>
+# **apiV1ChartGet**
+> InlineResponse2009 apiV1ChartGet(q)
 
 
 
@@ -187,10 +295,10 @@ ApiClient defaultClient = Configuration.getDefaultApiClient();
 ChartsApi apiInstance = new ChartsApi();
 GetListSchema q = new GetListSchema(); // GetListSchema | 
 try {
-    InlineResponse200 result = apiInstance.chartGet(q);
+    InlineResponse2009 result = apiInstance.apiV1ChartGet(q);
     System.out.println(result);
 } catch (ApiException e) {
-    System.err.println("Exception when calling ChartsApi#chartGet");
+    System.err.println("Exception when calling ChartsApi#apiV1ChartGet");
     e.printStackTrace();
 }
 ```
@@ -203,7 +311,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse200**](InlineResponse200.md)
+[**InlineResponse2009**](InlineResponse2009.md)
 
 ### Authorization
 
@@ -214,9 +322,61 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="chartInfoGet"></a>
-# **chartInfoGet**
-> InlineResponse2001 chartInfoGet(q)
+<a name="apiV1ChartImportPost"></a>
+# **apiV1ChartImportPost**
+> InlineResponse400 apiV1ChartImportPost(formData, overwrite, passwords)
+
+
+
+### Example
+```java
+// Import classes:
+//import at.mic.superset.swagger.ApiClient;
+//import at.mic.superset.swagger.ApiException;
+//import at.mic.superset.swagger.Configuration;
+//import at.mic.superset.swagger.auth.*;
+//import at.mic.superset.swagger.client.ChartsApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+
+ChartsApi apiInstance = new ChartsApi();
+File formData = new File("formData_example"); // File | 
+Boolean overwrite = true; // Boolean | 
+String passwords = "passwords_example"; // String | 
+try {
+    InlineResponse400 result = apiInstance.apiV1ChartImportPost(formData, overwrite, passwords);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling ChartsApi#apiV1ChartImportPost");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **formData** | **File**|  |
+ **overwrite** | **Boolean**|  |
+ **passwords** | **String**|  |
+
+### Return type
+
+[**InlineResponse400**](InlineResponse400.md)
+
+### Authorization
+
+[jwt](../README.md#jwt)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/json
+
+<a name="apiV1ChartInfoGet"></a>
+# **apiV1ChartInfoGet**
+> InlineResponse2002 apiV1ChartInfoGet(q)
 
 
 
@@ -237,10 +397,10 @@ ApiClient defaultClient = Configuration.getDefaultApiClient();
 ChartsApi apiInstance = new ChartsApi();
 GetInfoSchema q = new GetInfoSchema(); // GetInfoSchema | 
 try {
-    InlineResponse2001 result = apiInstance.chartInfoGet(q);
+    InlineResponse2002 result = apiInstance.apiV1ChartInfoGet(q);
     System.out.println(result);
 } catch (ApiException e) {
-    System.err.println("Exception when calling ChartsApi#chartInfoGet");
+    System.err.println("Exception when calling ChartsApi#apiV1ChartInfoGet");
     e.printStackTrace();
 }
 ```
@@ -253,7 +413,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2001**](InlineResponse2001.md)
+[**InlineResponse2002**](InlineResponse2002.md)
 
 ### Authorization
 
@@ -264,13 +424,13 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="chartPkCacheScreenshotGet"></a>
-# **chartPkCacheScreenshotGet**
-> InlineResponse2006 chartPkCacheScreenshotGet(pk, sha)
+<a name="apiV1ChartPkCacheScreenshotGet"></a>
+# **apiV1ChartPkCacheScreenshotGet**
+> ChartCacheScreenshotResponseSchema apiV1ChartPkCacheScreenshotGet(pk, q)
 
 
 
-Compute or get already computed screenshot from cache.
+Compute and cache a screenshot.
 
 ### Example
 ```java
@@ -286,12 +446,12 @@ ApiClient defaultClient = Configuration.getDefaultApiClient();
 
 ChartsApi apiInstance = new ChartsApi();
 Integer pk = 56; // Integer | 
-String sha = "sha_example"; // String | 
+ScreenshotQuerySchema q = new ScreenshotQuerySchema(); // ScreenshotQuerySchema | 
 try {
-    InlineResponse2006 result = apiInstance.chartPkCacheScreenshotGet(pk, sha);
+    ChartCacheScreenshotResponseSchema result = apiInstance.apiV1ChartPkCacheScreenshotGet(pk, q);
     System.out.println(result);
 } catch (ApiException e) {
-    System.err.println("Exception when calling ChartsApi#chartPkCacheScreenshotGet");
+    System.err.println("Exception when calling ChartsApi#apiV1ChartPkCacheScreenshotGet");
     e.printStackTrace();
 }
 ```
@@ -301,11 +461,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **pk** | **Integer**|  |
- **sha** | **String**|  |
+ **q** | [**ScreenshotQuerySchema**](.md)|  | [optional]
 
 ### Return type
 
-[**InlineResponse2006**](InlineResponse2006.md)
+[**ChartCacheScreenshotResponseSchema**](ChartCacheScreenshotResponseSchema.md)
 
 ### Authorization
 
@@ -316,9 +476,63 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="chartPkDelete"></a>
-# **chartPkDelete**
-> InlineResponse400 chartPkDelete(pk)
+<a name="apiV1ChartPkDataGet"></a>
+# **apiV1ChartPkDataGet**
+> ChartDataResponseSchema apiV1ChartPkDataGet(pk, format, type)
+
+
+
+Takes a chart ID and uses the query context stored when the chart was saved to return payload data response.
+
+### Example
+```java
+// Import classes:
+//import at.mic.superset.swagger.ApiClient;
+//import at.mic.superset.swagger.ApiException;
+//import at.mic.superset.swagger.Configuration;
+//import at.mic.superset.swagger.auth.*;
+//import at.mic.superset.swagger.client.ChartsApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+
+ChartsApi apiInstance = new ChartsApi();
+Integer pk = 56; // Integer | The chart ID
+String format = "format_example"; // String | The format in which the data should be returned
+String type = "type_example"; // String | The type in which the data should be returned
+try {
+    ChartDataResponseSchema result = apiInstance.apiV1ChartPkDataGet(pk, format, type);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling ChartsApi#apiV1ChartPkDataGet");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **pk** | **Integer**| The chart ID |
+ **format** | **String**| The format in which the data should be returned | [optional]
+ **type** | **String**| The type in which the data should be returned | [optional]
+
+### Return type
+
+[**ChartDataResponseSchema**](ChartDataResponseSchema.md)
+
+### Authorization
+
+[jwt](../README.md#jwt)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="apiV1ChartPkDelete"></a>
+# **apiV1ChartPkDelete**
+> InlineResponse400 apiV1ChartPkDelete(pk)
 
 
 
@@ -339,10 +553,10 @@ ApiClient defaultClient = Configuration.getDefaultApiClient();
 ChartsApi apiInstance = new ChartsApi();
 Integer pk = 56; // Integer | 
 try {
-    InlineResponse400 result = apiInstance.chartPkDelete(pk);
+    InlineResponse400 result = apiInstance.apiV1ChartPkDelete(pk);
     System.out.println(result);
 } catch (ApiException e) {
-    System.err.println("Exception when calling ChartsApi#chartPkDelete");
+    System.err.println("Exception when calling ChartsApi#apiV1ChartPkDelete");
     e.printStackTrace();
 }
 ```
@@ -366,9 +580,9 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="chartPkGet"></a>
-# **chartPkGet**
-> InlineResponse2004 chartPkGet(pk, q)
+<a name="apiV1ChartPkGet"></a>
+# **apiV1ChartPkGet**
+> InlineResponse20010 apiV1ChartPkGet(pk, q)
 
 
 
@@ -390,10 +604,10 @@ ChartsApi apiInstance = new ChartsApi();
 Integer pk = 56; // Integer | 
 GetItemSchema q = new GetItemSchema(); // GetItemSchema | 
 try {
-    InlineResponse2004 result = apiInstance.chartPkGet(pk, q);
+    InlineResponse20010 result = apiInstance.apiV1ChartPkGet(pk, q);
     System.out.println(result);
 } catch (ApiException e) {
-    System.err.println("Exception when calling ChartsApi#chartPkGet");
+    System.err.println("Exception when calling ChartsApi#apiV1ChartPkGet");
     e.printStackTrace();
 }
 ```
@@ -407,7 +621,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2004**](InlineResponse2004.md)
+[**InlineResponse20010**](InlineResponse20010.md)
 
 ### Authorization
 
@@ -418,9 +632,9 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="chartPkPut"></a>
-# **chartPkPut**
-> InlineResponse2005 chartPkPut(body, pk)
+<a name="apiV1ChartPkPut"></a>
+# **apiV1ChartPkPut**
+> InlineResponse20011 apiV1ChartPkPut(body, pk)
 
 
 
@@ -442,10 +656,10 @@ ChartsApi apiInstance = new ChartsApi();
 ChartRestApiPut body = new ChartRestApiPut(); // ChartRestApiPut | Chart schema
 Integer pk = 56; // Integer | 
 try {
-    InlineResponse2005 result = apiInstance.chartPkPut(body, pk);
+    InlineResponse20011 result = apiInstance.apiV1ChartPkPut(body, pk);
     System.out.println(result);
 } catch (ApiException e) {
-    System.err.println("Exception when calling ChartsApi#chartPkPut");
+    System.err.println("Exception when calling ChartsApi#apiV1ChartPkPut");
     e.printStackTrace();
 }
 ```
@@ -459,7 +673,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2005**](InlineResponse2005.md)
+[**InlineResponse20011**](InlineResponse20011.md)
 
 ### Authorization
 
@@ -470,9 +684,9 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-<a name="chartPkScreenshotDigestGet"></a>
-# **chartPkScreenshotDigestGet**
-> File chartPkScreenshotDigestGet(pk, digest)
+<a name="apiV1ChartPkScreenshotDigestGet"></a>
+# **apiV1ChartPkScreenshotDigestGet**
+> File apiV1ChartPkScreenshotDigestGet(pk, digest)
 
 
 
@@ -494,10 +708,10 @@ ChartsApi apiInstance = new ChartsApi();
 Integer pk = 56; // Integer | 
 String digest = "digest_example"; // String | 
 try {
-    File result = apiInstance.chartPkScreenshotDigestGet(pk, digest);
+    File result = apiInstance.apiV1ChartPkScreenshotDigestGet(pk, digest);
     System.out.println(result);
 } catch (ApiException e) {
-    System.err.println("Exception when calling ChartsApi#chartPkScreenshotDigestGet");
+    System.err.println("Exception when calling ChartsApi#apiV1ChartPkScreenshotDigestGet");
     e.printStackTrace();
 }
 ```
@@ -522,9 +736,9 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: image/_*, application/json
 
-<a name="chartPkThumbnailDigestGet"></a>
-# **chartPkThumbnailDigestGet**
-> chartPkThumbnailDigestGet(pk, digest)
+<a name="apiV1ChartPkThumbnailDigestGet"></a>
+# **apiV1ChartPkThumbnailDigestGet**
+> File apiV1ChartPkThumbnailDigestGet(pk, digest)
 
 
 
@@ -546,9 +760,10 @@ ChartsApi apiInstance = new ChartsApi();
 Integer pk = 56; // Integer | 
 String digest = "digest_example"; // String | 
 try {
-    apiInstance.chartPkThumbnailDigestGet(pk, digest);
+    File result = apiInstance.apiV1ChartPkThumbnailDigestGet(pk, digest);
+    System.out.println(result);
 } catch (ApiException e) {
-    System.err.println("Exception when calling ChartsApi#chartPkThumbnailDigestGet");
+    System.err.println("Exception when calling ChartsApi#apiV1ChartPkThumbnailDigestGet");
     e.printStackTrace();
 }
 ```
@@ -562,7 +777,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**File**](File.md)
 
 ### Authorization
 
@@ -571,11 +786,11 @@ null (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: image/_*, application/json
 
-<a name="chartPost"></a>
-# **chartPost**
-> InlineResponse201 chartPost(body)
+<a name="apiV1ChartPost"></a>
+# **apiV1ChartPost**
+> InlineResponse2012 apiV1ChartPost(body)
 
 
 
@@ -596,10 +811,10 @@ ApiClient defaultClient = Configuration.getDefaultApiClient();
 ChartsApi apiInstance = new ChartsApi();
 ChartRestApiPost body = new ChartRestApiPost(); // ChartRestApiPost | Chart schema
 try {
-    InlineResponse201 result = apiInstance.chartPost(body);
+    InlineResponse2012 result = apiInstance.apiV1ChartPost(body);
     System.out.println(result);
 } catch (ApiException e) {
-    System.err.println("Exception when calling ChartsApi#chartPost");
+    System.err.println("Exception when calling ChartsApi#apiV1ChartPost");
     e.printStackTrace();
 }
 ```
@@ -612,7 +827,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse201**](InlineResponse201.md)
+[**InlineResponse2012**](InlineResponse2012.md)
 
 ### Authorization
 
@@ -623,13 +838,13 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-<a name="chartRelatedColumnNameGet"></a>
-# **chartRelatedColumnNameGet**
-> InlineResponse2003 chartRelatedColumnNameGet(columnName, q)
+<a name="apiV1ChartRelatedColumnNameGet"></a>
+# **apiV1ChartRelatedColumnNameGet**
+> RelatedResponseSchema apiV1ChartRelatedColumnNameGet(columnName, q)
 
 
 
-Get a list of all possible owners for a chart.
+Get a list of all possible owners for a chart. Use &#x60;owners&#x60; has the &#x60;column_name&#x60; parameter
 
 ### Example
 ```java
@@ -645,12 +860,12 @@ ApiClient defaultClient = Configuration.getDefaultApiClient();
 
 ChartsApi apiInstance = new ChartsApi();
 String columnName = "columnName_example"; // String | 
-Object q = null; // Object | 
+GetRelatedSchema q = new GetRelatedSchema(); // GetRelatedSchema | 
 try {
-    InlineResponse2003 result = apiInstance.chartRelatedColumnNameGet(columnName, q);
+    RelatedResponseSchema result = apiInstance.apiV1ChartRelatedColumnNameGet(columnName, q);
     System.out.println(result);
 } catch (ApiException e) {
-    System.err.println("Exception when calling ChartsApi#chartRelatedColumnNameGet");
+    System.err.println("Exception when calling ChartsApi#apiV1ChartRelatedColumnNameGet");
     e.printStackTrace();
 }
 ```
@@ -660,11 +875,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **columnName** | **String**|  |
- **q** | [**Object**](.md)|  | [optional]
+ **q** | [**GetRelatedSchema**](.md)|  | [optional]
 
 ### Return type
 
-[**InlineResponse2003**](InlineResponse2003.md)
+[**RelatedResponseSchema**](RelatedResponseSchema.md)
 
 ### Authorization
 
