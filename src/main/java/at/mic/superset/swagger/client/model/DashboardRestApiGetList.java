@@ -12,6 +12,7 @@
 
 package at.mic.superset.swagger.client.model;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.Arrays;
 import at.mic.superset.swagger.client.model.DashboardRestApiGetListRole;
@@ -74,7 +75,7 @@ public class DashboardRestApiGetList {
   private String jsonMetadata = null;
 
   @SerializedName("owners")
-  private DashboardRestApiGetListUser2 owners = null;
+  private List<DashboardRestApiGetListUser2> owners = null;
 
   @SerializedName("position_json")
   private String positionJson = null;
@@ -83,7 +84,7 @@ public class DashboardRestApiGetList {
   private Boolean published = null;
 
   @SerializedName("roles")
-  private DashboardRestApiGetListRole roles = null;
+  private List<DashboardRestApiGetListRole> roles = null;
 
   @SerializedName("slug")
   private String slug = null;
@@ -304,7 +305,7 @@ public class DashboardRestApiGetList {
     this.jsonMetadata = jsonMetadata;
   }
 
-  public DashboardRestApiGetList owners(DashboardRestApiGetListUser2 owners) {
+  public DashboardRestApiGetList owners(List<DashboardRestApiGetListUser2> owners) {
     this.owners = owners;
     return this;
   }
@@ -314,11 +315,11 @@ public class DashboardRestApiGetList {
    * @return owners
   **/
   @Schema(description = "")
-  public DashboardRestApiGetListUser2 getOwners() {
+  public List<DashboardRestApiGetListUser2> getOwners() {
     return owners;
   }
 
-  public void setOwners(DashboardRestApiGetListUser2 owners) {
+  public void setOwners(List<DashboardRestApiGetListUser2> owners) {
     this.owners = owners;
   }
 
@@ -358,7 +359,7 @@ public class DashboardRestApiGetList {
     this.published = published;
   }
 
-  public DashboardRestApiGetList roles(DashboardRestApiGetListRole roles) {
+  public DashboardRestApiGetList roles(List<DashboardRestApiGetListRole> roles) {
     this.roles = roles;
     return this;
   }
@@ -368,11 +369,11 @@ public class DashboardRestApiGetList {
    * @return roles
   **/
   @Schema(description = "")
-  public DashboardRestApiGetListRole getRoles() {
+  public List<DashboardRestApiGetListRole> getRoles() {
     return roles;
   }
 
-  public void setRoles(DashboardRestApiGetListRole roles) {
+  public void setRoles(List<DashboardRestApiGetListRole> roles) {
     this.roles = roles;
   }
 

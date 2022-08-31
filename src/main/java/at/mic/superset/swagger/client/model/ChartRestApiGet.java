@@ -12,6 +12,7 @@
 
 package at.mic.superset.swagger.client.model;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.Arrays;
 import at.mic.superset.swagger.client.model.ChartRestApiGetDashboard;
@@ -48,7 +49,7 @@ public class ChartRestApiGet {
   private Boolean isManagedExternally = null;
 
   @SerializedName("owners")
-  private ChartRestApiGetUser owners = null;
+  private List<ChartRestApiGetUser> owners = null;
 
   @SerializedName("params")
   private String params = null;
@@ -170,7 +171,7 @@ public class ChartRestApiGet {
     this.isManagedExternally = isManagedExternally;
   }
 
-  public ChartRestApiGet owners(ChartRestApiGetUser owners) {
+  public ChartRestApiGet owners(List<ChartRestApiGetUser> owners) {
     this.owners = owners;
     return this;
   }
@@ -180,11 +181,11 @@ public class ChartRestApiGet {
    * @return owners
   **/
   @Schema(description = "")
-  public ChartRestApiGetUser getOwners() {
+  public List<ChartRestApiGetUser> getOwners() {
     return owners;
   }
 
-  public void setOwners(ChartRestApiGetUser owners) {
+  public void setOwners(List<ChartRestApiGetUser> owners) {
     this.owners = owners;
   }
 

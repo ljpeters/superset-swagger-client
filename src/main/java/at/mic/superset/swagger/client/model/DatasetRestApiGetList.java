@@ -12,6 +12,7 @@
 
 package at.mic.superset.swagger.client.model;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.Arrays;
 import at.mic.superset.swagger.client.model.DatasetRestApiGetListDatabase;
@@ -70,7 +71,7 @@ public class DatasetRestApiGetList {
   private Object kind = null;
 
   @SerializedName("owners")
-  private DatasetRestApiGetListUser owners = null;
+  private List<DatasetRestApiGetListUser> owners = null;
 
   @SerializedName("schema")
   private String schema = null;
@@ -252,7 +253,7 @@ public class DatasetRestApiGetList {
     return kind;
   }
 
-  public DatasetRestApiGetList owners(DatasetRestApiGetListUser owners) {
+  public DatasetRestApiGetList owners(List<DatasetRestApiGetListUser> owners) {
     this.owners = owners;
     return this;
   }
@@ -262,11 +263,11 @@ public class DatasetRestApiGetList {
    * @return owners
   **/
   @Schema(description = "")
-  public DatasetRestApiGetListUser getOwners() {
+  public List<DatasetRestApiGetListUser> getOwners() {
     return owners;
   }
 
-  public void setOwners(DatasetRestApiGetListUser owners) {
+  public void setOwners(List<DatasetRestApiGetListUser> owners) {
     this.owners = owners;
   }
 

@@ -12,6 +12,7 @@
 
 package at.mic.superset.swagger.client.model;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.Arrays;
 import at.mic.superset.swagger.client.model.ReportScheduleRestApiGetDashboard;
@@ -85,10 +86,10 @@ public class ReportScheduleRestApiGet {
   private String name = null;
 
   @SerializedName("owners")
-  private ReportScheduleRestApiGetUser owners = null;
+  private List<ReportScheduleRestApiGetUser> owners = null;
 
   @SerializedName("recipients")
-  private ReportScheduleRestApiGetReportRecipients recipients = null;
+  private List<ReportScheduleRestApiGetReportRecipients> recipients = null;
 
   @SerializedName("report_format")
   private String reportFormat = null;
@@ -417,7 +418,7 @@ public class ReportScheduleRestApiGet {
     this.name = name;
   }
 
-  public ReportScheduleRestApiGet owners(ReportScheduleRestApiGetUser owners) {
+  public ReportScheduleRestApiGet owners(List<ReportScheduleRestApiGetUser> owners) {
     this.owners = owners;
     return this;
   }
@@ -427,15 +428,15 @@ public class ReportScheduleRestApiGet {
    * @return owners
   **/
   @Schema(description = "")
-  public ReportScheduleRestApiGetUser getOwners() {
+  public List<ReportScheduleRestApiGetUser> getOwners() {
     return owners;
   }
 
-  public void setOwners(ReportScheduleRestApiGetUser owners) {
+  public void setOwners(List<ReportScheduleRestApiGetUser> owners) {
     this.owners = owners;
   }
 
-  public ReportScheduleRestApiGet recipients(ReportScheduleRestApiGetReportRecipients recipients) {
+  public ReportScheduleRestApiGet recipients(List<ReportScheduleRestApiGetReportRecipients> recipients) {
     this.recipients = recipients;
     return this;
   }
@@ -445,11 +446,11 @@ public class ReportScheduleRestApiGet {
    * @return recipients
   **/
   @Schema(required = true, description = "")
-  public ReportScheduleRestApiGetReportRecipients getRecipients() {
+  public List<ReportScheduleRestApiGetReportRecipients> getRecipients() {
     return recipients;
   }
 
-  public void setRecipients(ReportScheduleRestApiGetReportRecipients recipients) {
+  public void setRecipients(List<ReportScheduleRestApiGetReportRecipients> recipients) {
     this.recipients = recipients;
   }
 

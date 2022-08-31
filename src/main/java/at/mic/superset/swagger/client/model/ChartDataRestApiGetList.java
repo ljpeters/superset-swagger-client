@@ -12,6 +12,7 @@
 
 package at.mic.superset.swagger.client.model;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.Arrays;
 import at.mic.superset.swagger.client.model.ChartDataRestApiGetListSqlaTable;
@@ -94,7 +95,7 @@ public class ChartDataRestApiGetList {
   private ChartDataRestApiGetListUser lastSavedBy = null;
 
   @SerializedName("owners")
-  private ChartDataRestApiGetListUser3 owners = null;
+  private List<ChartDataRestApiGetListUser3> owners = null;
 
   @SerializedName("params")
   private String params = null;
@@ -402,7 +403,7 @@ public class ChartDataRestApiGetList {
     this.lastSavedBy = lastSavedBy;
   }
 
-  public ChartDataRestApiGetList owners(ChartDataRestApiGetListUser3 owners) {
+  public ChartDataRestApiGetList owners(List<ChartDataRestApiGetListUser3> owners) {
     this.owners = owners;
     return this;
   }
@@ -412,11 +413,11 @@ public class ChartDataRestApiGetList {
    * @return owners
   **/
   @Schema(description = "")
-  public ChartDataRestApiGetListUser3 getOwners() {
+  public List<ChartDataRestApiGetListUser3> getOwners() {
     return owners;
   }
 
-  public void setOwners(ChartDataRestApiGetListUser3 owners) {
+  public void setOwners(List<ChartDataRestApiGetListUser3> owners) {
     this.owners = owners;
   }
 
